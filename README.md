@@ -12,7 +12,7 @@
 <h3>
 CONCEPTO:
 
-<strong>Nombre del Juego:</strong> Spurs ‘n’ hooks.
+<strong>Nombre del Juego:</strong> <p> Spurs ‘n’ hooks. </p>
 
 <strong>Nombre del estudio:</strong> Piña Colada Studios.
 
