@@ -1,6 +1,6 @@
 # Spurs'n'Hooks
 
-<p> NOMBRES:
+<p> <strong>NOMBRES:</strong>
 
 -Miguel Ángel Arcones Ríos 
 
