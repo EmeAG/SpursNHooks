@@ -9,10 +9,10 @@
 -Daniel Muñoz Serrano
 </p>
 
-<h3>
-CONCEPTO:
+<p>
+<strong>CONCEPTO:</strong> 
 
-<p> <strong>Nombre del Juego:</strong>  Spurs ‘n’ hooks. </p>
+ <strong>Nombre del Juego:</strong>  Spurs ‘n’ hooks. 
 
 <strong>Nombre del estudio:</strong> Piña Colada Studios.
 
@@ -30,19 +30,19 @@ CONCEPTO:
 
 <strong>Público:</strong> Jugador casual.
 
-</h3>
+</p>
 
-<h3>
+<p>
 HISTORIAL DE VERSIONES:
-</h3>
+</p>
 
-<h3>
+<p>
 VISION GENERAL DEL JUEGO:
 
 Es un videojuego competitivo, de partidas rápidas, que te permita jugar a él como pasatiempo en cuando lo necesites, sin necesidad de altos requisitos tecnológicos. Compite contra tus amigos (y no tan amigos) en cualquier momento o lugar, solo necesitas tu teléfono móvil. Siempre es buen momento para enviar un cañonazo a tu archienemigo.
-</h3>
+</p>
 
-<h3>
+<p>
 MECÁNICA DEL JUEGO:
 
 <strong>Cámara:</strong> de perfil, 2D plataformas. Teclado y ratón para pc y controles táctiles para móviles. 
@@ -60,7 +60,7 @@ En el primer inicio del juego por un jugador nuevo, se le otorgará x monedas, q
 
 <strong>Guardar/Cargar:</strong> Se guardará la cuenta del usuario para poder mantener su puntuación.
 
-</h3>
+</p>
 ESTADOS DEL JUEGO
 
 Pantalla de carga.
