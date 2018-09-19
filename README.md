@@ -72,7 +72,7 @@ Tutorial.
 Pantalla de combate.
 Pantalla de marcador de puntuación. 
 </p>
-
+<p>
 <strong>INTERFACES:</strong>
 
 El estilo grafico del juego es cartoon con temática de piratas contra vaqueros. Los colores serán cálidos. Los fondos estarán difuminados para centrar la acción en el primer plano.
@@ -98,31 +98,28 @@ El estilo grafico del juego es cartoon con temática de piratas contra vaqueros.
 <strong>Estados del juego:</strong> Invocado por: Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
 
 <strong>Nombre de la pantalla:</strong> Pantalla de combate offline.
-<strong>Descripción de la pantalla: Pantalla en el que transcurre el gameplay del videojuego PvP por turnos.
-<strong>Estados del juego: Invocado por: Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
+<strong>Descripción de la pantalla:</strong> Pantalla en el que transcurre el gameplay del videojuego PvP por turnos.
+<strong>Estados del juego: Invocado por:</strong> Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
 
-<strong>Nombre de la pantalla: Pantalla de marcador de puntuación. 
-<strong>Descripción de la pantalla: Estado en el que se muestra la puntuación global con los puntos de cada jugador registrado.
-<strong>Estados del juego: Invocado por: Pantalla de combate. Invoca a: Menú de inicio.
+<strong>Nombre de la pantalla:</strong> Pantalla de marcador de puntuación. 
+<strong>Descripción de la pantalla:</strong> Estado en el que se muestra la puntuación global con los puntos de cada jugador registrado.
+<strong>Estados del juego:</strong> Invocado por: Pantalla de combate. Invoca a: Menú de inicio.
+</p>
 
-
-
-
-
-<strong>NIVELES:
+<strong>NIVELES:</strong>
 
 El juego consta de un único nivel en el que se compite contra otro jugador. Este nivel podrá tener obstáculos en medio del escenario de forma aleatoria, que compliquen los disparos.
 
-<strong>Título del Nivel: War Field.
-<strong>Encuentro: Es el único nivel del juego, en él se sitúa el campo de batalla, con las zonas de cada equipo.
-<strong>Objetivos: Derrotar al equipo contrario.
-<strong>Enemigos: El jugador contrario.
-<strong>Ítems: Materiales, balas y monedas de oro.
-<strong>Personajes: Vaqueros y piratas.
-<strong>Música y Efectos de Sonido: sonido de disparo, sonido de golpe, música de fondo de construcción, música de fondo de batalla, música de ganar partida, música de perder partida, sonido de matar un soldado enemigo, sonido de muerte de un soldado propio.
-<strong>Referencias de BGM y SFX: 
+<strong>Título del Nivel:</strong> War Field.
+<strong>Encuentro:</strong> Es el único nivel del juego, en él se sitúa el campo de batalla, con las zonas de cada equipo.
+<strong>Objetivos:</strong> Derrotar al equipo contrario.
+<strong>Enemigos:</strong> El jugador contrario.
+<strong>Ítems: </strong>Materiales, balas y monedas de oro.
+<strong>Personajes:</strong> Vaqueros y piratas.
+<strong>Música y Efectos de Sonido:</strong> sonido de disparo, sonido de golpe, música de fondo de construcción, música de fondo de batalla, música de ganar partida, música de perder partida, sonido de matar un soldado enemigo, sonido de muerte de un soldado propio.
+<strong>Referencias de BGM y SFX: </strong>
 
-<strong>PROGESO DEL JUEGO: 
+<strong>PROGESO DEL JUEGO: </strong>
 
 El jugador competirá en combates, compuestos de dos fases, contra su oponente.
 
