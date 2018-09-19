@@ -207,6 +207,7 @@ MIEMBROS DEL EQUIPO:
 Miguel Ángel Arcones Ríos
 Manuel Aguado Salguero 
 Daniel Muñoz Serrano
+https://app.asana.com/0/465225037996628/board
 
 DETALLES DE PRODUCCION:
 
