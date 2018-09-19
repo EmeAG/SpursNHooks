@@ -61,7 +61,9 @@ En el primer inicio del juego por un jugador nuevo, se le otorgará x monedas, q
 <strong>Guardar/Cargar:</strong> Se guardará la cuenta del usuario para poder mantener su puntuación.
 
 </p>
-ESTADOS DEL JUEGO
+
+<p>
+<strong>ESTADOS DEL JUEGO</strong>
 
 Pantalla de carga.
 Menú de inicio.
@@ -69,57 +71,58 @@ Ajustes.
 Tutorial.
 Pantalla de combate.
 Pantalla de marcador de puntuación. 
+</p>
 
-INTERFACES:
+<strong>INTERFACES:</strong>
 
 El estilo grafico del juego es cartoon con temática de piratas contra vaqueros. Los colores serán cálidos. Los fondos estarán difuminados para centrar la acción en el primer plano.
 
-Nombre de la pantalla: Pantalla de carga.
-Descripción de la pantalla: Pantalla en la que se detalla el tiempo que queda para que cargue la partida y los logos del juego y empresa.
-Estados del juego: Invocado por: Pantalla de carga. Invoca a: Menú de inicio.
+<strong>Nombre de la pantalla:</strong> Pantalla de carga.
+<strong>Descripción de la pantalla:</strong> Pantalla en la que se detalla el tiempo que queda para que cargue la partida y los logos del juego y empresa.
+<strong>Estados del juego:</strong> Invocado por: Pantalla de carga. Invoca a: Menú de inicio.
 
-Nombre de la pantalla: Menú de inicio.
-Descripción de la pantalla: pantalla con las diferentes opciones del juego, donde se encuentran los botones de acceso a otros estados.
-Estados del juego: Invocado por: Pantalla de carga.  Invoca a: ajustes, Tutorial, Pantalla de marcador de puntuación, batalla offline y batalla online.
+<strong>Nombre de la pantalla:</strong> Menú de inicio.
+<strong>Descripción de la pantalla:</strong> pantalla con las diferentes opciones del juego, donde se encuentran los botones de acceso a otros estados.
+<strong>Estados del juego: Invocado por:</strong> Pantalla de carga.  Invoca a: ajustes, Tutorial, Pantalla de marcador de puntuación, batalla offline y batalla online.
 
-Nombre de la pantalla: Ajustes.
-Descripción de la pantalla: Estado del juego que permite al jugador establecer las diferentes configuraciones del juego como volumen de la música, efectos de sonido o idioma.
-Estados del juego: Invocado por: Menú de inicio. Invoca a: Ajustes.
+<strong>Nombre de la pantalla:</strong> Ajustes.
+<strong>Descripción de la pantalla:</strong> Estado del juego que permite al jugador establecer las diferentes configuraciones del juego como volumen de la música, efectos de sonido o idioma.
+<strong>Estados del juego:</strong> Invocado por: Menú de inicio. Invoca a: Ajustes.
 
-Nombre de la pantalla: Tutorial.
-Descripción de la pantalla: Se muestra al jugador un video explicando las mecánicas del videojuego.
-Estados del juego: Invocado por: Menú de inicio. Invoca a: Tutorial.
+<strong>Nombre de la pantalla:</strong> Tutorial.
+<strong>Descripción de la pantalla:</strong> Se muestra al jugador un video explicando las mecánicas del videojuego.
+<strong>Estados del juego:</strong> Invocado por: Menú de inicio. Invoca a: Tutorial.
 
-Nombre de la pantalla: Pantalla de combate online.
-Descripción de la pantalla: Pantalla en el que transcurre el gameplay del videojuego PvP online.
-Estados del juego: Invocado por: Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
+<strong>Nombre de la pantalla:</strong> Pantalla de combate online.
+<strong>Descripción de la pantalla:</strong> Pantalla en el que transcurre el gameplay del videojuego PvP online.
+<strong>Estados del juego:</strong> Invocado por: Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
 
-Nombre de la pantalla: Pantalla de combate offline.
-Descripción de la pantalla: Pantalla en el que transcurre el gameplay del videojuego PvP por turnos.
-Estados del juego: Invocado por: Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
+<strong>Nombre de la pantalla:</strong> Pantalla de combate offline.
+<strong>Descripción de la pantalla: Pantalla en el que transcurre el gameplay del videojuego PvP por turnos.
+<strong>Estados del juego: Invocado por: Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
 
-Nombre de la pantalla: Pantalla de marcador de puntuación. 
-Descripción de la pantalla: Estado en el que se muestra la puntuación global con los puntos de cada jugador registrado.
-Estados del juego: Invocado por: Pantalla de combate. Invoca a: Menú de inicio.
-
-
+<strong>Nombre de la pantalla: Pantalla de marcador de puntuación. 
+<strong>Descripción de la pantalla: Estado en el que se muestra la puntuación global con los puntos de cada jugador registrado.
+<strong>Estados del juego: Invocado por: Pantalla de combate. Invoca a: Menú de inicio.
 
 
 
-NIVELES:
+
+
+<strong>NIVELES:
 
 El juego consta de un único nivel en el que se compite contra otro jugador. Este nivel podrá tener obstáculos en medio del escenario de forma aleatoria, que compliquen los disparos.
 
-Título del Nivel: War Field.
-Encuentro: Es el único nivel del juego, en él se sitúa el campo de batalla, con las zonas de cada equipo.
-Objetivos: Derrotar al equipo contrario.
-Enemigos: El jugador contrario.
-Ítems: Materiales, balas y monedas de oro.
-Personajes: Vaqueros y piratas.
-Música y Efectos de Sonido: sonido de disparo, sonido de golpe, música de fondo de construcción, música de fondo de batalla, música de ganar partida, música de perder partida, sonido de matar un soldado enemigo, sonido de muerte de un soldado propio.
-Referencias de BGM y SFX: 
+<strong>Título del Nivel: War Field.
+<strong>Encuentro: Es el único nivel del juego, en él se sitúa el campo de batalla, con las zonas de cada equipo.
+<strong>Objetivos: Derrotar al equipo contrario.
+<strong>Enemigos: El jugador contrario.
+<strong>Ítems: Materiales, balas y monedas de oro.
+<strong>Personajes: Vaqueros y piratas.
+<strong>Música y Efectos de Sonido: sonido de disparo, sonido de golpe, música de fondo de construcción, música de fondo de batalla, música de ganar partida, música de perder partida, sonido de matar un soldado enemigo, sonido de muerte de un soldado propio.
+<strong>Referencias de BGM y SFX: 
 
-PROGESO DEL JUEGO: 
+<strong>PROGESO DEL JUEGO: 
 
 El jugador competirá en combates, compuestos de dos fases, contra su oponente.
 
