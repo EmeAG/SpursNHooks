@@ -1,49 +1,66 @@
 # Spurs'n'Hooks
 
-NOMBRES:
+<h2> NOMBRES:
 
-Miguel Ángel Arcones Ríos 
+-Miguel Ángel Arcones Ríos 
 
-Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es , GitHub: EmeAG
+-Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es , GitHub: EmeAG
 
-Daniel Muñoz Serrano
+-Daniel Muñoz Serrano
+</h2>
 
-
+<h3>
 CONCEPTO:
 
-Nombre del Juego: Spurs ‘n’ hooks
-Nombre del estudio: Piña Colada Studios
-Plataforma: PC y Móvil
-Versión: 1.0
-Sinopsis de jugabilidad y contenido: Videojuego de estrategia y acción PvP, dividido en dos fases. La primera fase consta de la parte de construcción de las defensas, mientras que la segunda fase es la destrucción y derrota de los soldados enemigos y sus defensas. Con estética cartoon y ambientación de piratas contra vaqueros.
-Categoría: Videojuego de estrategia competitivo, móvil, web.
-Licencia: (se puede omitir): Apache 2.
-Tecnología: JavaScript, Phaser, Gimp, tableta gráfica, Ubuntu, MySQL.
-Público: Jugador casual.
+<strong>Nombre del Juego:</strong> Spurs ‘n’ hooks.
 
+<strong>Nombre del estudio:</strong> Piña Colada Studios.
+
+<strong>Plataforma:</strong> PC y Móvil.
+
+<strong>Versión:</strong> 1.0
+
+<strong>Sinopsis de jugabilidad y contenido:</strong> Videojuego de estrategia y acción PvP, dividido en dos fases. La primera fase consta de la parte de construcción de las defensas, mientras que la segunda fase es la destrucción y derrota de los soldados enemigos y sus defensas. Con estética cartoon y ambientación de piratas contra vaqueros.
+
+<strong>Categoría:</strong> Videojuego de estrategia competitivo, móvil, web.
+
+<strong>Licencia:</strong> Apache 2.
+
+<strong>Tecnología:</strong> JavaScript, Phaser, Gimp, tableta gráfica, Ubuntu, MySQL.
+
+<strong>Público:</strong> Jugador casual.
+
+</h3>
+
+<h3>
 HISTORIAL DE VERSIONES:
+</h3>
 
+<h3>
 VISION GENERAL DEL JUEGO:
 
 Es un videojuego competitivo, de partidas rápidas, que te permita jugar a él como pasatiempo en cuando lo necesites, sin necesidad de altos requisitos tecnológicos. Compite contra tus amigos (y no tan amigos) en cualquier momento o lugar, solo necesitas tu teléfono móvil. Siempre es buen momento para enviar un cañonazo a tu archienemigo.
+</h3>
 
+<h3>
 MECÁNICA DEL JUEGO:
 
-Cámara: de perfil, 2D plataformas. Teclado y ratón para pc y controles táctiles para móviles. 
-Controles: Tanto para la fase de construcción como de combate, se utilizará el ratón para colocar los materiales y para controlar la fuerza y dirección del disparo. El juego usará botones de selección, para la fase de la construcción, para elegir la forma y el material y se pulsará en la zona que se prefiera colocar la pieza, y botones para elegir el armamento.
+<strong>Cámara:</strong> de perfil, 2D plataformas. Teclado y ratón para pc y controles táctiles para móviles. 
+  
+<strong>Controles:</strong> Tanto para la fase de construcción como de combate, se utilizará el ratón para colocar los materiales y para controlar la fuerza y dirección del disparo. El juego usará botones de selección, para la fase de la construcción, para elegir la forma y el material y se pulsará en la zona que se prefiera colocar la pieza, y botones para elegir el armamento.
 
 Durante la batalla se tendrán botones en la pantalla para elegir el tipo de bala a disparar y el disparo se regulará mediante pulsaciones y arrastre mediante ratón o pantalla táctil.
-
-Si la batalla resulta en empate al acabar el tiempo, se elegirá aleatoriamente al ganador y se informará a los jugadores mediante un mensaje en la pantalla.
 
 En el primer inicio del juego por un jugador nuevo, se le otorgará x monedas, que tiene para emplearlos en las partidas rápidas, que cuestan xx monedas, y los materiales y armamento dentro de las partidas. Se recompensará al jugador con una lista de diferentes botines de monedas por cada día logeado. 
 
 ****Viento que perjudique el tiro. Soldados que se muevan, 
 
 
-Puntuación: Se guardará una puntuación global de todos los puntos conseguidos por cada jugador.
-Guardar/Cargar: Se guardará la cuenta del usuario para poder mantener su puntuación.
+<strong>Puntuación:</strong> Se guardará una puntuación global de todos los puntos conseguidos por cada jugador.
 
+<strong>Guardar/Cargar:</strong> Se guardará la cuenta del usuario para poder mantener su puntuación.
+
+</h3>
 ESTADOS DEL JUEGO
 
 Pantalla de carga.
@@ -114,20 +131,33 @@ El primer contrincante que acabe con todos los soldados enemigos será el ganado
 
 Cada partida consta de 3 combates, en los que se dispondrá de una cantidad de oro inicial que el jugador gestionará para invertir en las defensas y ataque de los 3 combates. Ganará el jugador que consiga más victorias en estos 3 combates. 
 
+Si la batalla resulta en empate al acabar el tiempo, se elegirá aleatoriamente al ganador y se informará a los jugadores mediante un mensaje en la pantalla.
+
+
 PERSONAJES: 
 
 Nombre del Personaje: Bando de los vaqueros.
+
 Descripción: Este bando tiene a vaqueros como soldados.
+
 Concepto: son personajes sin ningún tipo de dialogo o comportamiento, actúan como la vida del equipo.
+
 Encuentro: se encuentran en uno de los extremos del campo de batalla, en la zona del Viejo Oeste.
+
 Armas: Revolver gigante que actúa de cañón.
+
 Personaje No-Jugable: Los soldados. 
 
 Nombre del Personaje: Bando de los piratas.
+
 Descripción: Este bando tiene a piratas como soldados.
+
 Concepto: son personajes sin ningún tipo de dialogo o comportamiento, actúan como la vida del equipo.
+
 Encuentro: se encuentran en uno de los extremos del campo de batalla, en la zona del mar. 
+
 Armas: Un cañón de barco pirata.
+
 Personaje No-Jugable: Los soldados.
 
 
