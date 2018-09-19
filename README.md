@@ -33,17 +33,17 @@
 </p>
 
 <p>
-HISTORIAL DE VERSIONES:
+<strong>HISTORIAL DE VERSIONES:</strong>
 </p>
 
 <p>
-VISION GENERAL DEL JUEGO:
+<strong>VISION GENERAL DEL JUEGO:</strong>
 
 Es un videojuego competitivo, de partidas rápidas, que te permita jugar a él como pasatiempo en cuando lo necesites, sin necesidad de altos requisitos tecnológicos. Compite contra tus amigos (y no tan amigos) en cualquier momento o lugar, solo necesitas tu teléfono móvil. Siempre es buen momento para enviar un cañonazo a tu archienemigo.
 </p>
 
 <p>
-MECÁNICA DEL JUEGO:
+<strong>MECÁNICA DEL JUEGO:</strong>
 
 <strong>Cámara:</strong> de perfil, 2D plataformas. Teclado y ratón para pc y controles táctiles para móviles. 
   
