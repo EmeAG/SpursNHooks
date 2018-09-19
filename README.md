@@ -1,13 +1,13 @@
 # Spurs'n'Hooks
 
-<h3> NOMBRES:
+<p> NOMBRES:
 
 -Miguel Ángel Arcones Ríos 
 
 -Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es , GitHub: EmeAG
 
 -Daniel Muñoz Serrano
-</h3>
+</p>
 
 <h3>
 CONCEPTO:
