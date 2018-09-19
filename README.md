@@ -4,7 +4,7 @@ NOMBRES:
 
 Miguel Ángel Arcones Ríos 
 
-Manuel Aguado Salguero Email: m.aguado.2016@alumnos.urjc.es GitHub: EmeAG
+Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es , GitHub: EmeAG
 
 Daniel Muñoz Serrano
 
