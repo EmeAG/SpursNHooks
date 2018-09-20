@@ -199,13 +199,13 @@ Balas
 
 El jugador tiene la posibilidad de adquirir diferentes tipos de balas, durante la primera fase de preparación del combate. Estas balas disponen de unas habilidades especiales y podrán ser utilizadas en cualquier momento del combate.
 
--	<b>Bala común:</b> No tiene precio ni habilidad, el jugador posee infinitas.
+<b>Bala común:</b> No tiene precio ni habilidad, el jugador posee infinitas.
 -	<b>Daño:</b> 20 puntos.
--	<b>Bala de ácido:</b>
+<b>Bala de ácido:</b>
 -	<b>Precio:</b> 30 monedas de oro.
 -	<b>Habilidad:</b> Degrada los materiales con los que choca, facilitando su destrucción.
 -	<b>Daño:</b> 10 puntos cada segundo durante 5 segundos.
--	<b>Bala de humo:</b>
+<b>Bala de humo:</b>
 -	<b>Precio:</b> 15 monedas de oro.
 -	<b>Habilidad: </b>Nubla la visión del enemigo, el disparo del enemigo se vuelve menos preciso durante 4 disparos.
 
