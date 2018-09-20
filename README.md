@@ -234,12 +234,12 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 
 <b>MIEMBROS DEL EQUIPO:</b>
 
-Miguel Ángel Arcones Ríos
-Manuel Aguado Salguero 
-Daniel Muñoz Serrano
+Miguel Ángel Arcones Ríos</br>
+Manuel Aguado Salguero </br>
+Daniel Muñoz Serrano </br>
 https://app.asana.com/0/465225037996628/board
 
-DETALLES DE PRODUCCION:
+<b>DETALLES DE PRODUCCION:</b>
 
 Fecha de inicio: 24 de septiembre de 2018
 Fecha de Terminación: 
