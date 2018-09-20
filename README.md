@@ -209,30 +209,30 @@ El jugador tiene la posibilidad de adquirir diferentes tipos de balas, durante l
 -	Precio: 15 monedas de oro.
 -	Habilidad Nubla la visión del enemigo, el disparo del enemigo se vuelve menos preciso durante 4 disparos.
 
-ITEMS:
+<b>ITEMS:</b>
 
-Monedas de oro: sirven para adquirir los elementos de defensa y de ataque en la batalla. Se consiguen ganando batallas y con conexiones diarias al propio videojuego.
+<b>Monedas de oro:</b> sirven para adquirir los elementos de defensa y de ataque en la batalla. Se consiguen ganando batallas y con conexiones diarias al propio videojuego.
 
 
 
-GUION:
+<b>GUION:</b>
 
 Los piratas y los vaqueros batallan para conseguir el dinero.
 
-LOGROS:
+<b>LOGROS:</b>
 
 -Aprendiz de saqueador: El jugador ha conseguido su primera victoria en combate.
 -¿Qué ha pachado? : El jugador ha ganado las tres rondas de una batalla.
 -El más rápido del oeste: El jugador ha ganado la partida en menos de 30 segundos.
 -Pólvora mojada: El jugador ha ganado la partida de forma aleatoria tras un empate.
 
-CODIGOS SECRETOS: no
+<b>CODIGOS SECRETOS:</b> no
 
-MUSICA Y SONIDOS:
+<b>MUSICA Y SONIDOS:</b>
 
-IMÁGENES DE CONCEPTO:
+<b>IMÁGENES DE CONCEPTO:</b>
 
-MIEMBROS DEL EQUIPO:
+<b>MIEMBROS DEL EQUIPO:</b>
 
 Miguel Ángel Arcones Ríos
 Manuel Aguado Salguero 
