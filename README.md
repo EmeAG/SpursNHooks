@@ -215,7 +215,7 @@ El jugador tiene la posibilidad de adquirir diferentes tipos de balas, durante l
 
 
 
-<b>GUION:</b>
+<b>GUIÓN:</b>
 
 Los piratas y los vaqueros batallan para conseguir el dinero.
 
