@@ -134,31 +134,31 @@ Cada partida consta de 3 combates, en los que se dispondrá de una cantidad de o
 Si la batalla resulta en empate al acabar el tiempo, se elegirá aleatoriamente al ganador y se informará a los jugadores mediante un mensaje en la pantalla.
 
 
-PERSONAJES: 
+<b>PERSONAJES:</b>
 
-Nombre del Personaje: Bando de los vaqueros.
+<b>Nombre del Personaje:</b> Bando de los vaqueros.
 
-Descripción: Este bando tiene a vaqueros como soldados.
+<b>Descripción:</b> Este bando tiene a vaqueros como soldados.
 
-Concepto: son personajes sin ningún tipo de dialogo o comportamiento, actúan como la vida del equipo.
+<b>Concepto:</b> son personajes sin ningún tipo de dialogo o comportamiento, actúan como la vida del equipo.
 
-Encuentro: se encuentran en uno de los extremos del campo de batalla, en la zona del Viejo Oeste.
+<b>Encuentro:</b> se encuentran en uno de los extremos del campo de batalla, en la zona del Viejo Oeste.
 
-Armas: Revolver gigante que actúa de cañón.
+<b>Armas:</b> Revolver gigante que actúa de cañón.
 
-Personaje No-Jugable: Los soldados. 
+<b>Personaje No-Jugable:</b> Los soldados. 
 
-Nombre del Personaje: Bando de los piratas.
+<b>Nombre del Personaje:</b> Bando de los piratas.
 
-Descripción: Este bando tiene a piratas como soldados.
+<b>Descripción:</b> Este bando tiene a piratas como soldados.
 
-Concepto: son personajes sin ningún tipo de dialogo o comportamiento, actúan como la vida del equipo.
+<b>Concepto:</b> son personajes sin ningún tipo de dialogo o comportamiento, actúan como la vida del equipo.
 
-Encuentro: se encuentran en uno de los extremos del campo de batalla, en la zona del mar. 
+<b>Encuentro:</b> se encuentran en uno de los extremos del campo de batalla, en la zona del mar. 
 
-Armas: Un cañón de barco pirata.
+<b>Armas:</b> Un cañón de barco pirata.
 
-Personaje No-Jugable: Los soldados.
+<b>Personaje No-Jugable:</b> Los soldados.
 
 
 ENEMIGOS:
