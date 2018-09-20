@@ -2,7 +2,7 @@
 
 <p> <strong>NOMBRES:</strong>
 
--Miguel Ángel Arcones Ríos 
+-Miguel Ángel Arcones Ríos, Email: ma.arcones@alumnos.urjc.es, Github: M-Arcones
 
 -Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es , GitHub: EmeAG
 
