@@ -221,10 +221,10 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 
 <b>LOGROS:</b>
 
--Aprendiz de saqueador: El jugador ha conseguido su primera victoria en combate.
--¿Qué ha pachado? : El jugador ha ganado las tres rondas de una batalla.
--El más rápido del oeste: El jugador ha ganado la partida en menos de 30 segundos.
--Pólvora mojada: El jugador ha ganado la partida de forma aleatoria tras un empate.
+-<b>Aprendiz de saqueador:</b> El jugador ha conseguido su primera victoria en combate.</br>
+-<b>¿Qué ha pachado?:</b> El jugador ha ganado las tres rondas de una batalla.</br>
+-<b>El más rápido del oeste:</b> El jugador ha ganado la partida en menos de 30 segundos.</br>
+-<b>Pólvora mojada:</b> El jugador ha ganado la partida de forma aleatoria tras un empate.</br>
 
 <b>CODIGOS SECRETOS:</b> no
 
