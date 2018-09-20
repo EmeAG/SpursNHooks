@@ -161,28 +161,28 @@ Si la batalla resulta en empate al acabar el tiempo, se elegirá aleatoriamente 
 <b>Personaje No-Jugable:</b> Los soldados.
 
 
-ENEMIGOS:
+<b>ENEMIGOS:</b>
 
 El bando de personajes que le haya tocado al jugador contrario.
 
-HABILIDADES: 
+<b>HABILIDADES:</b>
 Construcción defensiva
 
 Para la construcción de las defensas el jugador podrá disponer de diferentes materiales y formas, una pieza defensiva será una forma de un material. 
 
 Los materiales tienen una serie de atributos, cuyo valor varía en función del material:
 
--	Madera:
+<b>Madera:</b>
 -	Peso: 10kg.
 -	Vida: 20 puntos.
 -	Coste: 10 monedas de oro.
 
--	Piedra:
+<b>Piedra:</b>
 -	Peso: 20kg.
 -	Vida: 40 puntos.
 -	Coste: 20 monedas de oro.
 
--	Hierro: 
+<b>Hierro:</b>
 -	Peso: 45kg.
 -	Vida: 65 puntos.
 -	Coste: 35 monedas de oro.
@@ -194,20 +194,20 @@ Las formas no modifican ni tienen ningún valor diferente, su cometido único es
 -	Triangulo
 
 
-ARMAS:
+<b>ARMAS:</b>
 Balas
 
 El jugador tiene la posibilidad de adquirir diferentes tipos de balas, durante la primera fase de preparación del combate. Estas balas disponen de unas habilidades especiales y podrán ser utilizadas en cualquier momento del combate.
 
--	Bala común: No tiene precio ni habilidad, el jugador posee infinitas.
--	Daño: 20 puntos.
--	Bala de ácido:
--	Precio: 30 monedas de oro.
--	Habilidad: Degrada los materiales con los que choca, facilitando su destrucción.
--	Daño: 10 puntos cada segundo durante 5 segundos.
--	Bala de humo:
--	Precio: 15 monedas de oro.
--	Habilidad Nubla la visión del enemigo, el disparo del enemigo se vuelve menos preciso durante 4 disparos.
+-	<b>Bala común:</b> No tiene precio ni habilidad, el jugador posee infinitas.
+-	<b>Daño:</b> 20 puntos.
+-	<b>Bala de ácido:</b>
+-	<b>Precio:</b> 30 monedas de oro.
+-	<b>Habilidad:</b> Degrada los materiales con los que choca, facilitando su destrucción.
+-	<b>Daño:</b> 10 puntos cada segundo durante 5 segundos.
+-	<b>Bala de humo:</b>
+-	<b>Precio:</b> 15 monedas de oro.
+-	<b>Habilidad: </b>Nubla la visión del enemigo, el disparo del enemigo se vuelve menos preciso durante 4 disparos.
 
 <b>ITEMS:</b>
 
