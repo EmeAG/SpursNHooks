@@ -226,7 +226,7 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 
 <h2><b>IMÁGENES DE CONCEPTO:</b></h2>
 
- <img src="Bocetoescenario1-5.png" height="42" width="42"></img>
+ <img src="Bocetoescenario1-5.png" ></img>
 
 <h2><b>MIEMBROS DEL EQUIPO:</b></h2>
 
