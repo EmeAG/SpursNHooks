@@ -1,6 +1,6 @@
 # Spurs'n'Hooks
 
-<p> <strong>NOMBRES:</strong>
+<p> <strong>NOMetgfethjyS:</strong>
 
 -Miguel Ángel Arcones Ríos, Email: ma.arcones@alumnos.urjc.es, Github: <b>M-Arcones</b>
 
@@ -78,7 +78,9 @@ Pantalla de marcador de puntuación.
 El estilo grafico del juego es cartoon con temática de piratas contra vaqueros. Los colores serán cálidos. Los fondos estarán difuminados para centrar la acción en el primer plano.
 
 <strong>Nombre de la pantalla:</strong> Pantalla de carga.
+
 <strong>Descripción de la pantalla:</strong> Pantalla en la que se detalla el tiempo que queda para que cargue la partida y los logos del juego y empresa.
+
 <strong>Estados del juego:</strong> Invocado por: Pantalla de carga. Invoca a: Menú de inicio.
 
 <strong>Nombre de la pantalla:</strong> Menú de inicio.
@@ -94,7 +96,9 @@ El estilo grafico del juego es cartoon con temática de piratas contra vaqueros.
 <strong>Estados del juego:</strong> Invocado por: Menú de inicio. Invoca a: Tutorial.
 
 <strong>Nombre de la pantalla:</strong> Pantalla de combate online.
+
 <strong>Descripción de la pantalla:</strong> Pantalla en el que transcurre el gameplay del videojuego PvP online.
+
 <strong>Estados del juego:</strong> Invocado por: Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
 
 <strong>Nombre de la pantalla:</strong> Pantalla de combate offline.
