@@ -1,7 +1,7 @@
 # Spurs'n'Hooks
 
-<p> <strong>NOMBRES:</strong>
-
+<h2> <strong>NOMBRES:</strong></h2>
+<p>
 -Miguel Ángel Arcones Ríos, Email: ma.arcones@alumnos.urjc.es, Github: <b>M-Arcones</b>
 
 -Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es , GitHub: EmeAG
