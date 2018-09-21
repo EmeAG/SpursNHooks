@@ -49,8 +49,7 @@ Durante la batalla se tendrán botones en la pantalla para elegir el tipo de bal
 
 En el primer inicio del juego por un jugador nuevo, se le otorgará x monedas, que tiene para emplearlos en las partidas rápidas, que cuestan xx monedas, y los materiales y armamento dentro de las partidas. Se recompensará al jugador con una lista de diferentes botines de monedas por cada día logeado. 
 
-****Viento que perjudique el tiro. Soldados que se muevan, 
-
+Para añadir dificultad a los disparos, se incluirá una mecanica de viento que modificara la trayectoria del proyectil según su velocidad y dirección. A su vez, se añadirán obstáculos, móviles o fijos, entre los dos jugadores para entorpecer los disparos.
 
 <strong>Puntuación:</strong> Se guardará una puntuación global de todos los puntos conseguidos por cada jugador.
 
