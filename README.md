@@ -77,37 +77,32 @@ Pantalla de marcador de puntuación.
 
 El estilo grafico del juego es cartoon con temática de piratas contra vaqueros. Los colores serán cálidos. Los fondos estarán difuminados para centrar la acción en el primer plano.
 
-<strong>Nombre de la pantalla:</strong> Pantalla de carga.
+<strong>Nombre de la pantalla:</strong> Pantalla de carga.</br>
+<strong>Descripción de la pantalla:</strong> Pantalla en la que se detalla el tiempo que queda para que cargue la partida y los logos del juego y empresa.</br>
+<strong>Estados del juego:</strong> Invocado por: Pantalla de carga. <strong>Invoca a:</strong>  Menú de inicio.</br>
+<strong>Nombre de la pantalla:</strong> Menú de inicio.</br>
+<strong>Descripción de la pantalla:</strong> pantalla con las diferentes opciones del juego, donde se encuentran los botones de acceso a otros estados.</br>
+<strong>Estados del juego: Invocado por:</strong> Pantalla de carga.  <strong>Invoca a:</strong>  ajustes, Tutorial, Pantalla de marcador de puntuación, batalla offline y batalla online.</br>
 
-<strong>Descripción de la pantalla:</strong> Pantalla en la que se detalla el tiempo que queda para que cargue la partida y los logos del juego y empresa.
+<strong>Nombre de la pantalla:</strong> Ajustes.</br>
+<strong>Descripción de la pantalla:</strong> Estado del juego que permite al jugador establecer las diferentes configuraciones del juego como volumen de la música, efectos de sonido o idioma.</br>
+<strong>Estados del juego:</strong> Invocado por: Menú de inicio.<strong> Invoca a:</strong>  Ajustes.</br>
 
-<strong>Estados del juego:</strong> Invocado por: Pantalla de carga. Invoca a: Menú de inicio.
+<strong>Nombre de la pantalla:</strong> Tutorial.</br>
+<strong>Descripción de la pantalla:</strong> Se muestra al jugador un video explicando las mecánicas del videojuego.</br>
+<strong>Estados del juego:</strong> Invocado por: Menú de inicio. <strong>Invoca a:</strong>  Tutorial.</br>
 
-<strong>Nombre de la pantalla:</strong> Menú de inicio.
-<strong>Descripción de la pantalla:</strong> pantalla con las diferentes opciones del juego, donde se encuentran los botones de acceso a otros estados.
-<strong>Estados del juego: Invocado por:</strong> Pantalla de carga.  Invoca a: ajustes, Tutorial, Pantalla de marcador de puntuación, batalla offline y batalla online.
+<strong>Nombre de la pantalla:</strong> Pantalla de combate online.</br>
+<strong>Descripción de la pantalla:</strong> Pantalla en el que transcurre el gameplay del videojuego PvP online.</br>
+<strong>Estados del juego:</strong> <strong>Invocado por:</strong> Pantalla de combate.  <strong>Invoca a:</strong>  Pantalla de marcador de puntuación. </br>
 
-<strong>Nombre de la pantalla:</strong> Ajustes.
-<strong>Descripción de la pantalla:</strong> Estado del juego que permite al jugador establecer las diferentes configuraciones del juego como volumen de la música, efectos de sonido o idioma.
-<strong>Estados del juego:</strong> Invocado por: Menú de inicio. Invoca a: Ajustes.
+<strong>Nombre de la pantalla:</strong> Pantalla de combate offline.</br>
+<strong>Descripción de la pantalla:</strong> Pantalla en el que transcurre el gameplay del videojuego PvP por turnos.</br>
+<strong>Estados del juego: Invocado por:</strong> Pantalla de combate. <strong> Invoca a:</strong>  Pantalla de marcador de puntuación. </br>
 
-<strong>Nombre de la pantalla:</strong> Tutorial.
-<strong>Descripción de la pantalla:</strong> Se muestra al jugador un video explicando las mecánicas del videojuego.
-<strong>Estados del juego:</strong> Invocado por: Menú de inicio. Invoca a: Tutorial.
-
-<strong>Nombre de la pantalla:</strong> Pantalla de combate online.
-
-<strong>Descripción de la pantalla:</strong> Pantalla en el que transcurre el gameplay del videojuego PvP online.
-
-<strong>Estados del juego:</strong> Invocado por: Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
-
-<strong>Nombre de la pantalla:</strong> Pantalla de combate offline.
-<strong>Descripción de la pantalla:</strong> Pantalla en el que transcurre el gameplay del videojuego PvP por turnos.
-<strong>Estados del juego: Invocado por:</strong> Pantalla de combate.  Invoca a: Pantalla de marcador de puntuación. 
-
-<strong>Nombre de la pantalla:</strong> Pantalla de marcador de puntuación. 
-<strong>Descripción de la pantalla:</strong> Estado en el que se muestra la puntuación global con los puntos de cada jugador registrado.
-<strong>Estados del juego:</strong> Invocado por: Pantalla de combate. Invoca a: Menú de inicio.
+<strong>Nombre de la pantalla:</strong> Pantalla de marcador de puntuación. </br>
+<strong>Descripción de la pantalla:</strong> Estado en el que se muestra la puntuación global con los puntos de cada jugador registrado.</br>
+<strong>Estados del juego: Invocado por:</strong> Pantalla de combate. <strong>Invoca a:</strong>  Menú de inicio.</br>
 </p>
 
 <strong>NIVELES:</strong>
