@@ -4,9 +4,9 @@
 <p>
 -Miguel Ángel Arcones Ríos, Email: ma.arcones@alumnos.urjc.es, Github: <b>M-Arcones</b>
 
--Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es , GitHub: EmeAG
+-Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es , GitHub: <b>EmeAG</b>
 
--Daniel Muñoz Serrano
+-Daniel Muñoz Serrano,
 </p>
 
 
@@ -39,7 +39,7 @@ Es un videojuego competitivo, de partidas rápidas, que te permita jugar a él c
 </p>
 
 
-<strong>MECÁNICA DEL JUEGO:</strong>
+<h2><strong>MECÁNICA DEL JUEGO:</strong></h2>
 <p>
 <strong>Cámara:</strong> de perfil, 2D plataformas. Teclado y ratón para pc y controles táctiles para móviles. 
   
@@ -58,9 +58,9 @@ En el primer inicio del juego por un jugador nuevo, se le otorgará x monedas, q
 
 </p>
 
-<p>
-<strong>ESTADOS DEL JUEGO</strong>
 
+<h2><strong>ESTADOS DEL JUEGO</strong></h2>
+<p>
 Pantalla de carga.
 Menú de inicio.
 Ajustes.
@@ -68,9 +68,9 @@ Tutorial.
 Pantalla de combate.
 Pantalla de marcador de puntuación. 
 </p>
-<p>
-<strong>INTERFACES:</strong>
 
+<h2><strong>INTERFACES:</strong></h2>
+<p>
 El estilo grafico del juego es cartoon con temática de piratas contra vaqueros. Los colores serán cálidos. Los fondos estarán difuminados para centrar la acción en el primer plano.
 
 <strong>Nombre de la pantalla:</strong> Pantalla de carga.</br>
@@ -101,7 +101,7 @@ El estilo grafico del juego es cartoon con temática de piratas contra vaqueros.
 <strong>Estados del juego: Invocado por:</strong> Pantalla de combate. <strong>Invoca a:</strong>  Menú de inicio.</br>
 </p>
 
-<strong>NIVELES:</strong>
+<h2><strong>NIVELES:</strong></h2>
 
 El juego consta de un único nivel en el que se compite contra otro jugador. Este nivel podrá tener obstáculos en medio del escenario de forma aleatoria, que compliquen los disparos.
 
@@ -114,7 +114,7 @@ El juego consta de un único nivel en el que se compite contra otro jugador. Est
 <strong>Música y Efectos de Sonido:</strong> sonido de disparo, sonido de golpe, música de fondo de construcción, música de fondo de batalla, música de ganar partida, música de perder partida, sonido de matar un soldado enemigo, sonido de muerte de un soldado propio.</br>
 <strong>Referencias de BGM y SFX: </strong></br>
 
-<strong>PROGESO DEL JUEGO: </strong>
+<h2><strong>PROGESO DEL JUEGO: </strong></h2>
 
 El jugador competirá en combates, compuestos de dos fases, contra su oponente.
 
@@ -129,7 +129,7 @@ Cada partida consta de 3 combates, en los que se dispondrá de una cantidad de o
 Si la batalla resulta en empate al acabar el tiempo, se elegirá aleatoriamente al ganador y se informará a los jugadores mediante un mensaje en la pantalla.
 
 
-<b>PERSONAJES:</b>
+<h2><b>PERSONAJES:</b></h2>
 
 <b>Nombre del Personaje:</b> Bando de los vaqueros.
 
@@ -156,11 +156,11 @@ Si la batalla resulta en empate al acabar el tiempo, se elegirá aleatoriamente 
 <b>Personaje No-Jugable:</b> Los soldados.
 
 
-<b>ENEMIGOS:</b>
+<h2><b>ENEMIGOS:</b></h2>
 
 El bando de personajes que le haya tocado al jugador contrario.
 
-<b>HABILIDADES:</b>
+<h2><b>HABILIDADES:</b></h2>
 Construcción defensiva
 
 Para la construcción de las defensas el jugador podrá disponer de diferentes materiales y formas, una pieza defensiva será una forma de un material. 
@@ -189,7 +189,7 @@ Las formas no modifican ni tienen ningún valor diferente, su cometido único es
 -	Triangulo
 
 
-<b>ARMAS:</b>
+<h2><b>ARMAS:</b></h2>
 Balas
 
 El jugador tiene la posibilidad de adquirir diferentes tipos de balas, durante la primera fase de preparación del combate. Estas balas disponen de unas habilidades especiales y podrán ser utilizadas en cualquier momento del combate.
@@ -204,38 +204,38 @@ El jugador tiene la posibilidad de adquirir diferentes tipos de balas, durante l
 -	<b>Precio:</b> 15 monedas de oro.
 -	<b>Habilidad: </b>Nubla la visión del enemigo, el disparo del enemigo se vuelve menos preciso durante 4 disparos.
 
-<b>ITEMS:</b>
+<h2><b>ITEMS:</b></h2>
 
 <b>Monedas de oro:</b> sirven para adquirir los elementos de defensa y de ataque en la batalla. Se consiguen ganando batallas y con conexiones diarias al propio videojuego.
 
 
 
-<b>GUIÓN:</b>
+<h2><b>GUIÓN:</b></h2>
 
 Los piratas y los vaqueros batallan para conseguir el dinero.
 
-<b>LOGROS:</b>
+<h2><b>LOGROS:</b></h2>
 
 - <b>Aprendiz de saqueador:</b> El jugador ha conseguido su primera victoria en combate.</br>
 - <b>¿Qué ha pachado?:</b> El jugador ha ganado las tres rondas de una batalla.</br>
 - <b>El más rápido del oeste:</b> El jugador ha ganado la partida en menos de 30 segundos.</br>
 - <b>Pólvora mojada:</b> El jugador ha ganado la partida de forma aleatoria tras un empate.</br>
 
-<b>CODIGOS SECRETOS:</b> no
+<h2><b>CODIGOS SECRETOS:</b></h2>  no
 
-<b>MUSICA Y SONIDOS:</b>
+<h2><b>MUSICA Y SONIDOS:</b></h2>
 
-<b>IMÁGENES DE CONCEPTO:</b>
+<h2><b>IMÁGENES DE CONCEPTO:</b></h2>
 
-<b>MIEMBROS DEL EQUIPO:</b>
+<h2><b>MIEMBROS DEL EQUIPO:</b></h2>
 
 Miguel Ángel Arcones Ríos</br>
 Manuel Aguado Salguero </br>
 Daniel Muñoz Serrano </br>
 <b>Link Asana:</b> https://app.asana.com/0/465225037996628/465225037996628
 
-<b>DETALLES DE PRODUCCION:</b>
+<h2><b>DETALLES DE PRODUCCION:</b></h2>
 
-Fecha de inicio: 24 de septiembre de 2018
-Fecha de Terminación: 
-Presupuesto: 20 maravedíes.
+Fecha de inicio: 24 de septiembre de 2018</br>
+Fecha de Terminación: </br>
+Presupuesto: 20 maravedíes.</br>
