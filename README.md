@@ -220,7 +220,7 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 - <b>El más rápido del oeste:</b> El jugador ha ganado la partida en menos de 30 segundos.</br>
 - <b>Pólvora mojada:</b> El jugador ha ganado la partida de forma aleatoria tras un empate.</br>
 
-<h2><b>CODIGOS SECRETOS:</b></h2>  no
+<h2><b>CODIGOS SECRETOS:</b></h2>  No
 
 <h2><b>MUSICA Y SONIDOS:</b></h2>
 
