@@ -1,6 +1,6 @@
 # Spurs'n'Hooks
 
-<p> <strong>NOMetgfethjyS:</strong>
+<p> <strong>NOMBRES:</strong>
 
 -Miguel Ángel Arcones Ríos, Email: ma.arcones@alumnos.urjc.es, Github: <b>M-Arcones</b>
 
@@ -114,14 +114,14 @@ El estilo grafico del juego es cartoon con temática de piratas contra vaqueros.
 
 El juego consta de un único nivel en el que se compite contra otro jugador. Este nivel podrá tener obstáculos en medio del escenario de forma aleatoria, que compliquen los disparos.
 
-<strong>Título del Nivel:</strong> War Field.
-<strong>Encuentro:</strong> Es el único nivel del juego, en él se sitúa el campo de batalla, con las zonas de cada equipo.
-<strong>Objetivos:</strong> Derrotar al equipo contrario.
-<strong>Enemigos:</strong> El jugador contrario.
-<strong>Ítems: </strong>Materiales, balas y monedas de oro.
-<strong>Personajes:</strong> Vaqueros y piratas.
-<strong>Música y Efectos de Sonido:</strong> sonido de disparo, sonido de golpe, música de fondo de construcción, música de fondo de batalla, música de ganar partida, música de perder partida, sonido de matar un soldado enemigo, sonido de muerte de un soldado propio.
-<strong>Referencias de BGM y SFX: </strong>
+<strong>Título del Nivel:</strong> War Field.</br>
+<strong>Encuentro:</strong> Es el único nivel del juego, en él se sitúa el campo de batalla, con las zonas de cada equipo.</br>
+<strong>Objetivos:</strong> Derrotar al equipo contrario.</br>
+<strong>Enemigos:</strong> El jugador contrario.</br>
+<strong>Ítems: </strong>Materiales, balas y monedas de oro.</br>
+<strong>Personajes:</strong> Vaqueros y piratas.</br>
+<strong>Música y Efectos de Sonido:</strong> sonido de disparo, sonido de golpe, música de fondo de construcción, música de fondo de batalla, música de ganar partida, música de perder partida, sonido de matar un soldado enemigo, sonido de muerte de un soldado propio.</br>
+<strong>Referencias de BGM y SFX: </strong></br>
 
 <strong>PROGESO DEL JUEGO: </strong>
 
