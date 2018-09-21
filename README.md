@@ -9,9 +9,9 @@
 -Daniel Muñoz Serrano
 </p>
 
-<p>
-<strong>CONCEPTO:</strong> 
 
+<h2><strong>CONCEPTO:</strong> </h2>
+<p>
  <strong>Nombre del Juego:</strong>  Spurs ‘n’ hooks. 
 
 <strong>Nombre del estudio:</strong> Piña Colada Studios.
@@ -32,19 +32,15 @@
 
 </p>
 
-<p>
-<strong>HISTORIAL DE VERSIONES:</strong>
-</p>
 
+<h2><strong>VISION GENERAL DEL JUEGO:</strong></h2>
 <p>
-<strong>VISION GENERAL DEL JUEGO:</strong>
-
 Es un videojuego competitivo, de partidas rápidas, que te permita jugar a él como pasatiempo en cuando lo necesites, sin necesidad de altos requisitos tecnológicos. Compite contra tus amigos (y no tan amigos) en cualquier momento o lugar, solo necesitas tu teléfono móvil. Siempre es buen momento para enviar un cañonazo a tu archienemigo.
 </p>
 
-<p>
-<strong>MECÁNICA DEL JUEGO:</strong>
 
+<strong>MECÁNICA DEL JUEGO:</strong>
+<p>
 <strong>Cámara:</strong> de perfil, 2D plataformas. Teclado y ratón para pc y controles táctiles para móviles. 
   
 <strong>Controles:</strong> Tanto para la fase de construcción como de combate, se utilizará el ratón para colocar los materiales y para controlar la fuerza y dirección del disparo. El juego usará botones de selección, para la fase de la construcción, para elegir la forma y el material y se pulsará en la zona que se prefiera colocar la pieza, y botones para elegir el armamento.
