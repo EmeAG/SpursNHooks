@@ -233,7 +233,8 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 Miguel Ángel Arcones Ríos</br>
 Manuel Aguado Salguero </br>
 Daniel Muñoz Serrano </br>
-<b>Link Asana:</b> https://app.asana.com/0/465225037996628/465225037996628
+<b>Link Asana:</b> https://app.asana.com/0/465225037996628/465225037996628</br>
+<b>Link Servidor:</b> http://spursnhooks.000webhostapp.com
 
 <h2><b>DETALLES DE PRODUCCION:</b></h2>
 
