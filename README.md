@@ -4,7 +4,7 @@
 <p>
 -Miguel Ángel Arcones Ríos, Email: ma.arcones@alumnos.urjc.es, Github: <b>M-Arcones</b>
 
--Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es , GitHub: <b>EmeAG</b>
+-Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es, GitHub: <b>EmeAG</b>
 
 -Daniel Muñoz Serrano, Email: d.munozs.2016@alumnos.urjc.es, GitHub: <b>Dani020998</b>
 </p>
@@ -49,7 +49,11 @@ Durante la batalla se tendrán botones en la pantalla para elegir el tipo de bal
 
 En el primer inicio del juego por un jugador nuevo, se le otorgará x monedas, que tiene para emplearlos en las partidas rápidas, que cuestan xx monedas, y los materiales y armamento dentro de las partidas. Se recompensará al jugador con una lista de diferentes botines de monedas por cada día logeado. 
 
-Para añadir dificultad a los disparos, se incluirá una mecanica de viento que modificara la trayectoria del proyectil según su velocidad y dirección. A su vez, se añadirán obstáculos, móviles o fijos, entre los dos jugadores para entorpecer los disparos.
+Para añadir dificultad a los disparos, se incluirá una mecanica de viento que modificará la trayectoria del proyectil según su velocidad y dirección. A su vez, se añadirán obstáculos, móviles o fijos, entre los dos jugadores para entorpecer los disparos.
+
+En cuanto a la elección de contrincante, habrá dos opciones. Una en la que se elige al jugador contrario de forma aleatoria pero teniendo en cuenta sus batallas ganadas y que sean el mismo numero que el jugador. La otra forma sera mediante búsqueda del nombre del usuario contrincante. 
+
+Se añadirá un marcador global con la puntuación de todos los jugadores.
 
 <strong>Puntuación:</strong> Se guardará una puntuación global de todos los puntos conseguidos por cada jugador.
 
@@ -121,7 +125,7 @@ En la primera fase, el jugador se preparará para la batalla. Para ello dispondr
 
 En la segunda fase se realiza el combate, cada jugador deberá derribar a los soldados enemigos, calculando la fuerza y la dirección del arma y utilizando los diferentes tipos de balas adquiridos para destruir las defensas del enemigo. Tiroteo de fuego a discreción, sin pausas hasta que uno de los dos jugadores consiga la victoria.
 
-El primer contrincante que acabe con todos los soldados enemigos será el ganador del combate. La vida de cada jugador estará señalada en el marcador, en la parte superior de la pantalla, mediante una barra que se reducirá según vaya reduciéndose el número de soldados.
+El primer contrincante que acabe con todos los soldados enemigos será el ganador del combate. La vida de cada jugador estará señalada en el marcador, en la parte superior de la pantalla, mediante una cifra que indica el número de soldados restantes de cada uno.
 
 Cada partida consta de 3 combates, en los que se dispondrá de una cantidad de oro inicial que el jugador gestionará para invertir en las defensas y ataque de los 3 combates. Ganará el jugador que consiga más victorias en estos 3 combates. 
 
