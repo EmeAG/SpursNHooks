@@ -20,7 +20,7 @@
 
 <strong>Versión:</strong> 1.0
 
-<strong>Sinopsis de jugabilidad y contenido:</strong> Videojuego de estrategia y acción PvP, dividido en dos fases. La primera fase consta de la parte de construcción de las defensas, mientras que la segunda fase es la destrucción y derrota de los soldados enemigos y sus defensas. Con estética cartoon y ambientación de piratas contra vaqueros.
+<strong>Sinopsis de jugabilidad y contenido:</strong> Videojuego de estrategia y acción PvP, con partidas rápidas divididas en dos fases. La primera fase consta de la parte de construcción de las defensas, mientras que la segunda fase es la destrucción y derrota de los soldados enemigos y sus defensas. Con estética cartoon y ambientación de piratas contra vaqueros.
 
 <strong>Categoría:</strong> Videojuego de estrategia competitivo, móvil, web.
 
@@ -52,8 +52,6 @@ En el primer inicio del juego por un jugador nuevo, se le otorgará x monedas, q
 Para añadir dificultad a los disparos, se incluirá una mecanica de viento que modificará la trayectoria del proyectil según su velocidad y dirección. A su vez, se añadirán obstáculos, móviles o fijos, entre los dos jugadores para entorpecer los disparos.
 
 En cuanto a la elección de contrincante, habrá dos opciones. Una en la que se elige al jugador contrario de forma aleatoria pero teniendo en cuenta sus batallas ganadas y que sean el mismo numero que el jugador. La otra forma sera mediante búsqueda del nombre del usuario contrincante. 
-
-Se añadirá un marcador global con la puntuación de todos los jugadores.
 
 <strong>Puntuación:</strong> Se guardará una puntuación global de todos los puntos conseguidos por cada jugador.
 
