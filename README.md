@@ -270,19 +270,19 @@ El jugador tiene la posibilidad de adquirir diferentes tipos de balas, durante l
 <b>Bala de fuego:</b>
 -	<b>Precio:</b> 15 monedas de oro.
 -	<b>Habilidad:</b> Degrada los materiales de madera, propagándose por las piezas de madera adyacentes.
--	<b>Daño:</b> -Si el material con el que colisiona la bala no es de madera, actuará como una bala común. 
+-	<b>Daño:</b> -Si el material con el que colisiona la bala no es de madera, actuará como una bala común. </br>
   -Si colisiona contra una de madera, quitará 6 de vida por segundo. El tiempo que dura la llama es de 3 segundos y, cada segundo que pasa, ésta se puede propagar a los materiales de madera adyacentes a las piezas de madera en llamas.
   
 <b>Bala de ácido:</b>
 -	<b>Precio:</b> 30 monedas de oro.
 -	<b>Habilidad:</b> Degrada los materiales de piedra, propagándose por las piezas de piedra adyacentes.
--	<b>Daño:</b> -Si el material con el que colisiona la bala no es de piedra, actuará como una bala común. 
+-	<b>Daño:</b> -Si el material con el que colisiona la bala no es de piedra, actuará como una bala común. </br>
   -Si colisiona contra una de piedra, quitará 9 de vida por segundo. El tiempo que dura la corrosión es de 4 segundos y, cada segundo que pasa, ésta se puede propagar a los materiales de piedra adyacentes a las piezas de piedra en corrosión.
   
 <b>Bala de agua:</b>
 -	<b>Precio:</b> 50 monedas de oro.
 -	<b>Habilidad:</b> Degrada los materiales de hierro, propagándose por las piezas de hierro adyacentes.
--	<b>Daño:</b> -Si el material con el que colisiona la bala no es de hierro, actuará como una bala común. 
+-	<b>Daño:</b> -Si el material con el que colisiona la bala no es de hierro, actuará como una bala común. </br>
   -Si colisiona contra una de hierro, quitará 12 de vida por segundo. El tiempo que dura la oxidación es de 5 segundos y, cada segundo que pasa, ésta se puede propagar a los materiales de hierro adyacentes a las piezas de hierro en oxidación.
   
 <b>Bala de humo:</b>
