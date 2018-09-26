@@ -310,7 +310,9 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 
 <h2><b>IMÁGENES DE CONCEPTO:</b></h2>
 
+-Boceto:
  <img src="Bocetoescenario1-5.png" ></img>
+-Materiales de madera:
  <img src="MaderaMaterial/RectMaderoHoriz.png" ></img>
  <img src="MaderaMaterial/TriangMadero.png" ></img>
  <img src="MaderaMaterial/cuadrMadero.png" ></img>
