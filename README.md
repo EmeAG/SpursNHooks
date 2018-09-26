@@ -47,7 +47,16 @@ Es un videojuego competitivo, de partidas rápidas, que te permita jugar a él c
 
 Durante la batalla se tendrán botones en la pantalla para elegir el tipo de bala a disparar y el disparo se regulará mediante pulsaciones y arrastre mediante ratón o pantalla táctil.
 
-En el primer inicio del juego por un jugador nuevo, se le otorgará x monedas, que tiene para emplearlos en las partidas rápidas, que cuestan xx monedas, y los materiales y armamento dentro de las partidas. Se recompensará al jugador con una lista de diferentes botines de monedas por cada día logeado. 
+En el primer inicio del juego por un jugador nuevo, se le otorgará x monedas, que tiene para emplearlos en las partidas rápidas, que cuestan xx monedas, y pueden ser 25, 100, 500 o 1000, dependiendo de la cantidad de monedas que quieras apostar. En el caso de ganar la batalla, el jugador reibirá el doble de lo apostado.. El otro contrincante perderá las monedas apostadas. Dentro de la batalla, se otorgará una cantidad aleatoria y de igual cantidad para los dos jugadores. Éstos tendran que gestionar ese dinero para las tres rondas del combate. Estas monedas se pueden gastar en materiales de construcción y munición.
+
+Se recompensará al jugador con una lista de diferentes botines de monedas por cada día logeado. 
+
+Con respecto a la puntuación, esta dependerá de las monedas apostadas:
+-Si se apuestan 25, por victoria se recibiran entre 3 y 5 puntos, y por derrota se perderán entre 1 y 4.
+-Si se apuestan 100, por victoria se recibiran entre 6 y 9 puntos, y por derrota se perderán entre 4 y 7.
+-Si se apuestan 500, por victoria se recibiran entre 13 y 17 puntos, y por derrota se perderán entre 10 y 15.
+- Y si se apuestan 1000, por victoria se recibiran entre 20 y 30 puntos, y por derrota se perderán entre 18 y 26.
+En caso de perder la totalidad o más de los puntos, el marcador se pararía en 0.
 
 Para añadir dificultad a los disparos, se incluirá una mecanica de viento que modificará la trayectoria del proyectil según su velocidad y dirección. A su vez, se añadirán obstáculos, móviles o fijos, entre los dos jugadores para entorpecer los disparos.
 
@@ -158,7 +167,21 @@ El juego se compone de las siguientes escenas:
    - Empate: En caso de empate se mostrará una moneda que elegirá el ganador de forma aleatoria y posteriormente se mostrará la escena  de victoria o derrota según la cara de la moneda.
 <h4>Resolución batalla:</h4>
    - Resultado de la batalla. 
+   
+<h3>Pantalla de Carga</h3>
+Imagen artística del juego con un símbolo que muestra la carga a la siguiente escena.
 
+<h3>Menú de Inicio</h3>
+Escena con fondo de Saloon vaquero y donde se situan los botones con enlaces Ajustes, Tutorial, Marcador y Combate.
+
+<h3>Ajustes</h3>
+Escena en la que podemos ver los diferentes ajustes del juego: sónido de efectos encendido y apagado, música encendida o apagada, lenguaje español o inglés.
+
+<h3>tutorial</h3>
+Mostrará un video que enseñará las mecánicas principales del combate, cómo se juega.
+
+<h3>Pantalla de marcador de puntuación.</h3>
+Esta escena muestra tu posición global con respecto a otros jugadores según tu puntuación obtenida mediante combates, y los jugadores a tu alrededor.
 
 
 <h2><strong>PROGESO DEL JUEGO: </strong></h2>
@@ -242,20 +265,33 @@ Balas
 El jugador tiene la posibilidad de adquirir diferentes tipos de balas, durante la primera fase de preparación del combate. Estas balas disponen de unas habilidades especiales y podrán ser utilizadas en cualquier momento del combate.
 
 <b>Bala común:</b> No tiene precio ni habilidad, el jugador posee infinitas.
--	<b>Daño:</b> 20 puntos.
+-	<b>Daño:</b> 15 puntos.
+
+<b>Bala de fuego:</b>
+-	<b>Precio:</b> 15 monedas de oro.
+-	<b>Habilidad:</b> Degrada los materiales de madera, propagándose por las piezas de madera adyacentes.
+-	<b>Daño:</b> -Si el material con el que colisiona la bala no es de madera, actuará como una bala común. 
+  -Si colisiona contra una de madera, quitará 6 de vida por segundo. El tiempo que dura la llama es de 3 segundos y, cada segundo que pasa, ésta se puede propagar a los materiales de madera adyacentes a las piezas de madera en llamas.
+  
 <b>Bala de ácido:</b>
 -	<b>Precio:</b> 30 monedas de oro.
--	<b>Habilidad:</b> Degrada los materiales con los que choca, facilitando su destrucción.
--	<b>Daño:</b> 10 puntos cada segundo durante 5 segundos.
+-	<b>Habilidad:</b> Degrada los materiales de piedra, propagándose por las piezas de piedra adyacentes.
+-	<b>Daño:</b> -Si el material con el que colisiona la bala no es de piedra, actuará como una bala común. 
+  -Si colisiona contra una de piedra, quitará 9 de vida por segundo. El tiempo que dura la corrosión es de 4 segundos y, cada segundo que pasa, ésta se puede propagar a los materiales de piedra adyacentes a las piezas de piedra en corrosión.
+  
+<b>Bala de agua:</b>
+-	<b>Precio:</b> 50 monedas de oro.
+-	<b>Habilidad:</b> Degrada los materiales de hierro, propagándose por las piezas de hierro adyacentes.
+-	<b>Daño:</b> -Si el material con el que colisiona la bala no es de hierro, actuará como una bala común. 
+  -Si colisiona contra una de hierro, quitará 12 de vida por segundo. El tiempo que dura la oxidación es de 5 segundos y, cada segundo que pasa, ésta se puede propagar a los materiales de hierro adyacentes a las piezas de hierro en oxidación.
+  
 <b>Bala de humo:</b>
 -	<b>Precio:</b> 15 monedas de oro.
--	<b>Habilidad: </b>Nubla la visión del enemigo, el disparo del enemigo se vuelve menos preciso durante 4 disparos.
+-	<b>Habilidad: </b> Nubla la visión del enemigo, la pantalla del rival se atenúa durante 5 segundos.
 
 <h2><b>ITEMS:</b></h2>
 
-<b>Monedas de oro:</b> sirven para adquirir los elementos de defensa y de ataque en la batalla. Se consiguen ganando batallas y con conexiones diarias al propio videojuego.
-
-
+<b>Monedas de oro:</b> sirven para buscar partidas de combate online. Se consiguen ganando batallas y con conexiones diarias al propio videojuego.
 
 <h2><b>GUIÓN:</b></h2>
 
@@ -264,8 +300,8 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <h2><b>LOGROS:</b></h2>
 
 - <b>Aprendiz de saqueador:</b> El jugador ha conseguido su primera victoria en combate.</br>
-- <b>¿Qué ha pachado?:</b> El jugador ha ganado las tres rondas de una batalla.</br>
-- <b>El más rápido del oeste:</b> El jugador ha ganado la partida en menos de 30 segundos.</br>
+- <b>¿Qué ha pachado?:</b> El jugador ha ganado con el marcador del rival a cero, ha ganado todas las rondas.</br>
+- <b>El más rápido del oeste:</b> El jugador ha ganado la ronda en menos de 30 segundos.</br>
 - <b>Pólvora mojada:</b> El jugador ha ganado la partida de forma aleatoria tras un empate.</br>
 
 <h2><b>CODIGOS SECRETOS:</b></h2>  No
