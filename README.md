@@ -318,6 +318,8 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
  <img src="MaderaMaterial/cuadrMadero.png" ></img>
 -Pirata
  <img src="piratas.png"></img>
+-Boceto Vaquero:
+<img src="bocetoVaquero2.png"></img>
 <h2><b>MIEMBROS DEL EQUIPO:</b></h2>
 
 Miguel Ángel Arcones Ríos</br>
