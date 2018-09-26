@@ -115,6 +115,25 @@ El juego consta de un único nivel en el que se compite contra otro jugador. Est
 <strong>Música y Efectos de Sonido:</strong> sonido de disparo, sonido de golpe, música de fondo de construcción, música de fondo de batalla, música de ganar partida, música de perder partida, sonido de matar un soldado enemigo, sonido de muerte de un soldado propio.</br>
 <strong>Referencias de BGM y SFX: </strong></br>
 
+<h2><strong>ESCENAS:</strong></h2>
+
+<h3>Batalla Online</h3>
+El juego se compone de las siguientes escenas:
+
+<h4>Escena de Busqueda jugador:</h4>
+ - Aleatorio en funcion del nivel
+   - Texto de "Buscando rival" con un fondo.
+ - Busqueda por nickname
+   - Caja de texto, para introducir el nickname. (Jugador que busca)
+   - Aviso de solicitud de combate.(Openente encontrado)
+   - Mensaje de "Esperando respuesta" o "Jugador no encontrado" o "Solicitud rechazada".(Jugador que busca)
+
+<h4>Escena construccion:</h4>
+   - 
+
+
+
+
 <h2><strong>PROGESO DEL JUEGO: </strong></h2>
 
 El jugador competirá en combates, compuestos de dos fases, contra su oponente.
