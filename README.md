@@ -129,7 +129,17 @@ El juego se compone de las siguientes escenas:
    - Mensaje de "Esperando respuesta" o "Jugador no encontrado" o "Solicitud rechazada".(Jugador que busca)
 
 <h4>Escena construccion:</h4>
-   - 
+   - Un telón que cubre el escenario completo y un mensaje con una cuenta atrás para el comienzo de la construcción.
+   - Se levanta el lado del telón en la zona donde el jugador construira sus defensas y en la parte cubierta se colocará la interfaz de construccion: tiempo restante, monedas y botones de materiales y armamento.
+
+<h4>Escena de combate:</h4>
+   - Una vez acabado el tiempo de construccion, se levantará el telón restante y se eliminará la interfaz de construcción, mostrando el obstaculo intermedio, el lado del rival y la interfaz de combate: botones de seleccion de balas, tiempo restante, marcador y barra de fuerza del cañón.
+<h4>Resolución combate:</h4>
+   - Victoria: Texto de victoria y personajes de los jugadores realizando animación de victoria o derrota
+   - Derrota: Texto de derrota y personajes de los jugadores realizando animación de victoria o derrota
+   - Empate: En caso de empate se mostrará una moneda que elegirá el ganador de forma aleatoria y posteriormente se mostrará la escena  de victoria o derrota según la cara de la moneda.
+<h4>Resolución batalla:</h4>
+   - Resultado de la batalla con el botín conseguido: número de monedas ganadas y puntos de ranking obtenidos positivos o negativos. 
 
 
 
