@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="phaser2.min.js"></script>
+    <script src="Boot.js"></script>
+    <script src="Preloader.js"></script>
+    <script src="MainMenu.js"></script>
+    <script src="Battle.js"></script>
+    <script src="Tutorial.js"></script>
+    <script src="Settings.js"></script>
+	
+	<style>
+		body{
+			margin:0px;
+			padding:0px;
+		}
+
+		#turn{
+			width:100%;
+			height:100%;
+			position:fixed;
+			top:0px;
+			left:0px;
+			background-color:white;
+			background-image:url('assets/landscape.png');
+			background-repeat:no-repeat;
+			background-position: center center;
+			display:none;
+		}
+	</style>
+	
+	
+	
+	
+</head>
+<style type="text/css">
+html, body {
+  overflow: hidden;
+}
+</style>
+
+
+<body>
+	<div id = "turn"></div>
+    <script>
+		window.onload = function(){
+		
+		var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, 'Vaqueros vs Piratas');
+		
+		game.state.add('Boot',Game.Boot);
+		game.state.add('Preloader',Game.Preloader);
+		game.state.add('MainMenu',Game.MainMenu);
+		game.state.add('Battle',Game.Battle);
+		game.state.add('Tutorial',Game.Tutorial);
+		game.state.add('Settings',Game.Settings);
+		
+		game.state.start('Boot');
+		};
+			/*preload: preload, create: create, update: update, render: render }*/
+
+    </script>
+
+</body>
+</html>
