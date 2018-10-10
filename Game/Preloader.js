@@ -5,13 +5,21 @@ Game.Preloader = function(game){
 Game.Preloader.prototype={
 	preload:function(){
 	
-		//Images
+		//Menu Images
 		this.load.spritesheet('button', 'assets/sprites/block.png', 193, 71);
 		this.load.image("background", 'assets/background.png');
 		this.load.image("landscape", 'assets/landscape.png');
 				
+		
+		//Game Images
+		this.load.image('Suelo_Pirata', 'assets/sprites/SueloBarco.png');
+		this.load.image('Bloq_mad_cuad', 'assets/sprites/Madera_cuad.png');
+		this.load.image('Bloq_mad_trian', 'assets/sprites/Madera_trian.png');
+		this.load.image('Bloq_mad_rect', 'assets/sprites/Madera_rect.png');
+		
+		
 		//Video
-		this.load.video('video', 'assets/video/video.mp4');
+		//this.load.video('video', 'assets/video/video.mp4');
 		
 		
 		this.preloadBar=this.add.sprite(this.world.centerX,this.world.centerY,'preloadBar');
