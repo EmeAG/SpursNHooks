@@ -1,12 +1,20 @@
 Game.Battle = function(game){
 	var SueloPirata =null;
-
-
+	Objeto=function(){
+		this.tipo=null;
+		this.material="madera";
+		this.vida=null;
+		this.peso=null;
+	};
+	var n1=1;
+	var fuerte1=new Array();
+	var checkClick=false;
 };
 
 
 Game.Battle.prototype ={
 	create:function(){
+		obj=new Objeto();
 		//imagen mala orientacion
 		this.image_turn =this.add.image(0, 0, "landscape");		
 		//Imagen Fondo
@@ -18,6 +26,60 @@ Game.Battle.prototype ={
 	    this.SueloVaquero=this.add.sprite(this.world.width-this.world.width/3, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
 	    this.SueloMar=this.add.sprite(this.world.width-this.world.width/3*2, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
 
+		//Boton Materiales
+		this.button_Madera = this.add.button(this.world.centerX, 100, 'button', this.change_material_madera, this, 2, 1, 0);
+		this.button_Piedra = this.add.button(this.world.centerX, 200, 'button', this.change_material_piedra, this, 2, 1, 0);
+		this.button_Metal = this.add.button(this.world.centerX, 300, 'button', this.change_material_metal, this, 2, 1, 0);
+
+		//Boton Tipos de Objetos
+		this.button_Rect_Vert = this.add.button(this.world.centerX+100, 100, 'button', this.change_tipo_rect, this, 2, 1, 0);
+		this.button_Rect_Horz = this.add.button(this.world.centerX+100, 200, 'button', this.change_tipo_rect, this, 2, 1, 0);
+		this.button_Cuad = this.add.button(this.world.centerX+100, 300, 'button', this.change_tipo_cuad, this, 2, 1, 0);
+		this.button_Trian = this.add.button(this.world.centerX+100, 400, 'button', this.change_tipo_trian, this, 2, 1, 0);
+
+		//Objetos
+		this.bloq_mad_cuad=this.add.sprite(-100,-100,"Bloq_mad_cuad");
+		this.bloq_mad_trian=this.add.sprite(-100,-100,"Bloq_mad_trian");
+		this.bloq_mad_rect=this.add.sprite(-100,-100,"Bloq_mad_rect");
+	},
+
+	change_material_madera:function(){
+		obj.material="madera";
+	},
+
+	change_material_piedra:function(){
+		obj.material="piedra";
+	},
+
+	change_material_metal:function(){
+		obj.material="metal";
+	},
+
+	change_tipo_trian:function(){
+		obj.tipo="trian";
+	},
+	change_tipo_cuad:function(){
+		obj.tipo="cuad";
+	},
+	change_tipo_rect:function(){
+		obj.tipo="rect";
+	},
+
+	crear_pieza:function(posicion){
+		if(this.input.onDown && posicion){
+			//this.fuerte1[this.n]=this.obj;
+			this.n++;
+		}
+	},
+
+	mouse_correct_possition(posx0,posx1){
+		
+		if(this.input.x<=posx1 && this.input.x>=posx0){
+			return true;
+		}
+		else{
+			return false;
+		}
 	},
 	
 	update:function(){
@@ -32,10 +94,10 @@ Game.Battle.prototype ={
 			}
 		}
 		this.resize();
+		//this.crear_pieza(this.mouse_correct_possition(0,this.world.width/3,true));
+		
 	},
 	
-
-
 
 	getSpriteScale: function (spriteWidth, spriteHeight, availableSpaceWidth, availableSpaceHeight, minPadding) {
 		var ratio = 1;
@@ -79,11 +141,13 @@ Game.Battle.prototype ={
 		
 	},
 
-
-	
-	
 	
 	render:function() {
 		this.game.debug.text(this.SueloPirata.height ,40,50,"white");
-	}
+		this.game.debug.text(obj.material, 32, 32,"white");
+		this.game.debug.text(obj.tipo,32,15,"white");
+		//var primero=this.fuerte[1];
+		//this.game.debug.text(primero.material,32,8,"white");
+	},
+	
 };

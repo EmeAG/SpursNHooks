@@ -13,9 +13,9 @@ Game.Preloader.prototype={
 		
 		//Game Images
 		this.load.image('Suelo_Pirata', 'assets/sprites/SueloBarco.png');
-		this.load.image('Bloq_mad_cuad', 'assets/sprites/Madera_cuad.png');
-		this.load.image('Bloq_mad_trian', 'assets/sprites/Madera_trian.png');
-		this.load.image('Bloq_mad_rect', 'assets/sprites/Madera_rect.png');
+		this.load.image('Bloq_mad_cuad', 'assets/sprites/cuadrMadero.png');
+		this.load.image('Bloq_mad_trian', 'assets/sprites/TriangMadero.png');
+		this.load.image('Bloq_mad_rect', 'assets/sprites/RectMaderoVert.png');
 		
 		
 		//Video
