@@ -11,12 +11,13 @@ Game.Preloader.prototype={
 		this.load.image("landscape", 'assets/landscape.png');
 		
 		//Game Images
-		this.load.image('Suelo_Pirata', 'assets/sprites/SueloBarco.png');
-		this.load.image('Bloq_mad_cuad', 'assets/sprites/cuadrMadero.png');
+		/*this.load.image('Bloq_mad_cuad', 'assets/sprites/cuadrMadero.png');
 		this.load.image('Bloq_mad_trian', 'assets/sprites/TriangMadero.png');
-		this.load.image('Bloq_mad_rect', 'assets/sprites/RectMaderoVert.png');
-		this.load.image('Suelo_Pirata', 'assets/PropsEscenario/SueloBarco.png');
-		this.load.image('Suelo_Vaquero', 'assets/PropsEscenario/sueloVaquero.png');
+		this.load.image('Bloq_mad_rect', 'assets/sprites/RectMaderoVert.png');*/
+		this.load.image('Suelo_Pirata', 'assets/PropsEscenario/SueloPirata.png');
+		this.load.image('Suelo_Vaquero', 'assets/PropsEscenario/sueloVaquero.png')
+		this.load.image('Cannon_Pirata', 'assets/PropsEscenario/CannonPirata.png');
+		this.load.image('Cannon_Vaquero', 'assets/PropsEscenario/CannonVaquero.png');
 		this.load.image('Bloq_mad_cuad', 'assets/sprites/Madera_cuad.png');
 		this.load.image('Bloq_mad_trian', 'assets/sprites/Madera_trian.png');
 		this.load.image('Bloq_mad_rect', 'assets/sprites/Madera_rect.png');

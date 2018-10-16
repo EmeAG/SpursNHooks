@@ -1,12 +1,4 @@
 Game.MainMenu = function(game){
-	this.button_inicio = null;
-	this.button_ajustes = null;
-	this.button_tutorial = null;
-	this.image_turn = null;
-	this.text1=null;
-	this.text2=null;
-	this.text3=null;
-	tamano_fuente=60;
 };
 
 Game.MainMenu.prototype ={
