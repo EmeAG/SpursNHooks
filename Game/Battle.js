@@ -42,7 +42,31 @@ Game.Battle.prototype ={
 		this.CannonVaquero.scale.y *= -1;
 		this.CannonPirata.anchor.setTo(0.15, 0.35);
 		this.game.physics.arcade.enable([this.CannonPirata, this.CannonVaquero]);
-	
+
+		//Balas comunes J1
+		this.BalaCom1_J1=this.add.sprite(100,410, 'balaComun');
+		this.BalaCom2_J1=this.add.sprite(100,410, 'balaComun');
+		this.BalaCom3_J1=this.add.sprite(100,410, 'balaComun');
+		this.BalaCom4_J1=this.add.sprite(100,410, 'balaComun');
+		this.BalaCom5_J1=this.add.sprite(100,410, 'balaComun');
+		this.BalaCom6_J1=this.add.sprite(100,410, 'balaComun');
+		this.BalaCom7_J1=this.add.sprite(100,410, 'balaComun');
+		this.BalaCom8_J1=this.add.sprite(100,410, 'balaComun');
+		this.BalaCom9_J1=this.add.sprite(100,410, 'balaComun');
+		this.BalaCom10_J1=this.add.sprite(100,410, 'balaComun');
+		//Balas comunes J2
+		this.BalaCom1_J2=this.add.sprite(1750,410, 'balaComun');
+		this.BalaCom2_J2=this.add.sprite(1750,410, 'balaComun');
+		this.BalaCom3_J2=this.add.sprite(1750,410, 'balaComun');
+		this.BalaCom4_J2=this.add.sprite(1750,410, 'balaComun');
+		this.BalaCom5_J2=this.add.sprite(1750,410, 'balaComun');
+		this.BalaCom6_J2=this.add.sprite(1750,410, 'balaComun');
+		this.BalaCom7_J2=this.add.sprite(1750,410, 'balaComun');
+		this.BalaCom8_J2=this.add.sprite(1750,410, 'balaComun');
+		this.BalaCom9_J2=this.add.sprite(1750,410, 'balaComun');
+		this.BalaCom10_J2=this.add.sprite(1750,410, 'balaComun');
+
+		
 		//Boton Materiales
 		this.button_Madera = this.add.button(this.world.centerX, 100, 'button', this.change_material_madera, this, 2, 1, 0);
 		this.button_Piedra = this.add.button(this.world.centerX, 200, 'button', this.change_material_piedra, this, 2, 1, 0);
