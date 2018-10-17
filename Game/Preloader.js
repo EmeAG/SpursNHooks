@@ -11,12 +11,16 @@ Game.Preloader.prototype={
 		this.load.image("landscape", 'assets/landscape.png');
 		
 		//Game Images
+		this.load.image('Suelo_Pirata', 'assets/PropsEscenario/SueloPirata.png');
+		this.load.image('Suelo_Vaquero', 'assets/PropsEscenario/sueloVaquero.png')
+		this.load.image('Cannon_Pirata', 'assets/PropsEscenario/CannonPirata.png');
+		this.load.image('Cannon_Vaquero', 'assets/PropsEscenario/CannonVaquero.png');
 		this.load.image('Bloq_mad_cuad', 'assets/sprites/Madera_cuad.png');
 		this.load.image('Bloq_mad_trian', 'assets/sprites/Madera_trian.png');
 		this.load.image('Bloq_mad_rect', 'assets/sprites/Madera_rect.png');
-		this.load.image('Suelo_Pirata', 'assets/PropsEscenario/SueloBarco.png');
-		this.load.image('Suelo_Vaquero', 'assets/PropsEscenario/sueloVaquero.png');
-		
+		this.load.image('balaAcido', 'assets/PropsEscenario/balaAcido.png');
+		this.load.image('balaAgua', 'assets/PropsEscenario/balaAgua.png');
+		this.load.image('balaComun', 'assets/PropsEscenario/balaComun.png');
 		
 		//Video
 		//this.load.video('video', 'assets/video/video.mp4');
