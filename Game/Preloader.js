@@ -21,7 +21,9 @@ Game.Preloader.prototype={
 		this.load.image('Bloq_mad_cuad', 'assets/sprites/Madera_cuad.png');
 		this.load.image('Bloq_mad_trian', 'assets/sprites/Madera_trian.png');
 		this.load.image('Bloq_mad_rect', 'assets/sprites/Madera_rect.png');
-		
+		this.load.image('balaAcido', 'assets/PropsEscenario/balaAcido.png');
+		this.load.image('balaAgua', 'assets/PropsEscenario/balaAgua.png');
+		this.load.image('balaComun', 'assets/PropsEscenario/balaComun.png');
 		
 		//Video
 		//this.load.video('video', 'assets/video/video.mp4');
