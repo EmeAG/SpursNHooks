@@ -13,6 +13,7 @@ Game.Preloader.prototype={
 		//Game Images
 		this.load.image('Suelo_Pirata', 'assets/PropsEscenario/SueloPirata.png');
 		this.load.image('Suelo_Vaquero', 'assets/PropsEscenario/sueloVaquero.png')
+		this.load.image('Suelo_Mar', 'assets/PropsEscenario/olasAnimacion2.gif')
 		this.load.image('Cannon_Pirata', 'assets/PropsEscenario/CannonPirata.png');
 		this.load.image('Cannon_Vaquero', 'assets/PropsEscenario/CannonVaquero.png');
 		this.load.image('Bloq_mad_cuad', 'assets/sprites/Madera_cuad.png');
@@ -21,7 +22,10 @@ Game.Preloader.prototype={
 		this.load.image('balaAcido', 'assets/PropsEscenario/balaAcido.png');
 		this.load.image('balaAgua', 'assets/PropsEscenario/balaAgua.png');
 		this.load.image('balaComun', 'assets/PropsEscenario/balaComun.png');
-		
+
+
+		this.load.image('arrow', 'assets/longarrow2.png');
+		this.load.image('analog', 'assets/fusia.png');		
 		//Video
 		//this.load.video('video', 'assets/video/video.mp4');
 		
