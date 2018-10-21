@@ -20,6 +20,7 @@ var launchVelocity = 0;
 var turno=1;
 var disparos=1;
 var balaDispara=null;
+var fin_tiempo=1;
 //cambiar en la compra
 var num_balas_fue_J1=1;
 var num_balas_fue_J2=1;
@@ -79,6 +80,10 @@ Game.Battle.prototype ={
 		this.SueloPirata.body.bounce.set(1);
 
 		if(this.estado=="BATALLA"){
+			cuenta_atras=this.time.create();
+			cuenta_atras.loop(Phaser.Timer.SECOND * 5, this.finTiempo);
+			cuenta_atras.start();
+			
 			//Cañon
 			this.CannonPirata=this.add.sprite(this.world.width*0.04, (this.world.height- this.cache.getImage("Cannon_Pirata").height)*0.4, 'Cannon_Pirata');
 			this.CannonVaquero=this.add.sprite((this.world.width- this.cache.getImage("Cannon_Vaquero").width)*0.99, (this.world.height- this.cache.getImage("Cannon_Vaquero").height)*0.4, 'Cannon_Vaquero');	    
@@ -280,6 +285,11 @@ Game.Battle.prototype ={
 		this.auxTiempo++;
 	},
 
+	finTiempo:function(){
+		fin_tiempo=0;
+	},
+	
+	
 	//Selector de las balas 
 	selector_bala:function(button){
 		balaDispara.visible=false;
@@ -468,7 +478,26 @@ Game.Battle.prototype ={
 	},
 
 	update:function(){
-
+		if (this.estado=="BATALLA"){
+			//Fisicas entre objetos
+			this.physics.arcade.collide(this.SueloPirata, balaDispara);
+			this.physics.arcade.collide(this.SueloVaquero, balaDispara);
+			
+			//Inicio Disparo
+			puntero=this.input.activePointer;
+			arrow.rotation = this.physics.arcade.angleBetween(arrow, balaDispara);
+			
+			if (catchFlag == true)
+			{
+				//  Track the ball sprite to the mouse
+				arrow.alpha = 1;    
+				analog.alpha = 0.5;
+				analog.rotation = arrow.rotation - 3.14 / 2;
+				analog.height = this.physics.arcade.distanceBetween(arrow, this.input.activePointer);    
+				launchVelocity = analog.height;
+			}		
+			//Fin Disparo
+		}
 		
 		//Inicio Pantalla en Vertical
 		if (this.scale.isPortrait){
@@ -543,7 +572,7 @@ Game.Battle.prototype ={
 		//Fin Giro de los cañones
 
 		//Inicio Control turnos
-		if(disparos==0 && (balaDispara.body.x<0||balaDispara.body.x>1920||balaDispara.body.y>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0))){
+		if((disparos==0 && (balaDispara.body.x<0||balaDispara.body.x>1920||balaDispara.body.y>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0)))||fin_tiempo==0){
 			balaDispara.body.moves = false;
 			balaDispara.body.velocity.setTo(0, 0);
 			if(turno==1){
@@ -611,6 +640,7 @@ Game.Battle.prototype ={
 			}
 			balaDispara.visible = true;
 			disparos++;
+			fin_tiempo=1;
 		}
 		//Fin Control turnos
 		this.resize();
@@ -676,6 +706,8 @@ Game.Battle.prototype ={
 	render:function() {
 		//this.game.debug.text(this.game.physics.arcade.angleToPointer(BalaCom1_J2),32,32,"white");
 		//this.game.debug.text(balaDispara.body.velocity.x +"---"+balaDispara.body.velocity.y ,32,15,"white");
+		this.game.debug.text(cuenta_atras.duration.toFixed(0),32,15,"white");
+		this.game.debug.text(fin_tiempo,92,15,"white");
 		//this.game.debug.text(this.game.physics.arcade.angleToPointer(this.CannonPirata),32,15,"white");
 		//this.game.debug.text(this.CannonVaquero.angle,32,35,"white");
 		//var primero=this.fuerte[1];
