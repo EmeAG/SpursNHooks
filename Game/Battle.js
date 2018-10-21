@@ -28,7 +28,7 @@ var num_balas_agu_J1=1;
 var num_balas_agu_J2=1;
 var num_balas_aci_J1=1;
 var num_balas_aci_J2=1;
-
+var style_contador={font: "60px Arial"};
 
 Game.Battle.prototype ={
 	create:function(){
@@ -80,10 +80,15 @@ Game.Battle.prototype ={
 		this.SueloPirata.body.bounce.set(1);
 
 		if(this.estado=="BATALLA"){
-			cuenta_atras=this.time.create();
-			cuenta_atras.loop(Phaser.Timer.SECOND * 5, this.finTiempo);
-			cuenta_atras.start();
+			this.Marcador=this.add.sprite(637, 0, 'Marcador');
 			
+			//tiempo cuenta atras
+			cuenta_atras=this.time.create();
+			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
+			cuenta_atras.start();
+			text_cuenta_atras=this.game.add.text(928, 80, '00',style_contador);
+
+
 			//Cañon
 			this.CannonPirata=this.add.sprite(this.world.width*0.04, (this.world.height- this.cache.getImage("Cannon_Pirata").height)*0.4, 'Cannon_Pirata');
 			this.CannonVaquero=this.add.sprite((this.world.width- this.cache.getImage("Cannon_Vaquero").width)*0.99, (this.world.height- this.cache.getImage("Cannon_Vaquero").height)*0.4, 'Cannon_Vaquero');	    
@@ -342,6 +347,7 @@ Game.Battle.prototype ={
 	//Disparo
 	launch:function(pointer) {
 		if(disparos>0){
+			cuenta_atras.pause();
 			switch(balaDispara){
 				case BalaAgu_J2:
 					num_balas_agu_J2--;
@@ -495,8 +501,13 @@ Game.Battle.prototype ={
 				analog.rotation = arrow.rotation - 3.14 / 2;
 				analog.height = this.physics.arcade.distanceBetween(arrow, this.input.activePointer);    
 				launchVelocity = analog.height;
-			}		
+			}	
 			//Fin Disparo
+
+			//Inicio Actualizar cuenta atrás
+			segundos="0" + Math.round((final_cuent_atras.delay - cuenta_atras.ms) / 1000);
+			text_cuenta_atras.text=segundos.substr(-2); 
+			//Fin  Actualizar cuenta atrás
 		}
 		
 		//Inicio Pantalla en Vertical
@@ -641,8 +652,12 @@ Game.Battle.prototype ={
 			balaDispara.visible = true;
 			disparos++;
 			fin_tiempo=1;
+			cuenta_atras.destroy();
+			cuenta_atras=this.time.create();
+			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
+			cuenta_atras.start();		
 		}
-		//Fin Control turnos
+		//Fin Control turnos	
 		this.resize();
 	},
 	
