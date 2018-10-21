@@ -17,8 +17,14 @@ Game.Preloader.prototype={
 		this.load.image('Cannon_Pirata', 'assets/PropsEscenario/CannonPirata.png');
 		this.load.image('Cannon_Vaquero', 'assets/PropsEscenario/CannonVaquero.png');
 		this.load.image('Bloq_mad_cuad', 'assets/sprites/Madera_cuad.png');
+		this.load.image('Bloq_pied_cuad', 'assets/sprites/PiedraCuadr.png');
+		this.load.image('Bloq_met_cuad', 'assets/sprites/metalCuadr.png');
 		this.load.image('Bloq_mad_trian', 'assets/sprites/Madera_trian.png');
+		this.load.image('Bloq_pied_trian', 'assets/sprites/PiedraTrian.png');
+		this.load.image('Bloq_met_trian', 'assets/sprites/metalTrian.png');
 		this.load.image('Bloq_mad_rect', 'assets/sprites/Madera_rect.png');
+		this.load.image('Bloq_pied_rect', 'assets/sprites/PiedraRect.png');
+		this.load.image('Bloq_met_rect', 'assets/sprites/metalRect.png');
 		this.load.image('balaAcido', 'assets/PropsEscenario/balaAcido.png');
 		this.load.image('balaAgua', 'assets/PropsEscenario/balaAgua.png');
 		this.load.image('balaFuego', 'assets/PropsEscenario/balaFuego.png');

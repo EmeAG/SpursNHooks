@@ -36,14 +36,9 @@ Game.Battle.prototype ={
 		
 		this.estado="CONSTRUCCION";
 		this.turno="J1";
-		this.auxTiempo=0;
-		this.tiempo=30;
+		this.auxTiempo=30;
 
-		this.angulo2=0;
-		this.angulo1=0;
-		this.game.physics.arcade.gravity.y = 1;
-		this.game.physics.arcade.setBoundsToWorld();
-		this.estado="BATALLA";
+		//this.estado="BATALLA";
 		this.angulo2=0;
 		this.angulo1=0;
 		this.game.physics.arcade.gravity.y = 3800;
@@ -62,10 +57,10 @@ Game.Battle.prototype ={
         this.background.height = this.game.height;
         this.background.width = this.game.width;
 		//Activar lanzamiento
-		this.background.inputEnabled = true;
+		/*this.background.inputEnabled = true;
 		this.background.input.start(0, true);
 		this.background.events.onInputDown.add(this.set);
-		this.background.events.onInputUp.add(this.launch);		
+		this.background.events.onInputUp.add(this.launch);*/		
 
 		//Suelos
         this.SueloPirata=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
@@ -80,6 +75,11 @@ Game.Battle.prototype ={
 		this.SueloPirata.body.bounce.set(1);
 
 		if(this.estado=="BATALLA"){
+			
+			this.angulo2=0;
+			this.angulo1=0;
+			this.game.physics.arcade.gravity.y = 1;
+			this.game.physics.arcade.setBoundsToWorld();
 			cuenta_atras=this.time.create();
 			cuenta_atras.loop(Phaser.Timer.SECOND * 5, this.finTiempo);
 			cuenta_atras.start();
@@ -271,18 +271,16 @@ Game.Battle.prototype ={
 
 				//Boton Tiempo
 				this.tiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,0,'cuadro_Tiempo');
-				this.text4=this.game.add.text(this.tiempo.x,this.tiempo.y,this.tiempo);
+				this.tiempot=this.game.add.text(this.game.world.centerX, this.game.world.centerY, '30', { font: "64px Arial", fill: "#000000", align: "center" });
+				this.tiempot.anchor.setTo(0.5, 0.5);
 			}
 		}
 		
 	},
 	
 	timeRuner :function(){
-		if(this.auxTiempo==60){
-			this.tiempo--;
-			this.auxTiempo=0;
-		}
-		this.auxTiempo++;
+		this.auxTiempo--;
+		this.tiempot.setText(this.auxTiempo);
 	},
 
 	finTiempo:function(){
@@ -418,39 +416,105 @@ Game.Battle.prototype ={
 
 	create_tipo_trian:function(){
 		if(this.construcAux==null){
-			this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
-			this.bloq_mad_trian.inputEnabled=true;
-			this.bloq_mad_trian.num=this.cont;
-			this.num0=this.cont;
-			this.construcAux=this.bloq_mad_trian;
+			if(obj.material=="madera"){
+				this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
+				this.bloq_mad_trian.inputEnabled=true;
+				this.bloq_mad_trian.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_mad_trian;
+			}
+			if(obj.material=="piedra"){
+				this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
+				this.bloq_pied_trian.inputEnabled=true;
+				this.bloq_pied_trian.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_pied_trian;
+			}
+			if(obj.material=="metal"){
+				this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
+				this.bloq_met_trian.inputEnabled=true;
+				this.bloq_met_trian.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_met_trian;
+			}
 		}
 	},
 	create_tipo_cuad:function(){
 		if(this.construcAux==null){
-			this.bloq_mad_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_mad_cuad');
-			this.bloq_mad_cuad.inputEnabled=true;
-			this.bloq_mad_cuad.num=this.cont;
-			this.num0=this.cont;
-			this.construcAux=this.bloq_mad_cuad;
+			if(obj.material=="madera"){
+				this.bloq_mad_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_mad_cuad');
+				this.bloq_mad_cuad.inputEnabled=true;
+				this.bloq_mad_cuad.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_mad_cuad;
+			}
+			if(obj.material=="piedra"){
+				this.bloq_pied_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_pied_cuad');
+				this.bloq_pied_cuad.inputEnabled=true;
+				this.bloq_pied_cuad.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_pied_cuad;
+			}
+			if(obj.material=="metal"){
+				this.bloq_met_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_met_cuad');
+				this.bloq_met_cuad.inputEnabled=true;
+				this.bloq_met_cuad.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_met_cuad;
+			}
 		}
 	},
 	create_tipo_rectV:function(){
 		if(this.construcAux==null){
-			this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rect');
-			this.bloq_mad_rect.inputEnabled=true;
-			this.bloq_mad_rect.num=this.cont;
-			this.num0=this.cont;
-			this.construcAux=this.bloq_mad_rect;
+			if(obj.material=="madera"){
+				this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rect');
+				this.bloq_mad_rect.inputEnabled=true;
+				this.bloq_mad_rect.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_mad_rect;
+			}
+			if(obj.material=="piedra"){
+				this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rect');
+				this.bloq_pied_rect.inputEnabled=true;
+				this.bloq_pied_rect.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_pied_rect;
+			}
+			if(obj.material=="metal"){
+				this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rect');
+				this.bloq_met_rect.inputEnabled=true;
+				this.bloq_met_rect.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_met_rect;
+			}
 		}
 	},
 	create_tipo_rectH:function(){
 		if(this.construcAux==null){
-			this.bloq_mad_rect=this.add.sprite(this.button_Rect_Horz.x,this.button_Rect_Horz.y,'Bloq_mad_rect');
-			this.bloq_mad_rect.angle+=90;
-			this.bloq_mad_rect.inputEnabled=true;
-			this.bloq_mad_rect.num=this.cont;
-			this.num0=this.cont;
-			this.construcAux=this.bloq_mad_rect;
+			if(obj.material=="madera"){
+				this.bloq_mad_rect=this.add.sprite(this.button_Rect_Horz.x,this.button_Rect_Horz.y,'Bloq_mad_rect');
+				this.bloq_mad_rect.angle+=90;
+				this.bloq_mad_rect.inputEnabled=true;
+				this.bloq_mad_rect.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_mad_rect;
+			}
+			if(obj.material=="piedra"){
+				this.bloq_pied_rect=this.add.sprite(this.button_Rect_Horz.x,this.button_Rect_Horz.y,'Bloq_pied_rect');
+				this.bloq_pied_rect.angle+=90;
+				this.bloq_pied_rect.inputEnabled=true;
+				this.bloq_pied_rect.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_pied_rect;
+			}
+			if(obj.material=="metal"){
+				this.bloq_met_rect=this.add.sprite(this.button_Rect_Horz.x,this.button_Rect_Horz.y,'Bloq_met_rect');
+				this.bloq_met_rect.angle+=90;
+				this.bloq_met_rect.inputEnabled=true;
+				this.bloq_met_rect.num=this.cont;
+				this.num0=this.cont;
+				this.construcAux=this.bloq_met_rect;
+			}
 		}
 	},
 
@@ -706,16 +770,18 @@ Game.Battle.prototype ={
 	render:function() {
 		//this.game.debug.text(this.game.physics.arcade.angleToPointer(BalaCom1_J2),32,32,"white");
 		//this.game.debug.text(balaDispara.body.velocity.x +"---"+balaDispara.body.velocity.y ,32,15,"white");
-		this.game.debug.text(cuenta_atras.duration.toFixed(0),32,15,"white");
-		this.game.debug.text(fin_tiempo,92,15,"white");
+	//	this.game.debug.text(cuenta_atras.duration.toFixed(0),32,15,"white");
+	//	this.game.debug.text(fin_tiempo,92,15,"white");
 		//this.game.debug.text(this.game.physics.arcade.angleToPointer(this.CannonPirata),32,15,"white");
 		//this.game.debug.text(this.CannonVaquero.angle,32,35,"white");
 		//var primero=this.fuerte[1];
 		//this.game.debug.text(primero.material,32,8,"white");
-		this.game.debug.body(BalaCom1_J2);
-		this.game.debug.body(BalaCom1_J1);
+	//	this.game.debug.body(BalaCom1_J2);
+	//	this.game.debug.body(BalaCom1_J1);
 		this.game.debug.body(this.SueloPirata);
 		this.game.debug.body(this.SueloVaquero);
+		//this.game.debug.text(this.tiempo,32,32,'white');
+		this.game.debug.text(this.auxTiempo,32,50,'white');
 	},
 	
 };
