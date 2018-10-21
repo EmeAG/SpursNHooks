@@ -161,7 +161,7 @@ Game.Battle.prototype ={
 			Yvector = (arrow.y - puntero.y)*5;
 			balaDispara.body.moves = true;
 			if(turno==1){
-				balaDispara.body.velocity.setTo(Math.min(Xvector,1000), Yvector);
+				balaDispara.body.velocity.setTo(Math.max(Xvector,1000), Yvector);
 			}
 			else{
 				balaDispara.body.velocity.setTo(Math.min(Xvector,-1000), Yvector);
@@ -313,28 +313,29 @@ Game.Battle.prototype ={
 				}
 			}
 		}
+		//Fin Giro de los cañones
 
-		//control turnos
-		if(disparos==0 && (balaDispara.body.x<0||balaDispara.body.x>1920||balaDispara.body.y>1080)){
+		//Inicio Control turnos
+		if(disparos==0 && (balaDispara.body.x<0||balaDispara.body.x>1920||balaDispara.body.y>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0))){
+			balaDispara.body.moves = false;
+			balaDispara.body.velocity.setTo(0, 0);
 			if(turno==1){
-				balaDispara.body.moves = false;
-				balaDispara.body.velocity.setTo(0, 0);
 				turno=2;
-				balaDispara.body.x=135;
-				balaDispara.body.y=420;
+				balaDispara.x=135;
+				balaDispara.y=420;
+				balaDispara.visible = false;
 				balaDispara=BalaCom1_J2;
 			}else{
-				balaDispara.body.x=1825;
-				balaDispara.body.y=450;
-				balaDispara.body.moves = false;
-				balaDispara.body.velocity.setTo(0, 0);
+				balaDispara.x=1825;
+				balaDispara.y=450;
 				turno=1;
+				balaDispara.visible = false;
 				balaDispara=BalaCom1_J1;
 			}
+			balaDispara.visible = true;
 			disparos++;
 		}
-	
-		//Fin Giro de los cañones
+		//Fin Control turnos
 		this.resize();
 	},
 	
@@ -397,7 +398,7 @@ Game.Battle.prototype ={
 	
 	render:function() {
 		//this.game.debug.text(this.game.physics.arcade.angleToPointer(BalaCom1_J2),32,32,"white");
-		this.game.debug.text(disparos,32,15,"white");
+		this.game.debug.text(balaDispara.body.velocity.x +"---"+balaDispara.body.velocity.y ,32,15,"white");
 		//this.game.debug.text(this.game.physics.arcade.angleToPointer(this.CannonPirata),32,15,"white");
 		//this.game.debug.text(this.CannonVaquero.angle,32,35,"white");
 		//var primero=this.fuerte[1];
