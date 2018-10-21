@@ -21,8 +21,18 @@ Game.Preloader.prototype={
 		this.load.image('Bloq_mad_rect', 'assets/sprites/Madera_rect.png');
 		this.load.image('balaAcido', 'assets/PropsEscenario/balaAcido.png');
 		this.load.image('balaAgua', 'assets/PropsEscenario/balaAgua.png');
+		this.load.image('balaFuego', 'assets/PropsEscenario/balaFuego.png');
 		this.load.image('balaComun', 'assets/PropsEscenario/balaComun.png');
 		this.load.image('FondoBatalla', 'assets/Backgrounds/FondoBatalla.png');
+		
+		this.load.image('BotonBala', 'assets/PropsEscenario/BotonBala.png');
+		this.load.image('BotonDinero', 'assets/PropsEscenario/BotonDinero.png');
+		this.load.image('BotonMaterial', 'assets/PropsEscenario/BotonMaterial.png');
+		this.load.image('BotonMaterialConSombra', 'assets/PropsEscenario/BotonMaterialConSombra.png');
+		this.load.image('botonPersonaje', 'assets/PropsEscenario/botonPersonaje.png');
+		this.load.image('botonTipo', 'assets/PropsEscenario/botonTipo.png');
+		this.load.image('botonTipoConSombra', 'assets/PropsEscenario/botonTipoConSombra.png');
+		this.load.image('CuadroTiempo', 'assets/PropsEscenario/CuadroTiempo.png');
 
 
 		this.load.image('arrow', 'assets/longarrow2.png');

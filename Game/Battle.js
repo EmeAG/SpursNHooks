@@ -83,7 +83,6 @@ Game.Battle.prototype ={
 			BalaCom1_J1.pivot.y=-20;
 			BalaCom1_J1.scale.x *= 0.75;
 			BalaCom1_J1.scale.y *= 0.75;
-			//BalaCom1_J1.body.collideWorldBounds = true;
 			BalaCom1_J1.body.setCircle(35);
 		
 			//Balas comunes J2
@@ -97,9 +96,7 @@ Game.Battle.prototype ={
 			BalaCom1_J2.pivot.y=-20;
 			BalaCom1_J2.scale.x *= 0.75;
 			BalaCom1_J2.scale.y *= 0.75;
-			//BalaCom1_J2.body.collideWorldBounds = true;
 			BalaCom1_J2.body.setCircle(35);
-			//BalaCom1_J2.body.onWorldBounds.add(this.hitWorldBounds, BalaCom1_J2);
 			
 			//Flechas de lanzamiento
 			arrow = this.add.sprite(200, 450, 'arrow');
@@ -111,6 +108,18 @@ Game.Battle.prototype ={
 			analog.rotation = 220;
 			analog.alpha = 0;
 			analog.anchor.setTo(0.5, 0.0);
+			
+			//Botones balas
+			this.button_BalaComun = this.add.button(100, 20, 'BotonBala', this.selector_bala_comun, this, 2, 1, 0);
+			this.imagen_BalaComun=this.add.sprite(105, 23, 'balaComun');
+			/*this.text0=this.game.add.text(this.button_Madera.x,this.button_Madera.y,"Madera");*/
+			this.button_BalaAgua = this.add.button(200, 20, 'BotonBala', this.selector_bala_agua, this, 2, 1, 0);
+			this.imagen_BalaComun=this.add.sprite(205, 23, 'balaAgua');
+			this.button_BalaFuego = this.add.button(300, 20, 'BotonBala', this.selector_bala_fuego, this, 2, 1, 0);
+			this.imagen_BalaComun=this.add.sprite(305, 23, 'balaFuego');
+			this.button_BalaAcido = this.add.button(400, 20, 'BotonBala', this.selector_bala_acido, this, 2, 1, 0);
+			this.imagen_BalaComun=this.add.sprite(405, 23, 'balaAcido');
+
 		}
 
 		if(this.estado=="CONSTRUCCION"){
