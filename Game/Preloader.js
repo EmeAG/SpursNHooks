@@ -22,6 +22,7 @@ Game.Preloader.prototype={
 		this.load.image('balaAcido', 'assets/PropsEscenario/balaAcido.png');
 		this.load.image('balaAgua', 'assets/PropsEscenario/balaAgua.png');
 		this.load.image('balaComun', 'assets/PropsEscenario/balaComun.png');
+		this.load.image('FondoBatalla', 'assets/Backgrounds/FondoBatalla.png');
 
 
 		this.load.image('arrow', 'assets/longarrow2.png');

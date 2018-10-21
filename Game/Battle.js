@@ -38,7 +38,7 @@ Game.Battle.prototype ={
 		//imagen mala orientacion
 		this.image_turn =this.add.image(0, 0, "landscape");	
 		//Imagen Fondo
-        this.background = this.add.image(0, 0, "background");
+        this.background = this.add.image(0, 0, "FondoBatalla");
         this.background.height = this.game.height;
         this.background.width = this.game.width;
 		//Activar lanzamiento
@@ -51,9 +51,11 @@ Game.Battle.prototype ={
         this.SueloPirata=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
 	    this.SueloVaquero=this.add.sprite(this.world.width-this.world.width/3, this.world.height- this.cache.getImage("Suelo_Vaquero").height, 'Suelo_Vaquero');
 		this.game.physics.arcade.enable([this.SueloPirata, this.SueloVaquero]);
-	    this.SueloMar=this.add.sprite(this.world.width-this.world.width/3*2, this.world.height- this.cache.getImage("Suelo_Mar").height, 'Suelo_Mar');
+	    this.SueloMar=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Mar").height, 'Suelo_Mar');
 		this.SueloPirata.body.moves = false;
 		this.SueloVaquero.body.moves = false;
+		this.SueloVaquero.body.collideWorldBounds = true;
+		this.SueloPirata.body.collideWorldBounds = true;
 
 		if(this.estado=="BATALLA"){
 			//Cañon
@@ -78,6 +80,7 @@ Game.Battle.prototype ={
 			BalaCom1_J1.pivot.y=-20;
 			BalaCom1_J1.scale.x *= 0.75;
 			BalaCom1_J1.scale.y *= 0.75;
+			BalaCom1_J1.body.collideWorldBounds = true;
 		
 			//Balas comunes J2
 			BalaCom1_J2=this.add.sprite(1825,450, 'balaComun');
@@ -90,6 +93,7 @@ Game.Battle.prototype ={
 			BalaCom1_J2.pivot.y=-20;
 			BalaCom1_J2.scale.x *= 0.75;
 			BalaCom1_J2.scale.y *= 0.75;
+			BalaCom1_J2.body.collideWorldBounds = true;
 			
 			//Flechas de lanzamiento
 			arrow = this.add.sprite(200, 450, 'arrow');
@@ -126,6 +130,8 @@ Game.Battle.prototype ={
 		
 		this.CannonVaquero.bringToTop();
 		this.CannonPirata.bringToTop();
+		this.SueloPirata.bringToTop();
+		this.SueloVaquero.bringToTop();
 	},
 	//Funciones para el disparo	
 	set:function(player,pointer) {
@@ -348,8 +354,8 @@ Game.Battle.prototype ={
 		this.SueloVaquero.y=this.world.height-this.SueloVaquero.height;
 		
 		this.SueloMar.height = this.world.height/6;
-		this.SueloMar.width = this.world.width/3;
-		this.SueloMar.x=this.world.width-this.world.width/3*2;
+		this.SueloMar.width = this.world.width;
+		this.SueloMar.x=0;
 		this.SueloMar.y=this.world.height-this.SueloMar.height;
 		
 		if(this.estado=="BATALLA"){
