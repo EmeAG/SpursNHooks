@@ -17,9 +17,12 @@ Game.Battle.prototype ={
 		
 		this.estado="CONSTRUCCION";
 		this.turno="J1";
+		this.auxTiempo=0;
+		this.tiempo=30;
 		this.angulo2=0;
 		this.angulo1=0;
 		this.game.physics.arcade.gravity.y = 1;
+		this.game.physics.arcade.setBoundsToWorld();
 		
 		obj=new Objeto();
 		this.cont=0;
@@ -36,7 +39,7 @@ Game.Battle.prototype ={
         this.background.width = this.game.width;
 		
 		//Suelos
-        this.SueloPirata=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
+		this.SueloPirata=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
 	    this.SueloVaquero=this.add.sprite(this.world.width-this.world.width/3, this.world.height- this.cache.getImage("Suelo_Vaquero").height, 'Suelo_Pirata');
 	    this.SueloMar=this.add.sprite(this.world.width-this.world.width/3*2, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
 		
@@ -75,27 +78,44 @@ Game.Battle.prototype ={
 		}
 
 		if(this.estado=="CONSTRUCCION"){
+			if(this.turno=="J1"){
 
-			//Boton Materiales
-			this.button_Madera = this.add.button(this.world.centerX, 100, 'button', this.change_material_madera, this, 2, 1, 0);
-			this.text0=this.game.add.text(this.button_Madera.x,this.button_Madera.y,"Madera");
-			this.button_Piedra = this.add.button(this.world.centerX, 200, 'button', this.change_material_piedra, this, 2, 1, 0);
-			this.text0=this.game.add.text(this.button_Piedra.x,this.button_Piedra.y,"Piedra");
-			this.button_Metal = this.add.button(this.world.centerX, 300, 'button', this.change_material_metal, this, 2, 1, 0);
-			this.text0=this.game.add.text(this.button_Metal.x,this.button_Metal.y,"Metal");
+				//Telon
+				this.telon=this.add.sprite(this.world.width/3,0,'telon');
 
-			//Boton Tipos de Objetos
-			this.button_Rect_Vert = this.add.button(this.world.centerX+100, 100, 'button', this.create_tipo_rectV, this, 2, 1, 0);
-			this.text0=this.game.add.text(this.button_Rect_Vert.x,this.button_Rect_Vert.y,"Rectangulo Vert");
-			this.button_Rect_Horz = this.add.button(this.world.centerX+100, 200, 'button', this.create_tipo_rectH, this, 2, 1, 0);
-			this.text1=this.game.add.text(this.button_Rect_Horz.x,this.button_Rect_Horz.y,"Rectangulo Horz");
-			this.button_Trian = this.add.button(this.world.centerX+100, 400, 'button', this.create_tipo_trian, this, 2, 1, 0);
-			this.text2=this.game.add.text(this.button_Trian.x,this.button_Trian.y,"Triangulo");
-			this.button_Cuad = this.add.button(this.world.centerX+100, 300, 'button', this.create_tipo_cuad, this, 2, 1, 0);
-			this.text3=this.game.add.text(this.button_Cuad.x,this.button_Cuad.y,"Cuadrado");
+				//Boton Materiales
+				this.button_Madera = this.add.button(this.world.width/3+100, 100, 'boton_Material', this.change_material_madera, this, 2, 1, 0);
+				this.text0=this.game.add.text(this.button_Madera.x,this.button_Madera.y,"Madera");
+				this.button_Piedra = this.add.button(this.world.width/3+100, 100+this.cache.getImage('boton_Material').height+5, 'boton_Material', this.change_material_piedra, this, 2, 1, 0);
+				this.text0=this.game.add.text(this.button_Piedra.x,this.button_Piedra.y,"Piedra");
+				this.button_Metal = this.add.button(this.world.width/3+100, 100+this.cache.getImage('boton_Material').height*2+5, 'boton_Material', this.change_material_metal, this, 2, 1, 0);
+				this.text0=this.game.add.text(this.button_Metal.x,this.button_Metal.y,"Metal");
+
+				//Boton Tipos de Objetos
+				this.button_Rect_Vert = this.add.button(this.world.width/3+100+this.cache.getImage('boton_Material').width, 10, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
+				this.text0=this.game.add.text(this.button_Rect_Vert.x,this.button_Rect_Vert.y,"Rectangulo Vert");
+				this.button_Rect_Horz = this.add.button(this.world.width/3+100+this.cache.getImage('boton_Material').width, 10+this.cache.getImage('boton_Tipo').height+5, 'boton_Tipo', this.create_tipo_rectH, this, 2, 1, 0);
+				this.text1=this.game.add.text(this.button_Rect_Horz.x,this.button_Rect_Horz.y,"Rectangulo Horz");
+				this.button_Trian = this.add.button(this.world.width/3+100+this.cache.getImage('boton_Material').width, 10+this.cache.getImage('boton_Tipo').height*2+5, 'boton_Tipo', this.create_tipo_trian, this, 2, 1, 0);
+				this.text2=this.game.add.text(this.button_Trian.x,this.button_Trian.y,"Triangulo");
+				this.button_Cuad = this.add.button(this.world.width/3+100+this.cache.getImage('boton_Material').width, 10+this.cache.getImage('boton_Tipo').height*3+5, 'boton_Tipo', this.create_tipo_cuad, this, 2, 1, 0);
+				this.text3=this.game.add.text(this.button_Cuad.x,this.button_Cuad.y,"Cuadrado");
+
+				//Boton Tiempo
+				this.tiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,0,'cuadro_Tiempo');
+				this.text4=this.game.add.text(this.tiempo.x,this.tiempo.y,this.tiempo);
+			}
 		}
 	},
 	
+	timeRuner :function(){
+		if(this.auxTiempo==60){
+			this.tiempo--;
+			this.auxTiempo=0;
+		}
+		this.auxTiempo++;
+	},
+
 	change_material_madera:function(){
 		obj.material="madera";
 	},
@@ -181,19 +201,21 @@ Game.Battle.prototype ={
 				this.image_turn.visible=false;
 			}
 		}	
-		if(this.num0>=0 && this.construcAux!=null){
-			if(this.construcAux!=null){
+		
+		if(this.estado=="CONSTRUCCION"){
+			if(this.num0>=0 && this.construcAux!=null){
 				this.move_sprite(this.construcAux);
 				if(this.delayAux>15){
 					this.stop_move();
-				}
+				}			
 			}
+			else{
+				this.construcAux=this.arr[this.num0];
+			}
+			this.timeRuner();
+			this.delayAux++;
+
 		}
-		else{
-			this.construcAux=this.arr[this.num0];
-		}
-		
-		this.delayAux++;
 		//this.crear_pieza(this.mouse_correct_possition(0,this.world.width/3,true));
 		
 		//Giro de los cañones

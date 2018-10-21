@@ -21,6 +21,12 @@ Game.Preloader.prototype={
 		this.load.image('balaAcido', 'assets/PropsEscenario/balaAcido.png');
 		this.load.image('balaAgua', 'assets/PropsEscenario/balaAgua.png');
 		this.load.image('balaComun', 'assets/PropsEscenario/balaComun.png');
+
+		//Contruccion Images
+		this.load.image('telon','assets/PropsEscenario/Telon.png');
+		this.load.image('boton_Tipo','assets/PropsEscenario/botonMaterial.png');
+		this.load.image('boton_Material','assets/PropsEscenario/botonTipo.png');
+		this.load.image('cuadro_Tiempo','assets/PropsEscenario/CuadroTiempo.png');
 		
 		//Video
 		//this.load.video('video', 'assets/video/video.mp4');
