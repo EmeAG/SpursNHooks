@@ -41,7 +41,7 @@ Game.Battle.prototype ={
 		this.estado="BATALLA";
 		this.angulo2=0;
 		this.angulo1=0;
-		this.game.physics.arcade.gravity.y = 3800;
+
 		
 		obj=new Objeto();
 		this.cont=0;
@@ -78,7 +78,7 @@ Game.Battle.prototype ={
 			
 			this.angulo2=0;
 			this.angulo1=0;
-			this.game.physics.arcade.gravity.y = 1;
+			this.game.physics.arcade.gravity.y = 3800;
 			this.game.physics.arcade.setBoundsToWorld();
 			this.Marcador=this.add.sprite(637, 0, 'Marcador');
 			
@@ -275,18 +275,16 @@ Game.Battle.prototype ={
 				this.text3=this.game.add.text(this.button_Cuad.x,this.button_Cuad.y,"Cuadrado");
 
 				//Boton Tiempo
-				this.tiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,0,'cuadro_Tiempo');
-				this.tiempot=this.game.add.text(this.game.world.centerX, this.game.world.centerY, '30', { font: "64px Arial", fill: "#000000", align: "center" });
-				this.tiempot.anchor.setTo(0.5, 0.5);
+				this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,0,'cuadro_Tiempo');
+				tiempo=this.time.create();
+				finalTiempo=tiempo.add(Phaser.Timer.SECOND * 30, this.finTiempo);
+				tiempo.start();
+				text_tiempo=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width,0, '00',style_contador);
 			}
 		}
 		
 	},
 	
-	timeRuner :function(){
-		this.auxTiempo--;
-		this.tiempot.setText(this.auxTiempo);
-	},
 
 	finTiempo:function(){
 		fin_tiempo=0;
@@ -598,7 +596,11 @@ Game.Battle.prototype ={
 			else{
 				this.construcAux=this.arr[this.num0];
 			}
-			this.timeRuner();
+			fin_tiempo=1;
+			tiempo.destroy();
+			finalTiempo=this.time.create();
+			finalTiempo=tiempo.add(Phaser.Timer.SECOND * 30, this.finTiempo);
+			tiempo.start();
 			this.delayAux++;
 
 		}
@@ -796,7 +798,6 @@ Game.Battle.prototype ={
 		this.game.debug.body(this.SueloPirata);
 		this.game.debug.body(this.SueloVaquero);
 		//this.game.debug.text(this.tiempo,32,32,'white');
-		this.game.debug.text(this.auxTiempo,32,50,'white');
 	},
 	
 };
