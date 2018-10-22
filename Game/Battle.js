@@ -501,10 +501,12 @@ Game.Battle.prototype ={
 			}
 			if(obj.material=="piedra"){
 				this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
+				this.physics.enable(this.bloq_pied_trian,Phaser.ARCADE);
 				this.bloq_pied_trian.inputEnabled=true;
 				this.bloq_pied_trian.num=this.cont;
 				this.num0=this.cont;
 				this.construcAux=this.bloq_pied_trian;
+				this.arr[this.cont]=this.construcAux;
 			}
 			if(obj.material=="metal"){
 				this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
