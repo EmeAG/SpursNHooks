@@ -254,6 +254,14 @@ Game.Battle.prototype ={
 		}
 
 		if(this.estado=="CONSTRUCCION"){
+
+			this.game.physics.arcade.gravity.y=100;
+			TrianguloMad=this.add.sprite(0,0,'Bloq_mad_trian');
+			this.physics.enable(TrianguloMad,Phaser.Physics.ARCADE);
+			TrianguloMad.inputEnabled=true;
+			//this.construcAux=TrianguloMad;
+			this.physics.arcade.collide(this.SueloPirata, this.bloq_mad_trian);
+
 			if(this.turno=="J1"){
 
 				//Telon
@@ -486,7 +494,7 @@ Game.Battle.prototype ={
 				this.bloq_mad_trian.num=this.cont;
 				this.num0=this.cont;
 				this.construcAux=this.bloq_mad_trian;
-				this.physics.arcade.collide(this.SueloPirata, this.bloq_mad_trian);
+				this.arr[this.cont]=this.construcAux;
 			}
 			if(obj.material=="piedra"){
 				this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
@@ -591,7 +599,7 @@ Game.Battle.prototype ={
 
 	stop_move:function(){
 		if(this.input.mousePointer.isDown && this.construcAux!=null && this.delayAux>15){
-			this.arr[this.cont]=this.construcAux;
+			//this.arr[this.cont]=this.construcAux;
 			this.arr[this.cont].events.onInputDown.add(this.click_sprite,this);
 			this.cont++;
 			this.construcAux=null;
@@ -646,9 +654,17 @@ Game.Battle.prototype ={
 		}	
 		
 		if(this.estado=="CONSTRUCCION"){
+
 			for(var i=0;i<this.cont;i++){
-				this.physics.arcade.collide(this.SueloVaquero,this.arr[i])
+				this.physics.arcade.collide(this.arr[i],this.SueloPirata);
+				for(var j=0;j<this.cont;j++){
+					if(j!=i){
+						this.physics.arcade.collide(this.arr[i],this.arr[j]);
+					}
+				}
 			}
+			this.physics.arcade.collide(this.SueloPirata,TrianguloMad);
+
 			if(this.num0>=0 && this.construcAux!=null){
 				if(this.construcAux!=null){
 					this.move_sprite(this.construcAux);
@@ -790,19 +806,8 @@ Game.Battle.prototype ={
 				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
 				cuenta_atras.start();		
 			}
-<<<<<<< HEAD
 			//Fin Control turnos	
 			this.resize();
-=======
-			balaDispara.visible = true;
-			disparos++;
-			fin_tiempo=1;
-			cuenta_atras.destroy();
-			cuenta_atras=this.time.create();
-			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
-			button_BalaComun.tint=0.78 * 0xffffff;
-			cuenta_atras.start();		
->>>>>>> 90ee7fca9cf0819ae23d24c0e0b95812ab2767b6
 		}
 	},
 	
@@ -876,6 +881,8 @@ Game.Battle.prototype ={
 	//	this.game.debug.body(BalaCom1_J1);
 		this.game.debug.body(this.SueloPirata);
 		this.game.debug.body(this.SueloVaquero);
+
+		this.game.debug.body(TrianguloMad);
 		//this.game.debug.text(this.tiempo,32,32,'white');
 	},
 	
