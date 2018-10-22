@@ -38,7 +38,7 @@ Game.Battle.prototype ={
 		this.turno="J1";
 		this.auxTiempo=30;
 
-		this.estado="BATALLA";
+		//this.estado="BATALLA";
 		this.angulo2=0;
 		this.angulo1=0;
 
@@ -492,14 +492,12 @@ Game.Battle.prototype ={
 		if(this.construcAux==null){
 			if(obj.material=="madera"){
 				this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
+				this.physics.enable(this.bloq_mad_trian,Phaser.Physics.ARCADE);
 				this.bloq_mad_trian.inputEnabled=true;
 				this.bloq_mad_trian.num=this.cont;
 				this.num0=this.cont;
 				this.construcAux=this.bloq_mad_trian;
-<<<<<<< HEAD
 				this.arr[this.cont]=this.construcAux;
-=======
->>>>>>> f45f1004e0f98989f6d64542d8050c8f1084559d
 			}
 			if(obj.material=="piedra"){
 				this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
@@ -659,7 +657,6 @@ Game.Battle.prototype ={
 		}	
 		
 		if(this.estado=="CONSTRUCCION"){
-<<<<<<< HEAD
 
 			for(var i=0;i<this.cont;i++){
 				this.physics.arcade.collide(this.arr[i],this.SueloPirata);
@@ -671,8 +668,6 @@ Game.Battle.prototype ={
 			}
 			this.physics.arcade.collide(this.SueloPirata,TrianguloMad);
 
-=======
->>>>>>> f45f1004e0f98989f6d64542d8050c8f1084559d
 			if(this.num0>=0 && this.construcAux!=null){
 				if(this.construcAux!=null){
 					this.move_sprite(this.construcAux);
@@ -807,19 +802,8 @@ Game.Battle.prototype ={
 					button_BalaAcido.tint=1 * 0xffffff;
 				}
 			}
-<<<<<<< HEAD
 			//Fin Control turnos	
 			this.resize();
-=======
-			balaDispara.visible = true;
-			disparos++;
-			fin_tiempo=1;
-			cuenta_atras.destroy();
-			cuenta_atras=this.time.create();
-			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
-			button_BalaComun.tint=0.78 * 0xffffff;
-			cuenta_atras.start();		
->>>>>>> f45f1004e0f98989f6d64542d8050c8f1084559d
 		}
 		//Fin Control turnos	
 		this.resize();
