@@ -229,6 +229,7 @@ Game.Battle.prototype ={
 			button_BalaComun = this.add.button(100, 20, 'BotonBala', this.selector_bala, this, 2, 1, 0);
 			this.imagen_BalaComun=this.add.sprite(105, 23, 'balaComun');
 			button_BalaComun.tipo='comun';
+			button_BalaComun.tint=0.78 * 0xffffff;
 			
 			button_BalaAgua = this.add.button(200, 20, 'BotonBala', this.selector_bala, this, 2, 1, 0);
 			this.imagen_BalaComun=this.add.sprite(205, 23, 'balaAgua');
@@ -294,20 +295,73 @@ Game.Battle.prototype ={
 	
 	//Selector de las balas 
 	selector_bala:function(button){
+
+		if(turno==2){
+			if(num_balas_agu_J2==0){
+				button_BalaAgua.inputEnabled = false;
+				button_BalaAgua.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAgua.inputEnabled = true;
+				button_BalaAgua.tint=1 * 0xffffff;
+			}
+			if(num_balas_fue_J2==0){
+				button_BalaFuego.inputEnabled = false;
+				button_BalaFuego.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaFuego.inputEnabled = true;
+				button_BalaFuego.tint=1* 0xffffff;
+			}
+			if(num_balas_aci_J2==0){
+				button_BalaAcido.inputEnabled = false;
+				button_BalaAcido.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAcido.inputEnabled = true;
+				button_BalaAcido.tint=1 * 0xffffff;
+			}
+		}else{
+			if(num_balas_agu_J1==0){
+				button_BalaAgua.inputEnabled = false;
+				button_BalaAgua.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAgua.inputEnabled = true;
+				button_BalaAgua.tint=1 * 0xffffff;
+			}
+			if(num_balas_fue_J1==0){
+				button_BalaFuego.inputEnabled = false;
+				button_BalaFuego.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaFuego.inputEnabled = true;
+				button_BalaFuego.tint=1* 0xffffff;
+			}
+			if(num_balas_aci_J1==0){
+				button_BalaAcido.inputEnabled = false;
+				button_BalaAcido.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAcido.inputEnabled = true;
+				button_BalaAcido.tint=1 * 0xffffff;
+			}
+		}
+		button_BalaComun.inputEnabled = true;
+		button_BalaComun.tint=1 * 0xffffff;
+		
 		balaDispara.visible=false;
 		if(turno==1){
 			switch(button.tipo){
 				case 'comun':
 					balaDispara=BalaCom1_J1;
+					button_BalaComun.tint=0.78 * 0xffffff;
 					break;
 				case 'agua':
 					balaDispara=BalaAgu_J1;
+					button_BalaAgua.tint=0.78 * 0xffffff;
 					break;
 				case 'fuego':
 					balaDispara=BalaFueg_J1;
+					button_BalaFuego.tint=0.78 * 0xffffff;
 					break;
 				case 'acido':
 					balaDispara=BalaAcid_J1;
+					button_BalaAcido.tint=0.78 * 0xffffff;
 					break;
 			}
 		}
@@ -315,15 +369,19 @@ Game.Battle.prototype ={
 			switch(button.tipo){
 				case 'comun':
 					balaDispara=BalaCom1_J2;
+					button_BalaComun.tint=0.78 * 0xffffff;
 					break;
 				case 'agua':
 					balaDispara=BalaAgu_J2;
+					button_BalaAgua.tint=0.78 * 0xffffff;
 					break;
 				case 'fuego':
 					balaDispara=BalaFueg_J2;
+					button_BalaFuego.tint=0.78 * 0xffffff;
 					break;
 				case 'acido':
 					balaDispara=BalaAcid_J2;
+					button_BalaAcido.tint=0.78 * 0xffffff;
 					break;
 			}			
 		}
@@ -732,8 +790,19 @@ Game.Battle.prototype ={
 				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
 				cuenta_atras.start();		
 			}
+<<<<<<< HEAD
 			//Fin Control turnos	
 			this.resize();
+=======
+			balaDispara.visible = true;
+			disparos++;
+			fin_tiempo=1;
+			cuenta_atras.destroy();
+			cuenta_atras=this.time.create();
+			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
+			button_BalaComun.tint=0.78 * 0xffffff;
+			cuenta_atras.start();		
+>>>>>>> 90ee7fca9cf0819ae23d24c0e0b95812ab2767b6
 		}
 	},
 	

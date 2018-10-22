@@ -30,6 +30,8 @@ Game.Preloader.prototype={
 		this.load.image('balaFuego', 'assets/PropsEscenario/balaFuego.png');
 		this.load.image('balaComun', 'assets/PropsEscenario/balaComun.png');
 		this.load.image('Marcador', 'assets/PropsEscenario/Marcador.png');
+		this.load.image('CartelVaqueros', 'assets/PropsEscenario/CartelVaqueros.png');
+		this.load.image('CartelPiratas', 'assets/PropsEscenario/CartelPiratas.png');
 
 		//Contruccion Images
 		this.load.image('telon','assets/PropsEscenario/Telon.png');
