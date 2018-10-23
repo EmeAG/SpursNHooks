@@ -41,6 +41,7 @@ Game.Preloader.prototype={
 		this.load.image('FondoBatalla', 'assets/Backgrounds/FondoBatalla.png');
 		
 		this.load.image('BotonBala', 'assets/PropsEscenario/BotonBala.png');
+		this.load.image('BotonBala_B', 'assets/PropsEscenario/BotonBalaBig.png');
 		this.load.image('BotonDinero', 'assets/PropsEscenario/BotonDinero.png');
 		this.load.image('BotonMaterial', 'assets/PropsEscenario/BotonMaterial.png');
 		this.load.image('BotonMaterialConSombra', 'assets/PropsEscenario/BotonMaterialConSombra.png');
