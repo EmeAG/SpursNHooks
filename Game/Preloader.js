@@ -22,7 +22,7 @@ Game.Preloader.prototype={
 		this.load.image('Bloq_mad_trian', 'assets/sprites/Madera_trian.png');
 		this.load.image('Bloq_pied_trian', 'assets/sprites/PiedraTrian.png');
 		this.load.image('Bloq_met_trian', 'assets/sprites/metalTrian.png');
-		this.load.image('Bloq_mad_rect', 'assets/sprites/Madera_rect.png');
+		this.load.image('Bloq_mad_rect', 'assets/sprites/RectMaderoHoriz.png');
 		this.load.image('Bloq_pied_rect', 'assets/sprites/PiedraRect.png');
 		this.load.image('Bloq_met_rect', 'assets/sprites/metalRect.png');
 		this.load.image('balaAcido', 'assets/PropsEscenario/balaAcido.png');
