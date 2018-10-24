@@ -308,7 +308,7 @@ Game.Battle.prototype ={
 			//Boton Tiempo
 			this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 			cuenta_atras=this.time.create();
-			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 20, this.finTiempo);
+			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 4, this.finTiempo);
 			cuenta_atras.start();
 			text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
 			text_cuenta_atras.anchor.setTo(0.5,0.5);
@@ -886,40 +886,62 @@ Game.Battle.prototype ={
 			
 			if(fin_tiempo==0&&this.turno=="J1"){
 				this.espejo(this.button_Madera);
-				this.espejo(this.textMad);
+				this.textMad.x=this.button_Madera.x+this.cache.getImage("boton_Material").width/3;
+				this.precioMad.x=this.button_Madera.x+this.cache.getImage('boton_Material').width/3*2+10;
 				this.espejo(this.button_Piedra);
-				this.espejo(this.textPied);
+				this.textPied.x=this.button_Piedra.x+this.cache.getImage("boton_Material").width/3;
+				this.precioPied.x=this.button_Piedra.x+this.cache.getImage("boton_Material").width/3*2+10;
 				this.espejo(this.button_Metal);
-				this.espejo(this.textMet);
+				this.textMet.x=this.button_Metal.x+this.cache.getImage("boton_Material").width/3;
+				this.precioMet.x=this.button_Metal.x+this.cache.getImage("boton_Material").width/3*2+10;
 				this.espejo(this.button_Rect_Horz);
-				this.espejo(this.textRectH);
+				this.textRectH.x=this.button_Rect_Horz.x+this.cache.getImage('boton_Tipo').width/2;
+				this.textRectH.anchor.setTo(0.5,0.5);
 				this.espejo(this.button_Rect_Vert);
-				this.espejo(this.textRectV);
+				this.textRectV.x=this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2;
+				this.textRectV.anchor.setTo(0.5,0);
 				this.espejo(this.button_Trian);
-				this.espejo(this.textTrian);
+				this.textTrian.x=this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2;
+				this.textTrian.anchor.setTo(0.5,0.5);
 				this.espejo(this.button_Cuad);
-				this.espejo(this.textCuad);
+				this.textCuad.x=this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2;
+				this.textCuad.anchor.setTo(0.5,0.5);
 				this.espejo(this.cuadroTiempo);
 				this.espejo(this.button_bala_acido);
-				this.espejo(this.balaAc)
-				this.espejo(this.textBAci);
-				this.espejo(this.precioBAci);
+				this.balaAc.x=this.button_bala_acido.x-20;
+				this.balaAc.anchor.setTo(0.5,0.5);
+				this.textBAci.x=this.button_bala_acido.x;
+				this.textBAci.anchor.setTo(0.5,0.5);
+				this.precioBAci.x=this.button_bala_acido.x+this.cache.getImage("BotonBala_B").width/3-5;
+				this.precioBAci.anchor.setTo(0.5,0.5);
 				this.espejo(this.button_bala_agua);
-				this.espejo(this.balaAg)
-				this.espejo(this.textBAgu);
-				this.espejo(this.precioBAgu);
+				this.balaAg.x=this.button_bala_agua.x-20;
+				this.balaAg.anchor.setTo(0.5,0.5);
+				this.textBAgu.x=this.button_bala_agua.x;
+				this.textBAgu.anchor.setTo(0.5,0.5);
+				this.precioBAgu.x=this.button_bala_agua.x+this.cache.getImage("BotonBala_B").width/3-5;
+				this.precioBAgu.anchor.setTo(0.5,0.5);
 				this.espejo(this.button_bala_fuego);
-				this.espejo(this.balaF);
-				this.espejo(this.textBFue);
-				this.espejo(this.precioBFue);
+				this.balaF.x=this.button_bala_fuego.x-20;
+				this.balaF.anchor.setTo(0.5,0.5);
+				this.textBFue.x=this.button_bala_fuego.x;
+				this.textBFue.anchor.setTo(0.5,0.5);
+				this.precioBFue.x=this.button_bala_fuego.x+this.cache.getImage("BotonBala_B").width/3-5;
+				this.precioBFue.anchor.setTo(0.5,0.5);
+				//this.espejo(this.balaF);
+				//this.espejo(this.textBFue);
+				//this.espejo(this.precioBFue);
 				this.espejo(this.dineroMarc);
 				//this.textDinero.x=this.dineroMarc.x;
 				this.espejo(this.button_Jugador);
+				this.personaje.destroy();
+				this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Vaquero")
+				this.personaje.anchor.setTo(0.5,0.5);
 				this.espejo(this.telon);
 				fin_tiempo=1;					
 				cuenta_atras.destroy();
 				cuenta_atras=this.time.create();
-				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 2, this.finTiempo);
+				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
 				cuenta_atras.start();
 				text_cuenta_atras.x=this.cuadroTiempo.width/2;
 				this.turno="J2";
