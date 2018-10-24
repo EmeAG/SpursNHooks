@@ -11,6 +11,8 @@ Game.Preloader.prototype={
 		this.load.image("landscape", 'assets/landscape.png');
 		
 		//Game Images
+		this.load.image('Vaquero', 'assets/sprites/Vaquero.png');
+		this.load.image('Pirata', 'assets/sprites/Pirata.png');
 		this.load.image('Suelo_Pirata', 'assets/PropsEscenario/SueloPirata.png');
 		this.load.image('Suelo_Vaquero', 'assets/PropsEscenario/sueloVaquero.png')
 		this.load.image('Suelo_Mar', 'assets/PropsEscenario/olasAnimacion2.gif')
