@@ -62,15 +62,18 @@ Game.Preloader.prototype={
 		//this.load.video('video', 'assets/video/video.mp4');
 		
 		
-		this.preloadBar=this.add.sprite(this.world.centerX,this.world.centerY,'preloadBar');
+		this.preloadBar=this.add.sprite(this.world.centerX,this.world.centerY,'preloader_bar');
 		this.preloadBar.anchor.setTo(0.5,0.5);
 		this.time.advancedTiming = true;
 		
+        this.background = this.add.image(0, 0, "preloader_fondo");
+        this.background.height = this.game.height;
+        this.background.width = this.game.width;		
+		
 		this.load.setPreloadSprite(this.preloadBar);
-
-	
 	},
 	create:function(){
+		alert();
 		this.state.start('MainMenu');
 	}
 };
