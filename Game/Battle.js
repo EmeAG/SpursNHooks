@@ -301,7 +301,7 @@ Game.Battle.prototype ={
 				//Boton Tiempo
 				this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 				cuenta_atras=this.time.create();
-				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 60, this.finTiempo);
+				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 20, this.finTiempo);
 				cuenta_atras.start();
 				text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
 				text_cuenta_atras.anchor.setTo(0.5,0.5);
@@ -559,14 +559,50 @@ Game.Battle.prototype ={
 
 	change_material_madera:function(){
 		obj.material="madera";
+		this.textRectV=null;
+		this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
+		this.textRectV.anchor.setTo(0.5,0);
+		this.textRectH=null;
+		this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_rectH");
+		this.textRectH.anchor.setTo(0,0.5);
+		this.textTrian=null;
+		this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_trian");
+		this.textTrian.anchor.setTo(0.5,0.5);
+		this.textCuad=null;
+		this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_cuad");
+		this.textCuad.anchor.setTo(0.5,0.5);
 	},
 
 	change_material_piedra:function(){
 		obj.material="piedra";
+		this.textRectV=null;
+		this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_pied_rectV");
+		this.textRectV.anchor.setTo(0.5,0);
+		this.textRectH=null;
+		this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_pied_rectH");
+		this.textRectH.anchor.setTo(0,0.5);
+		this.textTrian=null;
+		this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_pied_trian");
+		this.textTrian.anchor.setTo(0.5,0.5);
+		this.textCuad=null;
+		this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_pied_cuad");
+		this.textCuad.anchor.setTo(0.5,0.5);
 	},
 
 	change_material_metal:function(){
 		obj.material="metal";
+		this.textRectV=null;
+		this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_met_rectV");
+		this.textRectV.anchor.setTo(0.5,0);
+		this.textRectH=null;
+		this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_met_rectH");
+		this.textRectH.anchor.setTo(0,0.5);
+		this.textTrian=null;
+		this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_met_trian");
+		this.textTrian.anchor.setTo(0.5,0.5);
+		this.textCuad=null;
+		this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_met_cuad");
+		this.textCuad.anchor.setTo(0.5,0.5);
 	},
 
 	create_tipo_trian:function(){
@@ -802,23 +838,32 @@ Game.Battle.prototype ={
 		if(this.estado=="CONSTRUCCION"){
 			if(fin_tiempo==0&&this.turno=="J1"){
 				this.espejo(this.button_Madera);
-				this.textMad.x=this.button_Madera.x;
+				this.espejo(this.textMad);
 				this.espejo(this.button_Piedra);
-				this.textPied.x=this.button_Piedra.x;
+				this.espejo(this.textPied);
 				this.espejo(this.button_Metal);
-				this.textMet.x=this.button_Metal.x;
+				this.espejo(this.textMet);
 				this.espejo(this.button_Rect_Horz);
-				this.textRectH.x=this.button_Rect_Horz.x;
+				this.espejo(this.textRectH);
 				this.espejo(this.button_Rect_Vert);
-				this.textRectV.x=this.button_Rect_Vert.x;
+				this.espejo(this.textRectV);
 				this.espejo(this.button_Trian);
-				this.textTrian.x=this.button_Trian.x;
+				this.espejo(this.textTrian);
 				this.espejo(this.button_Cuad);
-				this.textCuad.x=this.button_Cuad.x;
+				this.espejo(this.textCuad);
 				this.espejo(this.cuadroTiempo);
 				this.espejo(this.button_bala_acido);
+				this.espejo(this.balaAc)
+				this.espejo(this.textBAci);
+				this.espejo(this.precioBAci);
 				this.espejo(this.button_bala_agua);
+				this.espejo(this.balaAg)
+				this.espejo(this.textBAgu);
+				this.espejo(this.precioBAgu);
 				this.espejo(this.button_bala_fuego);
+				this.espejo(this.balaF);
+				this.espejo(this.textBFue);
+				this.espejo(this.precioBFue);
 				this.espejo(this.dineroMarc);
 				this.textDinero.x=this.dineroMarc.x;
 				this.espejo(this.button_Jugador);
