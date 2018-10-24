@@ -31,6 +31,7 @@ var num_balas_agu_J2=0;
 var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
+var cargando_batalla=0;
 
 Game.Battle.prototype ={
 	create:function(){
@@ -41,11 +42,6 @@ Game.Battle.prototype ={
 		this.estado="CONSTRUCCION";
 		this.turno="J1";
 		this.auxTiempo=30;
-
-		//this.estado="BATALLA";
-		this.angulo2=0;
-		this.angulo1=0;
-
 		
 		obj=new Objeto();
 		this.cont=0;
@@ -60,11 +56,6 @@ Game.Battle.prototype ={
         this.background = this.add.image(0, 0, "FondoBatalla");
         this.background.height = this.game.height;
         this.background.width = this.game.width;
-		//Activar lanzamiento
-		this.background.inputEnabled = true;
-		this.background.input.start(0, true);
-		//this.background.events.onInputDown.add(this.set);
-		//this.background.events.onInputUp.add(this.launch);		
 
 		//Suelos
         this.SueloPirata=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
@@ -78,24 +69,22 @@ Game.Battle.prototype ={
 		this.SueloVaquero.body.bounce.set(1);
 		this.SueloPirata.body.bounce.set(1);
 
-		if(this.estado=="BATALLA"){
-			
+		this.cargar_batalla = function (){
+			//Activar lanzamiento desde el fondo de la pantalla
+			this.background.inputEnabled = true;
+			this.background.input.start(0, true);
+			this.background.events.onInputDown.add(this.set);
+			this.background.events.onInputUp.add(this.launch);
 			this.angulo2=0;
 			this.angulo1=0;
 			this.game.physics.arcade.gravity.y = 3800;
 			this.game.physics.arcade.setBoundsToWorld();
+
 			//Marcador
 			this.Marcador=this.add.sprite(637, 0, 'Marcador');
 			this.CartelVaqueros=this.add.sprite(1040, 35, 'CartelVaqueros');
 			this.CartelPiratas=this.add.sprite(670, 35, 'CartelPiratas');
 			this.CartelVaqueros.tint=0.4 * 0xffffff;
-			
-			//tiempo cuenta atras
-			cuenta_atras=this.time.create();
-			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
-			cuenta_atras.start();
-			text_cuenta_atras=this.game.add.text(928, 80, '00',style_contador);
-
 
 			//Cañon
 			this.CannonPirata=this.add.sprite(this.world.width*0.04, (this.world.height- this.cache.getImage("Cannon_Pirata").height)*0.4, 'Cannon_Pirata');
@@ -257,92 +246,109 @@ Game.Battle.prototype ={
 			this.CannonPirata.bringToTop();
 			this.SueloPirata.bringToTop();
 			this.SueloVaquero.bringToTop();
+			if(num_balas_agu_J1==0){
+				button_BalaAgua.inputEnabled = false;
+				button_BalaAgua.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAgua.inputEnabled = true;
+				button_BalaAgua.tint=1 * 0xffffff;
+			}				
+			if(num_balas_fue_J1==0){
+				button_BalaFuego.inputEnabled = false;
+				button_BalaFuego.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaFuego.inputEnabled = true;
+				button_BalaFuego.tint=1 * 0xffffff;
+			}				
+			if(num_balas_aci_J1==0){
+				button_BalaAcido.inputEnabled = false;
+				button_BalaAcido.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAcido.inputEnabled = true;
+				button_BalaAcido.tint=1 * 0xffffff;
+			}
 		}
 
-		if(this.estado=="CONSTRUCCION"){
+		this.game.physics.arcade.gravity.y = 100;
+		if(this.turno=="J1"){
+			//Telon
+			this.telon=this.add.sprite(this.world.width/3,0,'telon').bringToTop();
 
-			this.game.physics.arcade.gravity.y = 100;
-			if(this.turno=="J1"){
+			//Boton Tipos de Objetos
+			this.button_Rect_Vert = this.add.button(this.world.width/3+100, 40, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
+			this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
+			this.textRectV.anchor.setTo(0.5,0);
+			this.button_Rect_Horz = this.add.button(this.world.width/3+100, 40+this.cache.getImage('boton_Tipo').height+5, 'boton_Tipo', this.create_tipo_rectH, this, 2, 1, 0);
+			this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_rectH");
+			this.textRectH.anchor.setTo(0,0.5);
+			this.button_Trian = this.add.button(this.world.width/3+100, 40+(this.cache.getImage('boton_Tipo').height+5)*2, 'boton_Tipo', this.create_tipo_trian, this, 2, 1, 0);
+			this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_trian");
+			this.textTrian.anchor.setTo(0.5,0.5)
+			this.button_Cuad = this.add.button(this.world.width/3+100, 40+(this.cache.getImage('boton_Tipo').height+5)*3, 'boton_Tipo', this.create_tipo_cuad, this, 2, 1, 0);
+			this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_cuad");
+			this.textCuad.anchor.setTo(0.5,0.5);
 
-				//Telon
-				this.telon=this.add.sprite(this.world.width/3,0,'telon').bringToTop();
+			//Boton Materiales
+			this.button_Madera = this.add.button(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width+30, 40, 'boton_Material', this.change_material_madera, this, 2, 1, 0);
+			this.textMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3,this.button_Madera.y+this.cache.getImage('boton_Material').height/2,"Madera");
+			this.textMad.anchor.setTo(0.5,0.5);
+			this.precioMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMad.y,"10$");
+			this.precioMad.anchor.setTo(0.5,0.5);
+			this.button_Piedra = this.add.button(this.button_Madera.x, 40+this.cache.getImage('boton_Material').height+5, 'boton_Material', this.change_material_piedra, this, 2, 1, 0);
+			this.textPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3,this.button_Piedra.y+this.cache.getImage('boton_Material').height/2,"Piedra");
+			this.textPied.anchor.setTo(0.5,0.5);
+			this.precioPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3*2+10,this.textPied.y,"20$");
+			this.precioPied.anchor.setTo(0.5,0.5);
+			this.button_Metal = this.add.button(this.button_Madera.x, 40+(this.cache.getImage('boton_Material').height+5)*2, 'boton_Material', this.change_material_metal, this, 2, 1, 0);
+			this.textMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3,this.button_Metal.y+this.cache.getImage('boton_Material').height/2,"Metal");
+			this.textMet.anchor.setTo(0.5,0.5);
+			this.precioMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMet.y,"35$");
+			this.precioMet.anchor.setTo(0.5,0.5);
 
-				//Boton Tipos de Objetos
-				this.button_Rect_Vert = this.add.button(this.world.width/3+100, 40, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
-				this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
-				this.textRectV.anchor.setTo(0.5,0);
-				this.button_Rect_Horz = this.add.button(this.world.width/3+100, 40+this.cache.getImage('boton_Tipo').height+5, 'boton_Tipo', this.create_tipo_rectH, this, 2, 1, 0);
-				this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_rectH");
-				this.textRectH.anchor.setTo(0,0.5);
-				this.button_Trian = this.add.button(this.world.width/3+100, 40+(this.cache.getImage('boton_Tipo').height+5)*2, 'boton_Tipo', this.create_tipo_trian, this, 2, 1, 0);
-				this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_trian");
-				this.textTrian.anchor.setTo(0.5,0.5)
-				this.button_Cuad = this.add.button(this.world.width/3+100, 40+(this.cache.getImage('boton_Tipo').height+5)*3, 'boton_Tipo', this.create_tipo_cuad, this, 2, 1, 0);
-				this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_cuad");
-				this.textCuad.anchor.setTo(0.5,0.5);
+			//Boton Tiempo
+			this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
+			cuenta_atras=this.time.create();
+			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 20, this.finTiempo);
+			cuenta_atras.start();
+			text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
+			text_cuenta_atras.anchor.setTo(0.5,0.5);
 
-				//Boton Materiales
-				this.button_Madera = this.add.button(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width+30, 40, 'boton_Material', this.change_material_madera, this, 2, 1, 0);
-				this.textMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3,this.button_Madera.y+this.cache.getImage('boton_Material').height/2,"Madera");
-				this.textMad.anchor.setTo(0.5,0.5);
-				this.precioMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMad.y,"10$");
-				this.precioMad.anchor.setTo(0.5,0.5);
-				this.button_Piedra = this.add.button(this.button_Madera.x, 40+this.cache.getImage('boton_Material').height+5, 'boton_Material', this.change_material_piedra, this, 2, 1, 0);
-				this.textPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3,this.button_Piedra.y+this.cache.getImage('boton_Material').height/2,"Piedra");
-				this.textPied.anchor.setTo(0.5,0.5);
-				this.precioPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3*2+10,this.textPied.y,"20$");
-				this.precioPied.anchor.setTo(0.5,0.5);
-				this.button_Metal = this.add.button(this.button_Madera.x, 40+(this.cache.getImage('boton_Material').height+5)*2, 'boton_Material', this.change_material_metal, this, 2, 1, 0);
-				this.textMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3,this.button_Metal.y+this.cache.getImage('boton_Material').height/2,"Metal");
-				this.textMet.anchor.setTo(0.5,0.5);
-				this.precioMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMet.y,"35$");
-				this.precioMet.anchor.setTo(0.5,0.5);
+			//Boton balas
+			this.button_bala_fuego=this.add.button(1350,200,'BotonBala_B',this.compraBalaFuego,this,2,1,0);
+			this.button_bala_fuego.anchor.setTo(0.5,0.5);
+			this.balaF=this.game.add.sprite(this.button_bala_fuego.x-20,this.button_bala_fuego.y-10,"balaFuego");
+			this.balaF.anchor.setTo(0.5,0.5);
+			this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
+			this.textBFue.anchor.setTo(0.5,0.5);
+			this.precioBFue=this.game.add.text(this.button_bala_fuego.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_fuego.y-this.cache.getImage("BotonBala_B").height/3,"15$");
+			this.precioBFue.anchor.setTo(0.5,0.5);
+			this.button_bala_agua=this.add.button(1350+20+this.cache.getImage('BotonBala_B').width,200,'BotonBala_B',this.compraBalaAgua,this,2,1,0);
+			this.button_bala_agua.anchor.setTo(0.5,0.5);
+			this.balaAg=this.game.add.sprite(this.button_bala_agua.x-20,this.button_bala_agua.y-10,"balaAgua");
+			this.balaAg.anchor.setTo(0.5,0.5);
+			this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
+			this.textBAgu.anchor.setTo(0.5,0.5);
+			this.precioBAgu=this.add.text(this.button_bala_agua.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_agua.y-this.cache.getImage("BotonBala_B").height/3,"30$");
+			this.precioBAgu.anchor.setTo(0.5,0.5);
+			this.button_bala_acido=this.add.button(1350+(20+this.cache.getImage('BotonBala_B').width)*2,200,'BotonBala_B',this.compraBalaAcido,this,2,1,0);
+			this.button_bala_acido.anchor.setTo(0.5,0.5);
+			this.balaAc=this.game.add.sprite(this.button_bala_acido.x-20,this.button_bala_acido.y-10,"balaAcido");
+			this.balaAc.anchor.setTo(0.5,0.5);
+			this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
+			this.textBAci.anchor.setTo(0.5,0.5);
+			this.precioBAci=this.add.text(this.button_bala_acido.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_acido.y-this.cache.getImage("BotonBala_B").height/3,"50$");
+			this.precioBAci.anchor.setTo(0.5,0.5);
 
-				//Boton Tiempo
-				this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
-				cuenta_atras=this.time.create();
-				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 20, this.finTiempo);
-				cuenta_atras.start();
-				text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
-				text_cuenta_atras.anchor.setTo(0.5,0.5);
+			//Boton personaje
+			this.button_Jugador=this.add.button(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje');
+			this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Pirata")
+			this.personaje.anchor.setTo(0.5,0.5);
 
-				//Boton balas
-				this.button_bala_fuego=this.add.button(1350,200,'BotonBala_B',this.compraBalaFuego,this,2,1,0);
-				this.button_bala_fuego.anchor.setTo(0.5,0.5);
-				this.balaF=this.game.add.sprite(this.button_bala_fuego.x-20,this.button_bala_fuego.y-10,"balaFuego");
-				this.balaF.anchor.setTo(0.5,0.5);
-				this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
-				this.textBFue.anchor.setTo(0.5,0.5);
-				this.precioBFue=this.game.add.text(this.button_bala_fuego.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_fuego.y-this.cache.getImage("BotonBala_B").height/3,"15$");
-				this.precioBFue.anchor.setTo(0.5,0.5);
-				this.button_bala_agua=this.add.button(1350+20+this.cache.getImage('BotonBala_B').width,200,'BotonBala_B',this.compraBalaAgua,this,2,1,0);
-				this.button_bala_agua.anchor.setTo(0.5,0.5);
-				this.balaAg=this.game.add.sprite(this.button_bala_agua.x-20,this.button_bala_agua.y-10,"balaAgua");
-				this.balaAg.anchor.setTo(0.5,0.5);
-				this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
-				this.textBAgu.anchor.setTo(0.5,0.5);
-				this.precioBAgu=this.add.text(this.button_bala_agua.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_agua.y-this.cache.getImage("BotonBala_B").height/3,"30$");
-				this.precioBAgu.anchor.setTo(0.5,0.5);
-				this.button_bala_acido=this.add.button(1350+(20+this.cache.getImage('BotonBala_B').width)*2,200,'BotonBala_B',this.compraBalaAcido,this,2,1,0);
-				this.button_bala_acido.anchor.setTo(0.5,0.5);
-				this.balaAc=this.game.add.sprite(this.button_bala_acido.x-20,this.button_bala_acido.y-10,"balaAcido");
-				this.balaAc.anchor.setTo(0.5,0.5);
-				this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
-				this.textBAci.anchor.setTo(0.5,0.5);
-				this.precioBAci=this.add.text(this.button_bala_acido.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_acido.y-this.cache.getImage("BotonBala_B").height/3,"50$");
-				this.precioBAci.anchor.setTo(0.5,0.5);
-
-				//Boton personaje
-				this.button_Jugador=this.add.button(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje');
-				this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Pirata")
-				this.personaje.anchor.setTo(0.5,0.5);
-
-				//Dinero
-				this.dineroMarc=this.add.sprite(1500,40,'BotonDinero');
-				this.dineroMarc.anchor.setTo(0.5,0.5);
-				this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
-				this.textDinero.anchor.setTo(0.7,0.5);
-			}
+			//Dinero
+			this.dineroMarc=this.add.sprite(1500,40,'BotonDinero');
+			this.dineroMarc.anchor.setTo(0.5,0.5);
+			this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
+			this.textDinero.anchor.setTo(0.7,0.5);
 		}
 		
 		
@@ -449,7 +455,7 @@ Game.Battle.prototype ={
 	},
 
 	//Funciones para el disparo	
-	/*set:function(player,pointer) {
+	set:function(player,pointer) {
 		if(disparos>0){
 			catchFlag = true;
 			balaDispara.body.moves = false;
@@ -523,7 +529,7 @@ Game.Battle.prototype ={
 				}
 			}
 		}
-	},*/
+	},
 	compraBalaFuego:function(){
 		if(this.turno=="J1"){
 			num_balas_fue_J1++;
@@ -820,7 +826,6 @@ Game.Battle.prototype ={
 				launchVelocity = analog.height;
 			}	
 			//Fin Disparo
-
 		}
 		
 		//Inicio Pantalla en Vertical
@@ -833,9 +838,52 @@ Game.Battle.prototype ={
 			if (this.image_turn.visible === true){
 				this.image_turn.visible=false;
 			}
-		}	
+		}
 		
 		if(this.estado=="CONSTRUCCION"){
+			//mover el telon desde J2 
+			//añadir objetos que destruir antes de moverlo
+			if(fin_tiempo==0&&this.turno=="J2"&& this.telon.x<-40){
+				this.button_Madera.destroy();
+				this.textMad.destroy();
+				this.button_Piedra.destroy();
+				this.textPied.destroy();
+				this.button_Metal.destroy();
+				this.textMet.destroy();
+				this.button_Rect_Horz.destroy();
+				this.textRectH.destroy();
+				this.button_Rect_Vert.destroy();
+				this.textRectV.destroy();
+				this.button_Trian.destroy();
+				this.textTrian.destroy();
+				this.button_Cuad.destroy();
+				this.textCuad.destroy();
+				this.cuadroTiempo.destroy();
+				this.button_bala_acido.destroy();
+				this.button_bala_agua.destroy();
+				this.button_bala_fuego.destroy();
+				this.dineroMarc.destroy();
+				this.button_Jugador.destroy();
+				text_cuenta_atras.visible=false;
+				this.textDinero.destroy();
+				this.textBFue.destroy();
+				this.textBAgu.destroy();
+				this.textBAci.destroy();
+
+				this.physics.enable(this.telon, Phaser.Physics.ARCADE);
+				this.telon.body.velocity.setTo(200, 0);
+				this.telon.body.allowGravity = false;
+			}
+			//parar elmovimiento horizontal del telon
+			if(fin_tiempo==0&&this.turno=="J2"&& this.telon.x>=-40){
+				this.telon.body.velocity.setTo(0, -180);
+				if(cargando_batalla==0){
+					this.cargar_batalla();
+					cargando_batalla++;
+					this.telon.bringToTop();
+				}
+			}
+			
 			if(fin_tiempo==0&&this.turno=="J1"){
 				this.espejo(this.button_Madera);
 				this.espejo(this.textMad);
@@ -865,8 +913,10 @@ Game.Battle.prototype ={
 				this.espejo(this.textBFue);
 				this.espejo(this.precioBFue);
 				this.espejo(this.dineroMarc);
-				this.textDinero.x=this.dineroMarc.x;
+				//this.textDinero.x=this.dineroMarc.x;
 				this.espejo(this.button_Jugador);
+				this.espejo(this.telon);
+				fin_tiempo=1;					
 				cuenta_atras.destroy();
 				cuenta_atras=this.time.create();
 				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 2, this.finTiempo);
@@ -874,20 +924,22 @@ Game.Battle.prototype ={
 				text_cuenta_atras.x=this.cuadroTiempo.width/2;
 				this.turno="J2";
 			}
-			//Actualizacion de textos
-			this.textDinero.destroy();
-			this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
-			this.textDinero.anchor.setTo(0.7,0.5);
-			this.textBFue.destroy();
-			this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
-			this.textBFue.anchor.setTo(0.5,0.5);
-			this.textBAgu.destroy();
-			this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
-			this.textBAgu.anchor.setTo(0.5,0.5);
-			this.textBAci.destroy();
-			this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
-			this.textBAci.anchor.setTo(0.5,0.5);
 
+			if(fin_tiempo!=0){			   
+				//Actualizacion de textos
+				this.textDinero.destroy();
+				this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
+				this.textDinero.anchor.setTo(0.7,0.5);
+				this.textBFue.destroy();
+				this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
+				this.textBFue.anchor.setTo(0.5,0.5);
+				this.textBAgu.destroy();
+				this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
+				this.textBAgu.anchor.setTo(0.5,0.5);
+				this.textBAci.destroy();
+				this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
+				this.textBAci.anchor.setTo(0.5,0.5);
+			}
 			for(var i=0;i<this.cont;i++){
 				this.physics.arcade.collide(this.arr[i],this.SueloPirata);
 				for(var j=0;j<this.cont;j++){
@@ -905,13 +957,26 @@ Game.Battle.prototype ={
 
 				if(this.delayAux>15){
 					this.stop_move();
-				}			
+				}
 			}
 			else{
 				this.construcAux=this.arr[this.num0];
 			}
 			this.delayAux++;
 
+			if(fin_tiempo==0&&this.turno=="J2"&& this.telon.y<=-1080){
+				fin_tiempo=1;
+				//tiempo cuenta atras
+				cuenta_atras.destroy();
+				cuenta_atras=this.time.create();
+				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
+				text_cuenta_atras=this.game.add.text(928, 80, '00',style_contador);
+				
+				this.telon.destroy();
+				this.estado="BATALLA";
+				this.turno="J1"
+				cuenta_atras.start();
+			}
 		}
 		//this.crear_pieza(this.mouse_correct_possition(0,this.world.width/3,true));
 		
@@ -958,79 +1023,88 @@ Game.Battle.prototype ={
 		//Fin Giro de los cañones
 
 		//Inicio Control turnos
-		/*if((disparos==0 && (balaDispara.body.x<0||balaDispara.body.x>1920||balaDispara.body.y>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0)))||fin_tiempo==0){
-			balaDispara.body.moves = false;
-			balaDispara.body.velocity.setTo(0, 0);
-			if(turno==1){
-				this.CartelVaqueros.tint=1 * 0xffffff;
-				this.CartelPiratas.tint=0.4 * 0xffffff;
-				turno=2;
-				balaDispara.x=135;
-				balaDispara.y=420;
-				balaDispara.visible = false;
-				balaDispara=BalaCom1_J2;
-				text_num_balas_agu.text=num_balas_agu_J2;
-				text_num_balas_fue.text=num_balas_fue_J2;
-				text_num_balas_aci.text=num_balas_aci_J2;
-				if(num_balas_agu_J2==0){
-					button_BalaAgua.inputEnabled = false;
-					button_BalaAgua.tint=0.4 * 0xffffff;
-				}else{
-					button_BalaAgua.inputEnabled = true;
-					button_BalaAgua.tint=1 * 0xffffff;
+		if(this.estado=="BATALLA"){
+			if((disparos==0 && (balaDispara.body.x<0||balaDispara.body.x>1920||balaDispara.body.y>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0)))||fin_tiempo==0){
+				balaDispara.body.moves = false;
+				balaDispara.body.velocity.setTo(0, 0);
+				if(turno==1){
+					this.CartelVaqueros.tint=1 * 0xffffff;
+					this.CartelPiratas.tint=0.4 * 0xffffff;
+					turno=2;
+					balaDispara.x=135;
+					balaDispara.y=420;
+					balaDispara.visible = false;
+					balaDispara=BalaCom1_J2;
+					text_num_balas_agu.text=num_balas_agu_J2;
+					text_num_balas_fue.text=num_balas_fue_J2;
+					text_num_balas_aci.text=num_balas_aci_J2;
+					if(num_balas_agu_J2==0){
+						button_BalaAgua.inputEnabled = false;
+						button_BalaAgua.tint=0.4 * 0xffffff;
+					}else{
+						button_BalaAgua.inputEnabled = true;
+						button_BalaAgua.tint=1 * 0xffffff;
+					}
+					if(num_balas_fue_J2==0){
+						button_BalaFuego.inputEnabled = false;
+						button_BalaFuego.tint=0.4 * 0xffffff;
+					}else{
+						button_BalaFuego.inputEnabled = true;
+						button_BalaFuego.tint=1* 0xffffff;
+					}
+					if(num_balas_aci_J2==0){
+						button_BalaAcido.inputEnabled = false;
+						button_BalaAcido.tint=0.4 * 0xffffff;
+					}else{
+						button_BalaAcido.inputEnabled = true;
+						button_BalaAcido.tint=1 * 0xffffff;
+					}
 				}
-				if(num_balas_fue_J2==0){
-					button_BalaFuego.inputEnabled = false;
-					button_BalaFuego.tint=0.4 * 0xffffff;
-				}else{
-					button_BalaFuego.inputEnabled = true;
-					button_BalaFuego.tint=1* 0xffffff;
+				else
+				{
+					this.CartelVaqueros.tint=0.4 * 0xffffff;
+					this.CartelPiratas.tint=1 * 0xffffff;
+					balaDispara.x=1825;
+					balaDispara.y=450;
+					turno=1;
+					balaDispara.visible = false;
+					balaDispara=BalaCom1_J1;
+					text_num_balas_agu.text=num_balas_agu_J1;
+					text_num_balas_fue.text=num_balas_fue_J1;
+					text_num_balas_aci.text=num_balas_aci_J1;
+					if(num_balas_agu_J1==0){
+						button_BalaAgua.inputEnabled = false;
+						button_BalaAgua.tint=0.4 * 0xffffff;
+					}else{
+						button_BalaAgua.inputEnabled = true;
+						button_BalaAgua.tint=1 * 0xffffff;
+					}				
+					if(num_balas_fue_J1==0){
+						button_BalaFuego.inputEnabled = false;
+						button_BalaFuego.tint=0.4 * 0xffffff;
+					}else{
+						button_BalaFuego.inputEnabled = true;
+						button_BalaFuego.tint=1 * 0xffffff;
+					}				
+					if(num_balas_aci_J1==0){
+						button_BalaAcido.inputEnabled = false;
+						button_BalaAcido.tint=0.4 * 0xffffff;
+					}else{
+						button_BalaAcido.inputEnabled = true;
+						button_BalaAcido.tint=1 * 0xffffff;
+					}
 				}
-				if(num_balas_aci_J2==0){
-					button_BalaAcido.inputEnabled = false;
-					button_BalaAcido.tint=0.4 * 0xffffff;
-				}else{
-					button_BalaAcido.inputEnabled = true;
-					button_BalaAcido.tint=1 * 0xffffff;
-				}
+				balaDispara.visible = true;
+				disparos++;
+				fin_tiempo=1;
+				cuenta_atras.destroy();
+				cuenta_atras=this.time.create();
+				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
+				button_BalaComun.tint=0.78 * 0xffffff;
+				cuenta_atras.start();
+				//Fin Control turnos
 			}
-			else
-			{
-				this.CartelVaqueros.tint=0.4 * 0xffffff;
-				this.CartelPiratas.tint=1 * 0xffffff;
-				balaDispara.x=1825;
-				balaDispara.y=450;
-				turno=1;
-				balaDispara.visible = false;
-				balaDispara=BalaCom1_J1;
-				text_num_balas_agu.text=num_balas_agu_J1;
-				text_num_balas_fue.text=num_balas_fue_J1;
-				text_num_balas_aci.text=num_balas_aci_J1;
-				if(num_balas_agu_J1==0){
-					button_BalaAgua.inputEnabled = false;
-					button_BalaAgua.tint=0.4 * 0xffffff;
-				}else{
-					button_BalaAgua.inputEnabled = true;
-					button_BalaAgua.tint=1 * 0xffffff;
-				}				
-				if(num_balas_fue_J1==0){
-					button_BalaFuego.inputEnabled = false;
-					button_BalaFuego.tint=0.4 * 0xffffff;
-				}else{
-					button_BalaFuego.inputEnabled = true;
-					button_BalaFuego.tint=1 * 0xffffff;
-				}				
-				if(num_balas_aci_J1==0){
-					button_BalaAcido.inputEnabled = false;
-					button_BalaAcido.tint=0.4 * 0xffffff;
-				}else{
-					button_BalaAcido.inputEnabled = true;
-					button_BalaAcido.tint=1 * 0xffffff;
-				}
-			}
-			//Fin Control turnos	
-			this.resize();
-		}*/
+		}
 		//Fin Control turnos	
 		this.resize();
 	},
