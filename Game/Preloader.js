@@ -73,7 +73,6 @@ Game.Preloader.prototype={
 		this.load.setPreloadSprite(this.preloadBar);
 	},
 	create:function(){
-		alert();
 		this.state.start('MainMenu');
 	}
 };
