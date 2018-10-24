@@ -11,6 +11,7 @@ Game.Battle = function(game){
 	var construcAux;
 };
 var dineroJ1;
+var dineroJ2;
 
 var arrow;
 var catchFlag = false;
@@ -23,17 +24,18 @@ var disparos=1;
 var balaDispara=null;
 var fin_tiempo=1;
 //cambiar en la compra
-var num_balas_fue_J1=1;
-var num_balas_fue_J2=1;
-var num_balas_agu_J1=1;
-var num_balas_agu_J2=1;
-var num_balas_aci_J1=1;
-var num_balas_aci_J2=1;
+var num_balas_fue_J1=0;
+var num_balas_fue_J2=0;
+var num_balas_agu_J1=0;
+var num_balas_agu_J2=0;
+var num_balas_aci_J1=0;
+var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
 
 Game.Battle.prototype ={
 	create:function(){
 		dineroJ1=1000;
+		dineroJ2=1000;
 		this.construcAux=null;
 		
 		this.estado="CONSTRUCCION";
@@ -292,9 +294,18 @@ Game.Battle.prototype ={
 				text_cuenta_atras.anchor.setTo(0.5,0.5);
 
 				//Boton balas
-				this.button_bala_fuego=this.add.button(1350,200,'BotonBala_B');
-				this.button_bala_agua=this.add.button(1350+20+this.cache.getImage('BotonBala_B').width,200,'BotonBala_B');
-				this.button_bala_acido=this.add.button(1350+(20+this.cache.getImage('BotonBala_B').width)*2,200,'BotonBala_B');
+				this.button_bala_fuego=this.add.button(1350,200,'BotonBala_B',this.compraBalaFuego,this,2,1,0);
+				this.button_bala_fuego.anchor.setTo(0.5,0.5);
+				this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
+				this.textBFue.anchor.setTo(0.5,0.5);
+				this.button_bala_agua=this.add.button(1350+20+this.cache.getImage('BotonBala_B').width,200,'BotonBala_B',this.compraBalaAgua,this,2,1,0);
+				this.button_bala_agua.anchor.setTo(0.5,0.5);
+				this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
+				this.textBAgu.anchor.setTo(0.5,0.5);
+				this.button_bala_acido=this.add.button(1350+(20+this.cache.getImage('BotonBala_B').width)*2,200,'BotonBala_B',this.compraBalaAcido,this,2,1,0);
+				this.button_bala_acido.anchor.setTo(0.5,0.5);
+				this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
+				this.textBAci.anchor.setTo(0.5,0.5);
 
 				//Boton personaje
 				this.button_Jugador=this.add.button(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje');
@@ -486,6 +497,38 @@ Game.Battle.prototype ={
 			}
 		}
 	},*/
+	compraBalaFuego:function(){
+		if(this.turno=="J1"){
+			num_balas_fue_J1++;
+			dineroJ1-=15;
+		}
+		if(this.turno=="J1"){
+			num_balas_fue_J2++;
+			dineroJ2-=15;
+		}
+	},
+
+	compraBalaAgua:function(){
+		if(this.turno=="J1"){
+			num_balas_agu_J1++;
+			dineroJ1-=30;
+		}
+		if(this.turno=="J1"){
+			num_balas_agu_J2++;
+			dineroJ2-=30;
+		}
+	},
+
+	compraBalaAcido:function(){
+		if(this.turno=="J1"){
+			num_balas_aci_J1++;
+			dineroJ1-=50;
+		}
+		if(this.turno=="J1"){
+			num_balas_aci_J2++;
+			dineroJ2-=50;
+		}
+	},
 
 	change_material_madera:function(){
 		obj.material="madera";
@@ -759,9 +802,19 @@ Game.Battle.prototype ={
 				text_cuenta_atras.x=this.cuadroTiempo.width/2;
 				this.turno="J2";
 			}
+			//Actualizacion de textos
 			this.textDinero.destroy();
 			this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
 			this.textDinero.anchor.setTo(0.7,0.5);
+			this.textBFue.destroy();
+			this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
+			this.textBFue.anchor.setTo(0.5,0.5);
+			this.textBAgu.destroy();
+			this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
+			this.textBAgu.anchor.setTo(0.5,0.5);
+			this.textBAci.destroy();
+			this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
+			this.textBAci.anchor.setTo(0.5,0.5);
 
 			for(var i=0;i<this.cont;i++){
 				this.physics.arcade.collide(this.arr[i],this.SueloPirata);
