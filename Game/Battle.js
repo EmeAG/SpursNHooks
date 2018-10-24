@@ -263,7 +263,7 @@ Game.Battle.prototype ={
 			if(this.turno=="J1"){
 
 				//Telon
-				this.telon=this.add.sprite(this.world.width/3,0,'telon');
+				this.telon=this.add.sprite(this.world.width/3,0,'telon').bringToTop();
 
 				//Boton Tipos de Objetos
 				this.button_Rect_Vert = this.add.button(this.world.width/3+100, 40, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
@@ -286,7 +286,7 @@ Game.Battle.prototype ={
 				//Boton Tiempo
 				this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 				cuenta_atras=this.time.create();
-				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 2, this.finTiempo);
+				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 60, this.finTiempo);
 				cuenta_atras.start();
 				text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
 				text_cuenta_atras.anchor.setTo(0.5,0.5);
@@ -489,20 +489,14 @@ Game.Battle.prototype ={
 
 	change_material_madera:function(){
 		obj.material="madera";
-		obj.coste=10;
-		obj.vida=20;
 	},
 
 	change_material_piedra:function(){
 		obj.material="piedra";
-		obj.coste=20;
-		obj.vida=40;
 	},
 
 	change_material_metal:function(){
 		obj.material="metal";
-		obj.coste=35;
-		obj.vida=65;
 	},
 
 	create_tipo_trian:function(){
@@ -666,9 +660,14 @@ Game.Battle.prototype ={
 			if(this.num0!=this.cont-1){
 				this.arr[this.num0].coste=0;
 			}
+			if(this.turno=="J1"){
+				dineroJ1-=this.arr[this.num0].coste;
+			}
+			this.arr[this.num0].estado=0
+			this.construcAux=null;
+			this.num0=-1;
 		}
-		this.construcAux=null;
-		this.num0=-2;
+		
 	},
 
 	click_sprite:function(objeto){
@@ -760,8 +759,9 @@ Game.Battle.prototype ={
 				text_cuenta_atras.x=this.cuadroTiempo.width/2;
 				this.turno="J2";
 			}
-
-			this.dinerMarc=dineroJ1;
+			this.textDinero.destroy();
+			this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
+			this.textDinero.anchor.setTo(0.7,0.5);
 
 			for(var i=0;i<this.cont;i++){
 				this.physics.arcade.collide(this.arr[i],this.SueloPirata);
@@ -985,7 +985,12 @@ Game.Battle.prototype ={
 		if(this.arr[0]!=null){
 			this.game.debug.text(this.arr[0].coste,10,10,"white");
 		}
-		
+		if(this.arr[1]!=null){
+			this.game.debug.text(this.arr[1].coste,10,30,"white");
+		}
+		if(this.arr[2]!=null){
+			this.game.debug.text(this.arr[2].coste,10,50,"white");
+		}
 		//this.game.debug.text(this.tiempo,32,32,'white');
 	},
 	
