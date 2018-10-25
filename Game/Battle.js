@@ -47,6 +47,7 @@ Game.Battle.prototype ={
 		this.contConstJ1=0;
 		this.construcJ1=[];
 		this.contJugJ1=0;
+		this.numJ1=0;
 		this.jugadoresJ1=[];
 		this.construcJ2=[];
 		this.num0=-2;
@@ -776,16 +777,17 @@ Game.Battle.prototype ={
 	crearJugador:function(){
 		if(this.construcAux==null){
 			this.game.physics.arcade.gravity.y = 0;
-			if(this.turno=="J1"&&this.contJugJ1<3){
+			if(this.turno=="J1"&&this.numJ1<3){
 				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Pirata');
 				this.physics.enable(this.jugador);
 				this.jugador.inputEnabled=true;
 				this.jugador.num=this.contJugJ1;
 				this.num1=this.contJugJ1;
-				alert(this.num1);
+				//alert(this.num1);
 				this.construcAux=this.jugador;
 				this.jugadoresJ1[this.contJugJ1]=this.construcAux;
 				this.contJugJ1++;
+				this.numJ1++;
 			}
 		}
 	},
@@ -831,6 +833,7 @@ Game.Battle.prototype ={
 			if(this.num1>-1){
 				if(this.jugadoresJ1[this.num1].tint==0.4 * 0xffffff){
 					this.jugadoresJ1[this.num1].destroy();
+					this.numJ1--;
 					this.num1=-2;
 				}
 				else{
