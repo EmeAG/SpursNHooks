@@ -792,21 +792,31 @@ Game.Battle.prototype ={
 
 	move_sprite:function(objeto){
 		this.game.physics.arcade.gravity.y = 0;
-		if(this.construcJ1[this.num0].y+this.construcJ1[this.num0].height/2<this.SueloPirata.y && this.construcJ1[this.num0].x+this.construcJ1[this.num0].width/2<this.telon.x){
-			this.construcJ1[this.num0].tint=1 * 0xffffff;
+		if(objeto.y+objeto.height/2<this.SueloPirata.y && objeto.x+objeto.width/2<this.telon.x){
+			objeto.tint=1 * 0xffffff;
 		}
 		else{
-			this.construcJ1[this.num0].tint=0.4 * 0xffffff;
+			objeto.tint=0.4 * 0xffffff;
+		}
+		for(var i=0;i<this.contConstJ1;i++){
+			if(this.construcJ1[i]!=objeto){
+				if(objeto.x+objeto.width/2>this.construcJ1[i].x-this.construcJ1[i].width/2 && objeto.x-objeto.width/2<this.construcJ1[i].x+this.construcJ1[i].width/2){
+					if(objeto.y+objeto.height/2>this.construcJ1[i].y-this.construcJ1[i].height/2 && objeto.y-objeto.height/2<this.construcJ1[i].y+this.construcJ1[i].height/2){
+						objeto.tint=0.4 * 0xffffff;
+					}
+				}
+			}
 		}
 		objeto.anchor.setTo(0.5,0.5);
 		objeto.x=this.input.mousePointer.x;
 		objeto.y=this.input.mousePointer.y;
 	},
 
+
 	stop_move:function(){
 		if(this.input.mousePointer.isDown && this.construcAux!=null && this.delayAux>15){
 			if(this.num0>-1){
-				if(this.construcJ1[this.num0].y+this.construcJ1[this.num0].height/2<this.SueloPirata.y && this.construcJ1[this.num0].x+this.construcJ1[this.num0].width/2<this.telon.x){
+				/*if(this.construcJ1[this.num0].y+this.construcJ1[this.num0].height/2<this.SueloPirata.y && this.construcJ1[this.num0].x+this.construcJ1[this.num0].width/2<this.telon.x){
 					this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
 					this.construcJ1[this.num0].estado=0;
 					this.num0=-2;
@@ -814,6 +824,16 @@ Game.Battle.prototype ={
 				else{
 					dineroJ1+=this.construcJ1[this.num0].coste;
 					this.construcJ1[this.num0].destroy();
+					this.num0=-2;
+				}*/
+				if(this.construcJ1[this.num0].tint==0.4 * 0xffffff){
+					dineroJ1+=this.construcJ1[this.num0].coste;
+					this.construcJ1[this.num0].destroy();
+					this.num0=-2;
+				}
+				else{
+					this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
+					this.construcJ1[this.num0].estado=0;
 					this.num0=-2;
 				}
 				
