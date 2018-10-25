@@ -14,7 +14,7 @@ Game.MainMenu.prototype ={
 						boundsAlignV: "middle",
 					};
 	    
-        this.background = this.add.image(0, 0, "background");
+        this.background = this.add.image(0, 0, "preloader_fondo");
         this.background.height = this.game.height;
         this.background.width = this.game.width;
 		
