@@ -348,6 +348,7 @@ Game.Battle.prototype ={
 			this.button_Jugador=this.add.button(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje',this.crearJugador,this,2,1,0);
 			this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Pirata")
 			this.personaje.anchor.setTo(0.5,0.5);
+			this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,"3");
 
 			//Dinero
 			this.dineroMarc=this.add.sprite(1500,40,'BotonDinero');
@@ -1033,6 +1034,9 @@ Game.Battle.prototype ={
 				this.textBAci.destroy();
 				this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
 				this.textBAci.anchor.setTo(0.5,0.5);
+				this.textNum.destroy();
+				this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ1);
+
 			}
 			for(var i=0;i<this.contConstJ1;i++){
 				this.physics.arcade.collide(this.construcJ1[i],this.SueloPirata);
