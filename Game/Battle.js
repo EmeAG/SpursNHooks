@@ -272,7 +272,6 @@ Game.Battle.prototype ={
 			}
 		}
 
-		this.game.physics.arcade.gravity.y = 100;
 		if(this.turno=="J1"){
 			//Telon
 			this.telon=this.add.sprite(this.world.width/3,0,'telon').bringToTop();
@@ -311,7 +310,7 @@ Game.Battle.prototype ={
 			//Boton Tiempo
 			this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 			cuenta_atras=this.time.create();
-			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 4, this.finTiempo);
+			final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
 			cuenta_atras.start();
 			text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
 			text_cuenta_atras.anchor.setTo(0.5,0.5);
@@ -718,6 +717,7 @@ Game.Battle.prototype ={
 	},
 	create_tipo_rectV:function(){
 		if(this.construcAux==null){
+			this.game.physics.arcade.gravity.y = 0;
 			if(obj.material=="madera"){
 				this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectV');
 				this.physics.enable(this.bloq_mad_rect,Phaser.ARCADE);
@@ -781,6 +781,7 @@ Game.Battle.prototype ={
 			this.construcJ1[this.num0].estado=0
 			this.construcAux=null;
 			this.num0=-2;
+			this.game.physics.arcade.gravity.y = 100;
 		}
 		
 	},
