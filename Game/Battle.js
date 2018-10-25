@@ -809,6 +809,16 @@ Game.Battle.prototype ={
 				}
 			}
 		}
+		for(var i=0;i<this.contJugJ1;i++){
+			if(this.jugadoresJ1[i]!=objeto){
+				if(objeto.x+objeto.width/2>this.jugadoresJ1[i].x-this.jugadoresJ1[i].width/2 && objeto.x-objeto.width/2<this.jugadoresJ1[i].x+this.jugadoresJ1[i].width/2){
+					if(objeto.y+objeto.height/2>this.jugadoresJ1[i].y-this.jugadoresJ1[i].height/2 && objeto.y-objeto.height/2<this.jugadoresJ1[i].y+this.jugadoresJ1[i].height/2){
+						objeto.tint=0.4 * 0xffffff;
+					}
+				}
+			}
+		}
+		
 		objeto.anchor.setTo(0.5,0.5);
 		objeto.x=this.input.mousePointer.x;
 		objeto.y=this.input.mousePointer.y;
