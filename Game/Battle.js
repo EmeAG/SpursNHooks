@@ -1060,7 +1060,6 @@ Game.Battle.prototype ={
 
 			if(this.construcAux!=null){
 				this.move_sprite(this.construcAux);
-					//this.construcAux.x = this.physics.arcade.moveToPointer(this.construcAux, 60, this.game.input.activePointer, 500);
 				if(this.delayAux>15){
 					this.stop_move();
 				}
@@ -1071,19 +1070,7 @@ Game.Battle.prototype ={
 			if(this.num1>=0){
 				this.construcAux=this.jugadoresJ1[this.num1];
 			}
-			/*if(this.num1>=0 && this.construcAux!=null){
-				if(this.construcAux!=null){
-					this.move_sprite(this.construcAux);
-					//this.construcAux.x = this.physics.arcade.moveToPointer(this.construcAux, 60, this.game.input.activePointer, 500);
-				}
 
-				if(this.delayAux>15){
-					this.stop_move();
-				}
-			}
-			else{
-				this.construcAux=this.jugadoresJ1[this.num1];
-			}*/
 			this.delayAux++;
 
 			if(fin_tiempo==0&&this.turno=="J2"&& this.telon.y<=-1080){
@@ -1100,7 +1087,6 @@ Game.Battle.prototype ={
 				cuenta_atras.start();
 			}
 		}
-		//this.crear_pieza(this.mouse_correct_possition(0,this.world.width/3,true));
 		
 		//Inicio Giro de los cañones
 		if (this.estado=="BATALLA" && catchFlag != true && disparos>0){
