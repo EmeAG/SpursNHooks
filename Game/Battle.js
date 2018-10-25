@@ -816,16 +816,6 @@ Game.Battle.prototype ={
 	stop_move:function(){
 		if(this.input.mousePointer.isDown && this.construcAux!=null && this.delayAux>15){
 			if(this.num0>-1){
-				/*if(this.construcJ1[this.num0].y+this.construcJ1[this.num0].height/2<this.SueloPirata.y && this.construcJ1[this.num0].x+this.construcJ1[this.num0].width/2<this.telon.x){
-					this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
-					this.construcJ1[this.num0].estado=0;
-					this.num0=-2;
-				}
-				else{
-					dineroJ1+=this.construcJ1[this.num0].coste;
-					this.construcJ1[this.num0].destroy();
-					this.num0=-2;
-				}*/
 				if(this.construcJ1[this.num0].tint==0.4 * 0xffffff){
 					dineroJ1+=this.construcJ1[this.num0].coste;
 					this.construcJ1[this.num0].destroy();
@@ -839,8 +829,14 @@ Game.Battle.prototype ={
 				
 			}
 			if(this.num1>-1){
-				this.jugadoresJ1[this.num1].events.onInputDown.add(this.click_jugador,this);
-				this.num1=-2;
+				if(this.jugadoresJ1[this.num1].tint==0.4 * 0xffffff){
+					this.jugadoresJ1[this.num1].destroy();
+					this.num1=-2;
+				}
+				else{
+					this.jugadoresJ1[this.num1].events.onInputDown.add(this.click_jugador,this);
+					this.num1=-2;
+				}
 			}
 			this.construcAux=null;
 			this.game.physics.arcade.gravity.y = 100;
@@ -863,13 +859,7 @@ Game.Battle.prototype ={
 
 	espejo:function(objeto){
 		this.distanciaMedio=objeto.x-(this.world.width/2);
-		//if(this.distanciaMedio>=0){
 			objeto.x=this.world.width/2-this.distanciaMedio-objeto.width;
-		/*}
-		if(this.distanciaMedio<0){
-			objeto.x=this.world.width/2-this.distanciaMedio-objeto.width;
-		}*/
-		
 	},
 
 	update:function(){
