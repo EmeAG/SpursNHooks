@@ -49,7 +49,8 @@ Game.Battle.prototype ={
 		this.contJugJ1=0;
 		this.jugadoresJ1=[];
 		this.construcJ2=[];
-		this.num0=-1;
+		this.num0=-2;
+		this.num1=-2
 		this.delayAux=0;
 
 
@@ -342,7 +343,7 @@ Game.Battle.prototype ={
 			this.precioBAci.anchor.setTo(0.5,0.5);
 
 			//Boton personaje
-			this.button_Jugador=this.add.button(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje');
+			this.button_Jugador=this.add.button(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje',this.crearJugador,this,2,1,0);
 			this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Pirata")
 			this.personaje.anchor.setTo(0.5,0.5);
 
@@ -751,7 +752,24 @@ Game.Battle.prototype ={
 		}
 	},
 
+	crearJugador:function(){
+		if(this.construcAux==null){
+			this.game.physics.arcade.gravity.y = 0;
+			if(this.turno=="J1"&&this.contJugJ1<3){
+				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Pirata');
+				this.physics.enable(this.jugador);
+				this.jugador.inputEnabled=true;
+				this.jugador.num=this.contJugJ1;
+				this.num1=this.contConstJugJ1;
+				this.construcAux=this.jugador;
+				this.jugadoresJ1[this.contJugJ1]=this.construcAux;
+				this.contJugJ1++;
+			}
+		}
+	},
+
 	move_sprite:function(objeto){
+		this.game.physics.arcade.gravity.y = 0;
 		objeto.anchor.setTo(0.5,0.5);
 		objeto.x=this.input.mousePointer.x;
 		objeto.y=this.input.mousePointer.y;
@@ -759,36 +777,46 @@ Game.Battle.prototype ={
 
 	stop_move:function(){
 		if(this.input.mousePointer.isDown && this.construcAux!=null && this.delayAux>15){
-			this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
-			if(obj.material=="madera"&&this.num0==this.contConstJ1-1){
-				this.construcJ1[this.num0].coste=10;
-				this.construcJ1[this.num0].vida=20;
+			if(this.num0>-1){
+				this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
+				if(obj.material=="madera"&&this.num0==this.contConstJ1-1){
+					this.construcJ1[this.num0].coste=10;
+					this.construcJ1[this.num0].vida=20;
+				}
+				if(obj.material=="piedra"&&this.num0==this.contConstJ1-1){
+					this.construcJ1[this.num0].coste=20;
+					this.construcJ1[this.num0].vida=40;
+				}
+				if(obj.material=="metal"&&this.num0==this.contConstJ1-1){
+					this.construcJ1[this.num0].coste=35;
+					this.construcJ1[this.num0].vida=65;
+				}
+				if(this.num0!=this.contConstJ1-1){
+					this.construcJ1[this.num0].coste=0;
+				}
+				if(this.turno=="J1"){
+					dineroJ1-=this.construcJ1[this.num0].coste;
+				}
+				this.construcJ1[this.num0].estado=0;
+				this.num0=-2;
 			}
-			if(obj.material=="piedra"&&this.num0==this.contConstJ1-1){
-				this.construcJ1[this.num0].coste=20;
-				this.construcJ1[this.num0].vida=40;
+			if(this.num1>-1){
+				this.jugadoresJ1[this.num1].events.onInputDown.add(this.click_sprite,this);
+				this.num1=-2;
 			}
-			if(obj.material=="metal"&&this.num0==this.contConstJ1-1){
-				this.construcJ1[this.num0].coste=35;
-				this.construcJ1[this.num0].vida=65;
-			}
-			if(this.num0!=this.contConstJ1-1){
-				this.construcJ1[this.num0].coste=0;
-			}
-			if(this.turno=="J1"){
-				dineroJ1-=this.construcJ1[this.num0].coste;
-			}
-			this.construcJ1[this.num0].estado=0
 			this.construcAux=null;
-			this.num0=-2;
 			this.game.physics.arcade.gravity.y = 100;
 		}
 		
 	},
 
 	click_sprite:function(objeto){
-		if(this.num0==-1){
+		if(this.num0==-2){
 			this.num0=objeto.num;
+			this.delayAux=0;
+		}
+		if(this.num1==-2){
+			this.num1=objeto.num;
 			this.delayAux=0;
 		}
 	},
@@ -970,8 +998,32 @@ Game.Battle.prototype ={
 					}
 				}
 			}
+			for(var i=0;i<this.contJugJ1;i++){
+				this.physics.arcade.collide(this.jugadoresJ1[i],this.SueloPirata);
+				for(var p=0;p<this.contJugJ1;p++){
+					if(p!=i){
+						this.physics.arcade.collide(this.jugadoresJ1[i],this.jugadoresJ1[p]);
+					}
+				}
+				for(var j=0;j<this.contConstJ1;j++){
+					this.physics.arcade.collide(this.jugadoresJ1[i],this.construcJ1[j]);
+				}
+			}
 
-			if(this.num0>=0 && this.construcAux!=null){
+			if(this.construcAux!=null){
+				this.move_sprite(this.construcAux);
+					//this.construcAux.x = this.physics.arcade.moveToPointer(this.construcAux, 60, this.game.input.activePointer, 500);
+				if(this.delayAux>15){
+					this.stop_move();
+				}
+			}
+			if(this.num0>=0){
+				this.construcAux=this.construcJ1[this.num0];
+			}
+			if(this.num1>=0){
+				this.construcAux=this.jugadoresJ1[this.num1];
+			}
+			/*if(this.num1>=0 && this.construcAux!=null){
 				if(this.construcAux!=null){
 					this.move_sprite(this.construcAux);
 					//this.construcAux.x = this.physics.arcade.moveToPointer(this.construcAux, 60, this.game.input.activePointer, 500);
@@ -982,8 +1034,8 @@ Game.Battle.prototype ={
 				}
 			}
 			else{
-				this.construcAux=this.construcJ1[this.num0];
-			}
+				this.construcAux=this.jugadoresJ1[this.num1];
+			}*/
 			this.delayAux++;
 
 			if(fin_tiempo==0&&this.turno=="J2"&& this.telon.y<=-1080){
