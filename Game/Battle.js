@@ -50,7 +50,7 @@ Game.Battle.prototype ={
 		this.jugadoresJ1=[];
 		this.construcJ2=[];
 		this.num0=-2;
-		this.num1=-2
+		this.num1=-2;
 		this.delayAux=0;
 
 
@@ -275,7 +275,8 @@ Game.Battle.prototype ={
 
 		if(this.turno=="J1"){
 			//Telon
-			this.telon=this.add.sprite(this.world.width/3,0,'telon').bringToTop();
+			this.telon=this.add.sprite(this.world.width/3,0,'telon');
+			this.telon.bringToTop();
 
 			//Boton Tipos de Objetos
 			this.button_Rect_Vert = this.add.button(this.world.width/3+100, 40, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
@@ -760,7 +761,8 @@ Game.Battle.prototype ={
 				this.physics.enable(this.jugador);
 				this.jugador.inputEnabled=true;
 				this.jugador.num=this.contJugJ1;
-				this.num1=this.contConstJugJ1;
+				this.num1=this.contJugJ1;
+				alert(this.num1);
 				this.construcAux=this.jugador;
 				this.jugadoresJ1[this.contJugJ1]=this.construcAux;
 				this.contJugJ1++;
@@ -801,7 +803,7 @@ Game.Battle.prototype ={
 				this.num0=-2;
 			}
 			if(this.num1>-1){
-				this.jugadoresJ1[this.num1].events.onInputDown.add(this.click_sprite,this);
+				this.jugadoresJ1[this.num1].events.onInputDown.add(this.click_jugador,this);
 				this.num1=-2;
 			}
 			this.construcAux=null;
@@ -815,6 +817,9 @@ Game.Battle.prototype ={
 			this.num0=objeto.num;
 			this.delayAux=0;
 		}
+	},
+
+	click_jugador:function(objeto){
 		if(this.num1==-2){
 			this.num1=objeto.num;
 			this.delayAux=0;
@@ -917,6 +922,8 @@ Game.Battle.prototype ={
 			}
 			
 			if(fin_tiempo==0&&this.turno=="J1"){
+				this.espejo(this.telon);
+				this.telon.bringToTop();
 				this.espejo(this.button_Madera);
 				this.textMad.x=this.button_Madera.x+this.cache.getImage("boton_Material").width/3;
 				this.precioMad.x=this.button_Madera.x+this.cache.getImage('boton_Material').width/3*2+10;
@@ -965,7 +972,6 @@ Game.Battle.prototype ={
 				this.personaje.destroy();
 				this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Vaquero")
 				this.personaje.anchor.setTo(0.5,0.5);
-				this.espejo(this.telon);
 				fin_tiempo=1;					
 				cuenta_atras.destroy();
 				cuenta_atras=this.time.create();
@@ -1254,16 +1260,17 @@ Game.Battle.prototype ={
 		this.game.debug.body(this.SueloPirata);
 		this.game.debug.body(this.SueloVaquero);
 		//this.game.debug.text(dineroJ1,10,10,"white");
-		this.game.debug.text('0',this.world.width/2,40,"white");
+		this.game.debug.text(this.num1,this.world.width/2,40,"white");
 		if(this.construcJ1[0]!=null){
-			this.game.debug.text(this.construcJ1[0].coste,10,10,"white");
+			this.game.debug.text(this.contJugJ1.coste,10,10,"white");
 		}
 		if(this.construcJ1[1]!=null){
 			this.game.debug.text(this.construcJ1[1].coste,10,30,"white");
 		}
-		if(this.construcJ1[2]!=null){
-			this.game.debug.text(this.construcJ1[2].coste,10,50,"white");
+		if(this.jugadoresJ1[1]!=null){
+			this.game.debug.text(this.jugadoresJ1[1].num,10,50,"white");
 		}
+
 		//this.game.debug.text(this.tiempo,32,32,'white');
 	},
 	
