@@ -970,6 +970,20 @@ Game.Battle.prototype ={
 			}
 			
 			if(this.estado=="CONSTRUCCION"){
+				if(this.numJ1<3&&fin_tiempo==0){
+					this.num1=0;
+					for(var i=this.numJ1;i<3;i++){
+						if(this.delayAux>120){
+							this.jugador=this.add.sprite(this.cache.getImage("Pirata").width/2 + (this.world.width/3)/3*this.num1,0,'Pirata');
+							this.physics.enable(this.jugador);
+							this.jugador.inputEnabled=true;
+							this.jugador.num=this.contJugJ1;
+							this.jugadoresJ1[this.contJugJ1]=this.construcAux;
+							this.contJugJ1++;
+							this.numJ1++;
+						}
+					}
+				}
 				//mover el telon desde J2 
 				//añadir objetos que destruir antes de moverlo
 				if(fin_tiempo==0&&this.turno=="J2"&& this.telon.x<-40){
