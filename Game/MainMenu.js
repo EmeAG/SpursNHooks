@@ -6,14 +6,12 @@ Game.MainMenu.prototype ={
 
 	
 	create:function(){
-
         var style = {	font: "menu",
 						fill: "Black",
 						fontSize: "50pt",
 						boundsAlignH: "center",
 						boundsAlignV: "middle",
 					};
-	    
         this.background = this.add.image(0, 0, "preloader_fondo");
         this.background.height = this.game.height;
         this.background.width = this.game.width;
@@ -36,7 +34,8 @@ Game.MainMenu.prototype ={
 		this.text2.setTextBounds(0, 300, this.game.world.width,100);
 		this.text3.setTextBounds(0, 400, this.game.world.width,100);
 		
-		
+	    this.telon=this.add.sprite(-40,-1080,'telon');
+		this.physics.enable(this.telon, Phaser.Physics.ARCADE);		
 		/*this.text1.font='Notable-Regular';
 		this.text1.fontSize=tamano_fuente;
 		this.text1.align = 'center';	
@@ -63,10 +62,20 @@ Game.MainMenu.prototype ={
 			}
 		}
 		this.resize();
+		if(this.telon.y>=0){
+			this.state.start('Battle');
+		}
 	},
 
 	click_button:function(button){
-		this.state.start(button.stage);
+		if (button.stage!='Battle'){
+			this.state.start(button.stage);
+		}else{
+			this.telon.body.velocity.setTo(0, +180);
+			this.button_inicio.inputEnabled = false;
+			this.button_ajustes.inputEnabled = false;
+			this.button_tutorial.inputEnabled = false;
+		}
 	},
 
 	getSpriteScale: function (spriteWidth, spriteHeight, availableSpaceWidth, availableSpaceHeight, minPadding) {
