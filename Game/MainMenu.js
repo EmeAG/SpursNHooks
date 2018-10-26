@@ -12,7 +12,7 @@ Game.MainMenu.prototype ={
 						boundsAlignH: "center",
 						boundsAlignV: "middle",
 					};
-        this.background = this.add.image(0, 0, "preloader_fondo");
+        this.background = this.add.image(0, 0, "fondoMenu");
         this.background.height = this.game.height;
         this.background.width = this.game.width;
 		
@@ -98,7 +98,7 @@ Game.MainMenu.prototype ={
 
 	resize: function () {
 		this.num_botones=3;//numero de botones, para asignar el porcentaje de la pantalla
-		this.porcentaje_logo_juego=30;//espacio de la pantalla que se reserva al titulo del juego
+		this.porcentaje_logo_juego=15;//espacio de la pantalla que se reserva al titulo del juego
 		multiplicador_escala=1.75;//valor por el que se escalaran los botones, depende del tamaño de la pantalla
 
 		this.background.height = this.world.height;

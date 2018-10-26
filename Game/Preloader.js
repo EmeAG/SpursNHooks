@@ -6,8 +6,7 @@ Game.Preloader.prototype={
 	preload:function(){
 	
 		//Menu Images
-		this.load.spritesheet('button', 'assets/sprites/block.png', 193, 71);
-		this.load.image("background", 'assets/background.png');
+		this.load.image("fondoMenu", 'assets/Backgrounds/fondoMenu.png');
 		this.load.image("landscape", 'assets/landscape.png');
 		
 		//Game Images
