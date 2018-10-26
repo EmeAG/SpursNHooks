@@ -1285,17 +1285,21 @@ Game.Battle.prototype ={
 					this.textMet.x=this.button_Metal.x+this.cache.getImage("boton_Material").width/3;
 					this.precioMet.x=this.button_Metal.x+this.cache.getImage("boton_Material").width/3*2+10;
 					this.espejo(this.button_Rect_Horz);
-					this.textRectH.x=this.button_Rect_Horz.x+this.cache.getImage('boton_Tipo').width/2;
-					this.textRectH.anchor.setTo(0.5,0.5);
+					this.textRectH.destroy();
+					this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Horz.y+5,"Bloq_mad_rectH");
+					this.textRectH.anchor.setTo(0.5,0);
 					this.espejo(this.button_Rect_Vert);
-					this.textRectV.x=this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2;
+					this.textRectV.destroy();
+					this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
 					this.textRectV.anchor.setTo(0.5,0);
 					this.espejo(this.button_Trian);
-					this.textTrian.x=this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2;
-					this.textTrian.anchor.setTo(0.5,0.5);
+					this.textTrian.destroy();
+					this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+5,"Bloq_mad_trian");
+					this.textTrian.anchor.setTo(0.5,0);
 					this.espejo(this.button_Cuad);
-					this.textCuad.x=this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2;
-					this.textCuad.anchor.setTo(0.5,0.5);
+					this.textCuad.destroy();
+					this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+5,"Bloq_mad_cuad");
+					this.textCuad.anchor.setTo(0.5,0);
 					this.espejo(this.cuadroTiempo);
 					this.espejo(this.button_bala_acido);
 					this.balaAc.x=this.button_bala_acido.x-20;
@@ -1329,26 +1333,44 @@ Game.Battle.prototype ={
 					final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 100, this.finTiempo);
 					cuenta_atras.start();
 					text_cuenta_atras.x=this.cuadroTiempo.width/2;
+					obj.material="madera";
 					this.turno="J2";				
 				}
 
 				if(fin_tiempo!=0){			   
 					//Actualizacion de textos
-					this.textDinero.destroy();
-					this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
-					this.textDinero.anchor.setTo(0.7,0.5);
-					this.textBFue.destroy();
-					this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
-					this.textBFue.anchor.setTo(0.5,0.5);
-					this.textBAgu.destroy();
-					this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
-					this.textBAgu.anchor.setTo(0.5,0.5);
-					this.textBAci.destroy();
-					this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
-					this.textBAci.anchor.setTo(0.5,0.5);
-					this.textNum.destroy();
-					this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ1);
-
+					if(this.turno=="J1"){
+						this.textDinero.destroy();
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
+						this.textDinero.anchor.setTo(0.7,0.5);
+						this.textBFue.destroy();
+						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
+						this.textBFue.anchor.setTo(0.5,0.5);
+						this.textBAgu.destroy();
+						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
+						this.textBAgu.anchor.setTo(0.5,0.5);
+						this.textBAci.destroy();
+						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
+						this.textBAci.anchor.setTo(0.5,0.5);
+						this.textNum.destroy();
+						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ1);
+					}
+					if(this.turno=="J2"){
+						this.textDinero.destroy();
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2);
+						this.textDinero.anchor.setTo(0.7,0.5);
+						this.textBFue.destroy();
+						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J2);
+						this.textBFue.anchor.setTo(0.5,0.5);
+						this.textBAgu.destroy();
+						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J2);
+						this.textBAgu.anchor.setTo(0.5,0.5);
+						this.textBAci.destroy();
+						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J2);
+						this.textBAci.anchor.setTo(0.5,0.5);
+						this.textNum.destroy();
+						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);
+					}
 				}
 				for(var i=0;i<this.contConstJ1;i++){
 					this.physics.arcade.collide(this.construcJ1[i],this.SueloPirata);
