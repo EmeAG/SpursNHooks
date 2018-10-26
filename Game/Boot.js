@@ -14,7 +14,6 @@ Game.Boot.prototype = {
 	},
 	
 	preload:function(){
-		//this.load.image('preloader','assets/preloader.png');
 		this.load.image('preloader_fondo','assets/Backgrounds/FondoPreload.png');
 		this.load.image('preloader_bar','assets/Backgrounds/BarraCarga.png');
 	},
