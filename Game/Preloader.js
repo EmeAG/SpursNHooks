@@ -66,6 +66,7 @@ Game.Preloader.prototype={
 		
 		this.preloadBar=this.add.sprite(this.world.centerX,this.world.centerY + this.world.centerY/2,'preloader_bar');
 		this.preloadBar.anchor.setTo(0.5,0.5);
+		this.preloadBar.scale.x *= 0.5;
 		this.time.advancedTiming = true;
 			
 		
