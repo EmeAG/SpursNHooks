@@ -1715,20 +1715,16 @@ Game.Battle.prototype ={
 			if(turno==1){
 				for(var a=0;a<this.contConstJ2;a++){
 					this.physics.arcade.collide(this.construcJ2[a], balaDispara);
-					this.physics.arcade.collide(this.construcJ2[a], this.SueloVaquero);
 				}
 				for(var b=0;b<this.contJugJ2;b++){
 					this.physics.arcade.collide(this.jugadoresJ2[b], balaDispara);
-					this.physics.arcade.collide(this.jugadoresJ2[b], this.SueloVaquero);
 				}
 			}else{
 				for(var i=0;i<this.contConstJ1;i++){
 					this.physics.arcade.collide(this.construcJ1[i], balaDispara);
-					this.physics.arcade.collide(this.construcJ1[i], this.SueloPirata);
 				}
 				for(var i=0;i<this.contJugJ1;i++){
 					this.physics.arcade.collide(this.jugadoresJ1[i], balaDispara);
-					this.physics.arcade.collide(this.jugadoresJ1[i], this.SueloPirata);
 				}
 			}
 
