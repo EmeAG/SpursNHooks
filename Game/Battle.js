@@ -34,11 +34,11 @@ var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
 var cargando_batalla=0;
 var auxTiempo=25;//contador de tiempo global
-var peso_madera=5000;
-var peso_metal=12000;
-var peso_piedra=80000;
-var peso_balas=2;
-var peso_personaje=1000;
+var peso_madera=1;
+var peso_piedra=2;
+var peso_metal=3;
+var peso_balas=0;
+var peso_personaje=1;
 var musica;
 
 Game.Battle.prototype ={
