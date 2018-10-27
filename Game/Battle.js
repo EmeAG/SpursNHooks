@@ -1259,26 +1259,6 @@ Game.Battle.prototype ={
 				}
 			}
 
-			if (this.estado=="BATALLA"){
-				//Fisicas entre objetos
-				this.physics.arcade.collide(this.SueloPirata, balaDispara);
-				this.physics.arcade.collide(this.SueloVaquero, balaDispara);
-				
-				//Inicio Disparo
-				puntero=this.input.activePointer;
-				arrow.rotation = this.physics.arcade.angleBetween(arrow, balaDispara);
-				
-				if (catchFlag == true)
-				{
-					//  Track the ball sprite to the mouse
-					arrow.alpha = 1;    
-					analog.alpha = 0.5;
-					analog.rotation = arrow.rotation - 3.14 / 2;
-					analog.height = this.physics.arcade.distanceBetween(arrow, this.input.activePointer);    
-					launchVelocity = analog.height;
-				}	
-				//Fin Disparo
-			}
 			if(this.estado=="CONSTRUCCION"){
 				this.game.physics.arcade.gravity.y = 100;
 			
@@ -1322,13 +1302,13 @@ Game.Battle.prototype ={
 							this.button_Metal.visible=false;
 							this.textMet.visible=false;
 							this.button_Rect_Horz.visible=false;
-							this.textRectH.visible=false;
+							this.textRectH.destroy();
 							this.button_Rect_Vert.visible=false;
-							this.textRectV.visible=false;
+							this.textRectV.destroy();
 							this.button_Trian.visible=false;
-							this.textTrian.visible=false;
+							this.textTrian.destroy();
 							this.button_Cuad.visible=false;
-							this.textCuad.visible=false;
+							this.textCuad.destroy();
 							this.cuadroTiempo.visible=false;
 							this.button_bala_acido.visible=false;
 							this.button_bala_agua.visible=false;
@@ -1340,12 +1320,19 @@ Game.Battle.prototype ={
 							this.textBFue.visible=false;
 							this.textBAgu.visible=false;
 							this.textBAci.visible=false;
+							this.textNum.visible=false;
+							this.balaF.visible=false;
+							this.balaAg.visible=false;
+							this.balaAc.visible=false;
+							this.precioBAci.destroy();
+							this.precioBAgu.destroy();
+							this.precioBFue.destroy();
 						}
 						if(this.telon.x<=-this.world.width/3-80){
 							this.telon.body.velocity.setTo(0,0);
 							dineroJ1=-1;
 							dineroJ2=dineroJugadores;
-							//this.telon.bringToTop();
+							
 							this.espejo(this.button_Madera);
 							this.textMad.x=this.button_Madera.x+this.cache.getImage("boton_Material").width/3;
 							this.precioMad.x=this.button_Madera.x+this.cache.getImage('boton_Material').width/3*2+10;
@@ -1356,19 +1343,15 @@ Game.Battle.prototype ={
 							this.textMet.x=this.button_Metal.x+this.cache.getImage("boton_Material").width/3;
 							this.precioMet.x=this.button_Metal.x+this.cache.getImage("boton_Material").width/3*2+10;
 							this.espejo(this.button_Rect_Horz);
-							this.textRectH.destroy();
 							this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_rectH");
 							this.textRectH.anchor.setTo(0,0.5);
 							this.espejo(this.button_Rect_Vert);
-							this.textRectV.destroy();
 							this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
 							this.textRectV.anchor.setTo(0.5,0);
 							this.espejo(this.button_Trian);
-							this.textTrian.destroy();
 							this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_trian");
 							this.textTrian.anchor.setTo(0.5,0.5);
 							this.espejo(this.button_Cuad);
-							this.textCuad.destroy();
 							this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_cuad");
 							this.textCuad.anchor.setTo(0.5,0.5);
 							this.espejo(this.cuadroTiempo);
@@ -1449,12 +1432,18 @@ Game.Battle.prototype ={
 							this.textBAgu.bringToTop();
 							this.textBAci.visible=true;
 							this.textBAci.bringToTop();
+							this.balaF.visible=true;
+							this.balaF.bringToTop();
+							this.balaAg.visible=true;
+							this.balaAg.bringToTop();
+							this.balaAc.visible=true;
+							this.balaAc.bringToTop();
 							this.personaje.bringToTop();
 							this.textCuad.bringToTop();
 							this.textTrian.bringToTop();
 							this.textRectV.bringToTop();
 							this.textRectH.bringToTop();
-
+							
 							fin_tiempo=1;
 							cuenta_atras.destroy();
 							cuenta_atras=this.time.create();
@@ -1467,7 +1456,7 @@ Game.Battle.prototype ={
 					}		
 				}
 
-				if(fin_tiempo!=0){			   
+				if(fin_tiempo!=0){
 					//Actualizacion de textos
 					if(this.turno=="J1"){
 						this.textDinero.destroy();
@@ -1498,8 +1487,8 @@ Game.Battle.prototype ={
 						this.textBAci.destroy();
 						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J2);
 						this.textBAci.anchor.setTo(0.5,0.5);
-						this.textNum.destroy();
-						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);
+						this.textNum.destroy();	
+						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);	
 					}
 					if(this.construcAux!=null){
 						this.move_sprite(this.construcAux);
@@ -1655,6 +1644,26 @@ Game.Battle.prototype ={
 			this.delayAux++;
 		}
 		
+		if (this.estado=="BATALLA"){
+			//Fisicas entre objetos
+			this.physics.arcade.collide(this.SueloPirata, balaDispara);
+			this.physics.arcade.collide(this.SueloVaquero, balaDispara);
+			
+			//Inicio Disparo
+			puntero=this.input.activePointer;
+			arrow.rotation = this.physics.arcade.angleBetween(arrow, balaDispara);
+			
+			if (catchFlag == true)
+			{
+				//  Track the ball sprite to the mouse
+				arrow.alpha = 1;    
+				analog.alpha = 0.5;
+				analog.rotation = arrow.rotation - 3.14 / 2;
+				analog.height = this.physics.arcade.distanceBetween(arrow, this.input.activePointer);    
+				launchVelocity = analog.height;
+			}	
+			//Fin Disparo
+		}
 		//Inicio Giro de los cañones
 		if (this.estado=="BATALLA" && catchFlag != true && disparos>0){
 			//Fisicas entre objetos
