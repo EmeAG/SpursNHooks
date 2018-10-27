@@ -32,6 +32,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
 var cargando_batalla=0;
+var auxTiempo=4;//contador de tiempo global
 
 Game.Battle.prototype ={
 	create:function(){
@@ -41,7 +42,6 @@ Game.Battle.prototype ={
 		
 		this.estado="CONSTRUCCION";
 		this.turno="J1";
-		this.auxTiempo=30;
 		
 		obj=new Objeto();
 		this.contConstJ1=0;
@@ -312,8 +312,7 @@ Game.Battle.prototype ={
 		//Boton Tiempo
 		this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 		cuenta_atras=this.time.create();
-		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 10, this.finTiempo);
-		cuenta_atras.start();
+		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
 		text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
 		text_cuenta_atras.anchor.setTo(0.5,0.5);
 
@@ -1186,6 +1185,7 @@ Game.Battle.prototype ={
 				//Dinero
 				this.dineroMarc.bringToTop();
 				this.textDinero.bringToTop();
+				cuenta_atras.start();
 			}
 		}else{
 			//Inicio Actualizar cuenta atrás
@@ -1360,7 +1360,7 @@ Game.Battle.prototype ={
 							fin_tiempo=1;					
 							cuenta_atras.destroy();
 							cuenta_atras=this.time.create();
-							final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 100, this.finTiempo);
+							final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
 							cuenta_atras.start();
 							text_cuenta_atras.x=this.cuadroTiempo.width/2;
 							obj.material="madera";
@@ -1456,7 +1456,7 @@ Game.Battle.prototype ={
 					//tiempo cuenta atras
 					cuenta_atras.destroy();
 					cuenta_atras=this.time.create();
-					final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
+					final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
 					text_cuenta_atras=this.game.add.text(928, 80, '00',style_contador);
 					
 					this.telon.destroy();
@@ -1587,7 +1587,7 @@ Game.Battle.prototype ={
 				fin_tiempo=1;
 				cuenta_atras.destroy();
 				cuenta_atras=this.time.create();
-				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 30, this.finTiempo);
+				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
 				button_BalaComun.tint=0.78 * 0xffffff;
 				cuenta_atras.start();
 				//Fin Control turnos
