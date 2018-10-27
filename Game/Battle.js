@@ -33,11 +33,11 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
 var cargando_batalla=0;
-var auxTiempo=2;//contador de tiempo global
-var peso_madera=200;
-var peso_metal=200;
-var peso_piedra=200;
-var peso_balas=200;
+var auxTiempo=15;//contador de tiempo global
+var peso_madera=0;
+var peso_metal=0;
+var peso_piedra=0;
+var peso_balas=0;
 
 Game.Battle.prototype ={
 	create:function(){
@@ -659,7 +659,7 @@ Game.Battle.prototype ={
 					this.construcAux=this.bloq_mad_trian;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2" && (dineroJ1-10)>=0){
+				if(this.turno=="J2" && (dineroJ2-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
 					this.physics.enable(this.bloq_mad_trian,Phaser.Physics.ARCADE);
 					this.bloq_mad_trian.inputEnabled=true;
@@ -685,7 +685,7 @@ Game.Battle.prototype ={
 					this.construcAux=this.bloq_pied_trian;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2" && (dineroJ1-20)>=0){
+				if(this.turno=="J2" && (dineroJ2-20)>=0){
 					this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
 					this.physics.enable(this.bloq_pied_trian,Phaser.ARCADE);
 					this.bloq_pied_trian.inputEnabled=true;
@@ -711,7 +711,7 @@ Game.Battle.prototype ={
 					this.construcAux=this.bloq_met_trian;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2" && (dineroJ1-35)>=0){
+				if(this.turno=="J2" && (dineroJ2-35)>=0){
 					this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
 					this.physics.enable(this.bloq_met_trian,Phaser.ARCADE);
 					this.bloq_met_trian.inputEnabled=true;
