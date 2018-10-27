@@ -34,10 +34,10 @@ var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
 var cargando_batalla=0;
 var auxTiempo=2;//contador de tiempo global
-var peso_madera=200;
-var peso_metal=200;
-var peso_piedra=200;
-var peso_balas=200;
+var peso_madera=0;
+var peso_metal=0;
+var peso_piedra=0;
+var peso_balas=0;
 
 Game.Battle.prototype ={
 	create:function(){
@@ -711,7 +711,7 @@ Game.Battle.prototype ={
 					this.construcAux=this.bloq_met_trian;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2" && (dineroJ1-35)>=0){
+				if(this.turno=="J2" && (dineroJ2-35)>=0){
 					this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
 					this.physics.enable(this.bloq_met_trian,Phaser.ARCADE);
 					this.bloq_met_trian.inputEnabled=true;
@@ -1703,30 +1703,30 @@ Game.Battle.prototype ={
 			this.physics.arcade.collide(this.SueloVaquero, balaDispara);
 			
 			if(turno==1){
-				for(var i=0;i<this.contConstJ2;i++){
-					this.physics.arcade.collide(this.construcJ2[i],this.SueloPirata);
-					this.physics.arcade.collide(this.construcJ2[i], balaDispara);
+				for(var a=0;a<this.contConstJ2;a++){
+					this.physics.arcade.collide(this.construcJ2[a],this.SueloPirata);
+					this.physics.arcade.collide(this.construcJ2[a], balaDispara);
 					for(var j=0;j<this.contConstJ2;j++){
-						if(j!=i){
-							this.physics.arcade.collide(this.construcJ2[i],this.construcJ2[j]);
+						if(j!=a){
+							this.physics.arcade.collide(this.construcJ2[a],this.construcJ2[j]);
 						}
 					}
 				}
-				for(var i=0;i<this.contJugJ2;i++){
-					this.physics.arcade.collide(this.jugadoresJ2[i],this.SueloPirata, balaDispara);
-					this.physics.arcade.collide(this.jugadoresJ2[i], balaDispara);
+				for(var b=0;i<this.contJugJ2;b++){
+					this.physics.arcade.collide(this.jugadoresJ2[b],this.SueloPirata);
+					this.physics.arcade.collide(this.jugadoresJ2[b], balaDispara);
 					for(var p=0;p<this.contJugJ2;p++){
-						if(p!=i){
-							this.physics.arcade.collide(this.jugadoresJ2[i],this.jugadoresJ2[p]);
+						if(p!=b){
+							this.physics.arcade.collide(this.jugadoresJ2[b],this.jugadoresJ2[p]);
 						}
 					}
 					for(var j=0;j<this.contConstJ2;j++){
-						this.physics.arcade.collide(this.jugadoresJ2[i],this.construcJ2[j]);
+						this.physics.arcade.collide(this.jugadoresJ2[b],this.construcJ2[j]);
 					}
 				}
 			}else{
 				for(var i=0;i<this.contConstJ1;i++){
-					this.physics.arcade.collide(this.construcJ1[i],this.SueloPirata, balaDispara);
+					this.physics.arcade.collide(this.construcJ1[i],this.SueloPirata);
 					this.physics.arcade.collide(this.construcJ1[i], balaDispara);
 					for(var j=0;j<this.contConstJ1;j++){
 						if(j!=i){
@@ -1735,7 +1735,7 @@ Game.Battle.prototype ={
 					}
 				}
 				for(var i=0;i<this.contJugJ1;i++){
-					this.physics.arcade.collide(this.jugadoresJ1[i],this.SueloPirata, balaDispara);
+					this.physics.arcade.collide(this.jugadoresJ1[i],this.SueloPirata);
 					this.physics.arcade.collide(this.jugadoresJ1[i], balaDispara);
 					for(var p=0;p<this.contJugJ1;p++){
 						if(p!=i){
@@ -1760,11 +1760,12 @@ Game.Battle.prototype ={
 				analog.rotation = arrow.rotation - 3.14 / 2;
 				analog.height = this.physics.arcade.distanceBetween(arrow, this.input.activePointer);    
 				launchVelocity = analog.height;
-			}	
+				this.delayAux=0;
+			}
 			//Fin Disparo
 			
 			//Inicio Control turnos
-			if((disparos==0 && (balaDispara.body.x<0||balaDispara.body.x>1920||balaDispara.body.y>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0)))||fin_tiempo==0){
+			if((disparos==0 && (balaDispara.body.x<0||balaDispara.body.x>1920||balaDispara.body.y>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0)))||fin_tiempo==0 || (this.delayAux>180&&disparos==0)){
 				balaDispara.body.moves = false;
 				balaDispara.body.velocity.setTo(0, 0);
 				if(turno==1){
@@ -1848,11 +1849,11 @@ Game.Battle.prototype ={
 			//Inicio Giro de los cañones
 			if (catchFlag != true && disparos>0){
 				//Fisicas entre objetos
-				this.physics.arcade.collide(this.SueloPirata, balaDispara);
-				this.physics.arcade.collide(this.SueloVaquero, balaDispara);
+				//this.physics.arcade.collide(this.SueloPirata, balaDispara);
+				//this.physics.arcade.collide(this.SueloVaquero, balaDispara);
 			
 				//Inicio Disparo
-				puntero=this.input.activePointer;
+				/*puntero=this.input.activePointer;
 				arrow.rotation = this.physics.arcade.angleBetween(arrow, balaDispara);
 				
 				if (catchFlag == true)
@@ -1863,9 +1864,11 @@ Game.Battle.prototype ={
 					analog.rotation = arrow.rotation - 3.14 / 2;
 					analog.height = this.physics.arcade.distanceBetween(arrow, this.input.activePointer);    
 					launchVelocity = analog.height;
-				}		
+				}*/
 				//Fin Disparo
-			
+
+
+				
 				if (turno==1){
 					if (this.game.physics.arcade.angleToPointer(this.CannonPirata)>-1.1 && this.game.physics.arcade.angleToPointer(this.CannonPirata)<0.55){
 						this.CannonPirata.rotation = this.game.physics.arcade.angleToPointer(this.CannonPirata);
@@ -1885,7 +1888,8 @@ Game.Battle.prototype ={
 					}
 				}
 			}
-			//Fin Giro de los cañones			
+			//Fin Giro de los cañones		
+			this.delayAux++;			
 		}
 		this.resize();
 	},
