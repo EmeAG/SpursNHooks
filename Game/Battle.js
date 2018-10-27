@@ -38,9 +38,13 @@ var peso_madera=0;
 var peso_metal=0;
 var peso_piedra=0;
 var peso_balas=0;
+var musica;
 
 Game.Battle.prototype ={
 	create:function(){
+		musica=this.game.add.audio("batallaMusic",0.4,true);
+		musica.play();
+
 		dineroJugadores=1000;
 		dineroJ1=dineroJugadores;
 		dineroJ2=-1;
