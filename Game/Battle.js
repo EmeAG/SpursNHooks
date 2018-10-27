@@ -33,7 +33,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
 var cargando_batalla=0;
-var auxTiempo=4;//contador de tiempo global
+var auxTiempo=1;//contador de tiempo global
 
 Game.Battle.prototype ={
 	create:function(){
@@ -1443,7 +1443,13 @@ Game.Battle.prototype ={
 							this.textTrian.bringToTop();
 							this.textRectV.bringToTop();
 							this.textRectH.bringToTop();
-							
+							this.precioBAci.bringToTop();
+							this.precioBAgu.bringToTop();
+							this.precioBFue.bringToTop();
+							this.precioPied.bringToTop();
+							this.precioMet.bringToTop();
+							this.precioMad.bringToTop();
+
 							fin_tiempo=1;
 							cuenta_atras.destroy();
 							cuenta_atras=this.time.create();
@@ -1608,10 +1614,21 @@ Game.Battle.prototype ={
 								this.textBFue.destroy();
 								this.textBAgu.destroy();
 								this.textBAci.destroy();
-
+								this.precioPied.destroy();
+								this.precioMet.destroy();
+								this.precioMad.destroy();
+								
+								this.balaF.destroy();
+								this.balaAg.destroy();
+								this.balaAc.destroy();
+								this.personaje.destroy();
 								this.physics.enable(this.telon, Phaser.Physics.ARCADE);
 								this.telon.body.velocity.setTo(200, 0);
 								this.telon.body.allowGravity = false;
+								this.telon.bringToTop();
+								this.precioBAci.destroy();
+								this.precioBFue.destroy();
+								this.precioBAci.destroy();
 							}
 							//parar elmovimiento horizontal del telon
 							if(this.telon.x>=-40){
