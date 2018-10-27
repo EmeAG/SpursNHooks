@@ -34,10 +34,11 @@ var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
 var cargando_batalla=0;
 var auxTiempo=25;//contador de tiempo global
-var peso_madera=0;
-var peso_metal=0;
-var peso_piedra=0;
-var peso_balas=0;
+var peso_madera=5000;
+var peso_metal=12000;
+var peso_piedra=80000;
+var peso_balas=2;
+var peso_personaje=1000;
 var musica;
 
 Game.Battle.prototype ={
@@ -87,6 +88,8 @@ Game.Battle.prototype ={
 		this.SueloPirata.body.collideWorldBounds = true;
 		this.SueloVaquero.body.bounce.set(1);
 		this.SueloPirata.body.bounce.set(1);
+		this.SueloVaquero.body.friction = new Phaser.Point(8,8);
+		this.SueloPirata.body.friction = new Phaser.Point(8, 8);
 
 		this.cargar_batalla = function (){
 			//Activar lanzamiento desde el fondo de la pantalla
@@ -1016,6 +1019,7 @@ Game.Battle.prototype ={
 			if(this.turno=="J1"&&this.numJ1<3){
 				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Pirata');
 				this.physics.enable(this.jugador);
+				this.jugador.body.mass=peso_personaje;
 				this.jugador.inputEnabled=true;
 				this.jugador.num=this.contJugJ1;
 				this.num1=this.contJugJ1;
@@ -1029,6 +1033,7 @@ Game.Battle.prototype ={
 			if(this.turno=="J2"&&this.numJ2<3){
 				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Vaquero');
 				this.physics.enable(this.jugador);
+				this.jugador.body.mass=peso_personaje;
 				this.jugador.inputEnabled=true;
 				this.jugador.num=this.contJugJ2;
 				this.num1=this.contJugJ2;
@@ -1102,6 +1107,7 @@ Game.Battle.prototype ={
 		objeto.anchor.setTo(0.5,0.5);
 		objeto.x=this.input.mousePointer.x;
 		objeto.y=this.input.mousePointer.y;
+		this.game.physics.arcade.gravity.y = 100;
 	},
 
 
@@ -1709,16 +1715,20 @@ Game.Battle.prototype ={
 			if(turno==1){
 				for(var a=0;a<this.contConstJ2;a++){
 					this.physics.arcade.collide(this.construcJ2[a], balaDispara);
+					this.physics.arcade.collide(this.construcJ2[a], this.SueloVaquero);
 				}
 				for(var b=0;b<this.contJugJ2;b++){
 					this.physics.arcade.collide(this.jugadoresJ2[b], balaDispara);
+					this.physics.arcade.collide(this.jugadoresJ2[b], this.SueloVaquero);
 				}
 			}else{
 				for(var i=0;i<this.contConstJ1;i++){
 					this.physics.arcade.collide(this.construcJ1[i], balaDispara);
+					this.physics.arcade.collide(this.construcJ1[i], this.SueloPirata);
 				}
 				for(var i=0;i<this.contJugJ1;i++){
 					this.physics.arcade.collide(this.jugadoresJ1[i], balaDispara);
+					this.physics.arcade.collide(this.jugadoresJ1[i], this.SueloPirata);
 				}
 			}
 
@@ -1970,6 +1980,20 @@ Game.Battle.prototype ={
 
 		this.game.debug.text(this.game.physics.arcade.gravity.y ,32,60,'white');
 		this.game.debug.text(obj.material,32,32,'white');
+		
+		
+		for(var i=0;i<this.contConstJ1;i++){
+			this.game.debug.body(this.construcJ1[i]);
+		}
+		for(var i=0;i<this.contJugJ1;i++){
+			this.game.debug.body(this.jugadoresJ1[i]);
+		}
+		for(var i=0;i<this.contConstJ2;i++){
+			this.game.debug.body(this.construcJ2[i]);
+		}
+		for(var i=0;i<this.contJugJ2;i++){
+			this.game.debug.body(this.jugadoresJ2[i]);
+		}		
 	},
 	
 };
