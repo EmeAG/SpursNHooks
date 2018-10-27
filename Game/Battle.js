@@ -33,7 +33,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
 var cargando_batalla=0;
-var auxTiempo=30;//contador de tiempo global
+var auxTiempo=4;//contador de tiempo global
 
 Game.Battle.prototype ={
 	create:function(){
@@ -1488,20 +1488,55 @@ Game.Battle.prototype ={
 					}
 				}
 
-
-				if(fin_tiempo==0&&this.turno=="J2"&& this.telon.y<=-1080){
-					fin_tiempo=1;
-					//tiempo cuenta atras
-					cuenta_atras.destroy();
-					cuenta_atras=this.time.create();
-					final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
-					text_cuenta_atras=this.game.add.text(928, 80, '00',style_contador);
-					
-					this.telon.destroy();
-					this.estado="BATALLA";
-					this.turno="J1"
-					cuenta_atras.start();
+				if(fin_tiempo==0&&this.turno=="J2"){
+					if(this.construcAux!=null){
+						this.stop_move();
+						this.textDinero.destroy();
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2);
+						this.textDinero.anchor.setTo(0.7,0.5);
+					}
+					this.game.physics.arcade.gravity.y = 100;
+					if(this.numJ2<3){
+						//alert(this.numJ2);
+						for(var i=this.numJ2;i<3;i++){
+							if(this.delayAux>120){
+								this.jugador=this.add.sprite((-this.cache.getImage("Vaquero").width/2+this.world.width)-+this.world.width/7*(2-i),0,'Vaquero');
+								this.jugador.anchor.setTo(0.5,0.5);
+								alert(this.jugador.x);
+								this.physics.enable(this.jugador);
+								this.jugador.inputEnabled=true;
+								this.jugador.num=this.contJugJ2;
+								this.num1=this.contJugJ2;
+								//alert(this.num1);
+								this.construcAux=this.jugador;
+								this.jugadoresJ2[this.contJugJ2]=this.construcAux;
+								this.contJugJ2++;
+								this.numJ2++;
+								this.delayAux=0;
+								this.construcAux=null;
+								this.num1=-2;
+								//alert((this.world.width/3)/2*(2-i));
+							}
+						}
+					}
 				}
+				else{
+					if(this.telon.y<=-1080){
+						fin_tiempo=1;
+						//tiempo cuenta atras
+						cuenta_atras.destroy();
+						cuenta_atras=this.time.create();
+						final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
+						text_cuenta_atras=this.game.add.text(928, 80, '00',style_contador);
+						
+						this.telon.destroy();
+						this.estado="BATALLA";
+						this.turno="J1"
+						cuenta_atras.start();
+					}
+				}
+
+				
 			}
 			this.delayAux++;
 		}
