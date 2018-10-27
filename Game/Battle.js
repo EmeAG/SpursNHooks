@@ -539,88 +539,100 @@ Game.Battle.prototype ={
 		}
 	},
 	compraBalaFuego:function(){
-		if(this.turno=="J1"){
-			num_balas_fue_J1++;
-			dineroJ1-=15;
-		}
-		if(this.turno=="J2"){
-			num_balas_fue_J2++;
-			dineroJ2-=15;
+		if(fin_tiempo!=0){
+			if(this.turno=="J1"){
+				num_balas_fue_J1++;
+				dineroJ1-=15;
+			}
+			if(this.turno=="J2"){
+				num_balas_fue_J2++;
+				dineroJ2-=15;
+			}
 		}
 	},
 
 	compraBalaAgua:function(){
-		if(this.turno=="J1"){
-			num_balas_agu_J1++;
-			dineroJ1-=30;
-		}
-		if(this.turno=="J2"){
-			num_balas_agu_J2++;
-			dineroJ2-=30;
-		}
+		if(fin_tiempo!=0){
+			if(this.turno=="J1"){
+				num_balas_agu_J1++;
+				dineroJ1-=30;
+			}
+			if(this.turno=="J2"){
+				num_balas_agu_J2++;
+				dineroJ2-=30;
+			}
+		}		
 	},
 
 	compraBalaAcido:function(){
-		if(this.turno=="J1"){
-			num_balas_aci_J1++;
-			dineroJ1-=50;
-		}
-		if(this.turno=="J2"){
-			num_balas_aci_J2++;
-			dineroJ2-=50;
-		}
+		if(fin_tiempo!=0){
+			if(this.turno=="J1"){
+				num_balas_aci_J1++;
+				dineroJ1-=50;
+			}
+			if(this.turno=="J2"){
+				num_balas_aci_J2++;
+				dineroJ2-=50;
+			}
+		}		
 	},
 
 	change_material_madera:function(){
-		obj.material="madera";
-		this.textRectV.destroy();
-		this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
-		this.textRectV.anchor.setTo(0.5,0);
-		this.textRectH.destroy();
-		this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_rectH");
-		this.textRectH.anchor.setTo(0,0.5);
-		this.textTrian.destroy();
-		this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_trian");
-		this.textTrian.anchor.setTo(0.5,0.5);
-		this.textCuad.destroy();
-		this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_cuad");
-		this.textCuad.anchor.setTo(0.5,0.5);
+		if(fin_tiempo!=0){
+			obj.material="madera";
+			this.textRectV.destroy();
+			this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
+			this.textRectV.anchor.setTo(0.5,0);
+			this.textRectH.destroy();
+			this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_rectH");
+			this.textRectH.anchor.setTo(0,0.5);
+			this.textTrian.destroy();
+			this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_trian");
+			this.textTrian.anchor.setTo(0.5,0.5);
+			this.textCuad.destroy();
+			this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_cuad");
+			this.textCuad.anchor.setTo(0.5,0.5);
+		}
 	},
 
 	change_material_piedra:function(){
-		obj.material="piedra";
-		this.textRectV.destroy();
-		this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_pied_rectV");
-		this.textRectV.anchor.setTo(0.5,0);
-		this.textRectH.destroy();
-		this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_pied_rectH");
-		this.textRectH.anchor.setTo(0,0.5);
-		this.textTrian.destroy();
-		this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_pied_trian");
-		this.textTrian.anchor.setTo(0.5,0.5);
-		this.textCuad.destroy();
-		this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_pied_cuad");
-		this.textCuad.anchor.setTo(0.5,0.5);
+		if(fin_tiempo!=0){
+			obj.material="piedra";
+			this.textRectV.destroy();
+			this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_pied_rectV");
+			this.textRectV.anchor.setTo(0.5,0);
+			this.textRectH.destroy();
+			this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_pied_rectH");
+			this.textRectH.anchor.setTo(0,0.5);
+			this.textTrian.destroy();
+			this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_pied_trian");
+			this.textTrian.anchor.setTo(0.5,0.5);
+			this.textCuad.destroy();
+			this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_pied_cuad");
+			this.textCuad.anchor.setTo(0.5,0.5);
+		}	
 	},
 
 	change_material_metal:function(){
-		obj.material="metal";
-		this.textRectV.destroy();
-		this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_met_rectV");
-		this.textRectV.anchor.setTo(0.5,0);
-		this.textRectH.destroy();
-		this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_met_rectH");
-		this.textRectH.anchor.setTo(0,0.5);
-		this.textTrian.destroy();
-		this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_met_trian");
-		this.textTrian.anchor.setTo(0.5,0.5);
-		this.textCuad.destroy();
-		this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_met_cuad");
-		this.textCuad.anchor.setTo(0.5,0.5);
+		if(fin_tiempo!=0){
+			obj.material="metal";
+			this.textRectV.destroy();
+			this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_met_rectV");
+			this.textRectV.anchor.setTo(0.5,0);
+			this.textRectH.destroy();
+			this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_met_rectH");
+			this.textRectH.anchor.setTo(0,0.5);
+			this.textTrian.destroy();
+			this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_met_trian");
+			this.textTrian.anchor.setTo(0.5,0.5);
+			this.textCuad.destroy();
+			this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_met_cuad");
+			this.textCuad.anchor.setTo(0.5,0.5);
+		}
 	},
 
 	create_tipo_trian:function(){
-		if(this.construcAux==null){
+		if(this.construcAux==null&& fin_tiempo!=0){
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
@@ -704,7 +716,7 @@ Game.Battle.prototype ={
 		}
 	},
 	create_tipo_cuad:function(){
-		if(this.construcAux==null){
+		if(this.construcAux==null&& fin_tiempo!=0){
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
 					this.bloq_mad_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_mad_cuad');
@@ -788,7 +800,7 @@ Game.Battle.prototype ={
 		}
 	},
 	create_tipo_rectH:function(){
-		if(this.construcAux==null){
+		if(this.construcAux==null&& fin_tiempo!=0){
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectH');
@@ -872,7 +884,7 @@ Game.Battle.prototype ={
 		}
 	},
 	create_tipo_rectV:function(){
-		if(this.construcAux==null){
+		if(this.construcAux==null&& fin_tiempo!=0){
 			this.game.physics.arcade.gravity.y = 0;
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
@@ -958,7 +970,7 @@ Game.Battle.prototype ={
 	},
 
 	crearJugador:function(){
-		if(this.construcAux==null){
+		if(this.construcAux==null && fin_tiempo!=0){
 			this.game.physics.arcade.gravity.y = 0;
 			if(this.turno=="J1"&&this.numJ1<3){
 				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Pirata');
