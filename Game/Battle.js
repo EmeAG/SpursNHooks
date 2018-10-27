@@ -1617,6 +1617,7 @@ Game.Battle.prototype ={
 								this.precioPied.destroy();
 								this.precioMet.destroy();
 								this.precioMad.destroy();
+								this.textNum.destroy();	
 								
 								this.balaF.destroy();
 								this.balaAg.destroy();
@@ -1638,6 +1639,7 @@ Game.Battle.prototype ={
 									this.cargar_batalla();
 									cargando_batalla++;
 									this.telon.bringToTop();
+									this.game.physics.arcade.gravity.y = 3800;
 								}
 							}
 							if(this.telon.y<=-1080){
@@ -1909,7 +1911,7 @@ Game.Battle.prototype ={
 			this.game.debug.text(this.jugadoresJ2[0].num,10,50,"white");
 		}*/
 
-		this.game.debug.text(this.telon.x+this.telon.width/2,32,60,'white');
+		this.game.debug.text(this.game.physics.arcade.gravity.y ,32,60,'white');
 		this.game.debug.text(obj.material,32,32,'white');
 	},
 	
