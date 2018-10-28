@@ -311,19 +311,45 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <h2><b>IMÁGENES DE CONCEPTO:</b></h2>
 
 -Boceto:
- <img src="Bocetoescenario1-5.png" ></img>
+<img src="Bocetoescenario1-5.png" ></img>
 -Materiales de madera:
- <img src="MaderaMaterial/RectMaderoHoriz.png" ></img>
- <img src="MaderaMaterial/TriangMadero.png" ></img>
- <img src="MaderaMaterial/cuadrMadero.png" ></img>
+<img src="Game/assets/sprites/RectMaderoHoriz.png" ></img>
+<img src="Game/assets/sprites/Madera_cuad.png" ></img>
+<img src="Game/assets/sprites/Madera_rect.png" ></img>
+<img src="Game/assets/sprites/Madera_trian.png" ></img>
+-Materiales de piedra:
+<img src="Game/assets/sprites/piedraRect.png" ></img>
+<img src="Game/assets/sprites/PiedraCuadr.png" ></img>
+<img src="Game/assets/sprites/PiedraRectVert.png" ></img>
+<img src="Game/assets/sprites/PiedraTrian.png" ></img>
+-Materiales de hierro:
+<img src="Game/assets/sprites/metalRect.png" ></img>
+<img src="Game/assets/sprites/metalCuadr.png" ></img>
+<img src="Game/assets/sprites/metalRectVert.png" ></img>
+<img src="Game/assets/sprites/metalTrian.png" ></img>
  
--Boceto Pirata:
-
- <img src="piratas.png"></img>
+-Pirata:
+<img src="Game/assets/sprites/pirata.png" ></img>
  
--Boceto Vaquero:
+-Vaquero:
+<img src="Game/assets/sprites/Vaquero.png" ></img>
 
-<img src="bocetoVaquero2.png"></img>
+-Balas:
+<img src="Game/assets/sprites/balaComun.png" ></img>
+<img src="Game/assets/sprites/balaAgua.png" ></img>
+<img src="Game/assets/sprites/balaFuego.png" ></img>
+<img src="Game/assets/sprites/balaAcido.png" ></img>
+
+-Objetos del escenario:
+<img src="Game/assets/sprites/BotonMaterial.png" ></img>
+<img src="Game/assets/sprites/botonPersonaje.png" ></img>
+<img src="Game/assets/sprites/CannonPirata.png" ></img>
+<img src="Game/assets/sprites/CannonVaquero.png" ></img>
+<img src="Game/assets/sprites/Telon.png" ></img>
+<img src="Game/assets/sprites/SueloPirata.png" ></img>
+<img src="Game/assets/sprites/SueloVaquero.png" ></img>
+<img src="Game/assets/sprites/Marcador.png" ></img>
+
 <h2><b>MIEMBROS DEL EQUIPO:</b></h2>
 
 Miguel Ángel Arcones Ríos</br>
