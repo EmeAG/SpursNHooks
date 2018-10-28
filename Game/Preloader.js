@@ -39,6 +39,25 @@ Game.Preloader.prototype={
 		this.load.image('Marcador', 'assets/PropsEscenario/Marcador.png');
 		this.load.image('CartelVaqueros', 'assets/PropsEscenario/CartelVaqueros.png');
 		this.load.image('CartelPiratas', 'assets/PropsEscenario/CartelPiratas.png');
+		
+		
+		this.load.image('Bloq_mad_cuad_quem', 'assets/sprites/MaderaCuadQuem.png');
+		this.load.image('Bloq_pied_cuad_aci', 'assets/sprites/PiedraCuadrAcido.png');
+		this.load.image('Bloq_met_cuad_oxi', 'assets/sprites/metalCuadrOxido.png');
+		this.load.image('Bloq_mad_trian_quem', 'assets/sprites/MaderaTriangQuem.png');
+		this.load.image('Bloq_pied_trian_aci', 'assets/sprites/PiedraTrianAcido.png');
+		this.load.image('Bloq_met_trian_oxi', 'assets/sprites/metalTrianOxido.png');
+		this.load.image('Bloq_mad_rectH_quem', 'assets/sprites/MaderaRectHorzQuem.png');
+		this.load.image('Bloq_pied_rectH_aci', 'assets/sprites/PiedraRectAcido.png');
+		this.load.image('Bloq_met_rectH_oxi', 'assets/sprites/metalRectOxido.png');
+		this.load.image('Bloq_mad_rectV_quem', 'assets/sprites/MaderaRectVertQuem.png');
+		this.load.image('Bloq_pied_rectV_aci', 'assets/sprites/PiedraRectVertAcido.png');
+		this.load.image('Bloq_met_rectV_oxi', 'assets/sprites/MetalRectVertOxido.png');		
+		
+	
+		
+		
+		
 
 		//Contruccion Images
 		this.load.image('telon','assets/PropsEscenario/Telon.png');
