@@ -347,8 +347,8 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Game/assets/PropsEscenario/CannonVaquero.png" ></img>
 <img src="Game/assets/PropsEscenario/Telon.png" ></img>
 <img src="Game/assets/PropsEscenario/SueloPirata.png" ></img>
-<img src="Game/assets/PropsEscenario/SueloVaquero.png" ></img>
-<img src="Game/assets/spriPropsEscenariotes/Marcador.png" ></img></br>
+<img src="Game/assets/PropsEscenario/sueloVaquero.png" ></img>
+<img src="Game/assets/PropsEscenariotes/Marcador.png" ></img></br>
 
 <h2><b>MIEMBROS DEL EQUIPO:</b></h2>
 
