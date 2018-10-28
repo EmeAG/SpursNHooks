@@ -674,6 +674,7 @@ Game.Battle.prototype ={
 					this.bloq_mad_trian.num=this.contConstJ1;
 					this.bloq_mad_trian.coste=10;
 					this.bloq_mad_trian.estado=1;
+					this.bloq_mad_trian.forma="tri";
 					this.bloq_mad_trian.tipo="madera";
 					this.bloq_mad_trian.vida=vida_madera;
 					this.bloq_mad_trian.body.mass=peso_madera;
@@ -688,6 +689,7 @@ Game.Battle.prototype ={
 					this.bloq_mad_trian.num=this.contConstJ2;
 					this.bloq_mad_trian.coste=10;
 					this.bloq_mad_trian.estado=1;
+					this.bloq_mad_trian.forma="tri";
 					this.bloq_mad_trian.tipo="madera";
 					this.bloq_mad_trian.vida=vida_madera;
 					this.bloq_mad_trian.body.mass=peso_madera;
@@ -704,6 +706,7 @@ Game.Battle.prototype ={
 					this.bloq_pied_trian.num=this.contConstJ1;
 					this.bloq_pied_trian.coste=20;
 					this.bloq_pied_trian.estado=1;
+					this.bloq_pied_trian.forma="tri";
 					this.bloq_pied_trian.tipo="piedra";
 					this.bloq_pied_trian.vida=vida_piedra;
 					this.bloq_pied_trian.body.mass=peso_piedra;
@@ -718,6 +721,7 @@ Game.Battle.prototype ={
 					this.bloq_pied_trian.num=this.contConstJ2;
 					this.bloq_pied_trian.coste=20;
 					this.bloq_pied_trian.estado=1;
+					this.bloq_pied_trian.forma="tri";
 					this.bloq_pied_trian.tipo="piedra";
 					this.bloq_pied_trian.vida=vida_piedra;
 					this.bloq_pied_trian.body.mass=peso_piedra;
@@ -734,6 +738,7 @@ Game.Battle.prototype ={
 					this.bloq_met_trian.num=this.contConstJ1;
 					this.bloq_met_trian.coste=35;
 					this.bloq_met_trian.estado=1;
+					this.bloq_met_trian.forma="tri";
 					this.bloq_met_trian.tipo="metal";
 					this.bloq_met_trian.vida=vida_metal;
 					this.bloq_met_trian.body.mass=peso_metal;
@@ -748,6 +753,7 @@ Game.Battle.prototype ={
 					this.bloq_met_trian.num=this.contConstJ2;
 					this.bloq_met_trian.coste=35;
 					this.bloq_met_trian.estado=1;
+					this.bloq_met_trian.forma="tri";
 					this.bloq_met_trian.tipo="metal";
 					this.bloq_met_trian.vida=vida_metal;
 					this.bloq_met_trian.body.mass=peso_metal;
@@ -776,6 +782,7 @@ Game.Battle.prototype ={
 					this.bloq_mad_cuad.num=this.contConstJ1;
 					this.bloq_mad_cuad.coste=10;
 					this.bloq_mad_cuad.estado=1;
+					this.bloq_mad_cuad.forma="cuad";
 					this.bloq_mad_cuad.tipo="madera";
 					this.bloq_mad_cuad.vida=vida_madera;
 					this.bloq_mad_cuad.body.mass=peso_madera;
@@ -790,6 +797,7 @@ Game.Battle.prototype ={
 					this.bloq_mad_cuad.num=this.contConstJ2;
 					this.bloq_mad_cuad.coste=10;
 					this.bloq_mad_cuad.estado=1;
+					this.bloq_mad_cuad.forma="cuad";
 					this.bloq_mad_cuad.tipo="madera";
 					this.bloq_mad_cuad.vida=vida_madera;
 					this.bloq_mad_cuad.body.mass=peso_madera;
@@ -806,6 +814,7 @@ Game.Battle.prototype ={
 					this.bloq_pied_cuad.num=this.contConstJ1;
 					this.bloq_pied_cuad.coste=20;
 					this.bloq_pied_cuad.estado=1;
+					this.bloq_pied_cuad.forma="cuad";
 					this.bloq_pied_cuad.tipo="piedra";
 					this.bloq_pied_cuad.vida=vida_piedra;
 					this.bloq_pied_cuad.body.mass=peso_piedra;
@@ -820,6 +829,7 @@ Game.Battle.prototype ={
 					this.bloq_pied_cuad.num=this.contConstJ2;
 					this.bloq_pied_cuad.coste=20;
 					this.bloq_pied_cuad.estado=1;
+					this.bloq_pied_cuad.forma="cuad";
 					this.bloq_pied_cuad.tipo="piedra";
 					this.bloq_pied_cuad.vida=vida_piedra;
 					this.bloq_pied_cuad.body.mass=peso_piedra;
@@ -836,6 +846,7 @@ Game.Battle.prototype ={
 					this.bloq_met_cuad.num=this.contConstJ1;
 					this.bloq_met_cuad.coste=35;
 					this.bloq_met_cuad.estado=1;
+					this.bloq_met_cuad.forma="cuad";
 					this.bloq_met_cuad.tipo="metal";
 					this.bloq_met_cuad.vida=vida_metal;
 					this.bloq_met_cuad.body.mass=peso_metal;
@@ -850,6 +861,7 @@ Game.Battle.prototype ={
 					this.bloq_met_cuad.num=this.contConstJ2;
 					this.bloq_met_cuad.coste=35;
 					this.bloq_met_cuad.estado=1;
+					this.bloq_met_cuad.forma="cuad";
 					this.bloq_met_cuad.tipo="metal";
 					this.bloq_met_cuad.vida=vida_metal;
 					this.bloq_met_cuad.body.mass=peso_metal;
@@ -878,6 +890,7 @@ Game.Battle.prototype ={
 					this.bloq_mad_rect.num=this.contConstJ1;
 					this.bloq_mad_rect.coste=10;
 					this.bloq_mad_rect.estado=1;
+					this.bloq_mad_rect.forma="rect_v";
 					this.bloq_mad_rect.tipo="madera";
 					this.bloq_mad_rect.vida=vida_madera;
 					this.bloq_mad_rect.body.mass=peso_madera;
@@ -892,6 +905,7 @@ Game.Battle.prototype ={
 					this.bloq_mad_rect.num=this.contConstJ2;
 					this.bloq_mad_rect.coste=10;
 					this.bloq_mad_rect.estado=1;
+					this.bloq_mad_rect.forma="rect_v";
 					this.bloq_mad_rect.tipo="madera";
 					this.bloq_mad_rect.vida=vida_madera;
 					this.bloq_mad_rect.body.mass=peso_madera;
@@ -908,6 +922,7 @@ Game.Battle.prototype ={
 					this.bloq_pied_rect.num=this.contConstJ1;
 					this.bloq_pied_rect.coste=20;
 					this.bloq_pied_rect.estado=1;
+					this.bloq_pied_rect.forma="rect_v";
 					this.bloq_pied_rect.tipo="piedra";
 					this.bloq_pied_rect.vida=vida_piedra;
 					this.bloq_pied_rect.body.mass=peso_piedra;
@@ -922,6 +937,7 @@ Game.Battle.prototype ={
 					this.bloq_pied_rect.num=this.contConstJ2;
 					this.bloq_pied_rect.coste=20;
 					this.bloq_pied_rect.estado=1;
+					this.bloq_pied_rect.forma="rect_v";
 					this.bloq_pied_rect.tipo="piedra";
 					this.bloq_pied_rect.vida=vida_piedra;
 					this.bloq_pied_rect.body.mass=peso_piedra;
@@ -938,6 +954,7 @@ Game.Battle.prototype ={
 					this.bloq_met_rect.num=this.contConstJ1;
 					this.bloq_met_rect.coste=35;
 					this.bloq_met_rect.estado=1;
+					this.bloq_met_rect.forma="rect_v";
 					this.bloq_met_rect.tipo="metal";
 					this.bloq_met_rect.vida=vida_metal;
 					this.bloq_met_rect.body.mass=peso_metal;
@@ -952,6 +969,7 @@ Game.Battle.prototype ={
 					this.bloq_met_rect.num=this.contConstJ2;
 					this.bloq_met_rect.coste=35;
 					this.bloq_met_rect.estado=1;
+					this.bloq_met_rect.forma="rect_v";
 					this.bloq_met_rect.tipo="metal";
 					this.bloq_met_rect.vida=vida_metal;
 					this.bloq_met_rect.body.mass=peso_metal;
@@ -981,6 +999,7 @@ Game.Battle.prototype ={
 					this.bloq_mad_rect.num=this.contConstJ1;
 					this.bloq_mad_rect.coste=10;
 					this.bloq_mad_rect.estado=1;
+					this.bloq_mad_rect.forma="rect_h";
 					this.bloq_mad_rect.tipo="madera";
 					this.bloq_mad_rect.vida=vida_madera;
 					this.bloq_mad_rect.body.mass=peso_madera;
@@ -995,6 +1014,7 @@ Game.Battle.prototype ={
 					this.bloq_mad_rect.num=this.contConstJ2;
 					this.bloq_mad_rect.coste=10;
 					this.bloq_mad_rect.estado=1;
+					this.bloq_mad_rect.forma="rect_h";
 					this.bloq_mad_rect.tipo="madera";
 					this.bloq_mad_rect.vida=vida_madera;
 					this.bloq_mad_rect.body.mass=peso_madera;
@@ -1011,6 +1031,7 @@ Game.Battle.prototype ={
 					this.bloq_pied_rect.num=this.contConstJ1;
 					this.bloq_pied_rect.coste=20;
 					this.bloq_pied_rect.estado=1;
+					this.bloq_pied_rect.forma="rect_h";
 					this.bloq_pied_rect.tipo="piedra";
 					this.bloq_pied_rect.vida=vida_piedra;
 					this.bloq_pied_rect.body.mass=peso_piedra;
@@ -1025,6 +1046,7 @@ Game.Battle.prototype ={
 					this.bloq_pied_rect.num=this.contConstJ2;
 					this.bloq_pied_rect.coste=20;
 					this.bloq_pied_rect.estado=1;
+					this.bloq_pied_rect.forma="rect_h";
 					this.bloq_pied_rect.tipo="piedra";
 					this.bloq_pied_rect.vida=vida_piedra;
 					this.bloq_pied_rect.body.mass=peso_piedra;
@@ -1041,6 +1063,7 @@ Game.Battle.prototype ={
 					this.bloq_met_rect.num=this.contConstJ1;
 					this.bloq_met_rect.coste=35;
 					this.bloq_met_rect.estado=1;
+					this.bloq_met_rect.forma="rect_h";
 					this.bloq_met_rect.tipo="metal";
 					this.bloq_met_rect.vida=vida_metal;
 					this.bloq_met_rect.body.mass=peso_metal;
@@ -1055,6 +1078,7 @@ Game.Battle.prototype ={
 					this.bloq_met_rect.num=this.contConstJ2;
 					this.bloq_met_rect.coste=35;
 					this.bloq_met_rect.estado=1;
+					this.bloq_met_rect.forma="rect_h";
 					this.bloq_met_rect.tipo="metal";
 					this.bloq_met_rect.vida=vida_metal;
 					this.bloq_met_rect.body.mass=peso_metal;
@@ -1979,15 +2003,12 @@ Game.Battle.prototype ={
 			if(velocidad_global>300 && (bala==BalaCom1_J1 || bala==BalaCom1_J2) ){
 				switch (velocidad_global){
 					case (velocidad_global<1500):
-						alert();
 						juga_constr.vida=juga_constr.vida-8;
 						break;
 					case (velocidad_global<2000):
-						alert();
 						juga_constr.vida=juga_constr.vida-15;
 						break;
 					default:
-						alert();
 						juga_constr.vida=juga_constr.vida-20;
 						break;
 				}
@@ -1995,11 +2016,23 @@ Game.Battle.prototype ={
 			if(bala==BalaFueg_J1 || bala==BalaFueg_J2){
 				switch (juga_constr.tipo){
 					case (juga_constr.tipo=="madera"):
-						alert();
 						juga_constr.vida=1;
+						switch(juga_constr.forma){
+							case "tri":
+								juga_constr.loadTexture('Bloq_mad_trian_quem');
+							break;
+							case "cuad":
+								juga_constr.loadTexture('Bloq_mad_cuad_quem');
+							break;
+							case "rect_v":
+								juga_constr.loadTexture('Bloq_mad_rectV_quem');
+							break;
+							case "rect_h":
+								juga_constr.loadTexture('Bloq_mad_rectH_quem');
+							break;
+						}
 						break;
 					default:
-						alert();
 						juga_constr.vida=juga_constr.vida-1;
 						break;
 				}
@@ -2009,11 +2042,23 @@ Game.Battle.prototype ={
 			if(bala==BalaAcid_J1 || bala==BalaAcid_J2){
 				switch (juga_constr.tipo){
 					case (juga_constr.tipo=="piedra"):
-						alert();
 						juga_constr.vida=1;
+						switch(juga_constr.forma){
+							case "tri":
+								juga_constr.loadTexture('Bloq_mad_trian_aci');
+							break;
+							case "cuad":
+								juga_constr.loadTexture('Bloq_mad_cuad_aci');
+							break;
+							case "rect_v":
+								juga_constr.loadTexture('Bloq_mad_rectV_aci');
+							break;
+							case "rect_h":
+								juga_constr.loadTexture('Bloq_mad_rectH_aci');
+							break;
+						}
 						break;
 					default:
-						alert();
 						juga_constr.vida=juga_constr.vida-1;
 						break;
 				}
@@ -2023,11 +2068,23 @@ Game.Battle.prototype ={
 			if(bala==BalaAgu_J1 || bala==BalaAgu_J2){
 				switch (juga_constr.tipo){
 					case (juga_constr.tipo=="metal"):
-						alert();
 						juga_constr.vida=1;
+						switch(juga_constr.forma){
+							case "tri":
+								juga_constr.loadTexture('Bloq_mad_trian_oxi');
+							break;
+							case "cuad":
+								juga_constr.loadTexture('Bloq_mad_cuad_oxi');
+							break;
+							case "rect_v":
+								juga_constr.loadTexture('Bloq_mad_rectV_oxi');
+							break;
+							case "rect_h":
+								juga_constr.loadTexture('Bloq_mad_rectH_oxi');
+							break;
+						}
 						break;
 					default:
-						alert();
 						juga_constr.vida=juga_constr.vida-1;
 						break;
 				}
