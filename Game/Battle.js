@@ -43,7 +43,7 @@ var musica;
 
 Game.Battle.prototype ={
 	create:function(){
-		musica=this.game.add.audio("batallaMusic",0.4,true);
+		musica=this.game.add.audio("batallaMusic",0.01,true);
 		musica.play();
 
 		dineroJugadores=1000;
@@ -1188,6 +1188,11 @@ Game.Battle.prototype ={
 		this.distanciaMedio=objeto.x-(this.world.width/2);
 			objeto.x=this.world.width/2-this.distanciaMedio-objeto.width;
 	},
+	
+	colision:function(){
+		alert(balaDispara.boby.velocity.x);
+		alert(balaDispara.boby.velocity.y);
+	},
 
 	update:function(){
 		//Inicio Pantalla en Vertical
@@ -1714,17 +1719,17 @@ Game.Battle.prototype ={
 			
 			if(turno==1){
 				for(var a=0;a<this.contConstJ2;a++){
-					this.physics.arcade.collide(this.construcJ2[a], balaDispara);
+					this.physics.arcade.collide(this.construcJ2[a], balaDispara,this.colision);
 				}
 				for(var b=0;b<this.contJugJ2;b++){
-					this.physics.arcade.collide(this.jugadoresJ2[b], balaDispara);
+					this.physics.arcade.collide(this.jugadoresJ2[b], balaDispara,this.colision);
 				}
 			}else{
 				for(var i=0;i<this.contConstJ1;i++){
-					this.physics.arcade.collide(this.construcJ1[i], balaDispara);
+					this.physics.arcade.collide(this.construcJ1[i], balaDispara,this.colision);
 				}
 				for(var i=0;i<this.contJugJ1;i++){
-					this.physics.arcade.collide(this.jugadoresJ1[i], balaDispara);
+					this.physics.arcade.collide(this.jugadoresJ1[i], balaDispara,this.colision);
 				}
 			}
 
