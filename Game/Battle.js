@@ -32,6 +32,7 @@ var num_balas_agu_J2=0;
 var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
+var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
 var auxTiempo=8;//contador de tiempo global
@@ -1832,8 +1833,23 @@ Game.Battle.prototype ={
 			
 			//CONTROL FINAL JUEGO
 			if(puntuacion1==3 || puntuacion2==3){
-				estado="FINAL"
-			}
+				balaDispara.x=2000;
+				balaDispara.y=2000;
+                this.telon=this.add.sprite(-40,-1080,'telon');
+                this.physics.enable(this.telon, Phaser.Physics.ARCADE);
+                this.game.physics.arcade.gravity.y = 0;
+                this.telon.body.velocity.setTo(0, +180);
+                this.delayAux=0;
+                if(puntuacion1==3){
+                    this.telon.x=this.world.width/3;
+                }
+                if(puntuacion2==3){
+                    this.telon.x=-this.cache.getImage("telon").width+this.world.width/3*2;
+                }
+                this.textVictoria=this.add.text(this.world.width/3,this.world.height/2,"Victoria",style_ganador);
+				this.textVictoria.visible=false;
+                estado="FINAL";
+            }
 			//FIN CONTROL FINAL JUEGO
 			
 			this.game.physics.arcade.gravity.y = 3000;
@@ -1981,11 +1997,33 @@ Game.Battle.prototype ={
 		}
 
 		if(estado=="FINAL"){
-			this.state.start('MainMenu');
-		}
-		
-		this.resize();
-	},
+			this.game.physics.arcade.gravity.y = 1;
+            if(this.telon.y>=0){
+				this.telon.y=0;
+				this.telon.body.immovable = true;
+                this.telon.body.velocity.setTo(0,0);
+                if(this.delayAux>=500){
+                    if(puntuacion1==3){
+						this.textVictoria.visible=true;
+                        this.textVictoria.x=this.world.width/3*2;
+                        this.textVictoria.y=this.world.height/2;
+                        this.textVictoria.anchor.setTo(0.5,0.5);
+                    }
+                    if(puntuacion2==3){
+						this.textVictoria.x=this.world.width/3;
+						this.textVictoria.y=this.world.height/2;
+						this.textVictoria.visible=true;
+                        this.textVictoria.anchor.setTo(0.5,0.5);
+                    }
+                }
+                if(this.delayAux>=1000){
+                    this.state.start('MainMenu');
+                }
+            }
+        }
+
+        this.resize();
+    },
 	
 
 	colision:function(juga_constr, bala){
