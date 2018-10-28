@@ -2049,16 +2049,16 @@ Game.Battle.prototype ={
 						juga_constr.vida=1;
 						switch(juga_constr.forma){
 							case "tri":
-								juga_constr.loadTexture('Bloq_mad_trian_aci');
+								juga_constr.loadTexture('Bloq_pied_trian_aci');
 							break;
 							case "cuad":
-								juga_constr.loadTexture('Bloq_mad_cuad_aci');
+								juga_constr.loadTexture('Bloq_pied_cuad_aci');
 							break;
 							case "rect_v":
-								juga_constr.loadTexture('Bloq_mad_rectV_aci');
+								juga_constr.loadTexture('Bloq_pied_rectV_aci');
 							break;
 							case "rect_h":
-								juga_constr.loadTexture('Bloq_mad_rectH_aci');
+								juga_constr.loadTexture('Bloq_pied_rectH_aci');
 							break;
 						}
 						break;
@@ -2079,16 +2079,16 @@ Game.Battle.prototype ={
 						juga_constr.vida=1;
 						switch(juga_constr.forma){
 							case "tri":
-								juga_constr.loadTexture('Bloq_mad_trian_oxi');
+								juga_constr.loadTexture('Bloq_met_trian_oxi');
 							break;
 							case "cuad":
-								juga_constr.loadTexture('Bloq_mad_cuad_oxi');
+								juga_constr.loadTexture('Bloq_met_cuad_oxi');
 							break;
 							case "rect_v":
-								juga_constr.loadTexture('Bloq_mad_rectV_oxi');
+								juga_constr.loadTexture('Bloq_met_rectV_oxi');
 							break;
 							case "rect_h":
-								juga_constr.loadTexture('Bloq_mad_rectH_oxi');
+								juga_constr.loadTexture('Bloq_met_rectH_oxi');
 							break;
 						}
 						break;
