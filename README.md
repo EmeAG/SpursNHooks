@@ -316,17 +316,32 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Game/assets/sprites/RectMaderoHoriz.png" ></img>
 <img src="Game/assets/sprites/Madera_cuad.png" ></img>
 <img src="Game/assets/sprites/Madera_rect.png" ></img>
-<img src="Game/assets/sprites/Madera_trian.png" ></img></br>
+<img src="Game/assets/sprites/Madera_trian.png" ></img>
+
+<img src="Game/assets/sprites/MaderaRectHorzQuem.png" ></img>
+<img src="Game/assets/sprites/MaderaCuadQuem.png" ></img>
+<img src="Game/assets/sprites/MaderaRectVertQuem.png" ></img>
+<img src="Game/assets/sprites/MaderaTrianQuem.png" ></img></br>
 -Materiales de piedra:</br>
 <img src="Game/assets/sprites/PiedraRect.png" ></img>
 <img src="Game/assets/sprites/PiedraCuadr.png" ></img>
 <img src="Game/assets/sprites/PiedraRectVert.png" ></img>
-<img src="Game/assets/sprites/PiedraTrian.png" ></img></br>
+<img src="Game/assets/sprites/PiedraTrian.png" ></img>
+
+<img src="Game/assets/sprites/PiedraRectAcido.png" ></img>
+<img src="Game/assets/sprites/PiedraCuadrAcido.png" ></img>
+<img src="Game/assets/sprites/PiedraRectVertAcido.png" ></img>
+<img src="Game/assets/sprites/PiedraTrianAcido.png" ></img></br>
 -Materiales de hierro:</br>
 <img src="Game/assets/sprites/metalRect.png" ></img>
 <img src="Game/assets/sprites/metalCuadr.png" ></img>
 <img src="Game/assets/sprites/MetalRectVert.png" ></img>
-<img src="Game/assets/sprites/metalTrian.png" ></img></br>
+<img src="Game/assets/sprites/metalTrian.png" ></img>
+
+<img src="Game/assets/sprites/metalRectOxido.png" ></img>
+<img src="Game/assets/sprites/metalCuadrOxido.png" ></img>
+<img src="Game/assets/sprites/MetalRectVertOxido.png" ></img>
+<img src="Game/assets/sprites/metalTrianOxido.png" ></img></br>
  
 -Pirata:</br>
 <img src="Game/assets/sprites/pirata.png" ></img></br>
@@ -349,6 +364,10 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Game/assets/PropsEscenario/SueloPirata.png" ></img>
 <img src="Game/assets/PropsEscenario/sueloVaquero.png" ></img>
 <img src="Game/assets/PropsEscenariotes/Marcador.png" ></img></br>
+-Backgrounds:</br>
+<img src="Game/assets/Backgrounds/FondoBatalla.png" ></img>
+<img src="Game/assets/Backgrounds/fondoMenu.png" ></img>
+<img src="Game/assets/Backgrounds/FondoPreload.png" ></img></br>
 
 <h2><b>MIEMBROS DEL EQUIPO:</b></h2>
 
