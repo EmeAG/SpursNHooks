@@ -364,6 +364,7 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Game/assets/PropsEscenario/SueloPirata.png" ></img>
 <img src="Game/assets/PropsEscenario/sueloVaquero.png" ></img>
 <img src="Game/assets/PropsEscenario/Marcador.png" ></img></br>
+
 -Backgrounds:</br>
 <img src="Game/assets/Backgrounds/FondoBatalla.png" ></img>
 <img src="Game/assets/Backgrounds/fondoMenu.png" ></img>
