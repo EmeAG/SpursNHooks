@@ -2213,7 +2213,7 @@ Game.Battle.prototype ={
 		//this.game.debug.text(primero.material,32,8,"white");
 	//	this.game.debug.body(BalaCom1_J2);
 	//	this.game.debug.body(BalaCom1_J1);
-		this.game.debug.body(this.SueloPirata);
+		/*this.game.debug.body(this.SueloPirata);
 		this.game.debug.body(this.SueloVaquero);
 		this.game.debug.text(this.delayAux,10,200,"white");
 		//this.game.debug.text(dineroJ1,10,10,"white");
