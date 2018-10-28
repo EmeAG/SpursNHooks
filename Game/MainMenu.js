@@ -36,6 +36,8 @@ Game.MainMenu.prototype ={
 		
 	    this.telon=this.add.sprite(-40,-1080,'telon');
 		this.physics.enable(this.telon, Phaser.Physics.ARCADE);		
+		this.telon.body.velocity.setTo(0, 0);
+		this.game.physics.arcade.gravity.y = 0;
 		/*this.text1.font='Notable-Regular';
 		this.text1.fontSize=tamano_fuente;
 		this.text1.align = 'center';	
