@@ -2045,7 +2045,7 @@ Game.Battle.prototype ={
 			}
 			if(bala==BalaAcid_J1 || bala==BalaAcid_J2){
 				switch (juga_constr.tipo){
-					case (juga_constr.tipo=="piedra"):
+					case ("piedra"):
 						juga_constr.vida=1;
 						switch(juga_constr.forma){
 							case "tri":
@@ -2073,9 +2073,10 @@ Game.Battle.prototype ={
 				bala.y=2000;
 			}
 			if(bala==BalaAgu_J1 || bala==BalaAgu_J2){
+				alert();
 				switch (juga_constr.tipo){
-					case (juga_constr.tipo=="metal"):
-						juga_constr.vida=1
+					case ("metal"):
+						juga_constr.vida=1;
 						switch(juga_constr.forma){
 							case "tri":
 								juga_constr.loadTexture('Bloq_mad_trian_oxi');
