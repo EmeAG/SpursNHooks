@@ -312,21 +312,21 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 
 -Boceto:
 <img src="Bocetoescenario1-5.png" ></img>
--Materiales de madera:
+-Materiales de madera:</br>
 <img src="Game/assets/sprites/RectMaderoHoriz.png" ></img>
 <img src="Game/assets/sprites/Madera_cuad.png" ></img>
 <img src="Game/assets/sprites/Madera_rect.png" ></img>
-<img src="Game/assets/sprites/Madera_trian.png" ></img>
--Materiales de piedra:
+<img src="Game/assets/sprites/Madera_trian.png" ></img></br>
+-Materiales de piedra:</br>
 <img src="Game/assets/sprites/piedraRect.png" ></img>
 <img src="Game/assets/sprites/PiedraCuadr.png" ></img>
 <img src="Game/assets/sprites/PiedraRectVert.png" ></img>
-<img src="Game/assets/sprites/PiedraTrian.png" ></img>
--Materiales de hierro:
+<img src="Game/assets/sprites/PiedraTrian.png" ></img></br>
+-Materiales de hierro:</br>
 <img src="Game/assets/sprites/metalRect.png" ></img>
 <img src="Game/assets/sprites/metalCuadr.png" ></img>
 <img src="Game/assets/sprites/metalRectVert.png" ></img>
-<img src="Game/assets/sprites/metalTrian.png" ></img>
+<img src="Game/assets/sprites/metalTrian.png" ></img></br>
  
 -Pirata:
 <img src="Game/assets/sprites/pirata.png" ></img>
