@@ -56,8 +56,8 @@ var musica;
 
 Game.Battle.prototype ={
 	create:function(){
-		musica=this.game.add.audio("batallaMusic",0.01,true);
-		musica.play();
+		musica=this.game.add.audio("batallaMusic",0.09,true);
+		//musica.play();
 
 		dineroJugadores=1000;
 		dineroJ1=dineroJugadores;
@@ -1836,6 +1836,17 @@ Game.Battle.prototype ={
 			
 			//CONTROL FINAL JUEGO
 			if(puntuacion1==3 || puntuacion2==3){
+				this.telon=this.add.sprite(-40,-1080,'telon');
+				this.physics.enable(this.telon, Phaser.Physics.ARCADE);
+				this.game.physics.arcade.gravity.y = 0;	
+				this.telon.body.velocity.setTo(0, +180);
+				this.delayAux=0;
+				if(puntuacion1==3){
+					this.telon.x=this.world.width/3;
+				}
+				if(puntuacion2==3){
+					this.telon.x=-this.cache.getImage("telon").width+this.world.width/3*2;
+				}
 				estado="FINAL"
 			}
 			//FIN CONTROL FINAL JUEGO
@@ -1847,19 +1858,6 @@ Game.Battle.prototype ={
 			
 			if(turno==1){
 				for(var a=0;a<this.contConstJ2;a++){
-<<<<<<< HEAD
-					this.physics.arcade.collide(this.construcJ2[a], balaDispara,this.colision);
-				}
-				for(var b=0;b<this.contJugJ2;b++){
-					this.physics.arcade.collide(this.jugadoresJ2[b], balaDispara,this.colision);
-				}
-			}else{
-				for(var i=0;i<this.contConstJ1;i++){
-					this.physics.arcade.collide(this.construcJ1[i], balaDispara,this.colision);
-				}
-				for(var i=0;i<this.contJugJ1;i++){
-					this.physics.arcade.collide(this.jugadoresJ1[i], balaDispara,this.colision);
-=======
 					this.physics.arcade.collide(this.construcJ2[a], balaDispara, this.colision);
 				}
 				for(var b=0;b<this.contJugJ2;b++){
@@ -1871,7 +1869,6 @@ Game.Battle.prototype ={
 				}
 				for(var i=0;i<this.contJugJ1;i++){
 					this.physics.arcade.collide(this.jugadoresJ1[i], balaDispara, this.colision);
->>>>>>> 3e191abc17b1082d1f341729297d4c7d21839688
 				}
 			}
 
@@ -1999,7 +1996,25 @@ Game.Battle.prototype ={
 		}
 
 		if(estado=="FINAL"){
-			this.state.start('MainMenu');
+			this.game.physics.arcade.gravity.y=0;
+			if(this.telon.y>=0){
+				this.telon.body.velocity.setTo(0,0);
+				if(this.delayAux>=500){
+					if(puntuacion1==3){
+						this.textVictoria=this.game.add.text("Victoria",this.world.width/3*2,this.world.height/2);
+						this.textVictoria.anchor.setTo(0.5,0.5);
+					}
+					if(puntuacion2==3){
+						this.textVictoria=this.add.text("Victoria",this.world.width/3,this.world.height/2);
+						this.textVictoria.anchor.setTo(0.5,0.5);
+					}
+					
+				}
+				if(this.delayAux>=1000){
+					this.state.start('MainMenu');
+				}
+
+			}		
 		}
 		
 		this.resize();
@@ -2182,6 +2197,7 @@ Game.Battle.prototype ={
 	//	this.game.debug.body(BalaCom1_J1);
 		this.game.debug.body(this.SueloPirata);
 		this.game.debug.body(this.SueloVaquero);
+		this.game.debug.text(this.delayAux,10,200,"white");
 		//this.game.debug.text(dineroJ1,10,10,"white");
 
 		/*if(this.construcJ1[1]!=null){
@@ -2207,7 +2223,7 @@ Game.Battle.prototype ={
 		this.game.debug.text(obj.material,32,32,'white');*/
 		
 		
-		for(var i=0;i<this.contConstJ1;i++){
+		/*for(var i=0;i<this.contConstJ1;i++){
 			this.game.debug.body(this.construcJ1[i]);
 			this.game.debug.text(this.construcJ1[i].vida,32+i*20,32,'white');
 		}
@@ -2226,7 +2242,7 @@ Game.Battle.prototype ={
 		
 		this.game.debug.text(puntuacion1,180,192,'white');
 		this.game.debug.text(puntuacion2,180,292,'white');
-		this.game.debug.text(this.jugadoresJ2[0],220,292,'white');
+		this.game.debug.text(this.jugadoresJ2[0],220,292,'white');*/
 	},
 	
 };

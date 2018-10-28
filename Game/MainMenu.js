@@ -132,6 +132,7 @@ Game.MainMenu.prototype ={
 	
 	render:function() {
 		this.game.debug.text(this.text1.font ,40,50,"white");
+		this.game.debug.text(this.telon.y ,40,50,"white");
 	}
 };
 
