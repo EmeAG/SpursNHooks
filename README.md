@@ -318,37 +318,37 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Game/assets/sprites/Madera_rect.png" ></img>
 <img src="Game/assets/sprites/Madera_trian.png" ></img></br>
 -Materiales de piedra:</br>
-<img src="Game/assets/sprites/piedraRect.png" ></img>
+<img src="Game/assets/sprites/PiedraRect.png" ></img>
 <img src="Game/assets/sprites/PiedraCuadr.png" ></img>
 <img src="Game/assets/sprites/PiedraRectVert.png" ></img>
 <img src="Game/assets/sprites/PiedraTrian.png" ></img></br>
 -Materiales de hierro:</br>
 <img src="Game/assets/sprites/metalRect.png" ></img>
 <img src="Game/assets/sprites/metalCuadr.png" ></img>
-<img src="Game/assets/sprites/metalRectVert.png" ></img>
+<img src="Game/assets/sprites/MetalRectVert.png" ></img>
 <img src="Game/assets/sprites/metalTrian.png" ></img></br>
  
--Pirata:
-<img src="Game/assets/sprites/pirata.png" ></img>
+-Pirata:</br>
+<img src="Game/assets/sprites/pirata.png" ></img></br>
  
--Vaquero:
-<img src="Game/assets/sprites/Vaquero.png" ></img>
+-Vaquero:</br>
+<img src="Game/assets/sprites/Vaquero.png" ></img></br>
 
--Balas:
-<img src="Game/assets/sprites/balaComun.png" ></img>
-<img src="Game/assets/sprites/balaAgua.png" ></img>
-<img src="Game/assets/sprites/balaFuego.png" ></img>
-<img src="Game/assets/sprites/balaAcido.png" ></img>
+-Balas:</br>
+<img src="Game/assets/PropsEscenario/balaComun.png" ></img>
+<img src="Game/assets/PropsEscenario/balaAgua.png" ></img>
+<img src="Game/assets/PropsEscenario/balaFuego.png" ></img>
+<img src="Game/assets/PropsEscenario/balaAcido.png" ></img></br>
 
--Objetos del escenario:
-<img src="Game/assets/sprites/BotonMaterial.png" ></img>
-<img src="Game/assets/sprites/botonPersonaje.png" ></img>
-<img src="Game/assets/sprites/CannonPirata.png" ></img>
-<img src="Game/assets/sprites/CannonVaquero.png" ></img>
-<img src="Game/assets/sprites/Telon.png" ></img>
-<img src="Game/assets/sprites/SueloPirata.png" ></img>
-<img src="Game/assets/sprites/SueloVaquero.png" ></img>
-<img src="Game/assets/sprites/Marcador.png" ></img>
+-Objetos del escenario:</br>
+<img src="Game/assets/PropsEscenario/BotonMaterial.png" ></img>
+<img src="Game/assets/PropsEscenario/botonPersonaje.png" ></img>
+<img src="Game/assets/PropsEscenario/CannonPirata.png" ></img>
+<img src="Game/assets/PropsEscenario/CannonVaquero.png" ></img>
+<img src="Game/assets/PropsEscenario/Telon.png" ></img>
+<img src="Game/assets/PropsEscenario/SueloPirata.png" ></img>
+<img src="Game/assets/PropsEscenario/SueloVaquero.png" ></img>
+<img src="Game/assets/spriPropsEscenariotes/Marcador.png" ></img></br>
 
 <h2><b>MIEMBROS DEL EQUIPO:</b></h2>
 
