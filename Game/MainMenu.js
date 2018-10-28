@@ -2,10 +2,11 @@ Game.MainMenu = function(game){
 };
 
 Game.MainMenu.prototype ={
-    
 
 	
 	create:function(){
+		this.musica=this.game.add.audio("menuMusic",0.09,true);
+		this.musica.play();
         var style = {	font: "menu",
 						fill: "Black",
 						fontSize: "50pt",
@@ -65,6 +66,7 @@ Game.MainMenu.prototype ={
 		}
 		this.resize();
 		if(this.telon.y>=0){
+			this.musica.destroy();
 			this.state.start('Battle');
 		}
 	},

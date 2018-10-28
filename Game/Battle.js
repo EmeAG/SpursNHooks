@@ -57,8 +57,8 @@ var musica;
 
 Game.Battle.prototype ={
 	create:function(){
-		musica=this.game.add.audio("batallaMusic",0.09,true);
-		//musica.play();
+		var musica=this.game.add.audio("batallaMusic",0.09,true);
+		musica.play();
 
 		dineroJugadores=300;
 		dineroJ1=dineroJugadores;
