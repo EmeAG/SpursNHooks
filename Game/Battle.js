@@ -34,7 +34,7 @@ var num_balas_aci_J2=0;
 var style_contador={font: "60px Arial"};
 var cargando_batalla=0;
 
-var auxTiempo=5;//contador de tiempo global
+var auxTiempo=8;//contador de tiempo global
 //Pesos
 var peso_madera=1;
 var peso_piedra=2;
@@ -1805,10 +1805,8 @@ Game.Battle.prototype ={
 		if(estado=="BATALLA"){
 			//CONTROL DESTRUCCION
 			for(var i=0;i<this.contConstJ2;i++){
-				if(this.construcJ2[i].vida<=0 && this.construcJ2[i].estado!=0){
-					alert("destruccion");
+				if(this.construcJ2[i].vida<=0){
 					this.construcJ2[i].destroy();
-					this.construcJ2[i].estado=0;
 				}
 			}
 			for(var i=0;i<this.contJugJ2;i++){
@@ -1819,10 +1817,8 @@ Game.Battle.prototype ={
 				}
 			}
 			for(var i=0;i<this.contConstJ1;i++){
-				if(this.construcJ1[i].vida<=0 && this.construcJ1[i].estado!=0){
-					alert("destruccion");
+				if(this.construcJ1[i].vida<=0){
 					this.construcJ1[i].destroy();
-					this.construcJ1[i].estado=0;
 				}
 			}
 			for(var i=0;i<this.contJugJ1;i++){
@@ -2079,6 +2075,7 @@ Game.Battle.prototype ={
 			if(bala==BalaAgu_J1 || bala==BalaAgu_J2){
 				switch (juga_constr.tipo){
 					case (juga_constr.tipo=="metal"):
+						juga_constr.vida=1
 						switch(juga_constr.forma){
 							case "tri":
 								juga_constr.loadTexture('Bloq_mad_trian_oxi');
@@ -2093,8 +2090,6 @@ Game.Battle.prototype ={
 								juga_constr.loadTexture('Bloq_mad_rectH_oxi');
 							break;
 						}
-						juga_constr.vida=1
-						alert(juga_constr.vida);
 						break;
 					case ("madera"):
 						juga_constr.vida=juga_constr.vida-1;
@@ -2205,7 +2200,7 @@ Game.Battle.prototype ={
 		
 		for(var i=0;i<this.contConstJ1;i++){
 			this.game.debug.body(this.construcJ1[i]);
-			this.game.debug.text(this.construcJ1[i].vida,32+i*20,32,'white');
+			this.game.debug.text("<-----" + this.construcJ1[i].vida,32+i*20,32,'white');
 		}
 		for(var i=0;i<this.contJugJ1;i++){
 			this.game.debug.body(this.jugadoresJ1[i]);
@@ -2213,11 +2208,11 @@ Game.Battle.prototype ={
 		}
 		for(var i=0;i<this.contConstJ2;i++){
 			this.game.debug.body(this.construcJ2[i]);
-			this.game.debug.text(this.construcJ2[i].vida,32+i*20,132,'white');
+			this.game.debug.text("----->" + this.construcJ2[i].vida,32+i*20,132,'white');
 		}
 		for(var i=0;i<this.contJugJ2;i++){
 			this.game.debug.body(this.jugadoresJ2[i]);
-			this.game.debug.text("----->" + this.jugadoresJ2[i].vida,32+i*20,192+i*20,'white');
+			this.game.debug.text(this.jugadoresJ2[i].vida,32+i*20,192+i*20,'white');
 		}
 		this.game.debug.text(puntuacion1,180,192,'white');
 		this.game.debug.text(puntuacion2,180,292,'white');
