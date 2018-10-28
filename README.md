@@ -321,7 +321,7 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Game/assets/sprites/MaderaRectHorzQuem.png" ></img>
 <img src="Game/assets/sprites/MaderaCuadQuem.png" ></img>
 <img src="Game/assets/sprites/MaderaRectVertQuem.png" ></img>
-<img src="Game/assets/sprites/MaderaTrianQuem.png" ></img></br>
+<img src="Game/assets/sprites/MaderaTriangQuem.png" ></img></br>
 -Materiales de piedra:</br>
 <img src="Game/assets/sprites/PiedraRect.png" ></img>
 <img src="Game/assets/sprites/PiedraCuadr.png" ></img>
@@ -363,7 +363,7 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Game/assets/PropsEscenario/Telon.png" ></img>
 <img src="Game/assets/PropsEscenario/SueloPirata.png" ></img>
 <img src="Game/assets/PropsEscenario/sueloVaquero.png" ></img>
-<img src="Game/assets/PropsEscenariotes/Marcador.png" ></img></br>
+<img src="Game/assets/PropsEscenario/Marcador.png" ></img></br>
 -Backgrounds:</br>
 <img src="Game/assets/Backgrounds/FondoBatalla.png" ></img>
 <img src="Game/assets/Backgrounds/fondoMenu.png" ></img>
