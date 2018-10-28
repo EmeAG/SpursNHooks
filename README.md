@@ -368,6 +368,17 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Game/assets/Backgrounds/FondoBatalla.png" ></img>
 <img src="Game/assets/Backgrounds/fondoMenu.png" ></img>
 <img src="Game/assets/Backgrounds/FondoPreload.png" ></img></br>
+-Paginas Principales:</br>
+<img src="Game/assets/Capturas/Preload.png" ></img></br>
+Se va creando la imagen de una pistola a medida que carga el juego</br>
+<img src="Game/assets/Capturas/Menu.png" ></img></br>
+Se decide que hacer: ver un tutorial, empezar la batalla o personalizar los ajustes</br>
+<img src="Game/assets/Capturas/BatallaConstruccion.png" ></img></br>
+El jugador puede pulsar los botones de los objetos para crearse un fuerte durante el tiempo de construccion, si no ha colocado los vaqueros/piratas, estos son colocados de forma aleatoria</br>
+<img src="Game/assets/Capturas/Batalla.png" ></img></br>
+Ambos jugadores intentan eliminar a su contrincante</br>
+<img src="Game/assets/Capturas/FinBatalla.png" ></img></br>
+El telon cubre la zona del jugador que ha perdido</br>
 
 <h2><b>MIEMBROS DEL EQUIPO:</b></h2>
 
