@@ -35,7 +35,8 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempo=8;//contador de tiempo global
+var auxTiempoConstruc=30;//contador de tiempo global
+var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
 var peso_piedra=2;
@@ -346,7 +347,7 @@ Game.Battle.prototype ={
 		//Boton Tiempo
 		this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 		cuenta_atras=this.time.create();
-		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
+		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoConstruc, this.finTiempo);
 		text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
 		text_cuenta_atras.anchor.setTo(0.5,0.5);
 
@@ -1594,7 +1595,7 @@ Game.Battle.prototype ={
 							fin_tiempo=1;
 							cuenta_atras.destroy();
 							cuenta_atras=this.time.create();
-							final_cuenta_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
+							final_cuenta_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoConstruc, this.finTiempo);
 							cuenta_atras.start();
 							text_cuenta_atras.x=this.cuadroTiempo.width/2;
 							obj.material="madera";
@@ -1773,7 +1774,7 @@ Game.Battle.prototype ={
 								this.telon.bringToTop();
 								this.precioBAci.destroy();
 								this.precioBFue.destroy();
-								this.precioBAci.destroy();
+								this.precioBAgu.destroy();
 							}
 							//parar elmovimiento horizontal del telon
 							if(this.telon.x>=-40){
@@ -1792,7 +1793,7 @@ Game.Battle.prototype ={
 								//tiempo cuenta atras
 								cuenta_atras.destroy();
 								cuenta_atras=this.time.create();
-								final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
+								final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoBatalla, this.finTiempo);
 								text_cuenta_atras=this.game.add.text(928, 80, '00',style_contador);
 								
 								this.telon.destroy();
@@ -1968,7 +1969,7 @@ Game.Battle.prototype ={
 				fin_tiempo=1;
 				cuenta_atras.destroy();
 				cuenta_atras=this.time.create();
-				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempo, this.finTiempo);
+				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoBatalla, this.finTiempo);
 				button_BalaComun.tint=0.78 * 0xffffff;
 				cuenta_atras.start();
 				//Fin Control turnos
@@ -2114,7 +2115,7 @@ Game.Battle.prototype ={
 				bala.y=2000;
 			}
 			if(bala==BalaAgu_J1 || bala==BalaAgu_J2){
-				alert();
+				//alert();
 				switch (juga_constr.tipo){
 					case ("metal"):
 						juga_constr.vida=1;
