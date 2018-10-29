@@ -35,14 +35,14 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=30;//contador de tiempo global
+var auxTiempoConstruc=15;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
-var peso_madera=1;
-var peso_piedra=2;
-var peso_metal=3;
+var peso_madera=0.1;
+var peso_piedra=0.1;
+var peso_metal=0.1;
 var peso_balas=0;
-var peso_personaje=1;
+var peso_personaje=0.1;
 //Vida
 var vida_madera=20;
 var vida_piedra=40;
@@ -106,6 +106,7 @@ Game.Battle.prototype ={
 		this.SueloVaquero.body.friction = new Phaser.Point(8,8);
 		this.SueloPirata.body.friction = new Phaser.Point(8, 8);
 
+		//Cargar los objetos del estado batalla. 0 inputs, 0 outputs
 		this.cargar_batalla = function (){
 			//Activar lanzamiento desde el fondo de la pantalla
 			this.background.inputEnabled = true;
@@ -397,12 +398,13 @@ Game.Battle.prototype ={
 		juego_empezado=false;
 	},
 	
+	//Llamada por el temporizador. 0 inputs, 0 outputs.
 	finTiempo:function(){
 		fin_tiempo=0;
 	},
 	
 	
-	//Selector de las balas 
+	//Selector de las balas. input buttonBala, output 0.
 	selector_bala:function(button){
 
 		if(turno==2){
@@ -497,7 +499,7 @@ Game.Battle.prototype ={
 		balaDispara.visible=true;
 	},
 
-	//Funciones para el disparo	
+	//Funciones para el disparo. inputs Jugador,PosicionRaton, outputs 0.
 	set:function(player,pointer) {
 		if(disparos>0){
 			catchFlag = true;
@@ -508,7 +510,7 @@ Game.Battle.prototype ={
 		}
 	},
 
-	//Disparo
+	//Disparo. input PosicionRaton, output 0.
 	launch:function(pointer) {
 		if(disparos>0){
 			cuenta_atras.pause();
@@ -573,6 +575,8 @@ Game.Battle.prototype ={
 			}
 		}
 	},
+	
+	//Llamada por un boton.0 inputs, 0 outputs
 	compraBalaFuego:function(){
 		if(fin_tiempo!=0){
 			if(this.turno=="J1" && (dineroJ1-15)>=0){
@@ -586,6 +590,7 @@ Game.Battle.prototype ={
 		}
 	},
 
+	//Llamada por un boton.0 inputs, 0 outputs
 	compraBalaAgua:function(){
 		if(fin_tiempo!=0){
 			if(this.turno=="J1" && (dineroJ1-30)>=0){
@@ -599,6 +604,7 @@ Game.Battle.prototype ={
 		}		
 	},
 
+	//Llamada por un boton.0 inputs, 0 outputs
 	compraBalaAcido:function(){
 		if(fin_tiempo!=0){
 			if(this.turno=="J1" && (dineroJ1-50)>=0){
@@ -612,6 +618,7 @@ Game.Battle.prototype ={
 		}		
 	},
 
+	//Llamada por un boton.0 inputs, 0 outputs
 	change_material_madera:function(){
 		if(fin_tiempo!=0 && ((dineroJ1-10)>=0||(dineroJ2-10)>=0)){
 			obj.material="madera";
@@ -630,6 +637,7 @@ Game.Battle.prototype ={
 		}
 	},
 
+	//Llamada por un boton.0 inputs, 0 outputs
 	change_material_piedra:function(){
 		if(fin_tiempo!=0 && ((dineroJ1-20)>=0||(dineroJ2-20)>=0)){
 			obj.material="piedra";
@@ -648,6 +656,7 @@ Game.Battle.prototype ={
 		}	
 	},
 
+	//Llamada por un boton.0 inputs, 0 outputs
 	change_material_metal:function(){
 		if(fin_tiempo!=0 && ((dineroJ1-35)>=0||(dineroJ2-35)>=0)){
 			obj.material="metal";
@@ -666,6 +675,7 @@ Game.Battle.prototype ={
 		}
 	},
 
+	//Llamada por un boton.0 inputs, 0 outputs
 	create_tipo_trian:function(){
 		if(this.construcAux==null&& fin_tiempo!=0){
 			if(obj.material=="madera"){
@@ -774,6 +784,8 @@ Game.Battle.prototype ={
 			}		
 		}
 	},
+
+	//Llamada por un boton.0 inputs, 0 outputs
 	create_tipo_cuad:function(){
 		if(this.construcAux==null&& fin_tiempo!=0){
 			if(obj.material=="madera"){
@@ -882,6 +894,8 @@ Game.Battle.prototype ={
 			}		
 		}
 	},
+
+	//Llamada por un boton.0 inputs, 0 outputs
 	create_tipo_rectH:function(){
 		if(this.construcAux==null&& fin_tiempo!=0){
 			if(obj.material=="madera"){
@@ -990,6 +1004,8 @@ Game.Battle.prototype ={
 			}		
 		}
 	},
+
+	//Llamada por un boton.0 inputs, 0 outputs
 	create_tipo_rectV:function(){
 		if(this.construcAux==null&& fin_tiempo!=0){
 			this.game.physics.arcade.gravity.y = 0;
@@ -1100,6 +1116,7 @@ Game.Battle.prototype ={
 		}
 	},
 
+	//Llamada por un boton.0 inputs, 0 outputs
 	crearJugador:function(){
 		if(this.construcAux==null && fin_tiempo!=0){
 			this.game.physics.arcade.gravity.y = 0;
@@ -1139,6 +1156,7 @@ Game.Battle.prototype ={
 		}
 	},
 
+	//Establece la posicion del objeto y verifica si la posicion es correcta. inputs objeto, outputs 0.
 	move_sprite:function(objeto){
 		this.game.physics.arcade.gravity.y = 0;
 		objeto.anchor.setTo(0.5,0.5);
@@ -1203,7 +1221,7 @@ Game.Battle.prototype ={
 		this.game.physics.arcade.gravity.y = 100;
 	},
 
-
+	//Construye el objeto si esta en la posicion correcta o lo elimina si este no lo esta. inputs 0, outputs 0.
 	stop_move:function(){
 		if((this.input.mousePointer.isDown && this.construcAux!=null && this.delayAux>15) || fin_tiempo==0){
 			if(this.turno=="J1"){
@@ -1263,20 +1281,22 @@ Game.Battle.prototype ={
 		}
 	},
 
+	//establece el numero de la posicion del array del material. input objeto, output 0.
 	click_sprite:function(objeto){
 		if(this.num0==-2){
 			this.num0=objeto.num;
 			this.delayAux=0;
 		}
 	},
-
+//establece el numero de la posicion del array del jugador. input objeto, output 0.
 	click_jugador:function(objeto){
 		if(this.num1==-2){
 			this.num1=objeto.num;
 			this.delayAux=0;
 		}
 	},
-
+	
+	//cambia la posicion del objeto a su posicion invertida por eje y. input objeto, output 0
 	espejo:function(objeto){
 		this.distanciaMedio=objeto.x-(this.world.width/2);
 			objeto.x=this.world.width/2-this.distanciaMedio-objeto.width;
