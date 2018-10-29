@@ -101,8 +101,8 @@ Game.Battle.prototype ={
 		this.SueloVaquero.body.immovable = true;
 		this.SueloVaquero.body.collideWorldBounds = true;
 		this.SueloPirata.body.collideWorldBounds = true;
-		this.SueloVaquero.body.bounce.set(1);
-		this.SueloPirata.body.bounce.set(1);
+		//this.SueloVaquero.body.bounce.set(1);
+		//this.SueloPirata.body.bounce.set(1);
 		this.SueloVaquero.body.friction = new Phaser.Point(8,8);
 		this.SueloPirata.body.friction = new Phaser.Point(8, 8);
 
@@ -681,7 +681,7 @@ Game.Battle.prototype ={
 			if(obj.material=="madera"){
 				if(this.turno=="J1" && (dineroJ1-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
-					this.physics.enable(this.bloq_mad_trian,Phaser.Physics.p2);
+					this.physics.p2.enable(this.bloq_mad_trian);
 					this.bloq_mad_trian.inputEnabled=true;
 					this.bloq_mad_trian.num=this.contConstJ1;
 					this.bloq_mad_trian.coste=10;
@@ -696,7 +696,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2" && (dineroJ2-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
-					this.physics.enable(this.bloq_mad_trian,Phaser.Physics.p2);
+					this.physics.p2.enable(this.bloq_mad_trian);
 					this.bloq_mad_trian.inputEnabled=true;
 					this.bloq_mad_trian.num=this.contConstJ2;
 					this.bloq_mad_trian.coste=10;
@@ -713,7 +713,7 @@ Game.Battle.prototype ={
 			if(obj.material=="piedra"){
 				if(this.turno=="J1" && (dineroJ1-20)>=0){
 					this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
-					this.physics.enable(this.bloq_pied_trian,Phaser.p2);
+					this.physics.p2.enable(this.bloq_pied_trian);
 					this.bloq_pied_trian.inputEnabled=true;
 					this.bloq_pied_trian.num=this.contConstJ1;
 					this.bloq_pied_trian.coste=20;
@@ -728,7 +728,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2" && (dineroJ2-20)>=0){
 					this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
-					this.physics.enable(this.bloq_pied_trian,Phaser.p2);
+					this.physics.p2.enable(this.bloq_pied_trian);
 					this.bloq_pied_trian.inputEnabled=true;
 					this.bloq_pied_trian.num=this.contConstJ2;
 					this.bloq_pied_trian.coste=20;
@@ -745,7 +745,7 @@ Game.Battle.prototype ={
 			if(obj.material=="metal"){
 				if(this.turno=="J1" && (dineroJ1-35)>=0){
 					this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
-					this.physics.enable(this.bloq_met_trian,Phaser.p2);
+					this.physics.p2.enable(this.bloq_met_trian);
 					this.bloq_met_trian.inputEnabled=true;
 					this.bloq_met_trian.num=this.contConstJ1;
 					this.bloq_met_trian.coste=35;
@@ -760,7 +760,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2" && (dineroJ2-35)>=0){
 					this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
-					this.physics.enable(this.bloq_met_trian,Phaser.p2);
+					this.physics.p2.enable(this.bloq_met_trian);
 					this.bloq_met_trian.inputEnabled=true;
 					this.bloq_met_trian.num=this.contConstJ2;
 					this.bloq_met_trian.coste=35;
@@ -791,7 +791,7 @@ Game.Battle.prototype ={
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
 					this.bloq_mad_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_mad_cuad');
-					this.physics.enable(this.bloq_mad_cuad,Phaser.p2);
+					this.physics.p2.enable(this.bloq_mad_cuad);
 					this.bloq_mad_cuad.inputEnabled=true;
 					this.bloq_mad_cuad.num=this.contConstJ1;
 					this.bloq_mad_cuad.coste=10;
@@ -806,7 +806,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_mad_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_mad_cuad');
-					this.physics.enable(this.bloq_mad_cuad,Phaser.p2);
+					this.physics.p2.enable(this.bloq_mad_cuad);
 					this.bloq_mad_cuad.inputEnabled=true;
 					this.bloq_mad_cuad.num=this.contConstJ2;
 					this.bloq_mad_cuad.coste=10;
@@ -823,7 +823,7 @@ Game.Battle.prototype ={
 			if(obj.material=="piedra"){
 				if(this.turno=="J1"){
 					this.bloq_pied_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_pied_cuad');
-					this.physics.enable(this.bloq_pied_cuad,Phaser.p2);
+					this.physics.p2.enable(this.bloq_pied_cuad);
 					this.bloq_pied_cuad.inputEnabled=true;
 					this.bloq_pied_cuad.num=this.contConstJ1;
 					this.bloq_pied_cuad.coste=20;
@@ -838,7 +838,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_pied_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_pied_cuad');
-					this.physics.enable(this.bloq_pied_cuad,Phaser.p2);
+					this.physics.p2.enable(this.bloq_pied_cuad);
 					this.bloq_pied_cuad.inputEnabled=true;
 					this.bloq_pied_cuad.num=this.contConstJ2;
 					this.bloq_pied_cuad.coste=20;
@@ -855,7 +855,7 @@ Game.Battle.prototype ={
 			if(obj.material=="metal"){
 				if(this.turno=="J1"){
 					this.bloq_met_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_met_cuad');
-					this.physics.enable(this.bloq_met_cuad,Phaser.p2);
+					this.physics.p2.enable(this.bloq_met_cuad);
 					this.bloq_met_cuad.inputEnabled=true;
 					this.bloq_met_cuad.num=this.contConstJ1;
 					this.bloq_met_cuad.coste=35;
@@ -870,7 +870,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_met_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_met_cuad');
-					this.physics.enable(this.bloq_met_cuad,Phaser.p2);
+					this.physics.p2.enable(this.bloq_met_cuad);
 					this.bloq_met_cuad.inputEnabled=true;
 					this.bloq_met_cuad.num=this.contConstJ2;
 					this.bloq_met_cuad.coste=35;
@@ -901,7 +901,7 @@ Game.Battle.prototype ={
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectH');
-					this.physics.enable(this.bloq_mad_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_mad_rect);
 					this.bloq_mad_rect.inputEnabled=true;
 					this.bloq_mad_rect.num=this.contConstJ1;
 					this.bloq_mad_rect.coste=10;
@@ -916,7 +916,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectH');
-					this.physics.enable(this.bloq_mad_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_mad_rect);
 					this.bloq_mad_rect.inputEnabled=true;
 					this.bloq_mad_rect.num=this.contConstJ2;
 					this.bloq_mad_rect.coste=10;
@@ -933,7 +933,7 @@ Game.Battle.prototype ={
 			if(obj.material=="piedra"){
 				if(this.turno=="J1"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectH');
-					this.physics.enable(this.bloq_pied_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_pied_rect);
 					this.bloq_pied_rect.inputEnabled=true;
 					this.bloq_pied_rect.num=this.contConstJ1;
 					this.bloq_pied_rect.coste=20;
@@ -948,7 +948,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectH');
-					this.physics.enable(this.bloq_pied_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_pied_rect);
 					this.bloq_pied_rect.inputEnabled=true;
 					this.bloq_pied_rect.num=this.contConstJ2;
 					this.bloq_pied_rect.coste=20;
@@ -965,7 +965,7 @@ Game.Battle.prototype ={
 			if(obj.material=="metal"){
 				if(this.turno=="J1"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectH');
-					this.physics.enable(this.bloq_met_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_met_rect);
 					this.bloq_met_rect.inputEnabled=true;
 					this.bloq_met_rect.num=this.contConstJ1;
 					this.bloq_met_rect.coste=35;
@@ -980,7 +980,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectH');
-					this.physics.enable(this.bloq_met_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_met_rect);
 					this.bloq_met_rect.inputEnabled=true;
 					this.bloq_met_rect.num=this.contConstJ2;
 					this.bloq_met_rect.coste=35;
@@ -1012,7 +1012,7 @@ Game.Battle.prototype ={
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectV');
-					this.physics.enable(this.bloq_mad_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_mad_rect);
 					this.bloq_mad_rect.inputEnabled=true;
 					this.bloq_mad_rect.num=this.contConstJ1;
 					this.bloq_mad_rect.coste=10;
@@ -1027,7 +1027,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectV');
-					this.physics.enable(this.bloq_mad_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_mad_rect);
 					this.bloq_mad_rect.inputEnabled=true;
 					this.bloq_mad_rect.num=this.contConstJ2;
 					this.bloq_mad_rect.coste=10;
@@ -1044,7 +1044,7 @@ Game.Battle.prototype ={
 			if(obj.material=="piedra"){
 				if(this.turno=="J1"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectV');
-					this.physics.enable(this.bloq_pied_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_pied_rect);
 					this.bloq_pied_rect.inputEnabled=true;
 					this.bloq_pied_rect.num=this.contConstJ1;
 					this.bloq_pied_rect.coste=20;
@@ -1059,7 +1059,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectV');
-					this.physics.enable(this.bloq_pied_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_pied_rect);
 					this.bloq_pied_rect.inputEnabled=true;
 					this.bloq_pied_rect.num=this.contConstJ2;
 					this.bloq_pied_rect.coste=20;
@@ -1076,7 +1076,7 @@ Game.Battle.prototype ={
 			if(obj.material=="metal"){
 				if(this.turno=="J1"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectV');
-					this.physics.enable(this.bloq_met_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_met_rect);
 					this.bloq_met_rect.inputEnabled=true;
 					this.bloq_met_rect.num=this.contConstJ1;
 					this.bloq_met_rect.coste=35;
@@ -1091,7 +1091,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectV');
-					this.physics.enable(this.bloq_met_rect,Phaser.p2);
+					this.physics.p2.enable(this.bloq_met_rect);
 					this.bloq_met_rect.inputEnabled=true;
 					this.bloq_met_rect.num=this.contConstJ2;
 					this.bloq_met_rect.coste=35;
@@ -1122,7 +1122,7 @@ Game.Battle.prototype ={
 			this.game.physics.p2.gravity.y = 0;
 			if(this.turno=="J1"&&this.numJ1<3){
 				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Pirata');
-				this.physics.enable(this.jugador);
+				this.physics.p2.enable(this.jugador);
 				this.jugador.body.mass=peso_personaje;
 				this.jugador.vida=vida_personaje;
 				this.jugador.estado=1;
@@ -1139,7 +1139,7 @@ Game.Battle.prototype ={
 
 			if(this.turno=="J2"&&this.numJ2<3){
 				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Vaquero');
-				this.physics.enable(this.jugador);
+				this.physics.p2.enable(this.jugador);
 				this.jugador.body.mass=peso_personaje;
 				this.jugador.vida=vida_personaje;
 				this.jugador.estado=1;
@@ -1158,8 +1158,8 @@ Game.Battle.prototype ={
 
 	//Establece la posicion del objeto y verifica si la posicion es correcta. inputs objeto, outputs 0.
 	move_sprite:function(objeto){
-		this.game.physics.p2.gravity.y = 0;
-		objeto.anchor.setTo(0.5,0.5);
+		/*this.game.physics.p2.gravity.y = 0;
+		objeto.anchor.setTo(0.5,0.5);*/
 		if(this.turno=="J1"){
 			if(objeto.y+objeto.height/2<this.SueloPirata.y && objeto.x+objeto.width/2<this.telon.x){
 				objeto.tint=1 * 0xffffff;
@@ -1215,10 +1215,10 @@ Game.Battle.prototype ={
 		}
 		
 		
-		objeto.anchor.setTo(0.5,0.5);
-		objeto.x=this.input.mousePointer.x;
-		objeto.y=this.input.mousePointer.y;
-		this.game.physics.p2.gravity.y = 100;
+		//objeto.anchor.setTo(0.5,0.5);
+		objeto.body.x=this.input.mousePointer.x;
+		objeto.body.y=this.input.mousePointer.y;
+		//this.game.physics.p2.gravity.y = 100;
 	},
 
 	//Construye el objeto si esta en la posicion correcta o lo elimina si este no lo esta. inputs 0, outputs 0.
@@ -1376,7 +1376,7 @@ Game.Battle.prototype ={
 			//Fin  Actualizar cuenta atrás
 
 			//Colisiones
-			for(var i=0;i<this.contConstJ1;i++){
+			/*for(var i=0;i<this.contConstJ1;i++){
 				this.physics.p2.collide(this.construcJ1[i],this.SueloPirata);
 				for(var j=0;j<this.contConstJ1;j++){
 					if(j!=i){
@@ -1414,7 +1414,7 @@ Game.Battle.prototype ={
 				for(var j=0;j<this.contConstJ2;j++){
 					this.physics.p2.collide(this.jugadoresJ2[i],this.construcJ2[j]);
 				}
-			}
+			}*/
 
 			/*if(estado=="CONSTRUCCION"){
 				this.game.physics.p2.gravity.y = 100;
@@ -1657,14 +1657,15 @@ Game.Battle.prototype ={
 						this.textBAci.anchor.setTo(0.5,0.5);
 						this.textNum.destroy();	
 						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);	
-					}
+					}*/
 					if(this.construcAux!=null){
 						this.move_sprite(this.construcAux);
 						if(this.delayAux>15){
 							this.stop_move();
 						}
 					}
-				}
+					this.delayAux++;
+				//}
 
 				if(this.turno=="J1"){
 					if(this.num0>=0){
@@ -1682,7 +1683,7 @@ Game.Battle.prototype ={
 					if(this.num1>=0){
 						this.construcAux=this.jugadoresJ2[this.num1];
 					}
-				}
+				}/*
 
 				if(fin_tiempo==0&&this.turno=="J2"){
 					if(this.construcAux!=null){
@@ -2278,10 +2279,10 @@ Game.Battle.prototype ={
 		for(var i=0;i<this.contJugJ2;i++){
 			this.game.debug.body(this.jugadoresJ2[i]);
 			this.game.debug.text(this.jugadoresJ2[i].vida,32+i*20,192+i*20,'white');
-		}*/
+		}
 		this.game.debug.text(catchFlag,20,192,'white');
-		this.game.debug.text('0',20,242,'white');
-		this.game.debug.text(disparos,20,292,'white');
+		this.game.debug.text('0',20,242,'white');*/
+		this.game.debug.text(this.construcAux,20,292,'white');
 		//this.game.debug.text( this.jugadoresJ2[0],220,292,'white');*/
 	},
 	
