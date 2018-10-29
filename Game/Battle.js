@@ -38,11 +38,11 @@ var cargando_batalla=0;
 var auxTiempoConstruc=15;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
-var peso_madera=0.1;
-var peso_piedra=0.1;
-var peso_metal=0.1;
+var peso_madera=1;
+var peso_piedra=2;
+var peso_metal=3;
 var peso_balas=0;
-var peso_personaje=0.1;
+var peso_personaje=1;
 //Vida
 var vida_madera=20;
 var vida_piedra=40;
@@ -95,7 +95,7 @@ Game.Battle.prototype ={
 		//Suelos
         this.SueloPirata=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
 	    this.SueloVaquero=this.add.sprite(this.world.width-this.world.width/3, this.world.height- this.cache.getImage("Suelo_Vaquero").height, 'Suelo_Vaquero');
-		this.game.physics.arcade.enable([this.SueloPirata, this.SueloVaquero]);
+		this.game.physics.p2.enable([this.SueloPirata, this.SueloVaquero]);
 	    this.SueloMar=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Mar").height, 'Suelo_Mar');
 		this.SueloPirata.body.immovable = true;
 		this.SueloVaquero.body.immovable = true;
@@ -115,7 +115,7 @@ Game.Battle.prototype ={
 			this.background.events.onInputUp.add(this.launch);
 			this.angulo2=0;
 			this.angulo1=0;
-			this.game.physics.arcade.setBoundsToWorld();
+			this.game.physics.p2.setBoundsToWorld();
 
 			//Marcador
 			this.Marcador=this.add.sprite(637, 0, 'Marcador');
@@ -130,13 +130,13 @@ Game.Battle.prototype ={
 			this.CannonVaquero.scale.x *= -1;
 			this.CannonVaquero.scale.y *= -1;
 			this.CannonPirata.anchor.setTo(0.15, 0.35);
-			this.game.physics.arcade.enable([this.CannonPirata, this.CannonVaquero]);
+			this.game.physics.p2.enable([this.CannonPirata, this.CannonVaquero]);
 			this.CannonPirata.body.moves = false;
 			this.CannonVaquero.body.moves = false;
 			
 			//Balas comunes J1
 			BalaCom1_J1=this.add.sprite(135,420, 'balaComun');
-			this.physics.enable(BalaCom1_J1, Phaser.Physics.ARCADE);
+			this.physics.enable(BalaCom1_J1, Phaser.Physics.p2);
 			BalaCom1_J1.anchor.set(0.5,0.5);
 			BalaCom1_J1.body.bounce.set(0.4);
 			BalaCom1_J1.body.drag.set(20, 20);
@@ -150,7 +150,7 @@ Game.Battle.prototype ={
 
 			//Balas Agua J1
 			BalaAgu_J1=this.add.sprite(135,420, 'balaAgua');
-			this.physics.enable(BalaAgu_J1, Phaser.Physics.ARCADE);
+			this.physics.enable(BalaAgu_J1, Phaser.Physics.p2);
 			BalaAgu_J1.anchor.set(0.5,0.5);
 			BalaAgu_J1.body.bounce.set(0.4);
 			BalaAgu_J1.body.drag.set(20, 20);
@@ -164,7 +164,7 @@ Game.Battle.prototype ={
 			
 			//Balas Fuego J1
 			BalaFueg_J1=this.add.sprite(135,420, 'balaFuego');
-			this.physics.enable(BalaFueg_J1, Phaser.Physics.ARCADE);
+			this.physics.enable(BalaFueg_J1, Phaser.Physics.p2);
 			BalaFueg_J1.anchor.set(0.5,0.5);
 			BalaFueg_J1.body.bounce.set(0.4);
 			BalaFueg_J1.body.drag.set(20, 20);
@@ -178,7 +178,7 @@ Game.Battle.prototype ={
 			
 			//Balas Acido J1
 			BalaAcid_J1=this.add.sprite(135,420, 'balaAcido');
-			this.physics.enable(BalaAcid_J1, Phaser.Physics.ARCADE);
+			this.physics.enable(BalaAcid_J1, Phaser.Physics.p2);
 			BalaAcid_J1.anchor.set(0.5,0.5);
 			BalaAcid_J1.body.bounce.set(0.4);
 			BalaAcid_J1.body.drag.set(20, 20);
@@ -192,7 +192,7 @@ Game.Battle.prototype ={
 			
 			//Balas comunes J2
 			BalaCom1_J2=this.add.sprite(1825,450, 'balaComun');
-			this.physics.enable(BalaCom1_J2, Phaser.Physics.ARCADE);
+			this.physics.enable(BalaCom1_J2, Phaser.Physics.p2);
 			BalaCom1_J2.anchor.set(0.5,0.5);
 			BalaCom1_J2.body.bounce.set(0.4);
 			BalaCom1_J2.body.drag.set(20, 20);
@@ -206,7 +206,7 @@ Game.Battle.prototype ={
 			
 			//Balas Agua J2
 			BalaAgu_J2=this.add.sprite(1825,450, 'balaAgua');
-			this.physics.enable(BalaAgu_J2, Phaser.Physics.ARCADE);
+			this.physics.enable(BalaAgu_J2, Phaser.Physics.p2);
 			BalaAgu_J2.anchor.set(0.5,0.5);
 			BalaAgu_J2.body.bounce.set(0.4);
 			BalaAgu_J2.body.drag.set(20, 20);
@@ -220,7 +220,7 @@ Game.Battle.prototype ={
 			
 			//Balas Fuego J2
 			BalaFueg_J2=this.add.sprite(1825,450, 'balaFuego');
-			this.physics.enable(BalaFueg_J2, Phaser.Physics.ARCADE);
+			this.physics.enable(BalaFueg_J2, Phaser.Physics.p2);
 			BalaFueg_J2.anchor.set(0.5,0.5);
 			BalaFueg_J2.body.bounce.set(0.4);
 			BalaFueg_J2.body.drag.set(20, 20);
@@ -234,7 +234,7 @@ Game.Battle.prototype ={
 			
 			//Balas Acido J2
 			BalaAcid_J2=this.add.sprite(1825,450, 'balaAcido');
-			this.physics.enable(BalaAcid_J2, Phaser.Physics.ARCADE);
+			this.physics.enable(BalaAcid_J2, Phaser.Physics.p2);
 			BalaAcid_J2.anchor.set(0.5,0.5);
 			BalaAcid_J2.body.bounce.set(0.4);
 			BalaAcid_J2.body.drag.set(20, 20);
@@ -393,7 +393,7 @@ Game.Battle.prototype ={
 		//Telon
 		//this.telon=this.add.sprite(this.world.width/3,0,'telon');							 
 		this.telon=this.add.sprite(-40,0,'telon');
-		this.physics.enable(this.telon, Phaser.Physics.ARCADE);		
+		this.physics.enable(this.telon, Phaser.Physics.p2);		
 		this.telon.bringToTop();
 		juego_empezado=false;
 	},
@@ -681,7 +681,7 @@ Game.Battle.prototype ={
 			if(obj.material=="madera"){
 				if(this.turno=="J1" && (dineroJ1-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
-					this.physics.enable(this.bloq_mad_trian,Phaser.Physics.ARCADE);
+					this.physics.enable(this.bloq_mad_trian,Phaser.Physics.p2);
 					this.bloq_mad_trian.inputEnabled=true;
 					this.bloq_mad_trian.num=this.contConstJ1;
 					this.bloq_mad_trian.coste=10;
@@ -696,7 +696,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2" && (dineroJ2-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
-					this.physics.enable(this.bloq_mad_trian,Phaser.Physics.ARCADE);
+					this.physics.enable(this.bloq_mad_trian,Phaser.Physics.p2);
 					this.bloq_mad_trian.inputEnabled=true;
 					this.bloq_mad_trian.num=this.contConstJ2;
 					this.bloq_mad_trian.coste=10;
@@ -713,7 +713,7 @@ Game.Battle.prototype ={
 			if(obj.material=="piedra"){
 				if(this.turno=="J1" && (dineroJ1-20)>=0){
 					this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
-					this.physics.enable(this.bloq_pied_trian,Phaser.ARCADE);
+					this.physics.enable(this.bloq_pied_trian,Phaser.p2);
 					this.bloq_pied_trian.inputEnabled=true;
 					this.bloq_pied_trian.num=this.contConstJ1;
 					this.bloq_pied_trian.coste=20;
@@ -728,7 +728,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2" && (dineroJ2-20)>=0){
 					this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
-					this.physics.enable(this.bloq_pied_trian,Phaser.ARCADE);
+					this.physics.enable(this.bloq_pied_trian,Phaser.p2);
 					this.bloq_pied_trian.inputEnabled=true;
 					this.bloq_pied_trian.num=this.contConstJ2;
 					this.bloq_pied_trian.coste=20;
@@ -745,7 +745,7 @@ Game.Battle.prototype ={
 			if(obj.material=="metal"){
 				if(this.turno=="J1" && (dineroJ1-35)>=0){
 					this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
-					this.physics.enable(this.bloq_met_trian,Phaser.ARCADE);
+					this.physics.enable(this.bloq_met_trian,Phaser.p2);
 					this.bloq_met_trian.inputEnabled=true;
 					this.bloq_met_trian.num=this.contConstJ1;
 					this.bloq_met_trian.coste=35;
@@ -760,7 +760,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2" && (dineroJ2-35)>=0){
 					this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
-					this.physics.enable(this.bloq_met_trian,Phaser.ARCADE);
+					this.physics.enable(this.bloq_met_trian,Phaser.p2);
 					this.bloq_met_trian.inputEnabled=true;
 					this.bloq_met_trian.num=this.contConstJ2;
 					this.bloq_met_trian.coste=35;
@@ -791,7 +791,7 @@ Game.Battle.prototype ={
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
 					this.bloq_mad_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_mad_cuad');
-					this.physics.enable(this.bloq_mad_cuad,Phaser.ARCADE);
+					this.physics.enable(this.bloq_mad_cuad,Phaser.p2);
 					this.bloq_mad_cuad.inputEnabled=true;
 					this.bloq_mad_cuad.num=this.contConstJ1;
 					this.bloq_mad_cuad.coste=10;
@@ -806,7 +806,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_mad_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_mad_cuad');
-					this.physics.enable(this.bloq_mad_cuad,Phaser.ARCADE);
+					this.physics.enable(this.bloq_mad_cuad,Phaser.p2);
 					this.bloq_mad_cuad.inputEnabled=true;
 					this.bloq_mad_cuad.num=this.contConstJ2;
 					this.bloq_mad_cuad.coste=10;
@@ -823,7 +823,7 @@ Game.Battle.prototype ={
 			if(obj.material=="piedra"){
 				if(this.turno=="J1"){
 					this.bloq_pied_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_pied_cuad');
-					this.physics.enable(this.bloq_pied_cuad,Phaser.ARCADE);
+					this.physics.enable(this.bloq_pied_cuad,Phaser.p2);
 					this.bloq_pied_cuad.inputEnabled=true;
 					this.bloq_pied_cuad.num=this.contConstJ1;
 					this.bloq_pied_cuad.coste=20;
@@ -838,7 +838,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_pied_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_pied_cuad');
-					this.physics.enable(this.bloq_pied_cuad,Phaser.ARCADE);
+					this.physics.enable(this.bloq_pied_cuad,Phaser.p2);
 					this.bloq_pied_cuad.inputEnabled=true;
 					this.bloq_pied_cuad.num=this.contConstJ2;
 					this.bloq_pied_cuad.coste=20;
@@ -855,7 +855,7 @@ Game.Battle.prototype ={
 			if(obj.material=="metal"){
 				if(this.turno=="J1"){
 					this.bloq_met_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_met_cuad');
-					this.physics.enable(this.bloq_met_cuad,Phaser.ARCADE);
+					this.physics.enable(this.bloq_met_cuad,Phaser.p2);
 					this.bloq_met_cuad.inputEnabled=true;
 					this.bloq_met_cuad.num=this.contConstJ1;
 					this.bloq_met_cuad.coste=35;
@@ -870,7 +870,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_met_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_met_cuad');
-					this.physics.enable(this.bloq_met_cuad,Phaser.ARCADE);
+					this.physics.enable(this.bloq_met_cuad,Phaser.p2);
 					this.bloq_met_cuad.inputEnabled=true;
 					this.bloq_met_cuad.num=this.contConstJ2;
 					this.bloq_met_cuad.coste=35;
@@ -901,7 +901,7 @@ Game.Battle.prototype ={
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectH');
-					this.physics.enable(this.bloq_mad_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_mad_rect,Phaser.p2);
 					this.bloq_mad_rect.inputEnabled=true;
 					this.bloq_mad_rect.num=this.contConstJ1;
 					this.bloq_mad_rect.coste=10;
@@ -916,7 +916,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectH');
-					this.physics.enable(this.bloq_mad_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_mad_rect,Phaser.p2);
 					this.bloq_mad_rect.inputEnabled=true;
 					this.bloq_mad_rect.num=this.contConstJ2;
 					this.bloq_mad_rect.coste=10;
@@ -933,7 +933,7 @@ Game.Battle.prototype ={
 			if(obj.material=="piedra"){
 				if(this.turno=="J1"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectH');
-					this.physics.enable(this.bloq_pied_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_pied_rect,Phaser.p2);
 					this.bloq_pied_rect.inputEnabled=true;
 					this.bloq_pied_rect.num=this.contConstJ1;
 					this.bloq_pied_rect.coste=20;
@@ -948,7 +948,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectH');
-					this.physics.enable(this.bloq_pied_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_pied_rect,Phaser.p2);
 					this.bloq_pied_rect.inputEnabled=true;
 					this.bloq_pied_rect.num=this.contConstJ2;
 					this.bloq_pied_rect.coste=20;
@@ -965,7 +965,7 @@ Game.Battle.prototype ={
 			if(obj.material=="metal"){
 				if(this.turno=="J1"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectH');
-					this.physics.enable(this.bloq_met_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_met_rect,Phaser.p2);
 					this.bloq_met_rect.inputEnabled=true;
 					this.bloq_met_rect.num=this.contConstJ1;
 					this.bloq_met_rect.coste=35;
@@ -980,7 +980,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectH');
-					this.physics.enable(this.bloq_met_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_met_rect,Phaser.p2);
 					this.bloq_met_rect.inputEnabled=true;
 					this.bloq_met_rect.num=this.contConstJ2;
 					this.bloq_met_rect.coste=35;
@@ -1008,11 +1008,11 @@ Game.Battle.prototype ={
 	//Llamada por un boton.0 inputs, 0 outputs
 	create_tipo_rectV:function(){
 		if(this.construcAux==null&& fin_tiempo!=0){
-			this.game.physics.arcade.gravity.y = 0;
+			this.game.physics.p2.gravity.y = 0;
 			if(obj.material=="madera"){
 				if(this.turno=="J1"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectV');
-					this.physics.enable(this.bloq_mad_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_mad_rect,Phaser.p2);
 					this.bloq_mad_rect.inputEnabled=true;
 					this.bloq_mad_rect.num=this.contConstJ1;
 					this.bloq_mad_rect.coste=10;
@@ -1027,7 +1027,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectV');
-					this.physics.enable(this.bloq_mad_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_mad_rect,Phaser.p2);
 					this.bloq_mad_rect.inputEnabled=true;
 					this.bloq_mad_rect.num=this.contConstJ2;
 					this.bloq_mad_rect.coste=10;
@@ -1044,7 +1044,7 @@ Game.Battle.prototype ={
 			if(obj.material=="piedra"){
 				if(this.turno=="J1"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectV');
-					this.physics.enable(this.bloq_pied_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_pied_rect,Phaser.p2);
 					this.bloq_pied_rect.inputEnabled=true;
 					this.bloq_pied_rect.num=this.contConstJ1;
 					this.bloq_pied_rect.coste=20;
@@ -1059,7 +1059,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectV');
-					this.physics.enable(this.bloq_pied_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_pied_rect,Phaser.p2);
 					this.bloq_pied_rect.inputEnabled=true;
 					this.bloq_pied_rect.num=this.contConstJ2;
 					this.bloq_pied_rect.coste=20;
@@ -1076,7 +1076,7 @@ Game.Battle.prototype ={
 			if(obj.material=="metal"){
 				if(this.turno=="J1"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectV');
-					this.physics.enable(this.bloq_met_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_met_rect,Phaser.p2);
 					this.bloq_met_rect.inputEnabled=true;
 					this.bloq_met_rect.num=this.contConstJ1;
 					this.bloq_met_rect.coste=35;
@@ -1091,7 +1091,7 @@ Game.Battle.prototype ={
 				}
 				if(this.turno=="J2"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectV');
-					this.physics.enable(this.bloq_met_rect,Phaser.ARCADE);
+					this.physics.enable(this.bloq_met_rect,Phaser.p2);
 					this.bloq_met_rect.inputEnabled=true;
 					this.bloq_met_rect.num=this.contConstJ2;
 					this.bloq_met_rect.coste=35;
@@ -1119,7 +1119,7 @@ Game.Battle.prototype ={
 	//Llamada por un boton.0 inputs, 0 outputs
 	crearJugador:function(){
 		if(this.construcAux==null && fin_tiempo!=0){
-			this.game.physics.arcade.gravity.y = 0;
+			this.game.physics.p2.gravity.y = 0;
 			if(this.turno=="J1"&&this.numJ1<3){
 				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Pirata');
 				this.physics.enable(this.jugador);
@@ -1158,7 +1158,7 @@ Game.Battle.prototype ={
 
 	//Establece la posicion del objeto y verifica si la posicion es correcta. inputs objeto, outputs 0.
 	move_sprite:function(objeto){
-		this.game.physics.arcade.gravity.y = 0;
+		this.game.physics.p2.gravity.y = 0;
 		objeto.anchor.setTo(0.5,0.5);
 		if(this.turno=="J1"){
 			if(objeto.y+objeto.height/2<this.SueloPirata.y && objeto.x+objeto.width/2<this.telon.x){
@@ -1218,7 +1218,7 @@ Game.Battle.prototype ={
 		objeto.anchor.setTo(0.5,0.5);
 		objeto.x=this.input.mousePointer.x;
 		objeto.y=this.input.mousePointer.y;
-		this.game.physics.arcade.gravity.y = 100;
+		this.game.physics.p2.gravity.y = 100;
 	},
 
 	//Construye el objeto si esta en la posicion correcta o lo elimina si este no lo esta. inputs 0, outputs 0.
@@ -1277,7 +1277,7 @@ Game.Battle.prototype ={
 				}
 			}
 			this.construcAux=null;
-			this.game.physics.arcade.gravity.y = 100;
+			this.game.physics.p2.gravity.y = 100;
 		}
 	},
 
@@ -1315,7 +1315,7 @@ Game.Battle.prototype ={
 			}
 		}
 		if(juego_empezado==false){
-			this.telon.body.velocity.setTo(+180, 0);
+			this.telon.body.velocity.setTo(+300, 0);
 			if(this.telon.x>=this.world.width/3){
 				this.telon.body.allowGravity = false;
 				this.telon.body.velocity.setTo(0, 0);
@@ -1377,47 +1377,47 @@ Game.Battle.prototype ={
 
 			//Colisiones
 			for(var i=0;i<this.contConstJ1;i++){
-				this.physics.arcade.collide(this.construcJ1[i],this.SueloPirata);
+				this.physics.p2.collide(this.construcJ1[i],this.SueloPirata);
 				for(var j=0;j<this.contConstJ1;j++){
 					if(j!=i){
-						this.physics.arcade.collide(this.construcJ1[i],this.construcJ1[j]);
+						this.physics.p2.collide(this.construcJ1[i],this.construcJ1[j]);
 					}
 				}
 			}
 			for(var i=0;i<this.contJugJ1;i++){
-				this.physics.arcade.collide(this.jugadoresJ1[i],this.SueloPirata);
+				this.physics.p2.collide(this.jugadoresJ1[i],this.SueloPirata);
 				for(var p=0;p<this.contJugJ1;p++){
 					if(p!=i){
-						this.physics.arcade.collide(this.jugadoresJ1[i],this.jugadoresJ1[p]);
+						this.physics.p2.collide(this.jugadoresJ1[i],this.jugadoresJ1[p]);
 					}
 				}
 				for(var j=0;j<this.contConstJ1;j++){
-					this.physics.arcade.collide(this.jugadoresJ1[i],this.construcJ1[j]);
+					this.physics.p2.collide(this.jugadoresJ1[i],this.construcJ1[j]);
 				}
 			}
 
 			for(var i=0;i<this.contConstJ2;i++){
-				this.physics.arcade.collide(this.construcJ2[i],this.SueloVaquero);
+				this.physics.p2.collide(this.construcJ2[i],this.SueloVaquero);
 				for(var j=0;j<this.contConstJ2;j++){
 					if(j!=i){
-						this.physics.arcade.collide(this.construcJ2[i],this.construcJ2[j]);
+						this.physics.p2.collide(this.construcJ2[i],this.construcJ2[j]);
 					}
 				}
 			}
 			for(var i=0;i<this.contJugJ2;i++){
-				this.physics.arcade.collide(this.jugadoresJ2[i],this.SueloVaquero);
+				this.physics.p2.collide(this.jugadoresJ2[i],this.SueloVaquero);
 				for(var p=0;p<this.contJugJ2;p++){
 					if(p!=i){
-						this.physics.arcade.collide(this.jugadoresJ2[i],this.jugadoresJ2[p]);
+						this.physics.p2.collide(this.jugadoresJ2[i],this.jugadoresJ2[p]);
 					}
 				}
 				for(var j=0;j<this.contConstJ2;j++){
-					this.physics.arcade.collide(this.jugadoresJ2[i],this.construcJ2[j]);
+					this.physics.p2.collide(this.jugadoresJ2[i],this.construcJ2[j]);
 				}
 			}
 
-			if(estado=="CONSTRUCCION"){
-				this.game.physics.arcade.gravity.y = 100;
+			/*if(estado=="CONSTRUCCION"){
+				this.game.physics.p2.gravity.y = 100;
 			
 				if(fin_tiempo==0&&this.turno=="J1"){
 					if(this.construcAux!=null){
@@ -1426,7 +1426,7 @@ Game.Battle.prototype ={
 						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
 						this.textDinero.anchor.setTo(0.7,0.5);
 					}
-					this.game.physics.arcade.gravity.y = 100;
+					this.game.physics.p2.gravity.y = 100;
 					if(this.numJ1<3){
 						for(var i=this.numJ1;i<3;i++){
 							if(this.delayAux>120){
@@ -1453,7 +1453,7 @@ Game.Battle.prototype ={
 					else{
 						if(this.delayAux>300){
 							this.telon.bringToTop();
-							this.telon.body.velocity.setTo(-200, 0);
+							this.telon.body.velocity.setTo(-300, 0);
 							this.button_Madera.visible=false;
 							this.textMad.visible=false;
 							this.button_Piedra.visible=false;
@@ -1691,7 +1691,7 @@ Game.Battle.prototype ={
 						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2);
 						this.textDinero.anchor.setTo(0.7,0.5);
 					}
-					this.game.physics.arcade.gravity.y = 100;
+					this.game.physics.p2.gravity.y = 100;
 					if(this.numJ2<3){
 						//alert(this.numJ2);
 						for(var i=this.numJ2;i<3;i++){
@@ -1724,7 +1724,7 @@ Game.Battle.prototype ={
 							//mover el telon desde J1
 							if(this.turno=="J1"&&fin_tiempo==0){
 								this.telon.bringToTop();
-								this.telon.body.velocity.setTo(-200, 0);
+								this.telon.body.velocity.setTo(-300, 0);
 								this.button_Madera.visible=false;
 								this.textMad.visible=false;
 								this.button_Piedra.visible=false;
@@ -1788,8 +1788,8 @@ Game.Battle.prototype ={
 								this.balaAg.destroy();
 								this.balaAc.destroy();
 								this.personaje.destroy();
-								this.physics.enable(this.telon, Phaser.Physics.ARCADE);
-								this.telon.body.velocity.setTo(200, 0);
+								this.physics.enable(this.telon, Phaser.Physics.p2);
+								this.telon.body.velocity.setTo(300, 0);
 								this.telon.body.allowGravity = false;
 								this.telon.bringToTop();
 								this.precioBAci.destroy();
@@ -1799,12 +1799,12 @@ Game.Battle.prototype ={
 							//parar elmovimiento horizontal del telon
 							if(this.telon.x>=-40){
 								//alert("X");
-								this.telon.body.velocity.setTo(0, -180);
+								this.telon.body.velocity.setTo(0, -300);
 								if(cargando_batalla==0){
 									this.cargar_batalla();
 									cargando_batalla++;
 									this.telon.bringToTop();
-									this.game.physics.arcade.gravity.y = 3000;
+									this.game.physics.p2.gravity.y = 100;
 								}
 							}
 							if(this.telon.y<=-1080){
@@ -1828,6 +1828,7 @@ Game.Battle.prototype ={
 			this.delayAux++;
 		}
 		if(estado=="BATALLA"){
+			balaDispara.body.gravity.y=3000;
 			//CONTROL DESTRUCCION
 			for(var i=0;i<this.contConstJ2;i++){
 				if(this.construcJ2[i].vida<=0){
@@ -1860,9 +1861,9 @@ Game.Battle.prototype ={
 				balaDispara.x=2000;
 				balaDispara.y=2000;
                 this.telon=this.add.sprite(-40,-1080,'telon');
-                this.physics.enable(this.telon, Phaser.Physics.ARCADE);
-                this.game.physics.arcade.gravity.y = 0;
-                this.telon.body.velocity.setTo(0, +180);
+                this.physics.enable(this.telon, Phaser.Physics.p2);
+                this.game.physics.p2.gravity.y = 0;
+                this.telon.body.velocity.setTo(0, +300);
                 this.delayAux=0;
                 if(puntuacion1==3){
                     this.telon.x=this.world.width/3;
@@ -1876,30 +1877,30 @@ Game.Battle.prototype ={
             }
 			//FIN CONTROL FINAL JUEGO
 			
-			this.game.physics.arcade.gravity.y = 3000;
+			this.game.physics.p2.gravity.y = 100;
 			//Fisicas entre objetos
-			this.physics.arcade.collide(this.SueloPirata, balaDispara);
-			this.physics.arcade.collide(this.SueloVaquero, balaDispara);
+			this.physics.p2.collide(this.SueloPirata, balaDispara);
+			this.physics.p2.collide(this.SueloVaquero, balaDispara);
 			
 			if(turno==1){
 				for(var a=0;a<this.contConstJ2;a++){
-					this.physics.arcade.collide(this.construcJ2[a], balaDispara, this.colision);
+					this.physics.p2.collide(this.construcJ2[a], balaDispara, this.colision);
 				}
 				for(var b=0;b<this.contJugJ2;b++){
-					this.physics.arcade.collide(this.jugadoresJ2[b], balaDispara, this.colision);
+					this.physics.p2.collide(this.jugadoresJ2[b], balaDispara, this.colision);
 				}
 			}else{
 				for(var i=0;i<this.contConstJ1;i++){
-					this.physics.arcade.collide(this.construcJ1[i], balaDispara, this.colision);
+					this.physics.p2.collide(this.construcJ1[i], balaDispara, this.colision);
 				}
 				for(var i=0;i<this.contJugJ1;i++){
-					this.physics.arcade.collide(this.jugadoresJ1[i], balaDispara, this.colision);								
+					this.physics.p2.collide(this.jugadoresJ1[i], balaDispara, this.colision);								
 				}
 			}
 
 			//Inicio Disparo
 			puntero=this.input.activePointer;
-			arrow.rotation = this.physics.arcade.angleBetween(arrow, balaDispara);
+			arrow.rotation = this.physics.p2.angleBetween(arrow, balaDispara);
 			
 			if (catchFlag == true)
 			{
@@ -1907,7 +1908,7 @@ Game.Battle.prototype ={
 				arrow.alpha = 1;    
 				analog.alpha = 0.5;
 				analog.rotation = arrow.rotation - 3.14 / 2;
-				analog.height = this.physics.arcade.distanceBetween(arrow, this.input.activePointer);    
+				analog.height = this.physics.p2.distanceBetween(arrow, this.input.activePointer);    
 				launchVelocity = analog.height;
 				this.delayAux=0;
 			}
@@ -1998,21 +1999,21 @@ Game.Battle.prototype ={
 			//Inicio Giro de los cañones
 			if (catchFlag != true && disparos>0){
 				if (turno==1){
-					if (this.game.physics.arcade.angleToPointer(this.CannonPirata)>-1.1 && this.game.physics.arcade.angleToPointer(this.CannonPirata)<0.55){
-						this.CannonPirata.rotation = this.game.physics.arcade.angleToPointer(this.CannonPirata);
+					if (this.game.physics.p2.angleToPointer(this.CannonPirata)>-1.1 && this.game.physics.p2.angleToPointer(this.CannonPirata)<0.55){
+						this.CannonPirata.rotation = this.game.physics.p2.angleToPointer(this.CannonPirata);
 						this.CannonVaquero.rotation =3.15;
 					}
-					if (this.game.physics.arcade.angleToPointer(balaDispara)>-1.2 && this.game.physics.arcade.angleToPointer(balaDispara)<0.65){
-						balaDispara.rotation = this.game.physics.arcade.angleToPointer(balaDispara);
+					if (this.game.physics.p2.angleToPointer(balaDispara)>-1.2 && this.game.physics.p2.angleToPointer(balaDispara)<0.65){
+						balaDispara.rotation = this.game.physics.p2.angleToPointer(balaDispara);
 					}
 				}
 				if (turno==2){
-					if (this.game.physics.arcade.angleToPointer(this.CannonVaquero)<-2 || this.game.physics.arcade.angleToPointer(this.CannonVaquero)>2.5){
-						this.CannonVaquero.rotation = this.game.physics.arcade.angleToPointer(this.CannonVaquero);
+					if (this.game.physics.p2.angleToPointer(this.CannonVaquero)<-2 || this.game.physics.p2.angleToPointer(this.CannonVaquero)>2.5){
+						this.CannonVaquero.rotation = this.game.physics.p2.angleToPointer(this.CannonVaquero);
 						this.CannonPirata.rotation =0;
 					}
-					if (this.game.physics.arcade.angleToPointer(balaDispara)<-2 || this.game.physics.arcade.angleToPointer(balaDispara)>2.5){
-						balaDispara.rotation = this.game.physics.arcade.angleToPointer(balaDispara);
+					if (this.game.physics.p2.angleToPointer(balaDispara)<-2 || this.game.physics.p2.angleToPointer(balaDispara)>2.5){
+						balaDispara.rotation = this.game.physics.p2.angleToPointer(balaDispara);
 					}
 				}
 			}
@@ -2021,7 +2022,7 @@ Game.Battle.prototype ={
 		}
 
 		if(estado=="FINAL"){
-			this.game.physics.arcade.gravity.y = 1;
+			this.game.physics.p2.gravity.y = 1;
             if(this.telon.y>=0){
 				this.telon.y=0;
 				this.telon.body.immovable = true;
@@ -2043,7 +2044,7 @@ Game.Battle.prototype ={
                 if(this.delayAux>=600){
                     this.state.start('MainMenu');
                 }
-            }
+            }*/
         }
 
         this.resize();
@@ -2224,11 +2225,11 @@ Game.Battle.prototype ={
 
 	
 	render:function() {
-		//this.game.debug.text(this.game.physics.arcade.angleToPointer(BalaCom1_J2),32,32,"white");
+		//this.game.debug.text(this.game.physics.p2.angleToPointer(BalaCom1_J2),32,32,"white");
 		//this.game.debug.text(balaDispara.body.velocity.x +"---"+balaDispara.body.velocity.y ,32,15,"white");
 	//	this.game.debug.text(cuenta_atras.duration.toFixed(0),32,15,"white");
 	//	this.game.debug.text(fin_tiempo,92,15,"white");
-		//this.game.debug.text(this.game.physics.arcade.angleToPointer(this.CannonPirata),32,15,"white");
+		//this.game.debug.text(this.game.physics.p2.angleToPointer(this.CannonPirata),32,15,"white");
 		//this.game.debug.text(this.CannonVaquero.angle,32,35,"white");
 		//var primero=this.fuerte[1];
 		//this.game.debug.text(primero.material,32,8,"white");
@@ -2258,7 +2259,7 @@ Game.Battle.prototype ={
 			this.game.debug.text(this.jugadoresJ2[0].num,10,50,"white");
 		}*/
 
-		/*this.game.debug.text(this.game.physics.arcade.gravity.y ,32,60,'white');
+		/*this.game.debug.text(this.game.physics.p2.gravity.y ,32,60,'white');
 		this.game.debug.text(obj.material,32,32,'white');*/
 		
 		
@@ -2277,10 +2278,11 @@ Game.Battle.prototype ={
 		for(var i=0;i<this.contJugJ2;i++){
 			this.game.debug.body(this.jugadoresJ2[i]);
 			this.game.debug.text(this.jugadoresJ2[i].vida,32+i*20,192+i*20,'white');
-		}
-		this.game.debug.text(puntuacion1,180,192,'white');
-		this.game.debug.text(puntuacion2,180,292,'white');
-		this.game.debug.text( this.jugadoresJ2[0],220,292,'white');*/
+		}*/
+		this.game.debug.text(catchFlag,20,192,'white');
+		this.game.debug.text('0',20,242,'white');
+		this.game.debug.text(disparos,20,292,'white');
+		//this.game.debug.text( this.jugadoresJ2[0],220,292,'white');*/
 	},
 	
 };

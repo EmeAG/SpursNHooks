@@ -19,7 +19,8 @@ Game.Boot.prototype = {
 	},
 	
 	create:function(){
-		this.game.physics.startSystem(Phaser.Physics.ARCADE);
+		//this.game.physics.startSystem(Phaser.Physics.ARCADE);
+		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.state.start('Preloader');
 	}
 };
