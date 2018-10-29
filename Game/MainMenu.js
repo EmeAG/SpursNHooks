@@ -2,8 +2,6 @@ Game.MainMenu = function(game){
 };
 
 Game.MainMenu.prototype ={
-
-	
 	create:function(){
 		this.musica=this.game.add.audio("menuMusic",0.09,true);
 		this.musica.play();
@@ -18,7 +16,7 @@ Game.MainMenu.prototype ={
         this.background.width = this.game.width;
 		
 		//imagen mala orientacion
-		this.image_turn =this.add.image(0, 0, "landscape");		
+		this.image_turn =this.add.image(0, 0, "landscape");
 		
 		this.button_inicio = this.add.button(this.world.centerX, 200, 'botonTipo', this.click_button, this, 2, 1, 0);
 		this.button_inicio.stage='Battle';
@@ -35,23 +33,12 @@ Game.MainMenu.prototype ={
 		this.text2.setTextBounds(0, 300, this.game.world.width,100);
 		this.text3.setTextBounds(0, 400, this.game.world.width,100);
 		
-	    this.telon=this.add.sprite(-40,-1080,'telon');
-		this.physics.enable(this.telon, Phaser.Physics.ARCADE);		
-		this.telon.body.velocity.setTo(0, 0);
-		this.game.physics.arcade.gravity.y = 0;
-		/*this.text1.font='Notable-Regular';
-		this.text1.fontSize=tamano_fuente;
-		this.text1.align = 'center';	
+	    this.telon=this.game.add.sprite(960,/*-1080*/-540,'telon');
+		this.physics.p2.enable(this.telon);
+		this.telon.body.collideWorldBounds = false;
 		
-		this.text2.font='Notable-Regular';
-		this.text2.fontSize=tamano_fuente;
-		this.text2.align = 'center';
-		
-		this.text3.font='Notable-Regular';
-		this.text3.fontSize=tamano_fuente;
-		this.text3.align = 'center';*/
-
 	},
+
 	
 	update:function(){
 		if (this.scale.isPortrait){
@@ -65,8 +52,9 @@ Game.MainMenu.prototype ={
 			}
 		}
 		this.resize();
-		if(this.telon.y>=0){
+		if(this.telon.y>=540){
 			this.musica.destroy();
+			alert();
 			this.state.start('Battle');
 		}
 	},
@@ -75,7 +63,8 @@ Game.MainMenu.prototype ={
 		if (button.stage!='Battle'){
 			this.state.start(button.stage);
 		}else{
-			this.telon.body.velocity.setTo(0, +180);
+			//this.telon.body.velocity.setTo(0, +180);
+			this.telon.body.velocity.y = 360;
 			this.button_inicio.inputEnabled = false;
 			this.button_ajustes.inputEnabled = false;
 			this.button_tutorial.inputEnabled = false;
@@ -99,7 +88,7 @@ Game.MainMenu.prototype ={
 		sprite.scale.x = scale * scaleMultiplier;
 		sprite.scale.y = scale * scaleMultiplier;
 	},	
-
+	
 	resize: function () {
 		this.num_botones=3;//numero de botones, para asignar el porcentaje de la pantalla
 		this.porcentaje_logo_juego=15;//espacio de la pantalla que se reserva al titulo del juego
@@ -129,12 +118,12 @@ Game.MainMenu.prototype ={
 		//this.text3.y=this.button_tutorial.y;
 		this.text3.setTextBounds(0, this.button_tutorial.y+40, this.game.world.width,100);
 	},
-
-
 	
 	render:function() {
 		//this.game.debug.text(this.text1.font ,40,50,"white");
 		//this.game.debug.text(this.telon.y ,40,50,"white");
+		this.game.debug.text(this.telon.y ,40,50,"white");
+	
 	}
 };
 
