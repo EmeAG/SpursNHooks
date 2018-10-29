@@ -54,7 +54,6 @@ Game.MainMenu.prototype ={
 		this.resize();
 		if(this.telon.y>=540){
 			this.musica.destroy();
-			alert();
 			this.state.start('Battle');
 		}
 	},
