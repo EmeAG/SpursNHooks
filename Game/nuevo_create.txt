@@ -1,0 +1,354 @@
+	create:function(){
+		var musica=this.game.add.audio("batallaMusic",0.09,true);
+		musica.play();
+
+		dineroJugadores=300;
+		dineroJ1=dineroJugadores;
+		dineroJ2=-1;
+		this.construcAux=null;
+		
+		estado="CONSTRUCCION";
+		this.turno="J1";
+		
+		obj=new Objeto();
+		this.contConstJ1=0;
+		this.contConstJ2=0;
+		this.construcJ1=[];
+		this.construcJ2=[];
+		this.contJugJ1=0;
+		this.contJugJ2=0;
+		this.numJ1=0;
+		this.numJ2=0;
+		this.jugadoresJ1=[];
+		this.jugadoresJ2=[];
+		this.num0=-2;
+		this.num1=-2;
+		this.delayAux=0;
+
+
+		//imagen mala orientacion
+		this.image_turn =this.add.image(0, 0, "landscape");	
+		//Imagen Fondo
+        this.background = this.add.image(0, 0, "FondoBatalla");
+        this.background.height = this.game.height;
+        this.background.width = this.game.width;
+
+		//Suelos
+	    this.SueloMar=this.add.sprite(-50, 720, 'Suelo_Mar');
+		this.SueloPirata=this.add.sprite(0,0, 'Suelo_Pirata');
+		this.SueloPirata.height = this.world.height/6;
+		this.SueloPirata.width = this.world.width/3;
+		this.SueloPirata.x=this.SueloPirata.width/2;
+		this.SueloPirata.y=this.world.height-this.SueloPirata.height/2;
+
+	    this.SueloVaquero=this.add.sprite(0,0,'Suelo_Vaquero');
+		this.SueloVaquero.height = this.world.height/6;
+		this.SueloVaquero.width = this.world.width/3;
+		this.SueloVaquero.x=this.world.width-this.world.width/3+this.SueloPirata.width/2;
+		this.SueloVaquero.y=this.world.height-this.SueloVaquero.height/2;
+
+		this.physics.p2.enable(this.SueloPirata,true);
+		this.physics.p2.enable(this.SueloVaquero,true);
+
+		this.SueloPirata.static = true;
+		this.SueloVaquero.static = true;
+/*		this.SueloVaquero.body.collideWorldBounds = true;
+		this.SueloPirata.body.collideWorldBounds = true;
+		this.SueloVaquero.body.bounce.set(1);
+		this.SueloPirata.body.bounce.set(1);
+		this.SueloVaquero.body.friction = new Phaser.Point(8,8);
+		this.SueloPirata.body.friction = new Phaser.Point(8, 8);
+*/		
+		
+/*
+		//Cargar los objetos del estado batalla. 0 inputs, 0 outputs
+		this.cargar_batalla = function (){
+			//Activar lanzamiento desde el fondo de la pantalla
+			this.background.inputEnabled = true;
+			this.background.input.start(0, true);
+			this.background.events.onInputDown.add(this.set);
+			this.background.events.onInputUp.add(this.launch);
+			this.angulo2=0;
+			this.angulo1=0;
+			this.game.physics.p2.setBoundsToWorld();
+
+			//Marcador
+			this.Marcador=this.add.sprite(637, 0, 'Marcador');
+			this.CartelVaqueros=this.add.sprite(1040, 35, 'CartelVaqueros');
+			this.CartelPiratas=this.add.sprite(670, 35, 'CartelPiratas');
+			this.CartelVaqueros.tint=0.4 * 0xffffff;
+
+			//Cañon
+			this.CannonPirata=this.add.sprite(this.world.width*0.04, (this.world.height- this.cache.getImage("Cannon_Pirata").height)*0.4, 'Cannon_Pirata');
+			this.CannonVaquero=this.add.sprite((this.world.width- this.cache.getImage("Cannon_Vaquero").width)*0.99, (this.world.height- this.cache.getImage("Cannon_Vaquero").height)*0.4, 'Cannon_Vaquero');	    
+			this.CannonVaquero.anchor.setTo(0.85, 0.65);
+			this.CannonVaquero.scale.x *= -1;
+			this.CannonVaquero.scale.y *= -1;
+			this.CannonPirata.anchor.setTo(0.15, 0.35);
+			this.game.physics.p2.enable([this.CannonPirata, this.CannonVaquero]);
+			this.CannonPirata.body.moves = false;
+			this.CannonVaquero.body.moves = false;
+			
+			//Balas comunes J1
+			BalaCom1_J1=this.add.sprite(135,420, 'balaComun');
+			this.physics.enable(BalaCom1_J1, Phaser.Physics.p2);
+			BalaCom1_J1.anchor.set(0.5,0.5);
+			BalaCom1_J1.body.bounce.set(0.4);
+			BalaCom1_J1.body.drag.set(20, 20);
+			BalaCom1_J1.body.moves = false;	
+			BalaCom1_J1.pivot.x=-200;
+			BalaCom1_J1.pivot.y=-20;
+			BalaCom1_J1.scale.x *= 0.75;
+			BalaCom1_J1.scale.y *= 0.75;
+			BalaCom1_J1.body.setCircle(35);
+			BalaCom1_J1.body.mass=peso_balas;
+
+			//Balas Agua J1
+			BalaAgu_J1=this.add.sprite(135,420, 'balaAgua');
+			this.physics.enable(BalaAgu_J1, Phaser.Physics.p2);
+			BalaAgu_J1.anchor.set(0.5,0.5);
+			BalaAgu_J1.body.bounce.set(0.4);
+			BalaAgu_J1.body.drag.set(20, 20);
+			BalaAgu_J1.body.moves = false;	
+			BalaAgu_J1.pivot.x=-200;
+			BalaAgu_J1.pivot.y=-20;
+			BalaAgu_J1.scale.x *= 0.75;
+			BalaAgu_J1.scale.y *= 0.75;
+			BalaAgu_J1.body.setCircle(35);
+			BalaAgu_J1.body.mass=peso_balas;
+			
+			//Balas Fuego J1
+			BalaFueg_J1=this.add.sprite(135,420, 'balaFuego');
+			this.physics.enable(BalaFueg_J1, Phaser.Physics.p2);
+			BalaFueg_J1.anchor.set(0.5,0.5);
+			BalaFueg_J1.body.bounce.set(0.4);
+			BalaFueg_J1.body.drag.set(20, 20);
+			BalaFueg_J1.body.moves = false;	
+			BalaFueg_J1.pivot.x=-200;
+			BalaFueg_J1.pivot.y=-20;
+			BalaFueg_J1.scale.x *= 0.75;
+			BalaFueg_J1.scale.y *= 0.75;
+			BalaFueg_J1.body.setCircle(35);
+			BalaFueg_J1.body.mass=peso_balas;
+			
+			//Balas Acido J1
+			BalaAcid_J1=this.add.sprite(135,420, 'balaAcido');
+			this.physics.enable(BalaAcid_J1, Phaser.Physics.p2);
+			BalaAcid_J1.anchor.set(0.5,0.5);
+			BalaAcid_J1.body.bounce.set(0.4);
+			BalaAcid_J1.body.drag.set(20, 20);
+			BalaAcid_J1.body.moves = false;	
+			BalaAcid_J1.pivot.x=-200;
+			BalaAcid_J1.pivot.y=-20;
+			BalaAcid_J1.scale.x *= 0.75;
+			BalaAcid_J1.scale.y *= 0.75;
+			BalaAcid_J1.body.setCircle(35);
+			BalaAcid_J1.body.mass=peso_balas;
+			
+			//Balas comunes J2
+			BalaCom1_J2=this.add.sprite(1825,450, 'balaComun');
+			this.physics.enable(BalaCom1_J2, Phaser.Physics.p2);
+			BalaCom1_J2.anchor.set(0.5,0.5);
+			BalaCom1_J2.body.bounce.set(0.4);
+			BalaCom1_J2.body.drag.set(20, 20);
+			BalaCom1_J2.body.moves = false;
+			BalaCom1_J2.pivot.x=-225;
+			BalaCom1_J2.pivot.y=-20;
+			BalaCom1_J2.scale.x *= 0.75;
+			BalaCom1_J2.scale.y *= 0.75;
+			BalaCom1_J2.body.setCircle(35);
+			BalaCom1_J2.body.mass=peso_balas;
+			
+			//Balas Agua J2
+			BalaAgu_J2=this.add.sprite(1825,450, 'balaAgua');
+			this.physics.enable(BalaAgu_J2, Phaser.Physics.p2);
+			BalaAgu_J2.anchor.set(0.5,0.5);
+			BalaAgu_J2.body.bounce.set(0.4);
+			BalaAgu_J2.body.drag.set(20, 20);
+			BalaAgu_J2.body.moves = false;
+			BalaAgu_J2.pivot.x=-225;
+			BalaAgu_J2.pivot.y=-20;
+			BalaAgu_J2.scale.x *= 0.75;
+			BalaAgu_J2.scale.y *= 0.75;
+			BalaAgu_J2.body.setCircle(35);
+			BalaAgu_J2.body.mass=peso_balas;
+			
+			//Balas Fuego J2
+			BalaFueg_J2=this.add.sprite(1825,450, 'balaFuego');
+			this.physics.enable(BalaFueg_J2, Phaser.Physics.p2);
+			BalaFueg_J2.anchor.set(0.5,0.5);
+			BalaFueg_J2.body.bounce.set(0.4);
+			BalaFueg_J2.body.drag.set(20, 20);
+			BalaFueg_J2.body.moves = false;
+			BalaFueg_J2.pivot.x=-225;
+			BalaFueg_J2.pivot.y=-20;
+			BalaFueg_J2.scale.x *= 0.75;
+			BalaFueg_J2.scale.y *= 0.75;
+			BalaFueg_J2.body.setCircle(35);
+			BalaFueg_J2.body.mass=peso_balas;
+			
+			//Balas Acido J2
+			BalaAcid_J2=this.add.sprite(1825,450, 'balaAcido');
+			this.physics.enable(BalaAcid_J2, Phaser.Physics.p2);
+			BalaAcid_J2.anchor.set(0.5,0.5);
+			BalaAcid_J2.body.bounce.set(0.4);
+			BalaAcid_J2.body.drag.set(20, 20);
+			BalaAcid_J2.body.moves = false;
+			BalaAcid_J2.pivot.x=-225;
+			BalaAcid_J2.pivot.y=-20;
+			BalaAcid_J2.scale.x *= 0.75;
+			BalaAcid_J2.scale.y *= 0.75;
+			BalaAcid_J2.body.setCircle(35);	
+			BalaAcid_J2.body.mass=peso_balas;
+
+			//Invisiblizar balas no seleccionadas
+			BalaAgu_J1.visible=false;
+			BalaAgu_J2.visible=false;
+			BalaAcid_J1.visible=false;
+			BalaAcid_J2.visible=false;
+			BalaFueg_J1.visible=false;
+			BalaFueg_J2.visible=false;
+
+			//Flechas de lanzamiento
+			arrow = this.add.sprite(200, 450, 'arrow');
+			arrow.anchor.setTo(0.1, 0.5);
+			arrow.alpha = 0;
+
+			analog = this.add.sprite(200, 450, 'analog');
+			analog.width = 8;
+			analog.rotation = 220;
+			analog.alpha = 0;
+			analog.anchor.setTo(0.5, 0.0);
+			
+			//Botones balas
+			button_BalaComun = this.add.button(100, 20, 'BotonBala', this.selector_bala, this, 2, 1, 0);
+			this.imagen_BalaComun=this.add.sprite(105, 23, 'balaComun');
+			button_BalaComun.tipo='comun';
+			button_BalaComun.tint=0.78 * 0xffffff;
+			
+			button_BalaAgua = this.add.button(200, 20, 'BotonBala', this.selector_bala, this, 2, 1, 0);
+			this.imagen_BalaComun=this.add.sprite(205, 23, 'balaAgua');
+			button_BalaAgua.tipo='agua';
+			text_num_balas_agu=this.game.add.text(260, 65, num_balas_agu_J1);
+			
+			button_BalaFuego = this.add.button(300, 20, 'BotonBala', this.selector_bala, this, 2, 1, 0);
+			this.imagen_BalaComun=this.add.sprite(305, 23, 'balaFuego');
+			button_BalaFuego.tipo='fuego';
+			text_num_balas_fue=this.game.add.text(360, 65, num_balas_fue_J1);
+			
+			button_BalaAcido = this.add.button(400, 20, 'BotonBala', this.selector_bala, this, 2, 1, 0);
+			this.imagen_BalaComun=this.add.sprite(405, 23, 'balaAcido');
+			button_BalaAcido.tipo='acido';
+			text_num_balas_aci=this.game.add.text(460, 65, num_balas_aci_J1);
+
+			balaDispara=BalaCom1_J1;
+			this.CannonVaquero.bringToTop();
+			this.CannonPirata.bringToTop();
+			this.SueloPirata.bringToTop();
+			this.SueloVaquero.bringToTop();
+			if(num_balas_agu_J1==0){
+				button_BalaAgua.inputEnabled = false;
+				button_BalaAgua.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAgua.inputEnabled = true;
+				button_BalaAgua.tint=1 * 0xffffff;
+			}				
+			if(num_balas_fue_J1==0){
+				button_BalaFuego.inputEnabled = false;
+				button_BalaFuego.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaFuego.inputEnabled = true;
+				button_BalaFuego.tint=1 * 0xffffff;
+			}				
+			if(num_balas_aci_J1==0){
+				button_BalaAcido.inputEnabled = false;
+				button_BalaAcido.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAcido.inputEnabled = true;
+				button_BalaAcido.tint=1 * 0xffffff;
+			}
+		}
+*/
+		//Boton Tipos de Objetos
+		this.button_Rect_Vert = this.add.button(this.world.width/3+100, 40, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
+		this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
+		this.textRectV.anchor.setTo(0.5,0);
+		this.button_Rect_Horz = this.add.button(this.world.width/3+100, 40+this.cache.getImage('boton_Tipo').height+5, 'boton_Tipo', this.create_tipo_rectH, this, 2, 1, 0);
+		this.textRectH=this.game.add.sprite(this.button_Rect_Horz.x+25,this.button_Rect_Horz.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_rectH");
+		this.textRectH.anchor.setTo(0,0.5);
+		this.button_Trian = this.add.button(this.world.width/3+100, 40+(this.cache.getImage('boton_Tipo').height+5)*2, 'boton_Tipo', this.create_tipo_trian, this, 2, 1, 0);
+		this.textTrian=this.game.add.sprite(this.button_Trian.x+this.cache.getImage('boton_Tipo').width/2,this.button_Trian.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_trian");
+		this.textTrian.anchor.setTo(0.5,0.5)
+		this.button_Cuad = this.add.button(this.world.width/3+100, 40+(this.cache.getImage('boton_Tipo').height+5)*3, 'boton_Tipo', this.create_tipo_cuad, this, 2, 1, 0);
+		this.textCuad=this.game.add.sprite(this.button_Cuad.x+this.cache.getImage('boton_Tipo').width/2,this.button_Cuad.y+this.cache.getImage('boton_Tipo').height/2,"Bloq_mad_cuad");
+		this.textCuad.anchor.setTo(0.5,0.5);
+
+		//Boton Materiales
+		this.button_Madera = this.add.button(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width+30, 40, 'boton_Material', this.change_material_madera, this, 2, 1, 0);
+		this.textMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3,this.button_Madera.y+this.cache.getImage('boton_Material').height/2,"Madera");
+		this.textMad.anchor.setTo(0.5,0.5);
+		this.precioMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMad.y,"10$");
+		this.precioMad.anchor.setTo(0.5,0.5);
+		this.button_Piedra = this.add.button(this.button_Madera.x, 40+this.cache.getImage('boton_Material').height+5, 'boton_Material', this.change_material_piedra, this, 2, 1, 0);
+		this.textPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3,this.button_Piedra.y+this.cache.getImage('boton_Material').height/2,"Piedra");
+		this.textPied.anchor.setTo(0.5,0.5);
+		this.precioPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3*2+10,this.textPied.y,"20$");
+		this.precioPied.anchor.setTo(0.5,0.5);
+		this.button_Metal = this.add.button(this.button_Madera.x, 40+(this.cache.getImage('boton_Material').height+5)*2, 'boton_Material', this.change_material_metal, this, 2, 1, 0);
+		this.textMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3,this.button_Metal.y+this.cache.getImage('boton_Material').height/2,"Metal");
+		this.textMet.anchor.setTo(0.5,0.5);
+		this.precioMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMet.y,"35$");
+		this.precioMet.anchor.setTo(0.5,0.5);
+
+		//Boton Tiempo
+		this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
+		cuenta_atras=this.time.create();
+		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoConstruc, this.finTiempo);
+		text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
+		text_cuenta_atras.anchor.setTo(0.5,0.5);
+
+		//Boton balas
+		this.button_bala_fuego=this.add.button(1350,200,'BotonBala_B',this.compraBalaFuego,this,2,1,0);
+		this.button_bala_fuego.anchor.setTo(0.5,0.5);
+		this.balaF=this.game.add.sprite(this.button_bala_fuego.x-20,this.button_bala_fuego.y-10,"balaFuego");
+		this.balaF.anchor.setTo(0.5,0.5);
+		this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
+		this.textBFue.anchor.setTo(0.5,0.5);
+		this.precioBFue=this.game.add.text(this.button_bala_fuego.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_fuego.y-this.cache.getImage("BotonBala_B").height/3,"15$");
+		this.precioBFue.anchor.setTo(0.5,0.5);
+		this.button_bala_agua=this.add.button(1350+20+this.cache.getImage('BotonBala_B').width,200,'BotonBala_B',this.compraBalaAgua,this,2,1,0);
+		this.button_bala_agua.anchor.setTo(0.5,0.5);
+		this.balaAg=this.game.add.sprite(this.button_bala_agua.x-20,this.button_bala_agua.y-10,"balaAgua");
+		this.balaAg.anchor.setTo(0.5,0.5);
+		this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
+		this.textBAgu.anchor.setTo(0.5,0.5);
+		this.precioBAgu=this.add.text(this.button_bala_agua.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_agua.y-this.cache.getImage("BotonBala_B").height/3,"30$");
+		this.precioBAgu.anchor.setTo(0.5,0.5);
+		this.button_bala_acido=this.add.button(1350+(20+this.cache.getImage('BotonBala_B').width)*2,200,'BotonBala_B',this.compraBalaAcido,this,2,1,0);
+		this.button_bala_acido.anchor.setTo(0.5,0.5);
+		this.balaAc=this.game.add.sprite(this.button_bala_acido.x-20,this.button_bala_acido.y-10,"balaAcido");
+		this.balaAc.anchor.setTo(0.5,0.5);
+		this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
+		this.textBAci.anchor.setTo(0.5,0.5);
+		this.precioBAci=this.add.text(this.button_bala_acido.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_acido.y-this.cache.getImage("BotonBala_B").height/3,"50$");
+		this.precioBAci.anchor.setTo(0.5,0.5);
+
+		//Boton personaje
+		this.button_Jugador=this.add.button(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje',this.crearJugador,this,2,1,0);
+		this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Pirata")
+		this.personaje.anchor.setTo(0.5,0.5);
+		this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,"3");
+
+		//Dinero
+		this.dineroMarc=this.add.sprite(1500,40,'BotonDinero');
+		this.dineroMarc.anchor.setTo(0.5,0.5);
+		this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
+		this.textDinero.anchor.setTo(0.7,0.5);
+
+		//Telon
+		//this.telon=this.add.sprite(this.world.width/3,0,'telon');							 
+		this.telon=this.add.sprite(960,540,'telon');
+		this.physics.p2.enable(this.telon);
+		this.telon.body.collideWorldBounds = false;
+		juego_empezado=false;
+	},
