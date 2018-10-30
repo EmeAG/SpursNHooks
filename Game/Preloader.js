@@ -17,7 +17,8 @@ Game.Preloader.prototype={
 		this.load.image('Pirata', 'assets/sprites/Pirata.png');
 		this.load.image('Suelo_Pirata', 'assets/PropsEscenario/SueloPirata.png');
 		this.load.image('Suelo_Vaquero', 'assets/PropsEscenario/sueloVaquero.png')
-		this.load.image('Suelo_Mar', 'assets/PropsEscenario/olasAnimacion2.gif')
+		this.load.image('Suelo_Mar_cla', 'assets/PropsEscenario/olas.png')
+		this.load.image('Suelo_Mar_osc', 'assets/PropsEscenario/olasDark.png')
 		this.load.image('Cannon_Pirata', 'assets/PropsEscenario/CannonPirata.png');
 		this.load.image('Cannon_Vaquero', 'assets/PropsEscenario/CannonVaquero.png');
 		this.load.image('Bloq_mad_cuad', 'assets/sprites/Madera_cuad.png');

@@ -93,7 +93,14 @@ Game.Battle.prototype ={
         this.background.width = this.game.width;
 
 		//Suelos
-	    this.SueloMar=this.add.sprite(-50, 720, 'Suelo_Mar');
+	    this.SueloMar2=this.add.sprite(-50, 900, 'Suelo_Mar_osc');
+		this.controlmar2=0;
+	    this.SueloMar1=this.add.sprite(-50, 970, 'Suelo_Mar_cla');
+		this.controlmar1=0;
+		/*this.SueloMar1.body.velocity.x=50;
+		this.SueloMar2.body.velocity.x=-50;*/
+		
+		
 		this.SueloPirata=this.add.sprite(0,0, 'Suelo_Pirata');
 		this.SueloPirata.height = this.world.height/6;
 		this.SueloPirata.width = this.world.width/3;
@@ -458,6 +465,7 @@ Game.Battle.prototype ={
 		this.telon=this.add.sprite(960,540,'telon');
 		this.physics.p2.enable(this.telon);
 		this.telon.body.collideWorldBounds = false;
+		this.telon.visible=false;
 		juego_empezado=false;
 	},
 	
@@ -1372,7 +1380,7 @@ Game.Battle.prototype ={
 
 	update:function(){
 		//Inicio Pantalla en Vertical
-	/*	if (this.scale.isPortrait){
+		/*if (this.scale.isPortrait){
 			this.image_turn.height = this.game.height;
 			this.image_turn.width = this.game.width;
 			this.image_turn.visible=true;
@@ -1382,6 +1390,29 @@ Game.Battle.prototype ={
 				this.image_turn.visible=false;
 			}
 		}*/
+
+		if(this.SueloMar1.x<300 && this.controlmar1==0){
+			this.SueloMar1.x+=1;
+		}else{
+			this.SueloMar1.x-=1;
+			this.controlmar1=1;
+			if(this.SueloMar1.x<-550){
+				this.controlmar1=0;
+			}
+		};
+		if(this.SueloMar2.x>-550 && this.controlmar2==0){
+			this.SueloMar2.x-=1;
+		}else{
+			this.SueloMar2.x+=1;
+			this.controlmar2=1;
+			if(this.SueloMar2.x>300){
+				this.controlmar2=0;
+			}
+		};
+
+
+
+
 		if(juego_empezado==false){
 			this.telon.body.velocity.x = 360;
 			this.telon.body.data.gravityScale=0;
@@ -2109,7 +2140,6 @@ Game.Battle.prototype ={
             }*/
         }
 		//this.delayAux++;
-        this.resize();
     },
 	
 
@@ -2230,61 +2260,6 @@ Game.Battle.prototype ={
 		}
 	},
 	
-	getSpriteScale: function (spriteWidth, spriteHeight, availableSpaceWidth, availableSpaceHeight, minPadding) {
-		var ratio = 1;
-		var currentDevicePixelRatio = window.devicePixelRatio;
-		// Sprite needs to fit in either width or height
-		
-		var widthRatio = (spriteWidth * currentDevicePixelRatio + 2 * minPadding) / availableSpaceWidth;
-		var heightRatio = (spriteHeight * currentDevicePixelRatio + 2 * minPadding) / availableSpaceHeight;
-		if(widthRatio > 1 || heightRatio > 1){
-			ratio = 1 / Math.max(widthRatio, heightRatio);
-		} 
-		return ratio * currentDevicePixelRatio;
-	},
-	scaleSprite: function (sprite, availableSpaceWidth, availableSpaceHeight, padding, scaleMultiplier) {
-		var scale = this.getSpriteScale(sprite.width, sprite.height, availableSpaceWidth, availableSpaceHeight, padding);
-		sprite.scale.x = scale * scaleMultiplier;
-		sprite.scale.y = scale * scaleMultiplier;
-	},
-
-	resize: function () {
-		this.porcentaje_logo_juego=30;//espacio de la pantalla que se reserva al titulo del juego
-		multiplicador_escala=0.75;//valor por el que se escalaran los botones, depende del tamaño de la pantalla
-
-		this.background.height = this.world.height;
-		this.background.width = this.world.width;
-		
-		this.SueloPirata.height = this.world.height/6;
-		this.SueloPirata.width = this.world.width/3;
-		this.SueloPirata.x=0;
-		this.SueloPirata.y=this.world.height-this.SueloPirata.height;
-		
-		this.SueloVaquero.height = this.world.height/6;
-		this.SueloVaquero.width = this.world.width/3;
-		this.SueloVaquero.x=this.world.width-this.world.width/3;
-		this.SueloVaquero.y=this.world.height-this.SueloVaquero.height;
-		
-		this.SueloMar.height = this.world.height/6;
-		this.SueloMar.width = this.world.width;
-		this.SueloMar.x=0;
-		this.SueloMar.y=this.world.height-this.SueloMar.height;
-		
-		if(estado=="BATALLA"){
-			this.CannonPirata.height =this.world.height/10;
-			this.CannonPirata.width =this.world.width/8;
-			this.CannonPirata.x=(this.world.width- this.CannonPirata.width)*0.067;
-			this.CannonPirata.y=(this.world.height-this.CannonPirata.height)*0.44;
-
-			this.CannonVaquero.height =this.world.height/10;
-			this.CannonVaquero.width =this.world.width/8;
-			this.CannonVaquero.x=(this.world.width- (this.CannonVaquero.width*0.35))*0.99;
-			this.CannonVaquero.y=(this.world.height)*0.425;
-			this.CannonVaquero.scale.x *= -1;
-			this.CannonVaquero.scale.y *= -1;
-		}
-	},
-
 	
 	render:function() {
 		//this.game.debug.text(this.game.physics.p2.angleToPointer(BalaCom1_J2),32,32,"white");
