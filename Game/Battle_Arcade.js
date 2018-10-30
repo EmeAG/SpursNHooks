@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=15;//contador de tiempo global
+var auxTiempoConstruc=20;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
@@ -348,7 +348,7 @@ Game.Battle.prototype ={
 		//Boton Tiempo
 		this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 		cuenta_atras=this.time.create();
-		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoConstruc, this.finTiempo);
+		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 8, this.finTiempo);
 		text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
 		text_cuenta_atras.anchor.setTo(0.5,0.5);
 
@@ -1375,7 +1375,7 @@ Game.Battle.prototype ={
 			text_cuenta_atras.text=segundos.substr(-2); 
 			//Fin  Actualizar cuenta atrás
 
-			//Colisiones
+			/*//Colisiones
 			for(var i=0;i<this.contConstJ1;i++){
 				this.physics.p2.collide(this.construcJ1[i],this.SueloPirata);
 				for(var j=0;j<this.contConstJ1;j++){
@@ -1414,9 +1414,9 @@ Game.Battle.prototype ={
 				for(var j=0;j<this.contConstJ2;j++){
 					this.physics.p2.collide(this.jugadoresJ2[i],this.construcJ2[j]);
 				}
-			}
+			}*/
 
-			/*if(estado=="CONSTRUCCION"){
+			if(estado=="CONSTRUCCION"){
 				this.game.physics.p2.gravity.y = 100;
 			
 				if(fin_tiempo==0&&this.turno=="J1"){
@@ -1486,7 +1486,7 @@ Game.Battle.prototype ={
 							this.precioBAci.visible=false;
 							this.precioBAgu.visible=false;
 							this.precioBFue.visible=false;
-						}
+						}/*
 						if(this.telon.x<=-this.world.width/3-80){
 							this.telon.body.velocity.setTo(0,0);
 							dineroJ1=-1;
@@ -1620,11 +1620,11 @@ Game.Battle.prototype ={
 							text_cuenta_atras.x=this.cuadroTiempo.width/2;
 							obj.material="madera";
 							this.turno="J2";
-						}
+						}*/
 					}		
 				}
 
-				if(fin_tiempo!=0){
+				/*if(fin_tiempo!=0){
 					//Actualizacion de textos
 					if(this.turno=="J1"){
 						this.textDinero.destroy();
@@ -1822,12 +1822,11 @@ Game.Battle.prototype ={
 								cuenta_atras.start();
 							}
 						}					
-					}
+					}*/
 				}		
 			}
 			this.delayAux++;
-		}
-		if(estado=="BATALLA"){
+		/*if(estado=="BATALLA"){
 			balaDispara.body.gravity.y=3000;
 			//CONTROL DESTRUCCION
 			for(var i=0;i<this.contConstJ2;i++){
@@ -2044,8 +2043,8 @@ Game.Battle.prototype ={
                 if(this.delayAux>=600){
                     this.state.start('MainMenu');
                 }
-            }*/
-        }
+            }
+        }*/
 
         this.resize();
     },

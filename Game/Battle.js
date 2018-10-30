@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=5;//contador de tiempo global
+var auxTiempoConstruc=25;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
@@ -1230,7 +1230,7 @@ Game.Battle.prototype ={
 	move_sprite:function(objeto){
 		objeto.body.angle=0;
 		if(this.turno=="J1"){
-			if(objeto.y+objeto.height/2<this.SueloPirata.y && objeto.x+objeto.width/2<this.telon.x){
+			if(objeto.y+objeto.height/2<this.SueloPirata.y-this.SueloPirata.height/2 && objeto.x+objeto.width/2<this.world.width/3){
 				objeto.tint=1 * 0xffffff;
 			}
 			else{
@@ -1257,7 +1257,7 @@ Game.Battle.prototype ={
 		}
 
 		if(this.turno=="J2"){
-			if(objeto.y+objeto.height/2<this.SueloVaquero.y && objeto.x-objeto.width/2>this.world.width/3*2){
+			if(objeto.y+objeto.height/2<this.SueloVaquero.y-this.SueloVaquero.height/2 && objeto.x-objeto.width/2>this.world.width/3*2){
 				objeto.tint=1 * 0xffffff;
 			}
 			else{
@@ -1561,8 +1561,8 @@ Game.Battle.prototype ={
 					this.precioBAci.visible=false;
 					this.precioBAgu.visible=false;
 					this.precioBFue.visible=false;
-/*
-					if(this.telon.x+this.cache.getImage("telon").width/2>=this.world.width/3*2){
+
+					/*if(this.telon.x+this.cache.getImage("telon").width/2>=this.world.width/3*2){
 						this.telon.body.velocity.x = -360;
 						this.telon.body.data.gravityScale=0;
 					}
@@ -1713,50 +1713,49 @@ Game.Battle.prototype ={
 						this.turno="J2";
 					}
 				}
-			}
-/*
-			if(fin_tiempo!=0){*/
-				//Actualizacion de textos
-				if(this.turno=="J1"){
-					this.textDinero.destroy();
-					this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
-					this.textDinero.anchor.setTo(0.7,0.5);
-					this.textBFue.destroy();
-					this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
-					this.textBFue.anchor.setTo(0.5,0.5);
-					this.textBAgu.destroy();
-					this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
-					this.textBAgu.anchor.setTo(0.5,0.5);
-					this.textBAci.destroy();
-					this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
-					this.textBAci.anchor.setTo(0.5,0.5);
-					this.textNum.destroy();
-					this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ1);
-				}
-				if(this.turno=="J2"){
-					this.textDinero.destroy();
-					this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2);
-					this.textDinero.anchor.setTo(0.7,0.5);
-					this.textBFue.destroy();
-					this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J2);
-					this.textBFue.anchor.setTo(0.5,0.5);
-					this.textBAgu.destroy();
-					this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J2);
-					this.textBAgu.anchor.setTo(0.5,0.5);
-					this.textBAci.destroy();
-					this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J2);
-					this.textBAci.anchor.setTo(0.5,0.5);
-					this.textNum.destroy();	
-					this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);	
-				}
-				if(this.construcAux!=null){
-					this.move_sprite(this.construcAux);
-					if(this.delayAux>15){
-						this.stop_move();
+
+				if(fin_tiempo!=0){
+					//Actualizacion de textos
+					if(this.turno=="J1"){
+						this.textDinero.destroy();
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
+						this.textDinero.anchor.setTo(0.7,0.5);
+						this.textBFue.destroy();
+						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
+						this.textBFue.anchor.setTo(0.5,0.5);
+						this.textBAgu.destroy();
+						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
+						this.textBAgu.anchor.setTo(0.5,0.5);
+						this.textBAci.destroy();
+						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
+						this.textBAci.anchor.setTo(0.5,0.5);
+						this.textNum.destroy();
+						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ1);
 					}
+					if(this.turno=="J2"){
+						this.textDinero.destroy();
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2);
+						this.textDinero.anchor.setTo(0.7,0.5);
+						this.textBFue.destroy();
+						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J2);
+						this.textBFue.anchor.setTo(0.5,0.5);
+						this.textBAgu.destroy();
+						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J2);
+						this.textBAgu.anchor.setTo(0.5,0.5);
+						this.textBAci.destroy();
+						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J2);
+						this.textBAci.anchor.setTo(0.5,0.5);
+						this.textNum.destroy();	
+						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);	
+					}
+					if(this.construcAux!=null){
+						this.move_sprite(this.construcAux);
+						if(this.delayAux>15){
+							this.stop_move();
+						}
+					}
+					this.delayAux++;
 				}
-				this.delayAux++;
-				//}
 
 				if(this.turno=="J1"){
 					if(this.num0>=0){
@@ -1774,7 +1773,7 @@ Game.Battle.prototype ={
 					if(this.num1>=0){
 						this.construcAux=this.jugadoresJ2[this.num1];
 					}
-				}/*
+				}
 
 				if(fin_tiempo==0&&this.turno=="J2"){
 					if(this.construcAux!=null){
@@ -1919,7 +1918,7 @@ Game.Battle.prototype ={
 			}
 			this.delayAux++;
 		}
-		if(estado=="BATALLA"){
+		/*if(estado=="BATALLA"){
 			balaDispara.body.gravity.y=3000;
 			//CONTROL DESTRUCCION
 			for(var i=0;i<this.contConstJ2;i++){
@@ -2136,8 +2135,8 @@ Game.Battle.prototype ={
                 if(this.delayAux>=600){
                     this.state.start('MainMenu');
                 }
-            }*/
-        }
+            }
+		}*/
 		//this.delayAux++;
     },
 	
