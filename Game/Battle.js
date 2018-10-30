@@ -109,8 +109,8 @@ Game.Battle.prototype ={
 		this.physics.p2.enable(this.SueloPirata,true);
 		this.physics.p2.enable(this.SueloVaquero,true);
 
-		this.SueloPirata.static = true;
-		this.SueloVaquero.static = true;
+		this.SueloPirata.body.static = true;
+		this.SueloVaquero.body.static = true;
 /*		this.SueloVaquero.body.collideWorldBounds = true;
 		this.SueloPirata.body.collideWorldBounds = true;
 		this.SueloVaquero.body.bounce.set(1);
@@ -1172,8 +1172,7 @@ Game.Battle.prototype ={
 
 	//Establece la posicion del objeto y verifica si la posicion es correcta. inputs objeto, outputs 0.
 	move_sprite:function(objeto){
-		/*this.game.physics.p2.gravity.y = 0;
-		objeto.anchor.setTo(0.5,0.5);*/
+		objeto.body.collideWorldBounds=false;
 		if(this.turno=="J1"){
 			if(objeto.y+objeto.height/2<this.SueloPirata.y && objeto.x+objeto.width/2<this.telon.x){
 				objeto.tint=1 * 0xffffff;
