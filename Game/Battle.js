@@ -465,7 +465,6 @@ Game.Battle.prototype ={
 		this.telon=this.add.sprite(960,540,'telon');
 		this.physics.p2.enable(this.telon);
 		this.telon.body.collideWorldBounds = false;
-		this.telon.visible=false;
 		juego_empezado=false;
 	},
 	
