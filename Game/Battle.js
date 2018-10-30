@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=5;//contador de tiempo global
+var auxTiempoConstruc=25;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
@@ -58,7 +58,7 @@ var musica;
 
 Game.Battle.prototype ={
 	create:function(){
-		var musica=this.game.add.audio("batallaMusic",0.09,true);
+	//	var musica=this.game.add.audio("batallaMusic",0.09,true);
 	//	musica.play();
 
 		dineroJugadores=300;
@@ -1172,7 +1172,7 @@ Game.Battle.prototype ={
 
 	//Establece la posicion del objeto y verifica si la posicion es correcta. inputs objeto, outputs 0.
 	move_sprite:function(objeto){
-		objeto.body.collideWorldBounds=false;
+		objeto.body.angle=0;
 		if(this.turno=="J1"){
 			if(objeto.y+objeto.height/2<this.SueloPirata.y && objeto.x+objeto.width/2<this.telon.x){
 				objeto.tint=1 * 0xffffff;
@@ -1237,6 +1237,12 @@ Game.Battle.prototype ={
 	//Construye el objeto si esta en la posicion correcta o lo elimina si este no lo esta. inputs 0, outputs 0.
 	stop_move:function(){
 		if((this.input.mousePointer.isDown && this.construcAux!=null && this.delayAux>15) || fin_tiempo==0){
+			this.game.physics.p2.enable(this.construcAux, true);
+			this.construcAux.body.angularVelocity=0;											   
+			this.construcAux.body.velocity.x=0;
+			this.construcAux.body.velocity.y=0;
+			this.construcAux.body.kinematic=true;
+
 			if(this.turno=="J1"){
 				if(this.num0>-1){
 					if(this.construcJ1[this.num0].tint==0.4 * 0xffffff){
