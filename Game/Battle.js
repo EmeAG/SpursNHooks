@@ -59,7 +59,7 @@ var musica;
 Game.Battle.prototype ={
 	create:function(){
 		var musica=this.game.add.audio("batallaMusic",0.09,true);
-		musica.play();
+	//	musica.play();
 
 		dineroJugadores=300;
 		dineroJ1=dineroJugadores;
@@ -93,19 +93,33 @@ Game.Battle.prototype ={
         this.background.width = this.game.width;
 
 		//Suelos
-        this.SueloPirata=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Pirata").height, 'Suelo_Pirata');
-	    this.SueloVaquero=this.add.sprite(this.world.width-this.world.width/3, this.world.height- this.cache.getImage("Suelo_Vaquero").height, 'Suelo_Vaquero');
-		this.game.physics.p2.enable([this.SueloPirata, this.SueloVaquero]);
-	    this.SueloMar=this.add.sprite(0, this.world.height- this.cache.getImage("Suelo_Mar").height, 'Suelo_Mar');
-		this.SueloPirata.body.immovable = true;
-		this.SueloVaquero.body.immovable = true;
-		this.SueloVaquero.body.collideWorldBounds = true;
+	    this.SueloMar=this.add.sprite(-50, 720, 'Suelo_Mar');
+		this.SueloPirata=this.add.sprite(0,0, 'Suelo_Pirata');
+		this.SueloPirata.height = this.world.height/6;
+		this.SueloPirata.width = this.world.width/3;
+		this.SueloPirata.x=this.SueloPirata.width/2;
+		this.SueloPirata.y=this.world.height-this.SueloPirata.height/2;
+
+	    this.SueloVaquero=this.add.sprite(0,0,'Suelo_Vaquero');
+		this.SueloVaquero.height = this.world.height/6;
+		this.SueloVaquero.width = this.world.width/3;
+		this.SueloVaquero.x=this.world.width-this.world.width/3+this.SueloPirata.width/2;
+		this.SueloVaquero.y=this.world.height-this.SueloVaquero.height/2;
+
+		this.physics.p2.enable(this.SueloPirata,true);
+		this.physics.p2.enable(this.SueloVaquero,true);
+
+		this.SueloPirata.static = true;
+		this.SueloVaquero.static = true;
+/*		this.SueloVaquero.body.collideWorldBounds = true;
 		this.SueloPirata.body.collideWorldBounds = true;
-		//this.SueloVaquero.body.bounce.set(1);
-		//this.SueloPirata.body.bounce.set(1);
+		this.SueloVaquero.body.bounce.set(1);
+		this.SueloPirata.body.bounce.set(1);
 		this.SueloVaquero.body.friction = new Phaser.Point(8,8);
 		this.SueloPirata.body.friction = new Phaser.Point(8, 8);
-
+*/		
+		
+/*
 		//Cargar los objetos del estado batalla. 0 inputs, 0 outputs
 		this.cargar_batalla = function (){
 			//Activar lanzamiento desde el fondo de la pantalla
@@ -313,7 +327,7 @@ Game.Battle.prototype ={
 				button_BalaAcido.tint=1 * 0xffffff;
 			}
 		}
-
+*/
 		//Boton Tipos de Objetos
 		this.button_Rect_Vert = this.add.button(this.world.width/3+100, 40, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
 		this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
@@ -392,9 +406,9 @@ Game.Battle.prototype ={
 
 		//Telon
 		//this.telon=this.add.sprite(this.world.width/3,0,'telon');							 
-		this.telon=this.add.sprite(-40,0,'telon');
-		this.physics.enable(this.telon, Phaser.Physics.p2);		
-		this.telon.bringToTop();
+		this.telon=this.add.sprite(960,540,'telon');
+		this.physics.p2.enable(this.telon);
+		this.telon.body.collideWorldBounds = false;
 		juego_empezado=false;
 	},
 	
@@ -1304,7 +1318,7 @@ Game.Battle.prototype ={
 
 	update:function(){
 		//Inicio Pantalla en Vertical
-		if (this.scale.isPortrait){
+	/*	if (this.scale.isPortrait){
 			this.image_turn.height = this.game.height;
 			this.image_turn.width = this.game.width;
 			this.image_turn.visible=true;
@@ -1313,12 +1327,11 @@ Game.Battle.prototype ={
 			if (this.image_turn.visible === true){
 				this.image_turn.visible=false;
 			}
-		}
+		}*/
 		if(juego_empezado==false){
-			this.telon.body.velocity.setTo(+300, 0);
-			if(this.telon.x>=this.world.width/3){
-				this.telon.body.allowGravity = false;
-				this.telon.body.velocity.setTo(0, 0);
+			this.telon.body.velocity.x = 360;
+			if(this.telon.x>=this.world.width/3+this.cache.getImage("telon").width/2){
+				this.telon.body.velocity.x=0;
 				juego_empezado=true;
 				//Boton Tipos de Objetos
 				this.button_Rect_Vert.bringToTop();
@@ -2282,7 +2295,9 @@ Game.Battle.prototype ={
 		}
 		this.game.debug.text(catchFlag,20,192,'white');
 		this.game.debug.text('0',20,242,'white');*/
-		this.game.debug.text(this.construcAux,20,292,'white');
+		//this.game.debug.text(this.construcAux,20,292,'white');
+		
+		this.game.debug.text(this.telon.x,this.telon.x,this.telon.y,'white');
 		//this.game.debug.text( this.jugadoresJ2[0],220,292,'white');*/
 	},
 	
