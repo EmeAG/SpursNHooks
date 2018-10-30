@@ -1463,60 +1463,60 @@ Game.Battle.prototype ={
 							}
 						}
 					}
+
+					else{
+						if(this.delayAux>300){
+							this.telon.bringToTop();
+						//	this.telon.body.velocity.x=-360;
+							this.button_Madera.visible=false;
+							this.textMad.visible=false;
+							this.button_Piedra.visible=false;
+							this.textPied.visible=false;
+							this.button_Metal.visible=false;
+							this.textMet.visible=false;
+							this.button_Rect_Horz.visible=false;
+							this.textRectH.destroy();
+							this.button_Rect_Vert.visible=false;
+							this.textRectV.destroy();
+							this.button_Trian.visible=false;
+							this.textTrian.destroy();
+							this.button_Cuad.visible=false;
+							this.textCuad.destroy();
+							this.cuadroTiempo.visible=false;
+							this.button_bala_acido.visible=false;
+							this.button_bala_agua.visible=false;
+							this.button_bala_fuego.visible=false;
+							this.dineroMarc.visible=false;
+							this.button_Jugador.visible=false;
+							text_cuenta_atras.visible=false;
+							this.textDinero.visible=false;
+							this.textBFue.visible=false;
+							this.textBAgu.visible=false;
+							this.textBAci.visible=false;
+							this.textNum.visible=false;
+							this.balaF.visible=false;
+							this.balaAg.visible=false;
+							this.balaAc.visible=false;
+							this.precioBAci.visible=false;
+							this.precioBAgu.visible=false;
+							this.precioBFue.visible=false;
+	
+							if(this.telon.x+this.cache.getImage("telon").width/2>=this.world.width/3*2){
+								this.telon.body.velocity.x = -360;
+								this.telon.body.data.gravityScale=0;
+							}
+							else{
+								this.telon.body.velocity.x = 0;
+							}
+						}
+					}
 					for(var i=0;i<this.contJugJ1;i++){
 					//	for(var j=0;j<this.contConstJ1;j++){
 						this.jugadoresJ1[i].body.angle=0;
 						if(this.jugadoresJ1[i].body.velocity.y<0){
 							this.jugadoresJ1[i].body.velocity.y=0
 						}						
-					}			
-				}
-				else{
-					alert();
-					if(this.delayAux>300){
-						this.telon.bringToTop();
-						this.telon.body.velocity.setTo(-300, 0);
-						this.button_Madera.visible=false;
-						this.textMad.visible=false;
-						this.button_Piedra.visible=false;
-						this.textPied.visible=false;
-						this.button_Metal.visible=false;
-						this.textMet.visible=false;
-						this.button_Rect_Horz.visible=false;
-						this.textRectH.destroy();
-						this.button_Rect_Vert.visible=false;
-						this.textRectV.destroy();
-						this.button_Trian.visible=false;
-						this.textTrian.destroy();
-						this.button_Cuad.visible=false;
-						this.textCuad.destroy();
-						this.cuadroTiempo.visible=false;
-						this.button_bala_acido.visible=false;
-						this.button_bala_agua.visible=false;
-						this.button_bala_fuego.visible=false;
-						this.dineroMarc.visible=false;
-						this.button_Jugador.visible=false;
-						text_cuenta_atras.visible=false;
-						this.textDinero.visible=false;
-						this.textBFue.visible=false;
-						this.textBAgu.visible=false;
-						this.textBAci.visible=false;
-						this.textNum.visible=false;
-						this.balaF.visible=false;
-						this.balaAg.visible=false;
-						this.balaAc.visible=false;
-						this.precioBAci.visible=false;
-						this.precioBAgu.visible=false;
-						this.precioBFue.visible=false;
-
-						if(this.telon.x>=this.cache.getImage("Telon").width/2-this.world.width/3){
-							this.telon.body.velocity.x = -360;
-							this.telon.body.data.gravityScale=0;
-						}
-						else{
-							this.telon.body.velocity.x = 0;
-						}
-					}
+					}				
 				}
 			}
 /*
@@ -2320,7 +2320,8 @@ Game.Battle.prototype ={
 		for(var i=0;i<this.contJugJ1;i++){
 			this.game.debug.text(this.jugadoresJ1[i].body.velocity.y,20,30+20*i,'white');
 		}
-		this.game.debug.text(fin_tiempo,30,this.telon.y,'white');
+		this.game.debug.text(this.telon.x,30,this.telon.y,'white');
+		this.game.debug.text(this.world.width/3*2,30,50,'white');
 		//this.game.debug.text( this.jugadoresJ2[0],220,292,'white');*/
 	},
 	
