@@ -1404,6 +1404,26 @@ Game.Battle.prototype ={
 		}
 	},
 
+	//devuelve true si todos los objetos estan parados. input 1, output 1
+	movimentoParado:function(arr){
+		this.Aux=true;
+		for(var i=0;i<arr.length;i++){
+			if(arr[i].body.velocity.x<1 && arr[i].body.velocity.x>-1){
+				arr[i].body.velocity.x=0;
+			}
+			else{
+				this.Aux= false;
+			}
+			if(arr[i].body.velocity.y<1 && arr[i].body.velocity.y>-1){
+				arr[i].body.velocity.y=0;
+			}
+			else{
+				this.Aux= false;
+			}
+		}
+		return this.Aux;
+	},
+
 	update:function(){
 		//Inicio Pantalla en Vertical
 		/*if (this.scale.isPortrait){
@@ -1545,7 +1565,6 @@ Game.Battle.prototype ={
 
 			if(estado=="CONSTRUCCION"){
 				this.game.physics.p2.gravity.y=100;
-				
 				if(fin_tiempo==0&&this.turno=="J1"){
 					if(this.construcAux!=null){
 						this.stop_move();
@@ -2312,8 +2331,8 @@ Game.Battle.prototype ={
 		}
 		this.game.debug.text(catchFlag,20,192,'white');
 		this.game.debug.text('0',20,242,'white');*/
-		this.game.debug.text(this.input.mousePointer.x,20,50,'white');
-		this.game.debug.text(this.input.mousePointer.y,20,100,'white');
+		this.game.debug.text(this.movimentoParado(this.construcJ1),20,50,'white');
+		//this.game.debug.text(this.input.mousePointer.y,20,100,'white');
 		/*for(var i=0;i<this.contConstJ1;i++){
 			this.game.debug.text(this.construcJ1[i],20,30+20*i,'white');
 		}
