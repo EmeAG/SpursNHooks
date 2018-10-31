@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=10;//contador de tiempo global
+var auxTiempoConstruc=0;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
@@ -100,10 +100,7 @@ Game.Battle.prototype ={
 		this.controlmar2=0;
 	    this.SueloMar1=this.add.sprite(-50, 970, 'Suelo_Mar_cla');
 		this.controlmar1=0;
-		/*this.SueloMar1.body.velocity.x=50;
-		this.SueloMar2.body.velocity.x=-50;*/
-		
-		
+
 		this.SueloPirata=this.add.sprite(0,0, 'Suelo_Pirata');
 		this.SueloPirata.height = this.world.height/6;
 		this.SueloPirata.width = this.world.width/3;
@@ -121,7 +118,18 @@ Game.Battle.prototype ={
 
 		this.SueloPirata.body.static = true;
 		this.SueloVaquero.body.static = true;
-		
+
+		//Cañones
+		this.CannonPirata=this.add.sprite(0,0, 'Cannon_Pirata');
+		this.CannonPirata.x=this.world.width*0.05;
+		this.CannonPirata.y=(this.world.height- this.CannonPirata.height)*0.42;
+		this.CannonVaquero=this.add.sprite(0,0, 'Cannon_Vaquero');	    
+		this.CannonVaquero.x=this.world.width- (this.CannonVaquero.height/2)*1.2;    
+		this.CannonVaquero.y=(this.world.height- this.CannonVaquero.height)*0.46;	    
+		this.CannonVaquero.anchor.setTo(0.85, 0.65);
+		this.CannonPirata.anchor.setTo(0.15, 0.35);
+
+
 		//colocacion piratas
 		for(var i=this.numJ1;i<3;i++){
 			this.jugador=this.add.sprite(0,0,'Pirata')
@@ -198,14 +206,8 @@ Game.Battle.prototype ={
 			this.CartelPiratas=this.add.sprite(670, 35, 'CartelPiratas');
 			this.CartelVaqueros.tint=0.4 * 0xffffff;
 
-			//Cañon
-			this.CannonPirata=this.add.sprite(this.world.width*0.04, (this.world.height- this.cache.getImage("Cannon_Pirata").height)*0.4, 'Cannon_Pirata');
-			this.CannonVaquero=this.add.sprite((this.world.width- this.cache.getImage("Cannon_Vaquero").width)*0.99, (this.world.height- this.cache.getImage("Cannon_Vaquero").height)*0.4, 'Cannon_Vaquero');	    
-			this.CannonVaquero.anchor.setTo(0.85, 0.65);
-			this.CannonVaquero.scale.x *= -1;
-			this.CannonVaquero.scale.y *= -1;
-			this.CannonPirata.anchor.setTo(0.15, 0.35);
-			this.game.physics.p2.enable([this.CannonPirata, this.CannonVaquero]);
+			//Fisicas Cañon
+			this.game.physics.arcade.enable([this.CannonPirata, this.CannonVaquero]);
 			this.CannonPirata.body.moves = false;
 			this.CannonVaquero.body.moves = false;
 			
@@ -470,6 +472,7 @@ Game.Battle.prototype ={
 		this.telon=this.add.sprite(960,540,'telon');
 		this.physics.p2.enable(this.telon);
 		this.telon.body.collideWorldBounds = false;
+		//this.telon.visible = false;
 		juego_empezado=false;
 	},
 	
@@ -1926,6 +1929,7 @@ Game.Battle.prototype ={
 						estado="PREBATALLA"; //arreglar update estado=batalla
 						this.turno="J1"
 						cuenta_atras.start();
+						this.delayAux=0;;
 					}
 				}		
 			}
@@ -1933,7 +1937,7 @@ Game.Battle.prototype ={
 		}
 
 		if(estado=="PREBATALLA"){
-			//alert();
+
 			this.game.physics.p2.gravity.y = 1000;
 			for(var i=0;i<this.contConstJ1;i++){
 				this.construcJ1[i].body.dynamic=true;
@@ -1947,6 +1951,12 @@ Game.Battle.prototype ={
 			for(var i=0;i<this.contJugJ2;i++){
 				this.jugadoresJ2[i].body.dynamic=true;
 			}
+			if(this.delayAux>=120 && this.movimentoParado(this.construcJ1) && this.movimentoParado(this.construcJ2) && this.movimentoParado(this.jugadoresJ1) && this.movimentoParado(this.jugadoresJ2)){
+				estado="BATALLA";
+				this.CannonVaquero.scale.x *= -1;
+				this.CannonVaquero.scale.y *= -1;
+			}
+			this.delayAux++;
 		}
 		
 		if(estado=="BATALLA"){
@@ -1999,7 +2009,7 @@ Game.Battle.prototype ={
 			}
 			//FIN CONTROL FINAL JUEGO
 			
-			this.game.physics.p2.gravity.y = 100;
+			/*this.game.physics.p2.gravity.y = 100;
 			//Fisicas entre objetos
 			this.physics.p2.collide(this.SueloPirata, balaDispara);
 			this.physics.p2.collide(this.SueloVaquero, balaDispara);
@@ -2018,11 +2028,11 @@ Game.Battle.prototype ={
 				for(var i=0;i<this.contJugJ1;i++){
 					this.physics.p2.collide(this.jugadoresJ1[i], balaDispara, this.colision);								
 				}
-			}
+			}*/
 
 			//Inicio Disparo
 			puntero=this.input.activePointer;
-			arrow.rotation = this.physics.p2.angleBetween(arrow, balaDispara);
+			arrow.rotation = this.physics.arcade.angleBetween(arrow, balaDispara);
 			
 			if (catchFlag == true)
 			{
@@ -2030,7 +2040,7 @@ Game.Battle.prototype ={
 				arrow.alpha = 1;    
 				analog.alpha = 0.5;
 				analog.rotation = arrow.rotation - 3.14 / 2;
-				analog.height = this.physics.p2.distanceBetween(arrow, this.input.activePointer);    
+				analog.height = this.physics.arcade.distanceBetween(arrow, this.input.activePointer);    
 				launchVelocity = analog.height;
 				this.delayAux=0;
 			}
@@ -2121,22 +2131,22 @@ Game.Battle.prototype ={
 			//Inicio Giro de los cañones
 			if (catchFlag != true && disparos>0){
 				if (turno==1){
-					if (this.game.physics.p2.angleToPointer(this.CannonPirata)>-1.1 && this.game.physics.p2.angleToPointer(this.CannonPirata)<0.55){
-						this.CannonPirata.rotation = this.game.physics.p2.angleToPointer(this.CannonPirata);
+					if (this.game.physics.arcade.angleToPointer(this.CannonPirata)>-1.1 && this.game.physics.arcade.angleToPointer(this.CannonPirata)<0.55){
+						this.CannonPirata.rotation = this.game.physics.arcade.angleToPointer(this.CannonPirata);
 						this.CannonVaquero.rotation =3.15;
 					}
-					if (this.game.physics.p2.angleToPointer(balaDispara)>-1.2 && this.game.physics.p2.angleToPointer(balaDispara)<0.65){
+					/*if (this.game.physics.p2.angleToPointer(balaDispara)>-1.2 && this.game.physics.p2.angleToPointer(balaDispara)<0.65){
 						balaDispara.rotation = this.game.physics.p2.angleToPointer(balaDispara);
-					}
+					}*/
 				}
 				if (turno==2){
-					if (this.game.physics.p2.angleToPointer(this.CannonVaquero)<-2 || this.game.physics.p2.angleToPointer(this.CannonVaquero)>2.5){
-						this.CannonVaquero.rotation = this.game.physics.p2.angleToPointer(this.CannonVaquero);
+					if (this.game.physics.arcade.angleToPointer(this.CannonVaquero)<-2 || this.game.physics.arcade.angleToPointer(this.CannonVaquero)>2.5){
+						this.CannonVaquero.rotation = this.game.physics.arcade.angleToPointer(this.CannonVaquero);
 						this.CannonPirata.rotation =0;
 					}
-					if (this.game.physics.p2.angleToPointer(balaDispara)<-2 || this.game.physics.p2.angleToPointer(balaDispara)>2.5){
+				/*	if (this.game.physics.p2.angleToPointer(balaDispara)<-2 || this.game.physics.p2.angleToPointer(balaDispara)>2.5){
 						balaDispara.rotation = this.game.physics.p2.angleToPointer(balaDispara);
-					}
+					}*/
 				}
 			}
 			//Fin Giro de los cañones
