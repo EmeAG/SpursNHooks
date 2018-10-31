@@ -1,0 +1,17 @@
+//Programacion
+-construccion sin gravedad
+-zona cañon sin posibilidad de construir
+-estado entre construccion y batalla(aplicar gravedad a los objetos para que tengas su posicion de inicio en batalla)
+-funcion destruir objeto fuera del mundo
+-funcion check velocidades objeto(output true/false)
+-movimiento balas
+-movimiento cañon
+ //Arte
+-objetos dañados
+-animacion personajes
+-animacion destrucción
+-humo disparo
+-json de colsiones(personajes y triangulo)
+(ocional)
+-tentaculo con movimiento
+-gaviota volando
