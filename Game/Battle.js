@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=1;//contador de tiempo global
+var auxTiempoConstruc=15;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
@@ -136,6 +136,7 @@ Game.Battle.prototype ={
 			this.num1=this.contJugJ1;
 			this.construcAux=this.jugador;
 			this.jugadoresJ1[this.contJugJ1]=this.construcAux;
+			this.jugadoresJ1[this.contConstJ1].events.onInputDown.add(this.click_jugador,this);
 			this.contJugJ1++;
 			this.numJ1++;
 			this.construcAux=null;
@@ -160,6 +161,7 @@ Game.Battle.prototype ={
 			//alert(this.num1);
 			this.construcAux=this.jugador;
 			this.jugadoresJ2[this.contJugJ2]=this.construcAux;
+			this.jugadoresJ1[this.contConstJ1].events.onInputDown.add(this.click_jugador,this);
 			this.contJugJ2++;
 			this.numJ2++;
 			this.num1=-2;
