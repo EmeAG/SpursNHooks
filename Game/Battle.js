@@ -127,7 +127,7 @@ Game.Battle.prototype ={
 			this.jugador.vida=vida_personaje;
 			this.jugador.anchor.setTo(0.5,0.5);
 			this.physics.p2.enable(this.jugador);
-			this.jugador.body.kinematic = true;
+			this.jugador.body.static = true;
 			this.jugador.body.mass=peso_personaje;
 			this.jugador.body.estado=1;
 			this.jugador.forma="personaje";
@@ -148,8 +148,8 @@ Game.Battle.prototype ={
 			this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
 			this.jugador.vida=vida_personaje;
 			this.jugador.anchor.setTo(0.5,0.5);
-			this.physics.enable(this.jugador);
-			this.jugador.body.kinematic = true;
+			this.physics.p2.enable(this.jugador);
+			this.jugador.body.static = true;
 			this.jugador.body.mass=peso_personaje;
 			this.jugador.forma="personaje";
 			this.jugador.body.estado=1;
@@ -1229,6 +1229,10 @@ Game.Battle.prototype ={
 	//Establece la posicion del objeto y verifica si la posicion es correcta. inputs objeto, outputs 0.
 	move_sprite:function(objeto){
 		objeto.body.angle=0;
+		if(objeto.body.static){
+			alert();
+			objeto.body.static=false;
+		}
 		if(this.turno=="J1"){
 			if(objeto.y+objeto.height/2<this.SueloPirata.y-this.SueloPirata.height/2 && objeto.x+objeto.width/2<this.world.width/3){
 				objeto.tint=1 * 0xffffff;
@@ -1296,18 +1300,18 @@ Game.Battle.prototype ={
 			this.game.physics.p2.enable(this.construcAux, true);
 			this.construcAux.body.angularVelocity=0;											   
 			this.construcAux.body.velocity.x=0;
-			this.construcAux.body.velocity.y=0;
-			this.construcAux.body.kinematic=true;
+			this.construcAux.body.velocity.y=1;
+			//this.construcAux.body.kinematic=true;
 
 			if(this.turno=="J1"){
 				if(this.num0>-1){
 					if(this.construcJ1[this.num0].tint==0.4 * 0xffffff){
 						dineroJ1+=this.construcJ1[this.num0].coste;
-						this.construcJ1[this.num0].destroy();
+						this.construcJ1[this.num0].body.y=-6000;
 						this.num0=-2;
 					}
 					else{
-						this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
+						//this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
 						this.construcJ1[this.num0].estado=0;
 						this.num0=-2;
 					}
@@ -1315,12 +1319,12 @@ Game.Battle.prototype ={
 				}
 				if(this.num1>-1){
 					if(this.jugadoresJ1[this.num1].tint==0.4 * 0xffffff){
-						this.jugadoresJ1[this.num1].destroy();
+						this.jugadoresJ1[this.num1].body.y=-6000;
 						this.numJ1--;
 						this.num1=-2;
 					}
 					else{
-						this.jugadoresJ1[this.num1].events.onInputDown.add(this.click_jugador,this);
+					//this.jugadoresJ1[this.num1].events.onInputDown.add(this.click_jugador,this);
 						this.num1=-2;
 					}
 				}
@@ -1329,11 +1333,11 @@ Game.Battle.prototype ={
 				if(this.num0>-1){
 					if(this.construcJ2[this.num0].tint==0.4 * 0xffffff){
 						dineroJ2+=this.construcJ2[this.num0].coste;
-						this.construcJ2[this.num0].destroy();
+						this.construcJ2[this.num0].body.y=-6000;
 						this.num0=-2;
 					}
 					else{
-						this.construcJ2[this.num0].events.onInputDown.add(this.click_sprite,this);
+						//this.construcJ2[this.num0].events.onInputDown.add(this.click_sprite,this);
 						this.construcJ2[this.num0].estado=0;
 						this.num0=-2;
 					}
@@ -1341,12 +1345,12 @@ Game.Battle.prototype ={
 				}
 				if(this.num1>-1){
 					if(this.jugadoresJ2[this.num1].tint==0.4 * 0xffffff){
-						this.jugadoresJ2[this.num1].destroy();
+						this.jugadoresJ2[this.num1].body.y=-6000;
 						this.numJ2--;
 						this.num1=-2;
 					}
 					else{
-						this.jugadoresJ2[this.num1].events.onInputDown.add(this.click_jugador,this);
+						//this.jugadoresJ2[this.num1].events.onInputDown.add(this.click_jugador,this);
 						this.num1=-2;
 					}
 				}
@@ -1763,6 +1767,18 @@ Game.Battle.prototype ={
 					}
 					if(this.num1>=0){
 						this.construcAux=this.jugadoresJ1[this.num1];
+					}
+					for(var i=0;i<this.contConstJ1;i++){
+						if(this.construcJ1[i] && !this.construcAux){
+							//alert(1);
+							if(this.construcJ1[i].body.velocity.y<=0 && !this.construcJ1[i].body.static){
+								alert();
+								this.construcJ1[i].body.velocity.x=0;
+								this.construcJ1[i].body.velocity.y=0;
+								this.construcJ1[i].body.angularVelocity=0;
+								this.construcJ1[i].body.static=true;
+							}
+						}
 					}
 				}
 
@@ -2317,9 +2333,9 @@ Game.Battle.prototype ={
 		this.game.debug.text(catchFlag,20,192,'white');
 		this.game.debug.text('0',20,242,'white');*/
 		//this.game.debug.text(this.construcAux,20,292,'white');
-		for(var i=0;i<this.contJugJ1;i++){
-			this.game.debug.text(this.jugadoresJ1[i].body.velocity.y,20,30+20*i,'white');
-		}
+		/*for(var i=0;i<this.contConstJ1;i++){
+			this.game.debug.text(this.construcJ1[i].body.static,20,30+20*i,'white');
+		}*/
 		this.game.debug.text(this.telon.x,30,this.telon.y,'white');
 		this.game.debug.text(this.construcAux,30,50,'white');
 		//this.game.debug.text( this.jugadoresJ2[0],220,292,'white');*/
