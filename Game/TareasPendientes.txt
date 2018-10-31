@@ -1,5 +1,5 @@
 //Programacion
--construccion sin gravedad
+-construccion sin gravedad V
 -zona cañon sin posibilidad de construir
 -estado entre construccion y batalla(aplicar gravedad a los objetos para que tengas su posicion de inicio en batalla)
 -funcion destruir objeto fuera del mundo

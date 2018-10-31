@@ -1302,7 +1302,7 @@ Game.Battle.prototype ={
 			this.game.physics.p2.enable(this.construcAux, true);
 			this.construcAux.body.angularVelocity=0;											   
 			this.construcAux.body.velocity.x=0;
-			this.construcAux.body.velocity.y=1;
+			this.construcAux.body.velocity.y=0;
 			this.construcAux.body.kinematic=true;
 
 			if(this.turno=="J1"){
@@ -1384,6 +1384,14 @@ Game.Battle.prototype ={
 	espejo:function(objeto){
 		this.distanciaMedio=objeto.x-(this.world.width/2);
 			objeto.x=this.world.width/2-this.distanciaMedio-objeto.width;
+	},
+
+	//mira si los objetos estan dentro de los limites del mundo. input 1, output 0
+	dentro_mundo:function(objeto){
+		if(objeto.body.x - objeto.width/2 > this.world.width || objeto.body.x + objeto.width/2 < 0 || objeto.body.y + objeto.height/2 < 0 || objeto.body.y - objeto.height/2 > this.world.height){
+			objeto.destroy();
+			alert();
+		}
 	},
 
 	update:function(){
@@ -1527,6 +1535,7 @@ Game.Battle.prototype ={
 
 			if(estado=="CONSTRUCCION"){
 				this.game.physics.p2.gravity.y=100;
+				
 				if(fin_tiempo==0&&this.turno=="J1"){
 					if(this.construcAux!=null){
 						this.stop_move();
@@ -2294,9 +2303,9 @@ Game.Battle.prototype ={
 		this.game.debug.text(catchFlag,20,192,'white');
 		this.game.debug.text('0',20,242,'white');*/
 		//this.game.debug.text(this.construcAux,20,292,'white');
-		/*for(var i=0;i<this.contConstJ1;i++){
-			this.game.debug.text(this.construcJ1[i].body.static,20,30+20*i,'white');
-		}*/
+		for(var i=0;i<this.contConstJ1;i++){
+			this.game.debug.text(this.construcJ1[i],20,30+20*i,'white');
+		}
 		this.game.debug.text(this.telon.x,30,this.telon.y,'white');
 		this.game.debug.text(this.construcAux,30,50,'white');
 		//this.game.debug.text( this.jugadoresJ2[0],220,292,'white');*/
