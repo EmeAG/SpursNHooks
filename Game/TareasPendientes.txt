@@ -1,9 +1,9 @@
 //Programacion
 -construccion sin gravedad V
 -zona cañon sin posibilidad de construir V
--estado entre construccion y batalla(aplicar gravedad a los objetos para que tengas su posicion de inicio en batalla)
+-estado entre construccion y batalla(aplicar gravedad a los objetos para que tengas su posicion de inicio en batalla)V
 -funcion destruir objeto fuera del mundo V
--funcion check velocidades objeto(output true/false)
+-funcion check velocidades objeto(output true/false)V
 -movimiento balas
 -movimiento cañon
  //Arte
