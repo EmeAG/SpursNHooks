@@ -127,7 +127,7 @@ Game.Battle.prototype ={
 			this.jugador.vida=vida_personaje;
 			this.jugador.anchor.setTo(0.5,0.5);
 			this.physics.p2.enable(this.jugador);
-			this.jugador.body.static = true;
+			this.jugador.body.kinematic = true;
 			this.jugador.body.mass=peso_personaje;
 			this.jugador.body.estado=1;
 			this.jugador.forma="personaje";
@@ -136,7 +136,7 @@ Game.Battle.prototype ={
 			this.num1=this.contJugJ1;
 			this.construcAux=this.jugador;
 			this.jugadoresJ1[this.contJugJ1]=this.construcAux;
-			this.jugadoresJ1[this.contConstJ1].events.onInputDown.add(this.click_jugador,this);
+			this.jugadoresJ1[this.contJugJ1].events.onInputDown.add(this.click_jugador,this);
 			this.contJugJ1++;
 			this.numJ1++;
 			this.construcAux=null;
@@ -150,7 +150,7 @@ Game.Battle.prototype ={
 			this.jugador.vida=vida_personaje;
 			this.jugador.anchor.setTo(0.5,0.5);
 			this.physics.p2.enable(this.jugador);
-			this.jugador.body.static = true;
+			this.jugador.body.kinematic = true;
 			this.jugador.body.mass=peso_personaje;
 			this.jugador.forma="personaje";
 			this.jugador.body.estado=1;
@@ -161,7 +161,7 @@ Game.Battle.prototype ={
 			//alert(this.num1);
 			this.construcAux=this.jugador;
 			this.jugadoresJ2[this.contJugJ2]=this.construcAux;
-			this.jugadoresJ1[this.contConstJ1].events.onInputDown.add(this.click_jugador,this);
+			this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
 			this.contJugJ2++;
 			this.numJ2++;
 			this.num1=-2;
@@ -1231,10 +1231,7 @@ Game.Battle.prototype ={
 	//Establece la posicion del objeto y verifica si la posicion es correcta. inputs objeto, outputs 0.
 	move_sprite:function(objeto){
 		objeto.body.angle=0;
-		if(objeto.body.static){
-			alert();
-			objeto.body.static=false;
-		}
+		//objeto.body.kinematic=true;
 		if(this.turno=="J1"){
 			if(objeto.y+objeto.height/2<this.SueloPirata.y-this.SueloPirata.height/2 && objeto.x+objeto.width/2<this.world.width/3){
 				objeto.tint=1 * 0xffffff;
@@ -1303,7 +1300,7 @@ Game.Battle.prototype ={
 			this.construcAux.body.angularVelocity=0;											   
 			this.construcAux.body.velocity.x=0;
 			this.construcAux.body.velocity.y=1;
-			//this.construcAux.body.kinematic=true;
+			this.construcAux.body.kinematic=true;
 
 			if(this.turno=="J1"){
 				if(this.num0>-1){
@@ -1313,7 +1310,7 @@ Game.Battle.prototype ={
 						this.num0=-2;
 					}
 					else{
-						//this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
+						this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
 						this.construcJ1[this.num0].estado=0;
 						this.num0=-2;
 					}
@@ -1326,7 +1323,7 @@ Game.Battle.prototype ={
 						this.num1=-2;
 					}
 					else{
-					//this.jugadoresJ1[this.num1].events.onInputDown.add(this.click_jugador,this);
+						this.jugadoresJ1[this.num1].events.onInputDown.add(this.click_jugador,this);
 						this.num1=-2;
 					}
 				}
@@ -1339,7 +1336,7 @@ Game.Battle.prototype ={
 						this.num0=-2;
 					}
 					else{
-						//this.construcJ2[this.num0].events.onInputDown.add(this.click_sprite,this);
+						this.construcJ2[this.num0].events.onInputDown.add(this.click_sprite,this);
 						this.construcJ2[this.num0].estado=0;
 						this.num0=-2;
 					}
@@ -1352,13 +1349,12 @@ Game.Battle.prototype ={
 						this.num1=-2;
 					}
 					else{
-						//this.jugadoresJ2[this.num1].events.onInputDown.add(this.click_jugador,this);
+						this.jugadoresJ2[this.num1].events.onInputDown.add(this.click_jugador,this);
 						this.num1=-2;
 					}
 				}
 			}
 			this.construcAux=null;
-			this.game.physics.p2.gravity.y = 100;
 		}
 	},
 
