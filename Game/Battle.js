@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=15;//contador de tiempo global
+var auxTiempoConstruc=10;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
@@ -1454,10 +1454,7 @@ Game.Battle.prototype ={
 			if(this.SueloMar2.x>300){
 				this.controlmar2=0;
 			}
-		};
-
-
-
+		}
 
 		if(juego_empezado==false){
 			this.telon.body.velocity.x = 360;
@@ -1572,7 +1569,6 @@ Game.Battle.prototype ={
 						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
 						this.textDinero.anchor.setTo(0.7,0.5);
 					}
-					this.game.physics.p2.gravity.y=100;
 
 					this.telon.bringToTop();
 					this.telon.body.velocity.x=-360;
@@ -1827,7 +1823,6 @@ Game.Battle.prototype ={
 						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2);
 						this.textDinero.anchor.setTo(0.7,0.5);
 					}
-					this.game.physics.p2.gravity.y = 100;
 
 					//mover el telon desde J1
 					if(this.turno=="J1"&&fin_tiempo==0){
@@ -1924,13 +1919,30 @@ Game.Battle.prototype ={
 						text_cuenta_atras=this.game.add.text(928, 80, '00',style_contador);
 						
 						this.telon.destroy();
-						//estado="BATALLA"; //arreglar update estado=batalla
+						estado="PREBATALLA"; //arreglar update estado=batalla
 						this.turno="J1"
 						cuenta_atras.start();
 					}
 				}		
 			}
 			this.delayAux++;
+		}
+
+		if(estado=="PREBATALLA"){
+			//alert();
+			this.game.physics.p2.gravity.y = 1000;
+			for(var i=0;i<this.contConstJ1;i++){
+				this.construcJ1[i].body.dynamic=true;
+			}
+			for(var i=0;i<this.contConstJ2;i++){
+				this.construcJ2[i].body.dynamic=true;
+			}
+			for(var i=0;i<this.contJugJ1;i++){
+				this.jugadoresJ1[i].body.dynamic=true;
+			}
+			for(var i=0;i<this.contJugJ2;i++){
+				this.jugadoresJ2[i].body.dynamic=true;
+			}
 		}
 		
 		if(estado=="BATALLA"){
@@ -2331,7 +2343,7 @@ Game.Battle.prototype ={
 		}
 		this.game.debug.text(catchFlag,20,192,'white');
 		this.game.debug.text('0',20,242,'white');*/
-		this.game.debug.text(this.movimentoParado(this.construcJ1),20,50,'white');
+		//this.game.debug.text(this.movimentoParado(this.construcJ1),20,50,'white');
 		//this.game.debug.text(this.input.mousePointer.y,20,100,'white');
 		/*for(var i=0;i<this.contConstJ1;i++){
 			this.game.debug.text(this.construcJ1[i],20,30+20*i,'white');
