@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=25;//contador de tiempo global
+var auxTiempoConstruc=1;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
@@ -175,7 +175,7 @@ Game.Battle.prototype ={
 		this.SueloPirata.body.friction = new Phaser.Point(8, 8);
 */		
 		
-/*
+
 		//Cargar los objetos del estado batalla. 0 inputs, 0 outputs
 		this.cargar_batalla = function (){
 			//Activar lanzamiento desde el fondo de la pantalla
@@ -383,7 +383,7 @@ Game.Battle.prototype ={
 				button_BalaAcido.tint=1 * 0xffffff;
 			}
 		}
-*/
+
 		//Boton Tipos de Objetos
 		this.button_Rect_Vert = this.add.button(this.world.width/3+100, 40, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
 		this.textRectV=this.game.add.sprite(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width/2,this.button_Rect_Vert.y+5,"Bloq_mad_rectV");
@@ -1862,7 +1862,7 @@ Game.Battle.prototype ={
 						this.telon.body.velocity.x=0;
 						this.telon.body.velocity.y=-300;
 						if(cargando_batalla==0){
-							//this.cargar_batalla(); //Arreglar funcion
+							this.cargar_batalla(); //Arreglar funcion
 							cargando_batalla++;
 							this.telon.bringToTop();
 							this.game.physics.p2.gravity.y = 100;
