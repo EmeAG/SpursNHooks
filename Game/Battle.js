@@ -84,6 +84,9 @@ Game.Battle.prototype ={
 		this.num1=-2;
 		this.delayAux=0;
 
+		this.auxX=-1;
+		this.auxY=-1;
+
 
 		//imagen mala orientacion
 		this.image_turn =this.add.image(0, 0, "landscape");	
@@ -1306,7 +1309,7 @@ Game.Battle.prototype ={
 				if(this.num0>-1){
 					if(this.construcJ1[this.num0].tint==0.4 * 0xffffff){
 						dineroJ1+=this.construcJ1[this.num0].coste;
-						this.construcJ1[this.num0].body.y=-6000;
+						this.construcJ1[this.num0].destroy();
 						this.num0=-2;
 					}
 					else{
@@ -1318,8 +1321,9 @@ Game.Battle.prototype ={
 				}
 				if(this.num1>-1){
 					if(this.jugadoresJ1[this.num1].tint==0.4 * 0xffffff){
-						this.jugadoresJ1[this.num1].body.y=-6000;
-						this.numJ1--;
+						this.jugadoresJ1[this.num1].body.y=this.auxY;
+						this.jugadoresJ1[this.num1].body.x=this.auxX;
+						this.jugadoresJ1[this.num1].tint=1 * 0xffffff
 						this.num1=-2;
 					}
 					else{
@@ -1332,7 +1336,7 @@ Game.Battle.prototype ={
 				if(this.num0>-1){
 					if(this.construcJ2[this.num0].tint==0.4 * 0xffffff){
 						dineroJ2+=this.construcJ2[this.num0].coste;
-						this.construcJ2[this.num0].body.y=-6000;
+						this.construcJ2[this.num0].destroy();
 						this.num0=-2;
 					}
 					else{
@@ -1344,8 +1348,9 @@ Game.Battle.prototype ={
 				}
 				if(this.num1>-1){
 					if(this.jugadoresJ2[this.num1].tint==0.4 * 0xffffff){
-						this.jugadoresJ2[this.num1].body.y=-6000;
-						this.numJ2--;
+						this.jugadoresJ2[this.num1].body.y=this.auxY;
+						this.jugadoresJ2[this.num1].body.x=this.auxX;
+						this.jugadoresJ2[this.num1].tint=1 * 0xffffff
 						this.num1=-2;
 					}
 					else{
@@ -1368,6 +1373,8 @@ Game.Battle.prototype ={
 //establece el numero de la posicion del array del jugador. input objeto, output 0.
 	click_jugador:function(objeto){
 		if(this.num1==-2){
+			this.auxX=objeto.body.x;
+			this.auxY=objeto.body.y;
 			this.num1=objeto.num;
 			this.delayAux=0;
 		}
@@ -1764,18 +1771,6 @@ Game.Battle.prototype ={
 					}
 					if(this.num1>=0){
 						this.construcAux=this.jugadoresJ1[this.num1];
-					}
-					for(var i=0;i<this.contConstJ1;i++){
-						if(this.construcJ1[i] && !this.construcAux){
-							//alert(1);
-							if(this.construcJ1[i].body.velocity.y<=0 && !this.construcJ1[i].body.static){
-								alert();
-								this.construcJ1[i].body.velocity.x=0;
-								this.construcJ1[i].body.velocity.y=0;
-								this.construcJ1[i].body.angularVelocity=0;
-								this.construcJ1[i].body.static=true;
-							}
-						}
 					}
 				}
 
