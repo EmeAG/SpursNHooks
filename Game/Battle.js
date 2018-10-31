@@ -1320,6 +1320,8 @@ Game.Battle.prototype ={
 					if(this.construcJ1[this.num0].tint==0.4 * 0xffffff){
 						dineroJ1+=this.construcJ1[this.num0].coste;
 						this.construcJ1[this.num0].destroy();
+						this.construcJ1.splice(this.num0, 1);
+						this.contConstJ1--;
 						this.num0=-2;
 					}
 					else{
@@ -1347,6 +1349,8 @@ Game.Battle.prototype ={
 					if(this.construcJ2[this.num0].tint==0.4 * 0xffffff){
 						dineroJ2+=this.construcJ2[this.num0].coste;
 						this.construcJ2[this.num0].destroy();
+						this.construcJ2.splice(this.num0, 1);
+						this.contConstJ2--;
 						this.num0=-2;
 					}
 					else{
@@ -2287,6 +2291,7 @@ Game.Battle.prototype ={
 	
 	
 	render:function() {
+		this.game.debug.text(this.contConstJ1,10,200,"white");
 		//this.game.debug.text(this.game.physics.p2.angleToPointer(BalaCom1_J2),32,32,"white");
 		//this.game.debug.text(balaDispara.body.velocity.x +"---"+balaDispara.body.velocity.y ,32,15,"white");
 	//	this.game.debug.text(cuenta_atras.duration.toFixed(0),32,15,"white");
