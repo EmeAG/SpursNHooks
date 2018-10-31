@@ -1234,10 +1234,15 @@ Game.Battle.prototype ={
 	//Establece la posicion del objeto y verifica si la posicion es correcta. inputs objeto, outputs 0.
 	move_sprite:function(objeto){
 		objeto.body.angle=0;
-		//objeto.body.kinematic=true;
+		objeto.body.kinematic=true;
 		if(this.turno=="J1"){
 			if(objeto.y+objeto.height/2<this.SueloPirata.y-this.SueloPirata.height/2 && objeto.x+objeto.width/2<this.world.width/3){
-				objeto.tint=1 * 0xffffff;
+				if(objeto.y-objeto.height/2<510 && objeto.x-objeto.width/2<323){
+					objeto.tint=0.4 * 0xffffff;
+				}
+				else{
+					objeto.tint=1 * 0xffffff;
+				}
 			}
 			else{
 				objeto.tint=0.4 * 0xffffff;
@@ -1264,7 +1269,12 @@ Game.Battle.prototype ={
 
 		if(this.turno=="J2"){
 			if(objeto.y+objeto.height/2<this.SueloVaquero.y-this.SueloVaquero.height/2 && objeto.x-objeto.width/2>this.world.width/3*2){
-				objeto.tint=1 * 0xffffff;
+				if(objeto.y-objeto.height/2<510 && objeto.x+objeto.width/2>1592){
+					objeto.tint=0.4 * 0xffffff;
+				}
+				else{
+					objeto.tint=1 * 0xffffff;
+				}
 			}
 			else{
 				objeto.tint=0.4 * 0xffffff;
@@ -2302,8 +2312,9 @@ Game.Battle.prototype ={
 		}
 		this.game.debug.text(catchFlag,20,192,'white');
 		this.game.debug.text('0',20,242,'white');*/
-		//this.game.debug.text(this.construcAux,20,292,'white');
-		for(var i=0;i<this.contConstJ1;i++){
+		this.game.debug.text(this.input.mousePointer.x,20,50,'white');
+		this.game.debug.text(this.input.mousePointer.y,20,100,'white');
+		/*for(var i=0;i<this.contConstJ1;i++){
 			this.game.debug.text(this.construcJ1[i],20,30+20*i,'white');
 		}
 		this.game.debug.text(this.telon.x,30,this.telon.y,'white');
