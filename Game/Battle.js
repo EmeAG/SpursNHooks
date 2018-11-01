@@ -56,6 +56,7 @@ var juego_terminado=false;
 var angulo_rotacion;
 var musica;
 
+var array=new Array();
 Game.Battle.prototype ={
 	create:function(){
 	//	var musica=this.game.add.audio("batallaMusic",0.09,true);
@@ -172,6 +173,7 @@ Game.Battle.prototype ={
 			//alert(this.num1);
 			this.construcAux=this.jugador;
 			this.jugadoresJ2[this.contJugJ2]=this.construcAux;
+			array[this.contJugJ2]=this.construcAux;
 			this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
 			this.contJugJ2++;
 			this.numJ2++;
@@ -219,101 +221,66 @@ Game.Battle.prototype ={
 			BalaCom1_J1.body.mass=peso_balas;
 
 			//Balas Agua J1
-			BalaAgu_J1=this.add.sprite(135,420, 'balaAgua');
-			this.physics.enable(BalaAgu_J1, Phaser.Physics.p2);
-			BalaAgu_J1.anchor.set(0.5,0.5);
-			BalaAgu_J1.body.bounce.set(0.4);
-			BalaAgu_J1.body.drag.set(20, 20);
-			BalaAgu_J1.body.moves = false;	
-			BalaAgu_J1.pivot.x=-200;
-			BalaAgu_J1.pivot.y=-20;
-			BalaAgu_J1.scale.x *= 0.75;
-			BalaAgu_J1.scale.y *= 0.75;
+			BalaAgu_J1=this.add.sprite(0,0, 'balaAgua');
+			BalaAgu_J1.x=100;
+			BalaAgu_J1.y=420;
+			this.physics.p2.enable(BalaAgu_J1,true);
 			BalaAgu_J1.body.setCircle(35);
+			BalaAgu_J1.body.kinematic = true;
 			BalaAgu_J1.body.mass=peso_balas;
 			
 			//Balas Fuego J1
-			BalaFueg_J1=this.add.sprite(135,420, 'balaFuego');
-			this.physics.enable(BalaFueg_J1, Phaser.Physics.p2);
-			BalaFueg_J1.anchor.set(0.5,0.5);
-			BalaFueg_J1.body.bounce.set(0.4);
-			BalaFueg_J1.body.drag.set(20, 20);
-			BalaFueg_J1.body.moves = false;	
-			BalaFueg_J1.pivot.x=-200;
-			BalaFueg_J1.pivot.y=-20;
-			BalaFueg_J1.scale.x *= 0.75;
-			BalaFueg_J1.scale.y *= 0.75;
+			BalaFueg_J1=this.add.sprite(0,0, 'balaFuego');
+			BalaFueg_J1.x=100;
+			BalaFueg_J1.y=420;
+			this.physics.p2.enable(BalaFueg_J1,true);
 			BalaFueg_J1.body.setCircle(35);
+			BalaFueg_J1.body.kinematic = true;
 			BalaFueg_J1.body.mass=peso_balas;
 			
 			//Balas Acido J1
-			BalaAcid_J1=this.add.sprite(135,420, 'balaAcido');
-			this.physics.enable(BalaAcid_J1, Phaser.Physics.p2);
-			BalaAcid_J1.anchor.set(0.5,0.5);
-			BalaAcid_J1.body.bounce.set(0.4);
-			BalaAcid_J1.body.drag.set(20, 20);
-			BalaAcid_J1.body.moves = false;	
-			BalaAcid_J1.pivot.x=-200;
-			BalaAcid_J1.pivot.y=-20;
-			BalaAcid_J1.scale.x *= 0.75;
-			BalaAcid_J1.scale.y *= 0.75;
+			BalaAcid_J1=this.add.sprite(0,0, 'balaAcido');
+			BalaAcid_J1.x=100;
+			BalaAcid_J1.y=420;
+			this.physics.p2.enable(BalaAcid_J1,true);
 			BalaAcid_J1.body.setCircle(35);
+			BalaAcid_J1.body.kinematic = true;
 			BalaAcid_J1.body.mass=peso_balas;
 			
 			//Balas comunes J2
-			BalaCom1_J2=this.add.sprite(1825,450, 'balaComun');
-			this.physics.enable(BalaCom1_J2, Phaser.Physics.p2);
-			BalaCom1_J2.anchor.set(0.5,0.5);
-			BalaCom1_J2.body.bounce.set(0.4);
-			BalaCom1_J2.body.drag.set(20, 20);
-			BalaCom1_J2.body.moves = false;
-			BalaCom1_J2.pivot.x=-225;
-			BalaCom1_J2.pivot.y=-20;
-			BalaCom1_J2.scale.x *= 0.75;
-			BalaCom1_J2.scale.y *= 0.75;
+			BalaCom1_J2=this.add.sprite(0,0, 'balaComun');
+			BalaCom1_J2.x=1820;
+			BalaCom1_J2.y=400;
+			this.physics.p2.enable(BalaCom1_J2,true);
 			BalaCom1_J2.body.setCircle(35);
+			BalaCom1_J2.body.kinematic = true;
 			BalaCom1_J2.body.mass=peso_balas;
 			
 			//Balas Agua J2
-			BalaAgu_J2=this.add.sprite(1825,450, 'balaAgua');
-			this.physics.enable(BalaAgu_J2, Phaser.Physics.p2);
-			BalaAgu_J2.anchor.set(0.5,0.5);
-			BalaAgu_J2.body.bounce.set(0.4);
-			BalaAgu_J2.body.drag.set(20, 20);
-			BalaAgu_J2.body.moves = false;
-			BalaAgu_J2.pivot.x=-225;
-			BalaAgu_J2.pivot.y=-20;
-			BalaAgu_J2.scale.x *= 0.75;
-			BalaAgu_J2.scale.y *= 0.75;
+			BalaAgu_J2=this.add.sprite(0,0, 'balaAgua');
+			BalaAgu_J2.x=1820;
+			BalaAgu_J2.y=400;
+			this.physics.p2.enable(BalaAgu_J2,true);
 			BalaAgu_J2.body.setCircle(35);
+			BalaAgu_J2.body.kinematic = true;
 			BalaAgu_J2.body.mass=peso_balas;
 			
 			//Balas Fuego J2
-			BalaFueg_J2=this.add.sprite(1825,450, 'balaFuego');
-			this.physics.enable(BalaFueg_J2, Phaser.Physics.p2);
-			BalaFueg_J2.anchor.set(0.5,0.5);
-			BalaFueg_J2.body.bounce.set(0.4);
-			BalaFueg_J2.body.drag.set(20, 20);
-			BalaFueg_J2.body.moves = false;
-			BalaFueg_J2.pivot.x=-225;
-			BalaFueg_J2.pivot.y=-20;
-			BalaFueg_J2.scale.x *= 0.75;
-			BalaFueg_J2.scale.y *= 0.75;
+			BalaFueg_J2=this.add.sprite(0,0, 'balaFuego');
+			BalaFueg_J2.x=1820;
+			BalaFueg_J2.y=400;
+			this.physics.p2.enable(BalaFueg_J2,true);
 			BalaFueg_J2.body.setCircle(35);
+			BalaFueg_J2.body.kinematic = true;
 			BalaFueg_J2.body.mass=peso_balas;
 			
 			//Balas Acido J2
-			BalaAcid_J2=this.add.sprite(1825,450, 'balaAcido');
-			this.physics.enable(BalaAcid_J2, Phaser.Physics.p2);
-			BalaAcid_J2.anchor.set(0.5,0.5);
-			BalaAcid_J2.body.bounce.set(0.4);
-			BalaAcid_J2.body.drag.set(20, 20);
-			BalaAcid_J2.body.moves = false;
-			BalaAcid_J2.pivot.x=-225;
-			BalaAcid_J2.pivot.y=-20;
-			BalaAcid_J2.scale.x *= 0.75;
-			BalaAcid_J2.scale.y *= 0.75;
-			BalaAcid_J2.body.setCircle(35);	
+			BalaAcid_J2=this.add.sprite(0,0, 'balaAcido');
+			BalaAcid_J2.x=1820;
+			BalaAcid_J2.y=400;
+			this.physics.p2.enable(BalaAcid_J2,true);
+			BalaAcid_J2.body.setCircle(35);
+			BalaAcid_J2.body.kinematic = true;
 			BalaAcid_J2.body.mass=peso_balas;
 
 			//Invisiblizar balas no seleccionadas
@@ -617,12 +584,22 @@ Game.Battle.prototype ={
 			catchFlag = false;
 			arrow.alpha = 0;
 			analog.alpha = 0;
-			Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.max(analog.height,275)*5;
-			Yvector = angulo_rotacion*Math.max(analog.height,275)*5;
+			if(turno==1){
+				Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.max(analog.height,275)*5;
+				Yvector = angulo_rotacion*Math.max(analog.height,275)*5;
+			}else{
+				if(angulo_rotacion<0){
+					angulo_rotacion=-Math.PI-angulo_rotacion;
+				}else{
+					angulo_rotacion=Math.PI-angulo_rotacion;
+				}
+				//alert(angulo_rotacion);
+				Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.min(analog.height,-275)*5;
+				Yvector = angulo_rotacion*Math.max(analog.height,275)*5;
+			}
+			//alert(Xvector + "|------|" + Yvector);
 			balaDispara.body.moves = true;
 			if(turno==1){
-				balaDispara.body.velocity.x=Xvector;
-				balaDispara.body.velocity.y=Yvector;
 				if(num_balas_agu_J1==0){
 					button_BalaAgua.inputEnabled = false;
 				}
@@ -634,8 +611,6 @@ Game.Battle.prototype ={
 				}
 			}
 			else{
-				balaDispara.body.velocity.x=Xvector;
-				balaDispara.body.velocity.y=Yvector;
 				if(num_balas_agu_J2==0){
 					button_BalaAgua.inputEnabled = false;
 				}		
@@ -648,6 +623,8 @@ Game.Battle.prototype ={
 			}
 		}
 		balaDispara.body.dynamic = true;
+		balaDispara.body.velocity.x=Xvector;
+		balaDispara.body.velocity.y=Yvector;
 	},
 	
 	//Llamada por un boton.0 inputs, 0 outputs
@@ -1297,8 +1274,6 @@ Game.Battle.prototype ={
 				}
 			}
 		}
-		
-		
 		//objeto.anchor.setTo(0.5,0.5);
 		objeto.body.x=this.input.mousePointer.x;
 		objeto.body.y=this.input.mousePointer.y;
@@ -1403,7 +1378,6 @@ Game.Battle.prototype ={
 	dentro_mundo:function(objeto){
 		if(objeto.body.x - objeto.width/2 > this.world.width || objeto.body.x + objeto.width/2 < 0 || objeto.body.y + objeto.height/2 < 0 || objeto.body.y - objeto.height/2 > this.world.height){
 			objeto.destroy();
-			alert();
 		}
 	},
 
@@ -1946,19 +1920,18 @@ Game.Battle.prototype ={
 			for(var i=0;i<this.contJugJ2;i++){
 				this.jugadoresJ2[i].body.dynamic=true;
 			}
-			if(this.delayAux>=120 && this.movimentoParado(this.construcJ1) && this.movimentoParado(this.construcJ2) && this.movimentoParado(this.jugadoresJ1) && this.movimentoParado(this.jugadoresJ2)){
+			if(this.movimentoParado(this.construcJ1) && this.movimentoParado(this.construcJ2) && this.movimentoParado(this.jugadoresJ1) && this.movimentoParado(this.jugadoresJ2)){
 				estado="BATALLA";
 				this.background.events.onInputDown.add(this.set);
 				this.background.events.onInputUp.add(this.launch);
 				this.CannonVaquero.scale.x *= -1;
 				this.CannonVaquero.scale.y *= -1;
 			}
-			this.delayAux++;
 		}
 		
 		if(estado=="BATALLA"){
 
-			balaDispara.body.gravity.y=1500;
+			balaDispara.body.gravity.y=2000;
 			//CONTROL DESTRUCCION
 			for(var i=0;i<this.contConstJ2;i++){
 				if(this.construcJ2[i].vida<=0){
@@ -2045,7 +2018,7 @@ Game.Battle.prototype ={
 			//Fin Disparo
 			
 			//Inicio Control turnos
-			if((disparos==0 && (balaDispara.body.x-balaDispara.width<0 || balaDispara.body.x + balaDispara.width>1920 || balaDispara.body.y+balaDispara.height>1080 || (balaDispara.body.velocity.x<=5 && balaDispara.body.velocity.y<=5)))||fin_tiempo==0/* || (this.delayAux>180&&disparos==0)*/){
+			if((disparos==0 && (balaDispara.body.x-balaDispara.width<0 || balaDispara.body.x + balaDispara.width>1920 || balaDispara.body.y+balaDispara.height>1080 || (balaDispara.body.velocity.x<=10 && balaDispara.body.velocity.y<=10 && balaDispara.body.velocity.x>=-10 && balaDispara.body.velocity.y>=-10)))||fin_tiempo==0/* || (this.delayAux>180&&disparos==0)*/){
 				balaDispara.body.moves = false;
 				balaDispara.body.kinematic = true;
 				balaDispara.body.velocity.x=0;
@@ -2087,8 +2060,8 @@ Game.Battle.prototype ={
 				{
 					this.CartelVaqueros.tint=0.4 * 0xffffff;
 					this.CartelPiratas.tint=1 * 0xffffff;
-					balaDispara.body.x=1825;
-					balaDispara.body.y=420;
+					balaDispara.body.x=1820;
+					balaDispara.body.y=400;
 					turno=1;
 					balaDispara.visible = false;
 					balaDispara=BalaCom1_J1;
@@ -2118,7 +2091,7 @@ Game.Battle.prototype ={
 					}
 				}
 				balaDispara.visible = true;
-				disparos++;
+				disparos=1;
 				fin_tiempo=1;
 				cuenta_atras.destroy();
 				cuenta_atras=this.time.create();
@@ -2367,9 +2340,12 @@ Game.Battle.prototype ={
 		}
 		this.game.debug.text(this.telon.x,30,this.telon.y,'white');
 		this.game.debug.text(this.construcAux,30,50,'white');*/
+	
 		if(BalaCom1_J1!=undefined){
-			this.game.debug.text(this.CannonPirata.rotation ,220,312,'white');
-			this.game.debug.text(Math.cos(Math.asin(this.CannonPirata.rotation)) ,220,280,'white');
+			this.game.debug.text(balaDispara.visible ,1850,420,'white');
+			this.game.debug.text(angulo_rotacion ,220,280,'white');
+			this.game.debug.text(balaDispara.x ,80,312,'white');
+			this.game.debug.text(balaDispara.body.dynamic ,100,280,'white');
 		}
 	},
 	
