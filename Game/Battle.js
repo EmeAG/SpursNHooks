@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=0;//contador de tiempo global
+var auxTiempoConstruc=10;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
@@ -1927,8 +1927,28 @@ Game.Battle.prototype ={
 
 				for(var i=0;i<3;i++){
 					this.jugadoresJ2[i].body.createBodyCallback(BalaCom1_J1, this.colision, this);
+					this.jugadoresJ2[i].body.createBodyCallback(BalaAcid_J1, this.colision, this);
+					this.jugadoresJ2[i].body.createBodyCallback(BalaAgu_J1, this.colision, this);
+					this.jugadoresJ2[i].body.createBodyCallback(BalaFueg_J1, this.colision, this);
+
 					this.jugadoresJ1[i].body.createBodyCallback(BalaCom1_J2, this.colision, this);
+					this.jugadoresJ1[i].body.createBodyCallback(BalaAcid_J2, this.colision, this);
+					this.jugadoresJ1[i].body.createBodyCallback(BalaAgu_J2, this.colision, this);
+					this.jugadoresJ1[i].body.createBodyCallback(BalaFueg_J2, this.colision, this);
 				}
+				for(var i=0;i<this.contConstJ1;i++){
+					this.construcJ1[i].body.createBodyCallback(BalaCom1_J2, this.colision, this);
+					this.construcJ1[i].body.createBodyCallback(BalaAcid_J2, this.colision, this);
+					this.construcJ1[i].body.createBodyCallback(BalaAgu_J2, this.colision, this);
+					this.construcJ1[i].body.createBodyCallback(BalaFueg_J2, this.colision, this);
+				}
+				for(var i=0;i<this.contConstJ2;i++){
+					this.construcJ2[i].body.createBodyCallback(BalaCom1_J1, this.colision, this);
+					this.construcJ2[i].body.createBodyCallback(BalaAcid_J1, this.colision, this);
+					this.construcJ2[i].body.createBodyCallback(BalaAgu_J1, this.colision, this);
+					this.construcJ2[i].body.createBodyCallback(BalaFueg_J1, this.colision, this);
+				}
+
 				
 				estado="BATALLA";
 				this.background.events.onInputDown.add(this.set);
