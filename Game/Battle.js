@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=10;//contador de tiempo global
+var auxTiempoConstruc=0;//contador de tiempo global
 var auxTiempoBatalla=15;
 //Pesos
 var peso_madera=1;
@@ -1959,7 +1959,82 @@ Game.Battle.prototype ={
 		}
 		
 		if(estado=="BATALLA"){
+			if(turno==1 && disparos==1){
+				for(var i=0;i<this.contConstJ1;i++){
+					if(this.construcJ1[i].body!=null){
+						this.construcJ1[i].body.static=true;
+					}
+				}
+				for(var i=0;i<this.contJugJ1;i++){
+					if(this.jugadoresJ1[i].body!=null){
+						this.jugadoresJ1[i].body.static=true;
+					}
+				}
+				for(var i=0;i<this.contConstJ2;i++){
+					if(this.construcJ2[i].body!=null){
+						this.construcJ2[i].body.dynamic=true;
+					}
+				}
+				for(var i=0;i<this.contJugJ2;i++){
+					if(this.jugadoresJ2[i].body!=null){
+						this.jugadoresJ2[i].body.dynamic=true;
+					}
+				}
+			}
+			if(turno==1 && disparos==0 && balaDispara.body.x<=this.world.width/3){
+				balaDispara.body.kinematic=true;			
+			}
+			if(turno==1 && disparos==0 && balaDispara.body.x>=this.world.width/3){
+				balaDispara.body.dynamic=true;
+			}
 
+			if(turno==2 && disparos==1){
+				for(var i=0;i<this.contConstJ1;i++){
+					if(this.construcJ1[i].body!=null){
+						this.construcJ1[i].body.dynamic=true;
+					}
+				}
+				for(var i=0;i<this.contJugJ1;i++){
+					if(this.jugadoresJ1[i].body!=null){
+						this.jugadoresJ1[i].body.dynamic=true;
+					}
+				}
+				for(var i=0;i<this.contConstJ2;i++){
+					if(this.construcJ2[i].body!=null){
+						this.construcJ2[i].body.static=true;
+					}
+				}
+				for(var i=0;i<this.contJugJ2;i++){
+					if(this.jugadoresJ2[i].body!=null){
+						this.jugadoresJ2[i].body.static=true;
+					}
+				}
+			}
+			if(turno==2 && disparos==0 && balaDispara.body.x>=this.world.width/3*2){
+				balaDispara.body.kinematic=true;			
+			}
+			if(turno==2 && disparos==0 && balaDispara.body.x<=this.world.width/3*2){
+				balaDispara.body.dynamic=true;
+			}
+			/*if(turno==1 && balaDispara.body.x<=this.world.width/2 && disparos==0 && balaDispara.body.collideWorldBounds==true){
+				balaDispara.body.collideWorldBounds=false;
+				balaDispara.body.updateCollisionMask();
+            }
+            if(turno==1 && balaDispara.body.x<=this.world.width/2 && disparos==0 && balaDispara.body.collideWorldBounds==false){
+				balaDispara.body.collideWorldBounds=true;
+				this.game.physics.p2.updateBoundsCollisionGroup(true);
+                balaDispara.body.updateCollisionMask();
+            }
+            if(turno==2 && balaDispara.body.x>=this.world.width/2 && disparos==0 && balaDispara.body.collideWorldBounds==true){
+                balaDispara.body.collideWorldBounds=false;
+                balaDispara.body.updateCollisionMask();
+            }
+            if(turno==2 && balaDispara.body.x>=this.world.width/2 && disparos==0 && balaDispara.body.collideWorldBounds==false){
+                balaDispara.body.collideWorldBounds=true;
+                this.game.physics.p2.updateBoundsCollisionGroup(true);
+                balaDispara.body.updateCollisionMask();
+			}*/
+			
 			balaDispara.body.gravity.y=2000;
 			//CONTROL DESTRUCCION
 			for(var i=0;i<this.contConstJ2;i++){
@@ -2370,9 +2445,12 @@ Game.Battle.prototype ={
 		/*for(var i=0;i<this.contConstJ1;i++){
 			this.game.debug.text(this.construcJ1[i],20,30+20*i,'white');
 		}
-		this.game.debug.text(this.telon.x,30,this.telon.y,'white');
-		this.game.debug.text(this.construcAux,30,50,'white');*/
-	
+		this.game.debug.text(this.telon.x,30,this.telon.y,'white');*/
+		if(balaDispara){
+			this.game.debug.text(balaDispara.body.allowSleep,30,50,'white');
+		}
+		
+		
 		if(BalaCom1_J1!=undefined){
 			this.game.debug.text(disparos ,1850,420,'white');
 			this.game.debug.text(angulo_rotacion ,220,280,'white');
