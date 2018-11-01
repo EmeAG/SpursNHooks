@@ -144,6 +144,7 @@ Game.Battle.prototype ={
 			this.jugador.body.estado=1;
 			this.jugador.forma="personaje";
 			this.jugador.inputEnabled=true;
+			//this.jugador.body.createBodyCallback(BalaCom1_J2, this.colision, this);
 			this.jugador.num=this.contJugJ1;
 			this.num1=this.contJugJ1;
 			this.construcAux=this.jugador;
@@ -168,7 +169,9 @@ Game.Battle.prototype ={
 			this.jugador.body.estado=1;
 			this.jugador.body.forma="personaje";
 			this.jugador.inputEnabled=true;
+			//this.jugador.body.createBodyCallback(BalaCom1_J1, this.colision, this);
 			this.jugador.num=this.contJugJ2;
+			//this.jugador.body.onBeginContact.add(this.colision, this);
 			this.num1=this.contJugJ2;
 			//alert(this.num1);
 			this.construcAux=this.jugador;
@@ -1921,6 +1924,12 @@ Game.Battle.prototype ={
 				this.jugadoresJ2[i].body.dynamic=true;
 			}
 			if(this.movimentoParado(this.construcJ1) && this.movimentoParado(this.construcJ2) && this.movimentoParado(this.jugadoresJ1) && this.movimentoParado(this.jugadoresJ2)){
+
+				for(var i=0;i<3;i++){
+					this.jugadoresJ2[i].body.createBodyCallback(BalaCom1_J1, this.colision, this);
+					this.jugadoresJ1[i].body.createBodyCallback(BalaCom1_J2, this.colision, this);
+				}
+				
 				estado="BATALLA";
 				this.background.events.onInputDown.add(this.set);
 				this.background.events.onInputUp.add(this.launch);
@@ -2156,122 +2165,125 @@ Game.Battle.prototype ={
 		//this.delayAux++;
     },
 	
+	colision:function(juga_constr){
+		if(disparos==0){
 
-	colision:function(juga_constr, bala){
-		if(isNaN(Number(bala.body.velocity.y))){
-			Val1=0;
-		}else{
-			Val1=Number(bala.body.velocity.y);
+			if(isNaN(Number(balaDispara.body.velocity.y))){
+				Val1=0;
+			}else{
+				Val1=Number(balaDispara.body.velocity.y);
+			}
+			if(isNaN(Number(balaDispara.body.velocity.x))){
+				Val2=0;
+			}else{
+				Val2=Number(balaDispara.body.velocity.x);
+			}
+			velocidad_global=Math.abs(Val1)+Math.abs(Val2);
+			if(estado=="BATALLA"){
+				if(velocidad_global>300 && (balaDispara==BalaCom1_J1 || balaDispara==BalaCom1_J2) ){
+					switch (velocidad_global){
+						case (velocidad_global<1500):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-8;
+							break;
+						case (velocidad_global<2000):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-15;
+							break;
+						default:
+							juga_constr.sprite.vida=juga_constr.sprite.vida-20;
+							break;
+					}
+				}
+				if(balaDispara==BalaFueg_J1 || balaDispara==BalaFueg_J2){
+					switch (juga_constr.sprite.tipo){
+						case ("madera"):
+							juga_constr.sprite.vida=1;
+							switch(juga_constr.sprite.forma){
+								case "tri":
+									juga_constr.sprite.loadTexture('Bloq_mad_trian_quem');
+								break;
+								case "cuad":
+									juga_constr.sprite.loadTexture('Bloq_mad_cuad_quem');
+								break;
+								case "rect_v":
+									juga_constr.sprite.loadTexture('Bloq_mad_rectV_quem');
+								break;
+								case "rect_h":
+									juga_constr.sprite.loadTexture('Bloq_mad_rectH_quem');
+								break;
+							}
+						break;
+						case ("piedra"):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+						break;
+						case ("metal"):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+						break;
+					}
+					balaDispara.x=2000;
+					balaDispara.y=2000;
+				}
+				if(balaDispara==BalaAcid_J1 || balaDispara==BalaAcid_J2){
+					switch (juga_constr.sprite.tipo){
+						case ("piedra"):
+							juga_constr.sprite.vida=1;
+							switch(juga_constr.sprite.forma){
+								case "tri":
+									juga_constr.sprite.loadTexture('Bloq_pied_trian_aci');
+								break;
+								case "cuad":
+									juga_constr.sprite.loadTexture('Bloq_pied_cuad_aci');
+								break;
+								case "rect_v":
+									juga_constr.sprite.loadTexture('Bloq_pied_rectV_aci');
+								break;
+								case "rect_h":
+									juga_constr.sprite.loadTexture('Bloq_pied_rectH_aci');
+								break;
+							}
+							break;
+						case ("madera"):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+						break;
+						case ("metal"):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+						break;
+					}
+					balaDispara.x=2000;
+					balaDispara.y=2000;
+				}
+				if(balaDispara==BalaAgu_J1 || balaDispara==BalaAgu_J2){
+					//alert();
+					switch (juga_constr.sprite.tipo){
+						case ("metal"):
+							juga_constr.sprite.vida=1;
+							switch(juga_constr.sprite.forma){
+								case "tri":
+									juga_constr.sprite.loadTexture('Bloq_met_trian_oxi');
+								break;
+								case "cuad":
+									juga_constr.sprite.loadTexture('Bloq_met_cuad_oxi');
+								break;
+								case "rect_v":
+									juga_constr.sprite.loadTexture('Bloq_met_rectV_oxi');
+								break;
+								case "rect_h":
+									juga_constr.sprite.loadTexture('Bloq_met_rectH_oxi');
+								break;
+							}
+							break;
+						case ("madera"):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+						break;
+						case ("piedra"):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+						break;
+					}
+					balaDispara.x=2000;
+					balaDispara.y=2000;
+				}
+			}
 		}
-		if(isNaN(Number(bala.body.velocity.x))){
-			Val2=0;
-		}else{
-			Val2=Number(bala.body.velocity.x);
-		}
-		velocidad_global=Math.abs(Val1)+Math.abs(Val2);
-		if(estado=="BATALLA"){
-			if(velocidad_global>300 && (bala==BalaCom1_J1 || bala==BalaCom1_J2) ){
-				switch (velocidad_global){
-					case (velocidad_global<1500):
-						juga_constr.vida=juga_constr.vida-8;
-						break;
-					case (velocidad_global<2000):
-						juga_constr.vida=juga_constr.vida-15;
-						break;
-					default:
-						juga_constr.vida=juga_constr.vida-20;
-						break;
-				}
-			}
-			if(bala==BalaFueg_J1 || bala==BalaFueg_J2){
-				switch (juga_constr.tipo){
-					case ("madera"):
-						juga_constr.vida=1;
-						switch(juga_constr.forma){
-							case "tri":
-								juga_constr.loadTexture('Bloq_mad_trian_quem');
-							break;
-							case "cuad":
-								juga_constr.loadTexture('Bloq_mad_cuad_quem');
-							break;
-							case "rect_v":
-								juga_constr.loadTexture('Bloq_mad_rectV_quem');
-							break;
-							case "rect_h":
-								juga_constr.loadTexture('Bloq_mad_rectH_quem');
-							break;
-						}
-					break;
-					case ("piedra"):
-						juga_constr.vida=juga_constr.vida-1;
-					break;
-					case ("metal"):
-						juga_constr.vida=juga_constr.vida-1;
-					break;
-				}
-				bala.x=2000;
-				bala.y=2000;
-			}
-			if(bala==BalaAcid_J1 || bala==BalaAcid_J2){
-				switch (juga_constr.tipo){
-					case ("piedra"):
-						juga_constr.vida=1;
-						switch(juga_constr.forma){
-							case "tri":
-								juga_constr.loadTexture('Bloq_pied_trian_aci');
-							break;
-							case "cuad":
-								juga_constr.loadTexture('Bloq_pied_cuad_aci');
-							break;
-							case "rect_v":
-								juga_constr.loadTexture('Bloq_pied_rectV_aci');
-							break;
-							case "rect_h":
-								juga_constr.loadTexture('Bloq_pied_rectH_aci');
-							break;
-						}
-						break;
-					case ("madera"):
-						juga_constr.vida=juga_constr.vida-1;
-					break;
-					case ("metal"):
-						juga_constr.vida=juga_constr.vida-1;
-					break;
-				}
-				bala.x=2000;
-				bala.y=2000;
-			}
-			if(bala==BalaAgu_J1 || bala==BalaAgu_J2){
-				//alert();
-				switch (juga_constr.tipo){
-					case ("metal"):
-						juga_constr.vida=1;
-						switch(juga_constr.forma){
-							case "tri":
-								juga_constr.loadTexture('Bloq_met_trian_oxi');
-							break;
-							case "cuad":
-								juga_constr.loadTexture('Bloq_met_cuad_oxi');
-							break;
-							case "rect_v":
-								juga_constr.loadTexture('Bloq_met_rectV_oxi');
-							break;
-							case "rect_h":
-								juga_constr.loadTexture('Bloq_met_rectH_oxi');
-							break;
-						}
-						break;
-					case ("madera"):
-						juga_constr.vida=juga_constr.vida-1;
-					break;
-					case ("piedra"):
-						juga_constr.vida=juga_constr.vida-1;
-					break;
-				}
-				bala.x=2000;
-				bala.y=2000;
-			}
-		}
+		/**/
 	},
 	
 	
