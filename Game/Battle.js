@@ -621,10 +621,10 @@ Game.Battle.prototype ={
 					button_BalaAcido.inputEnabled = false;
 				}
 			}
-		}
 		balaDispara.body.dynamic = true;
 		balaDispara.body.velocity.x=Xvector;
 		balaDispara.body.velocity.y=Yvector;
+		}
 	},
 	
 	//Llamada por un boton.0 inputs, 0 outputs
