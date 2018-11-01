@@ -2342,7 +2342,7 @@ Game.Battle.prototype ={
 		this.game.debug.text(this.construcAux,30,50,'white');*/
 	
 		if(BalaCom1_J1!=undefined){
-			this.game.debug.text(balaDispara.visible ,1850,420,'white');
+			this.game.debug.text(disparos ,1850,420,'white');
 			this.game.debug.text(angulo_rotacion ,220,280,'white');
 			this.game.debug.text(balaDispara.x ,80,312,'white');
 			this.game.debug.text(balaDispara.body.dynamic ,100,280,'white');
