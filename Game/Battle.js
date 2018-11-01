@@ -617,8 +617,8 @@ Game.Battle.prototype ={
 			catchFlag = false;
 			arrow.alpha = 0;
 			analog.alpha = 0;
-			Xvector = Math.cos(Math.asin(angulo_rotacion))*analog.height*5;
-			Yvector = angulo_rotacion*analog.height*5;
+			Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.max(analog.height,275)*5;
+			Yvector = angulo_rotacion*Math.max(analog.height,275)*5;
 			balaDispara.body.moves = true;
 			if(turno==1){
 				balaDispara.body.velocity.x=Xvector;
@@ -2045,7 +2045,7 @@ Game.Battle.prototype ={
 			//Fin Disparo
 			
 			//Inicio Control turnos
-			if((disparos==0 && (balaDispara.body.x-balaDispara.width<0 || balaDispara.body.x + balaDispara.width>1920 || balaDispara.body.y+balaDispara.height>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0)))||fin_tiempo==0 || (this.delayAux>180&&disparos==0)){
+			if((disparos==0 && (balaDispara.body.x-balaDispara.width<0 || balaDispara.body.x + balaDispara.width>1920 || balaDispara.body.y+balaDispara.height>1080 || (balaDispara.body.velocity.x<=5 && balaDispara.body.velocity.y<=5)))||fin_tiempo==0/* || (this.delayAux>180&&disparos==0)*/){
 				balaDispara.body.moves = false;
 				balaDispara.body.kinematic = true;
 				balaDispara.body.velocity.x=0;
