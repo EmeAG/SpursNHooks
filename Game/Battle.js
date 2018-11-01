@@ -41,7 +41,7 @@ var auxTiempoBatalla=15;
 var peso_madera=1;
 var peso_piedra=2;
 var peso_metal=3;
-var peso_balas=0;
+var peso_balas=5;
 var peso_personaje=1;
 //Vida
 var vida_madera=20;
@@ -53,7 +53,7 @@ var puntuacion1=0;
 var puntuacion2=0;
 
 var juego_terminado=false;
-
+var angulo_rotacion;
 var musica;
 
 Game.Battle.prototype ={
@@ -194,8 +194,6 @@ Game.Battle.prototype ={
 			//Activar lanzamiento desde el fondo de la pantalla
 			this.background.inputEnabled = true;
 			this.background.input.start(0, true);
-			this.background.events.onInputDown.add(this.set);
-			this.background.events.onInputUp.add(this.launch);
 			this.angulo2=0;
 			this.angulo1=0;
 			this.game.physics.p2.setBoundsToWorld();
@@ -212,17 +210,12 @@ Game.Battle.prototype ={
 			this.CannonVaquero.body.moves = false;
 			
 			//Balas comunes J1
-			BalaCom1_J1=this.add.sprite(135,420, 'balaComun');
-			this.physics.enable(BalaCom1_J1, Phaser.Physics.p2);
-			BalaCom1_J1.anchor.set(0.5,0.5);
-			BalaCom1_J1.body.bounce.set(0.4);
-			BalaCom1_J1.body.drag.set(20, 20);
-			BalaCom1_J1.body.moves = false;	
-			BalaCom1_J1.pivot.x=-200;
-			BalaCom1_J1.pivot.y=-20;
-			BalaCom1_J1.scale.x *= 0.75;
-			BalaCom1_J1.scale.y *= 0.75;
+			BalaCom1_J1=this.add.sprite(0,0, 'balaComun');
+			BalaCom1_J1.x=100;
+			BalaCom1_J1.y=420;
+			this.physics.p2.enable(BalaCom1_J1,true);
 			BalaCom1_J1.body.setCircle(35);
+			BalaCom1_J1.body.kinematic = true;
 			BalaCom1_J1.body.mass=peso_balas;
 
 			//Balas Agua J1
@@ -581,8 +574,8 @@ Game.Battle.prototype ={
 	set:function(player,pointer) {
 		if(disparos>0){
 			catchFlag = true;
-			balaDispara.body.moves = false;
-			balaDispara.body.velocity.setTo(0, 0);
+			balaDispara.body.velocity.x=0;
+			balaDispara.body.velocity.y=0;
 			arrow.reset(pointer.x, pointer.y);
 			analog.reset(pointer.x, pointer.y);
 		}
@@ -624,11 +617,12 @@ Game.Battle.prototype ={
 			catchFlag = false;
 			arrow.alpha = 0;
 			analog.alpha = 0;
-			Xvector = (arrow.x - puntero.x)*5;
-			Yvector = (arrow.y - puntero.y)*5;
+			Xvector = Math.cos(Math.asin(angulo_rotacion))*analog.height*5;
+			Yvector = angulo_rotacion*analog.height*5;
 			balaDispara.body.moves = true;
 			if(turno==1){
-				balaDispara.body.velocity.setTo(Math.max(Xvector,1000), Yvector);
+				balaDispara.body.velocity.x=Xvector;
+				balaDispara.body.velocity.y=Yvector;
 				if(num_balas_agu_J1==0){
 					button_BalaAgua.inputEnabled = false;
 				}
@@ -640,7 +634,8 @@ Game.Battle.prototype ={
 				}
 			}
 			else{
-				balaDispara.body.velocity.setTo(Math.min(Xvector,-1000), Yvector);
+				balaDispara.body.velocity.x=Xvector;
+				balaDispara.body.velocity.y=Yvector;
 				if(num_balas_agu_J2==0){
 					button_BalaAgua.inputEnabled = false;
 				}		
@@ -652,6 +647,7 @@ Game.Battle.prototype ={
 				}
 			}
 		}
+		balaDispara.body.dynamic = true;
 	},
 	
 	//Llamada por un boton.0 inputs, 0 outputs
@@ -1898,7 +1894,6 @@ Game.Battle.prototype ={
 						this.balaAg.destroy();
 						this.balaAc.destroy();
 						this.personaje.destroy();
-						this.physics.enable(this.telon, Phaser.Physics.p2);
 						this.telon.body.velocity.x=300;
 						this.telon.body.allowGravity = false;
 						this.telon.bringToTop();
@@ -1953,6 +1948,8 @@ Game.Battle.prototype ={
 			}
 			if(this.delayAux>=120 && this.movimentoParado(this.construcJ1) && this.movimentoParado(this.construcJ2) && this.movimentoParado(this.jugadoresJ1) && this.movimentoParado(this.jugadoresJ2)){
 				estado="BATALLA";
+				this.background.events.onInputDown.add(this.set);
+				this.background.events.onInputUp.add(this.launch);
 				this.CannonVaquero.scale.x *= -1;
 				this.CannonVaquero.scale.y *= -1;
 			}
@@ -1960,7 +1957,8 @@ Game.Battle.prototype ={
 		}
 		
 		if(estado=="BATALLA"){
-			balaDispara.body.gravity.y=3000;
+
+			balaDispara.body.gravity.y=1500;
 			//CONTROL DESTRUCCION
 			for(var i=0;i<this.contConstJ2;i++){
 				if(this.construcJ2[i].vida<=0){
@@ -2047,15 +2045,17 @@ Game.Battle.prototype ={
 			//Fin Disparo
 			
 			//Inicio Control turnos
-			if((disparos==0 && (balaDispara.body.x<0||balaDispara.body.x>1920||balaDispara.body.y>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0)))||fin_tiempo==0 || (this.delayAux>180&&disparos==0)){
+			if((disparos==0 && (balaDispara.body.x-balaDispara.width<0 || balaDispara.body.x + balaDispara.width>1920 || balaDispara.body.y+balaDispara.height>1080 || (balaDispara.body.velocity.x==0 && balaDispara.body.velocity.y==0)))||fin_tiempo==0 || (this.delayAux>180&&disparos==0)){
 				balaDispara.body.moves = false;
-				balaDispara.body.velocity.setTo(0, 0);
+				balaDispara.body.kinematic = true;
+				balaDispara.body.velocity.x=0;
+				balaDispara.body.velocity.y=0;
 				if(turno==1){
 					this.CartelVaqueros.tint=1 * 0xffffff;
 					this.CartelPiratas.tint=0.4 * 0xffffff;
 					turno=2;
-					balaDispara.x=135;
-					balaDispara.y=420;
+					balaDispara.body.x=100;
+					balaDispara.body.y=420;
 					balaDispara.visible = false;
 					balaDispara=BalaCom1_J2;
 					text_num_balas_agu.text=num_balas_agu_J2;
@@ -2087,8 +2087,8 @@ Game.Battle.prototype ={
 				{
 					this.CartelVaqueros.tint=0.4 * 0xffffff;
 					this.CartelPiratas.tint=1 * 0xffffff;
-					balaDispara.x=1825;
-					balaDispara.y=450;
+					balaDispara.body.x=1825;
+					balaDispara.body.y=420;
 					turno=1;
 					balaDispara.visible = false;
 					balaDispara=BalaCom1_J1;
@@ -2131,21 +2131,23 @@ Game.Battle.prototype ={
 			//Inicio Giro de los cañones
 			if (catchFlag != true && disparos>0){
 				if (turno==1){
-					if (this.game.physics.arcade.angleToPointer(this.CannonPirata)>-1.1 && this.game.physics.arcade.angleToPointer(this.CannonPirata)<0.55){
+					if (this.game.physics.arcade.angleToPointer(this.CannonPirata)>-1 && this.game.physics.arcade.angleToPointer(this.CannonPirata)<0.55){
 						this.CannonPirata.rotation = this.game.physics.arcade.angleToPointer(this.CannonPirata);
+						angulo_rotacion=this.CannonPirata.rotation;
 						this.CannonVaquero.rotation =3.15;
 					}
-					/*if (this.game.physics.p2.angleToPointer(balaDispara)>-1.2 && this.game.physics.p2.angleToPointer(balaDispara)<0.65){
-						balaDispara.rotation = this.game.physics.p2.angleToPointer(balaDispara);
+					/*if (this.game.physics.arcade.angleToPointer(balaDispara)>-1.2 && this.game.physics.arcade.angleToPointer(balaDispara)<0.65){
+						balaDispara.rotation = this.game.physics.arcade.angleToPointer(balaDispara);
 					}*/
 				}
 				if (turno==2){
 					if (this.game.physics.arcade.angleToPointer(this.CannonVaquero)<-2 || this.game.physics.arcade.angleToPointer(this.CannonVaquero)>2.5){
 						this.CannonVaquero.rotation = this.game.physics.arcade.angleToPointer(this.CannonVaquero);
+						angulo_rotacion=this.CannonVaquero.rotation;
 						this.CannonPirata.rotation =0;
 					}
-				/*	if (this.game.physics.p2.angleToPointer(balaDispara)<-2 || this.game.physics.p2.angleToPointer(balaDispara)>2.5){
-						balaDispara.rotation = this.game.physics.p2.angleToPointer(balaDispara);
+					/*if (this.game.physics.arcade.angleToPointer(balaDispara)<-2 || this.game.physics.arcade.angleToPointer(balaDispara)>2.5){
+						balaDispara.rotation = this.game.physics.arcade.angleToPointer(balaDispara);
 					}*/
 				}
 			}
@@ -2364,8 +2366,11 @@ Game.Battle.prototype ={
 			this.game.debug.text(this.construcJ1[i],20,30+20*i,'white');
 		}
 		this.game.debug.text(this.telon.x,30,this.telon.y,'white');
-		this.game.debug.text(this.construcAux,30,50,'white');
-		//this.game.debug.text( this.jugadoresJ2[0],220,292,'white');*/
+		this.game.debug.text(this.construcAux,30,50,'white');*/
+		if(BalaCom1_J1!=undefined){
+			this.game.debug.text(this.CannonPirata.rotation ,220,312,'white');
+			this.game.debug.text(Math.cos(Math.asin(this.CannonPirata.rotation)) ,220,280,'white');
+		}
 	},
 	
 };
