@@ -35,14 +35,14 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=0;//contador de tiempo global
-var auxTiempoBatalla=15;
+var auxTiempoConstruc=0;//contador de tiempo constr
+var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
-var peso_madera=1;
-var peso_piedra=2;
-var peso_metal=3;
-var peso_balas=5;
-var peso_personaje=1;
+var peso_madera=20;
+var peso_piedra=40;
+var peso_metal=70;
+var peso_balas=1;
+var peso_personaje=10;
 //Vida
 var vida_madera=20;
 var vida_piedra=40;
@@ -142,7 +142,7 @@ Game.Battle.prototype ={
 			this.jugador.body.kinematic = true;
 			this.jugador.body.mass=peso_personaje;
 			this.jugador.body.estado=1;
-			this.jugador.forma="personaje";
+			this.jugador.tipo="personaje";
 			this.jugador.inputEnabled=true;
 			//this.jugador.body.createBodyCallback(BalaCom1_J2, this.colision, this);
 			this.jugador.num=this.contJugJ1;
@@ -165,9 +165,8 @@ Game.Battle.prototype ={
 			this.physics.p2.enable(this.jugador);
 			this.jugador.body.kinematic = true;
 			this.jugador.body.mass=peso_personaje;
-			this.jugador.forma="personaje";
+			this.jugador.tipo="personaje";
 			this.jugador.body.estado=1;
-			this.jugador.body.forma="personaje";
 			this.jugador.inputEnabled=true;
 			//this.jugador.body.createBodyCallback(BalaCom1_J1, this.colision, this);
 			this.jugador.num=this.contJugJ2;
@@ -215,84 +214,51 @@ Game.Battle.prototype ={
 			this.CannonVaquero.body.moves = false;
 			
 			//Balas comunes J1
-			BalaCom1_J1=this.add.sprite(0,0, 'balaComun');
-			BalaCom1_J1.x=100;
-			BalaCom1_J1.y=420;
-			this.physics.p2.enable(BalaCom1_J1,true);
-			BalaCom1_J1.body.setCircle(35);
-			BalaCom1_J1.body.kinematic = true;
-			BalaCom1_J1.body.mass=peso_balas;
+			Bala_J1=this.add.sprite(0,0, 'balaComun');
+			Bala_J1.x=100;
+			Bala_J1.y=420;
+			this.physics.p2.enable(Bala_J1,true);
+			Bala_J1.body.setCircle(35);
+			Bala_J1.body.kinematic = true;
+			Bala_J1.tipo="comun";
+			Bala_J1.body.mass=peso_balas;
 
 			//Balas Agua J1
-			BalaAgu_J1=this.add.sprite(0,0, 'balaAgua');
-			BalaAgu_J1.x=100;
-			BalaAgu_J1.y=420;
-			this.physics.p2.enable(BalaAgu_J1,true);
-			BalaAgu_J1.body.setCircle(35);
-			BalaAgu_J1.body.kinematic = true;
-			BalaAgu_J1.body.mass=peso_balas;
+/*			BalaAgu_J1=this.add.sprite(0,0, 'balaAgua');
 			
 			//Balas Fuego J1
 			BalaFueg_J1=this.add.sprite(0,0, 'balaFuego');
-			BalaFueg_J1.x=100;
-			BalaFueg_J1.y=420;
-			this.physics.p2.enable(BalaFueg_J1,true);
-			BalaFueg_J1.body.setCircle(35);
-			BalaFueg_J1.body.kinematic = true;
-			BalaFueg_J1.body.mass=peso_balas;
-			
+
 			//Balas Acido J1
 			BalaAcid_J1=this.add.sprite(0,0, 'balaAcido');
-			BalaAcid_J1.x=100;
-			BalaAcid_J1.y=420;
-			this.physics.p2.enable(BalaAcid_J1,true);
-			BalaAcid_J1.body.setCircle(35);
-			BalaAcid_J1.body.kinematic = true;
-			BalaAcid_J1.body.mass=peso_balas;
-			
+*/
 			//Balas comunes J2
-			BalaCom1_J2=this.add.sprite(0,0, 'balaComun');
-			BalaCom1_J2.x=1820;
-			BalaCom1_J2.y=400;
-			this.physics.p2.enable(BalaCom1_J2,true);
-			BalaCom1_J2.body.setCircle(35);
-			BalaCom1_J2.body.kinematic = true;
-			BalaCom1_J2.body.mass=peso_balas;
+			Bala_J2=this.add.sprite(0,0, 'balaComun');
+			Bala_J2.x=1820;
+			Bala_J2.y=400;
+			this.physics.p2.enable(Bala_J2,true);
+			Bala_J2.body.setCircle(35);
+			Bala_J2.body.kinematic = true;
+			Bala_J2.body.mass=peso_balas;
+			Bala_J2.tipo="comun";
 			
 			//Balas Agua J2
-			BalaAgu_J2=this.add.sprite(0,0, 'balaAgua');
-			BalaAgu_J2.x=1820;
-			BalaAgu_J2.y=400;
-			this.physics.p2.enable(BalaAgu_J2,true);
-			BalaAgu_J2.body.setCircle(35);
-			BalaAgu_J2.body.kinematic = true;
-			BalaAgu_J2.body.mass=peso_balas;
+/*			Balgu_J2=this.add.sprite(0,0, 'balaAgua');
 			
 			//Balas Fuego J2
 			BalaFueg_J2=this.add.sprite(0,0, 'balaFuego');
-			BalaFueg_J2.x=1820;
-			BalaFueg_J2.y=400;
-			this.physics.p2.enable(BalaFueg_J2,true);
-			BalaFueg_J2.body.setCircle(35);
-			BalaFueg_J2.body.kinematic = true;
-			BalaFueg_J2.body.mass=peso_balas;
 			
 			//Balas Acido J2
 			BalaAcid_J2=this.add.sprite(0,0, 'balaAcido');
-			BalaAcid_J2.x=1820;
-			BalaAcid_J2.y=400;
-			this.physics.p2.enable(BalaAcid_J2,true);
-			BalaAcid_J2.body.setCircle(35);
-			BalaAcid_J2.body.kinematic = true;
-			BalaAcid_J2.body.mass=peso_balas;
-
+*/
 			//Invisiblizar balas no seleccionadas
-			BalaAgu_J1.visible=false;
+/*			BalaAgu_J1.visible=false;
 			BalaAgu_J2.visible=false;
 			BalaAcid_J1.visible=false;
 			BalaAcid_J2.visible=false;
 			BalaFueg_J1.visible=false;
 			BalaFueg_J2.visible=false;
+*/
 
 			//Flechas de lanzamiento
 			arrow = this.add.sprite(200, 450, 'arrow');
@@ -326,7 +292,6 @@ Game.Battle.prototype ={
 			button_BalaAcido.tipo='acido';
 			text_num_balas_aci=this.game.add.text(460, 65, num_balas_aci_J1);
 
-			balaDispara=BalaCom1_J1;
 			this.CannonVaquero.bringToTop();
 			this.CannonPirata.bringToTop();
 			this.SueloPirata.bringToTop();
@@ -497,26 +462,30 @@ Game.Battle.prototype ={
 		button_BalaComun.tint=1 * 0xffffff;
 		
 		balaDispara.visible=false;
-		if(turno==1){
+		/*if(turno==1){*/
 			switch(button.tipo){
 				case 'comun':
-					balaDispara=BalaCom1_J1;
+					balaDispara.loadTexture('balaComun');
+					balaDispara.tipo="comun";
 					button_BalaComun.tint=0.78 * 0xffffff;
 					break;
 				case 'agua':
-					balaDispara=BalaAgu_J1;
+					balaDispara.loadTexture('balaAgua');
+					balaDispara.tipo="agua";
 					button_BalaAgua.tint=0.78 * 0xffffff;
 					break;
 				case 'fuego':
-					balaDispara=BalaFueg_J1;
+					balaDispara.loadTexture('balaFuego');
+					balaDispara.tipo="fuego";
 					button_BalaFuego.tint=0.78 * 0xffffff;
 					break;
 				case 'acido':
-					balaDispara=BalaAcid_J1;
+					balaDispara.loadTexture('balaAcido');
+					balaDispara.tipo="acido";
 					button_BalaAcido.tint=0.78 * 0xffffff;
 					break;
 			}
-		}
+		/*}
 		else{
 			switch(button.tipo){
 				case 'comun':
@@ -536,7 +505,7 @@ Game.Battle.prototype ={
 					button_BalaAcido.tint=0.78 * 0xffffff;
 					break;
 			}			
-		}
+		}*/
 		balaDispara.visible=true;
 	},
 
@@ -555,30 +524,28 @@ Game.Battle.prototype ={
 	launch:function(pointer) {
 		if(disparos>0){
 			cuenta_atras.pause();
-			switch(balaDispara){
-				case BalaAgu_J2:
+			switch(true){
+				case (balaDispara.tipo=="agua" && balaDispara==Bala_J2):
 					num_balas_agu_J2--;
 					text_num_balas_agu.text=num_balas_agu_J2;
 					break;
-				case BalaFueg_J2:
+				case (balaDispara.tipo=="fuego" && balaDispara==Bala_J2):
 					num_balas_fue_J2--;
 					text_num_balas_fue.text=num_balas_fue_J2;
 					break;
-				case BalaAcid_J2:
+				case (balaDispara.tipo=="acido" && balaDispara==Bala_J2):
 					num_balas_aci_J2--;
 					text_num_balas_aci.text=num_balas_aci_J2;
 					break;
-				case BalaAgu_J1:
+				case (balaDispara.tipo=="agua" && balaDispara==Bala_J1):
 					num_balas_agu_J1--;
 					text_num_balas_agu.text=num_balas_agu_J1;
-
 					break;
-				case BalaFueg_J1:
+				case (balaDispara.tipo=="fuego" && balaDispara==Bala_J1):
 					num_balas_fue_J1--;
 					text_num_balas_fue.text=num_balas_fue_J1;
-
 					break;
-				case BalaAcid_J1:
+				case (balaDispara.tipo=="acido" && balaDispara==Bala_J1):
 					num_balas_aci_J1--;
 					text_num_balas_aci.text=num_balas_aci_J1;
 					break;
@@ -1184,7 +1151,6 @@ Game.Battle.prototype ={
 				this.jugador.inputEnabled=true;
 				this.jugador.num=this.contJugJ1;
 				this.num1=this.contJugJ1;
-				//alert(this.num1);
 				this.construcAux=this.jugador;
 				this.jugadoresJ1[this.contJugJ1]=this.construcAux;
 				this.contJugJ1++;
@@ -1201,7 +1167,6 @@ Game.Battle.prototype ={
 				this.jugador.inputEnabled=true;
 				this.jugador.num=this.contJugJ2;
 				this.num1=this.contJugJ2;
-				//alert(this.num1);
 				this.construcAux=this.jugador;
 				this.jugadoresJ2[this.contJugJ2]=this.construcAux;
 				this.contJugJ2++;
@@ -1277,10 +1242,8 @@ Game.Battle.prototype ={
 				}
 			}
 		}
-		//objeto.anchor.setTo(0.5,0.5);
 		objeto.body.x=this.input.mousePointer.x;
 		objeto.body.y=this.input.mousePointer.y;
-		//this.game.physics.p2.gravity.y = 100;
 	},
 
 	//Construye el objeto si esta en la posicion correcta o lo elimina si este no lo esta. inputs 0, outputs 0.
@@ -1403,19 +1366,9 @@ Game.Battle.prototype ={
 		}
 		return this.Aux;
 	},
-
+	
 	update:function(){
 		//Inicio Pantalla en Vertical
-		/*if (this.scale.isPortrait){
-			this.image_turn.height = this.game.height;
-			this.image_turn.width = this.game.width;
-			this.image_turn.visible=true;
-			this.image_turn.bringToTop();
-		}else{
-			if (this.image_turn.visible === true){
-				this.image_turn.visible=false;
-			}
-		}*/
 
 		if(this.SueloMar1.x<300 && this.controlmar1==0){
 			this.SueloMar1.x+=1;
@@ -1499,47 +1452,6 @@ Game.Battle.prototype ={
 			text_cuenta_atras.text=segundos.substr(-2); 
 			//Fin  Actualizar cuenta atrás
 
-			//Colisiones
-			/*for(var i=0;i<this.contConstJ1;i++){
-				this.physics.p2.collide(this.construcJ1[i],this.SueloPirata);
-				for(var j=0;j<this.contConstJ1;j++){
-					if(j!=i){
-						this.physics.p2.collide(this.construcJ1[i],this.construcJ1[j]);
-					}
-				}
-			}
-			for(var i=0;i<this.contJugJ1;i++){
-				this.physics.p2.collide(this.jugadoresJ1[i],this.SueloPirata);
-				for(var p=0;p<this.contJugJ1;p++){
-					if(p!=i){
-						this.physics.p2.collide(this.jugadoresJ1[i],this.jugadoresJ1[p]);
-					}
-				}
-				for(var j=0;j<this.contConstJ1;j++){
-					this.physics.p2.collide(this.jugadoresJ1[i],this.construcJ1[j]);
-				}
-			}
-
-			for(var i=0;i<this.contConstJ2;i++){
-				this.physics.p2.collide(this.construcJ2[i],this.SueloVaquero);
-				for(var j=0;j<this.contConstJ2;j++){
-					if(j!=i){
-						this.physics.p2.collide(this.construcJ2[i],this.construcJ2[j]);
-					}
-				}
-			}
-			for(var i=0;i<this.contJugJ2;i++){
-				this.physics.p2.collide(this.jugadoresJ2[i],this.SueloVaquero);
-				for(var p=0;p<this.contJugJ2;p++){
-					if(p!=i){
-						this.physics.p2.collide(this.jugadoresJ2[i],this.jugadoresJ2[p]);
-					}
-				}
-				for(var j=0;j<this.contConstJ2;j++){
-					this.physics.p2.collide(this.jugadoresJ2[i],this.construcJ2[j]);
-				}
-			}*/
-
 			if(estado=="CONSTRUCCION"){
 				this.game.physics.p2.gravity.y=100;
 				if(fin_tiempo==0&&this.turno=="J1"){
@@ -1584,23 +1496,7 @@ Game.Battle.prototype ={
 					this.precioBAci.visible=false;
 					this.precioBAgu.visible=false;
 					this.precioBFue.visible=false;
-/*
-					if(this.telon.x+this.cache.getImage("telon").width/2>=this.world.width/3*2){
-						this.telon.body.velocity.x = -360;
-						this.telon.body.data.gravityScale=0;
-					}
-					else{
-						this.telon.body.velocity.x = 0;
-						alert();
-					}*/
-					
-					//for(var i=0;i<this.contJugJ1;i++){
-					//	for(var j=0;j<this.contConstJ1;j++){
-					//	this.jugadoresJ1[i].body.angle=0;
-					//	if(this.jugadoresJ1[i].body.velocity.y<0){
-					//		this.jugadoresJ1[i].body.velocity.y=0
-					//	}						
-					//}
+
 					if(this.telon.x+this.telon.width/2<=this.world.width/3*2){
 						this.telon.body.x=this.world.width/3*2-this.telon.width/2;
 						this.telon.body.velocity.x = 0;
@@ -1900,6 +1796,7 @@ Game.Battle.prototype ={
 						this.telon.destroy();
 						estado="PREBATALLA"; //arreglar update estado=batalla
 						this.turno="J1"
+						balaDispara=Bala_J1;
 						cuenta_atras.start();
 						this.delayAux=0;;
 					}
@@ -1910,6 +1807,15 @@ Game.Battle.prototype ={
 
 		if(estado=="PREBATALLA"){
 
+		
+			if(disparos==0){
+				button_BalaAgua.inputEnabled = false;
+				button_BalaComun.inputEnabled = false;
+				button_BalaFuego.inputEnabled = false;
+				button_BalaAcido.inputEnabled = false;
+			}
+		
+		
 			this.game.physics.p2.gravity.y = 1000;
 			for(var i=0;i<this.contConstJ1;i++){
 				this.construcJ1[i].body.dynamic=true;
@@ -1924,32 +1830,6 @@ Game.Battle.prototype ={
 				this.jugadoresJ2[i].body.dynamic=true;
 			}
 			if(this.movimentoParado(this.construcJ1) && this.movimentoParado(this.construcJ2) && this.movimentoParado(this.jugadoresJ1) && this.movimentoParado(this.jugadoresJ2)){
-
-				for(var i=0;i<3;i++){
-					this.jugadoresJ2[i].body.createBodyCallback(BalaCom1_J1, this.colision, this);
-					this.jugadoresJ2[i].body.createBodyCallback(BalaAcid_J1, this.colision, this);
-					this.jugadoresJ2[i].body.createBodyCallback(BalaAgu_J1, this.colision, this);
-					this.jugadoresJ2[i].body.createBodyCallback(BalaFueg_J1, this.colision, this);
-
-					this.jugadoresJ1[i].body.createBodyCallback(BalaCom1_J2, this.colision, this);
-					this.jugadoresJ1[i].body.createBodyCallback(BalaAcid_J2, this.colision, this);
-					this.jugadoresJ1[i].body.createBodyCallback(BalaAgu_J2, this.colision, this);
-					this.jugadoresJ1[i].body.createBodyCallback(BalaFueg_J2, this.colision, this);
-				}
-				for(var i=0;i<this.contConstJ1;i++){
-					this.construcJ1[i].body.createBodyCallback(BalaCom1_J2, this.colision, this);
-					this.construcJ1[i].body.createBodyCallback(BalaAcid_J2, this.colision, this);
-					this.construcJ1[i].body.createBodyCallback(BalaAgu_J2, this.colision, this);
-					this.construcJ1[i].body.createBodyCallback(BalaFueg_J2, this.colision, this);
-				}
-				for(var i=0;i<this.contConstJ2;i++){
-					this.construcJ2[i].body.createBodyCallback(BalaCom1_J1, this.colision, this);
-					this.construcJ2[i].body.createBodyCallback(BalaAcid_J1, this.colision, this);
-					this.construcJ2[i].body.createBodyCallback(BalaAgu_J1, this.colision, this);
-					this.construcJ2[i].body.createBodyCallback(BalaFueg_J1, this.colision, this);
-				}
-
-				
 				estado="BATALLA";
 				this.background.events.onInputDown.add(this.set);
 				this.background.events.onInputUp.add(this.launch);
@@ -1959,105 +1839,131 @@ Game.Battle.prototype ={
 		}
 		
 		if(estado=="BATALLA"){
-			if(turno==1 && disparos==1){
-				for(var i=0;i<this.contConstJ1;i++){
-					if(this.construcJ1[i].body!=null){
-						this.construcJ1[i].body.static=true;
-					}
+			if(balaDispara==Bala_J1 && balaDispara.body.x<this.world.width/2 && balaDispara.body.collideWorldBounds == true){
+				balaDispara.body.collideWorldBounds = false;
+			}
+			if(balaDispara==Bala_J1 && balaDispara.body.x>=this.world.width/2 && balaDispara.body.collideWorldBounds == false){
+				tipo_J1=Bala_J1.tipo;
+				X_J1=Bala_J1.body.x;
+				Y_J1=Bala_J1.body.y;
+				vel_X_J1=Bala_J1.body.velocity.x;
+				vel_Y_J1=Bala_J1.body.velocity.y;
+				balaDispara.destroy();
+				switch(tipo_J1){
+					case 'comun':
+						Bala_J1=this.add.sprite(0,0, 'balaComun');
+					break;
+					case 'agua':
+						Bala_J1=this.add.sprite(0,0, 'balaAgua');
+					break;
+					case 'fuego':
+						Bala_J1=this.add.sprite(0,0, 'balaFuego');
+					break;
+					case 'acido':
+						Bala_J1=this.add.sprite(0,0, 'balaAcido');
+					break;
 				}
-				for(var i=0;i<this.contJugJ1;i++){
-					if(this.jugadoresJ1[i].body!=null){
-						this.jugadoresJ1[i].body.static=true;
-					}
+				this.physics.p2.enable(Bala_J1,true);
+				Bala_J1.body.collideWorldBounds = true;
+				Bala_J1.body.velocity.x=vel_X_J1;
+				Bala_J1.body.velocity.y=vel_Y_J1;
+				Bala_J1.body.x=X_J1;
+				Bala_J1.body.y=Y_J1;
+				Bala_J1.body.setCircle(35);
+				Bala_J1.tipo=tipo_J1;
+				Bala_J1.body.mass=peso_balas;
+				balaDispara=Bala_J1;
+				for(var i=0;i<this.contJugJ2;i++){
+					this.jugadoresJ2[i].body.createBodyCallback(balaDispara, this.colision, this);
 				}
 				for(var i=0;i<this.contConstJ2;i++){
-					if(this.construcJ2[i].body!=null){
-						this.construcJ2[i].body.dynamic=true;
-					}
+					this.construcJ2[i].body.createBodyCallback(balaDispara, this.colision, this);
 				}
-				for(var i=0;i<this.contJugJ2;i++){
-					if(this.jugadoresJ2[i].body!=null){
-						this.jugadoresJ2[i].body.dynamic=true;
-					}
+				this.CannonVaquero.bringToTop();
+				this.CannonPirata.bringToTop();
+			}
+			if(balaDispara==Bala_J2 && balaDispara.body.x>this.world.width/2 && balaDispara.body.collideWorldBounds == true){
+				balaDispara.body.collideWorldBounds = false;
+			}
+			if(balaDispara==Bala_J2 && balaDispara.body.x<=this.world.width/2 && balaDispara.body.collideWorldBounds == false){
+				tipo_J2=Bala_J2.tipo;
+				X_J2=Bala_J2.body.x;
+				Y_J2=Bala_J2.body.y;
+				vel_X_J2=Bala_J2.body.velocity.x;
+				vel_Y_J2=Bala_J2.body.velocity.y;
+				balaDispara.destroy();
+				switch(tipo_J2){
+					case 'comun':
+						Bala_J2=this.add.sprite(0,0, 'balaComun');
+					break;
+					case 'agua':
+						Bala_J2=this.add.sprite(0,0, 'balaAgua');
+					break;
+					case 'fuego':
+						Bala_J2=this.add.sprite(0,0, 'balaFuego');
+					break;
+					case 'acido':
+						Bala_J2=this.add.sprite(0,0, 'balaAcido');
+					break;
 				}
-			}
-			if(turno==1 && disparos==0 && balaDispara.body.x<=this.world.width/3){
-				balaDispara.body.kinematic=true;			
-			}
-			if(turno==1 && disparos==0 && balaDispara.body.x>=this.world.width/3){
-				balaDispara.body.dynamic=true;
-			}
-
-			if(turno==2 && disparos==1){
-				for(var i=0;i<this.contConstJ1;i++){
-					if(this.construcJ1[i].body!=null){
-						this.construcJ1[i].body.dynamic=true;
-					}
-				}
+				this.physics.p2.enable(Bala_J2,true);
+				Bala_J2.body.collideWorldBounds = true;
+				Bala_J2.body.velocity.x=vel_X_J2;
+				Bala_J2.body.velocity.y=vel_Y_J2;
+				Bala_J2.body.x=X_J2;
+				Bala_J2.body.y=Y_J2;
+				Bala_J2.body.setCircle(35);
+				Bala_J2.tipo=tipo_J2;
+				Bala_J2.body.mass=peso_balas;
+				balaDispara=Bala_J2;
 				for(var i=0;i<this.contJugJ1;i++){
-					if(this.jugadoresJ1[i].body!=null){
-						this.jugadoresJ1[i].body.dynamic=true;
-					}
+					this.jugadoresJ1[i].body.createBodyCallback(balaDispara, this.colision, this);
 				}
-				for(var i=0;i<this.contConstJ2;i++){
-					if(this.construcJ2[i].body!=null){
-						this.construcJ2[i].body.static=true;
-					}
+				for(var i=0;i<this.contConstJ1;i++){
+					this.construcJ1[i].body.createBodyCallback(balaDispara, this.colision, this);
 				}
-				for(var i=0;i<this.contJugJ2;i++){
-					if(this.jugadoresJ2[i].body!=null){
-						this.jugadoresJ2[i].body.static=true;
-					}
-				}
+				this.CannonVaquero.bringToTop();
+				this.CannonPirata.bringToTop();
 			}
-			if(turno==2 && disparos==0 && balaDispara.body.x>=this.world.width/3*2){
-				balaDispara.body.kinematic=true;			
-			}
-			if(turno==2 && disparos==0 && balaDispara.body.x<=this.world.width/3*2){
-				balaDispara.body.dynamic=true;
-			}
-			/*if(turno==1 && balaDispara.body.x<=this.world.width/2 && disparos==0 && balaDispara.body.collideWorldBounds==true){
-				balaDispara.body.collideWorldBounds=false;
-				balaDispara.body.updateCollisionMask();
-            }
-            if(turno==1 && balaDispara.body.x<=this.world.width/2 && disparos==0 && balaDispara.body.collideWorldBounds==false){
-				balaDispara.body.collideWorldBounds=true;
-				this.game.physics.p2.updateBoundsCollisionGroup(true);
-                balaDispara.body.updateCollisionMask();
-            }
-            if(turno==2 && balaDispara.body.x>=this.world.width/2 && disparos==0 && balaDispara.body.collideWorldBounds==true){
-                balaDispara.body.collideWorldBounds=false;
-                balaDispara.body.updateCollisionMask();
-            }
-            if(turno==2 && balaDispara.body.x>=this.world.width/2 && disparos==0 && balaDispara.body.collideWorldBounds==false){
-                balaDispara.body.collideWorldBounds=true;
-                this.game.physics.p2.updateBoundsCollisionGroup(true);
-                balaDispara.body.updateCollisionMask();
-			}*/
+			this.SueloMar2.bringToTop();
+			this.SueloMar1.bringToTop();
+			this.SueloPirata.bringToTop();
+			this.SueloVaquero.bringToTop();
+			
 			
 			balaDispara.body.gravity.y=2000;
 			//CONTROL DESTRUCCION
 			for(var i=0;i<this.contConstJ2;i++){
-				if(this.construcJ2[i].vida<=0){
+				if(this.construcJ2[i].vida<=0 || this.construcJ2[i].body.x<this.world.width/3 || this.construcJ2[i].body.y>=this.world.height/10*8.5 ){
 					this.construcJ2[i].destroy();
+					this.construcJ2[i].estado=0;
+					this.construcJ2.splice(i, 1);
+					this.contConstJ2--;
 				}
 			}
 			for(var i=0;i<this.contJugJ2;i++){
-				if(this.jugadoresJ2[i].vida<=0 && this.jugadoresJ2[i].estado!=0){
+				if((this.jugadoresJ2[i].vida<=0 || this.jugadoresJ2[i].body.x<this.world.width/3 || this.jugadoresJ2[i].body.y>=this.world.height/10*8.5 ) && this.jugadoresJ2[i].estado!=0){
 					this.jugadoresJ2[i].destroy();
 					this.jugadoresJ2[i].estado=0;
+					this.jugadoresJ2.splice(i, 1);
+					this.contJugJ2--;
 					puntuacion1++;
 				}
 			}
 			for(var i=0;i<this.contConstJ1;i++){
-				if(this.construcJ1[i].vida<=0){
+				if(this.construcJ1[i].vida<=0 || this.construcJ1[i].body.x>this.world.width/3*2 || this.construcJ1[i].body.y>=this.world.height/10*8.5 ){
 					this.construcJ1[i].destroy();
+					this.construcJ1[i].estado=0;
+					this.construcJ1.splice(i, 1);
+					this.contConstJ1--;
 				}
 			}
 			for(var i=0;i<this.contJugJ1;i++){
-				if(this.jugadoresJ1[i].vida<=0 && this.jugadoresJ1[i].estado!=0){
+				if((this.jugadoresJ1[i].vida<=0 || this.jugadoresJ1[i].body.x>this.world.width/3*2 || this.jugadoresJ1[i].body.y>=this.world.height/10*8.5 ) && this.jugadoresJ1[i].estado!=0){
 					this.jugadoresJ1[i].destroy();
 					this.jugadoresJ1[i].estado=0;
+					this.jugadoresJ1.splice(i, 1);
+					this.contJugJ1--;
 					puntuacion2++;
 				}
 			}
@@ -2084,27 +1990,6 @@ Game.Battle.prototype ={
 			}
 			//FIN CONTROL FINAL JUEGO
 			
-			/*this.game.physics.p2.gravity.y = 100;
-			//Fisicas entre objetos
-			this.physics.p2.collide(this.SueloPirata, balaDispara);
-			this.physics.p2.collide(this.SueloVaquero, balaDispara);
-			
-			if(turno==1){
-				for(var a=0;a<this.contConstJ2;a++){
-					this.physics.p2.collide(this.construcJ2[a], balaDispara, this.colision);
-				}
-				for(var b=0;b<this.contJugJ2;b++){
-					this.physics.p2.collide(this.jugadoresJ2[b], balaDispara, this.colision);
-				}
-			}else{
-				for(var i=0;i<this.contConstJ1;i++){
-					this.physics.p2.collide(this.construcJ1[i], balaDispara, this.colision);
-				}
-				for(var i=0;i<this.contJugJ1;i++){
-					this.physics.p2.collide(this.jugadoresJ1[i], balaDispara, this.colision);								
-				}
-			}*/
-
 			//Inicio Disparo
 			puntero=this.input.activePointer;
 			arrow.rotation = this.physics.arcade.angleBetween(arrow, balaDispara);
@@ -2122,7 +2007,7 @@ Game.Battle.prototype ={
 			//Fin Disparo
 			
 			//Inicio Control turnos
-			if((disparos==0 && (balaDispara.body.x-balaDispara.width<0 || balaDispara.body.x + balaDispara.width>1920 || balaDispara.body.y+balaDispara.height>1080 || (balaDispara.body.velocity.x<=10 && balaDispara.body.velocity.y<=10 && balaDispara.body.velocity.x>=-10 && balaDispara.body.velocity.y>=-10)))||fin_tiempo==0/* || (this.delayAux>180&&disparos==0)*/){
+			if((disparos==0 && (balaDispara.body.x-balaDispara.width<0 || balaDispara.body.x + balaDispara.width>1920 || balaDispara.body.y+balaDispara.height>1080 || (balaDispara.body.velocity.x<=35 && balaDispara.body.velocity.y<=35 && balaDispara.body.velocity.x>=-35 && balaDispara.body.velocity.y>=-35)))||fin_tiempo==0/* || (this.delayAux>180&&disparos==0)*/){
 				balaDispara.body.moves = false;
 				balaDispara.body.kinematic = true;
 				balaDispara.body.velocity.x=0;
@@ -2134,7 +2019,9 @@ Game.Battle.prototype ={
 					balaDispara.body.x=100;
 					balaDispara.body.y=420;
 					balaDispara.visible = false;
-					balaDispara=BalaCom1_J2;
+					balaDispara=Bala_J2;
+					balaDispara.tipo="comun";
+					balaDispara.loadTexture('balaComun');
 					text_num_balas_agu.text=num_balas_agu_J2;
 					text_num_balas_fue.text=num_balas_fue_J2;
 					text_num_balas_aci.text=num_balas_aci_J2;
@@ -2168,7 +2055,9 @@ Game.Battle.prototype ={
 					balaDispara.body.y=400;
 					turno=1;
 					balaDispara.visible = false;
-					balaDispara=BalaCom1_J1;
+					balaDispara=Bala_J1;
+					balaDispara.tipo="comun";
+					balaDispara.loadTexture('balaComun');
 					text_num_balas_agu.text=num_balas_agu_J1;
 					text_num_balas_fue.text=num_balas_fue_J1;
 					text_num_balas_aci.text=num_balas_aci_J1;
@@ -2213,9 +2102,6 @@ Game.Battle.prototype ={
 						angulo_rotacion=this.CannonPirata.rotation;
 						this.CannonVaquero.rotation =3.15;
 					}
-					/*if (this.game.physics.arcade.angleToPointer(balaDispara)>-1.2 && this.game.physics.arcade.angleToPointer(balaDispara)<0.65){
-						balaDispara.rotation = this.game.physics.arcade.angleToPointer(balaDispara);
-					}*/
 				}
 				if (turno==2){
 					if (this.game.physics.arcade.angleToPointer(this.CannonVaquero)<-2 || this.game.physics.arcade.angleToPointer(this.CannonVaquero)>2.5){
@@ -2223,9 +2109,6 @@ Game.Battle.prototype ={
 						angulo_rotacion=this.CannonVaquero.rotation;
 						this.CannonPirata.rotation =0;
 					}
-					/*if (this.game.physics.arcade.angleToPointer(balaDispara)<-2 || this.game.physics.arcade.angleToPointer(balaDispara)>2.5){
-						balaDispara.rotation = this.game.physics.arcade.angleToPointer(balaDispara);
-					}*/
 				}
 			}
 			//Fin Giro de los cañones
@@ -2261,8 +2144,7 @@ Game.Battle.prototype ={
     },
 	
 	colision:function(juga_constr){
-		if(disparos==0){
-
+		if(disparos==0){			
 			if(isNaN(Number(balaDispara.body.velocity.y))){
 				Val1=0;
 			}else{
@@ -2275,7 +2157,7 @@ Game.Battle.prototype ={
 			}
 			velocidad_global=Math.abs(Val1)+Math.abs(Val2);
 			if(estado=="BATALLA"){
-				if(velocidad_global>300 && (balaDispara==BalaCom1_J1 || balaDispara==BalaCom1_J2) ){
+				if(velocidad_global>300 && (balaDispara.tipo=="comun") ){
 					switch (velocidad_global){
 						case (velocidad_global<1500):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-8;
@@ -2288,7 +2170,7 @@ Game.Battle.prototype ={
 							break;
 					}
 				}
-				if(balaDispara==BalaFueg_J1 || balaDispara==BalaFueg_J2){
+				if(balaDispara.tipo=="fuego"){
 					switch (juga_constr.sprite.tipo){
 						case ("madera"):
 							juga_constr.sprite.vida=1;
@@ -2313,11 +2195,16 @@ Game.Battle.prototype ={
 						case ("metal"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
 						break;
+						case ("personaje"):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+						break;
 					}
-					balaDispara.x=2000;
-					balaDispara.y=2000;
+					balaDispara.body.x=2000;
+					balaDispara.body.y=2000;
+					juga_constr.sprite.body.velocity.x=0;
+					juga_constr.sprite.body.velocity.y=0;
 				}
-				if(balaDispara==BalaAcid_J1 || balaDispara==BalaAcid_J2){
+				if(balaDispara.tipo=="acido"){
 					switch (juga_constr.sprite.tipo){
 						case ("piedra"):
 							juga_constr.sprite.vida=1;
@@ -2342,11 +2229,16 @@ Game.Battle.prototype ={
 						case ("metal"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
 						break;
+						case ("personaje"):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+						break;
 					}
-					balaDispara.x=2000;
-					balaDispara.y=2000;
+					balaDispara.body.x=2000;
+					balaDispara.body.y=2000;
+					juga_constr.sprite.body.velocity.x=0;
+					juga_constr.sprite.body.velocity.y=0;
 				}
-				if(balaDispara==BalaAgu_J1 || balaDispara==BalaAgu_J2){
+				if(balaDispara.tipo=="agua"){
 					//alert();
 					switch (juga_constr.sprite.tipo){
 						case ("metal"):
@@ -2372,18 +2264,21 @@ Game.Battle.prototype ={
 						case ("piedra"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
 						break;
+						case ("personaje"):
+							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+						break;
 					}
-					balaDispara.x=2000;
-					balaDispara.y=2000;
+					balaDispara.body.x=2000;
+					balaDispara.body.y=2000;
+					juga_constr.sprite.body.velocity.x=0;
+					juga_constr.sprite.body.velocity.y=0;
 				}
 			}
 		}
-		/**/
 	},
 	
 	
 	render:function() {
-		this.game.debug.text(this.contConstJ1,10,200,"white");
 		//this.game.debug.text(this.game.physics.p2.angleToPointer(BalaCom1_J2),32,32,"white");
 		//this.game.debug.text(balaDispara.body.velocity.x +"---"+balaDispara.body.velocity.y ,32,15,"white");
 	//	this.game.debug.text(cuenta_atras.duration.toFixed(0),32,15,"white");
@@ -2446,17 +2341,11 @@ Game.Battle.prototype ={
 			this.game.debug.text(this.construcJ1[i],20,30+20*i,'white');
 		}
 		this.game.debug.text(this.telon.x,30,this.telon.y,'white');*/
-		if(balaDispara){
+		/*if(balaDispara){
 			this.game.debug.text(balaDispara.body.allowSleep,30,50,'white');
-		}
-		
-		
-		if(BalaCom1_J1!=undefined){
-			this.game.debug.text(disparos ,1850,420,'white');
-			this.game.debug.text(angulo_rotacion ,220,280,'white');
-			this.game.debug.text(balaDispara.x ,80,312,'white');
-			this.game.debug.text(balaDispara.body.dynamic ,100,280,'white');
-		}
+		}*/
+
+		this.game.debug.text(puntuacion1 + "---" + puntuacion2,500, 300,'white');
 	},
 	
 };
