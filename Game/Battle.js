@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=5;//contador de tiempo constr
+var auxTiempoConstruc=0;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -501,6 +501,8 @@ Game.Battle.prototype ={
 	//Disparo. input PosicionRaton, output 0.
 	launch:function(pointer) {
 		if(disparos>0){
+			//limitar fuerza de disparo
+			fuerza=Math.min(analog.height,600); 
 			cuenta_atras.pause();
 			switch(true){
 				case (balaDispara.tipo=="agua" && balaDispara==Bala_J2):
@@ -533,8 +535,8 @@ Game.Battle.prototype ={
 			arrow.alpha = 0;
 			analog.alpha = 0;
 			if(turno==1){
-				Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.max(analog.height,275)*5;
-				Yvector = angulo_rotacion*Math.max(analog.height,275)*5;
+				Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.max(fuerza,275)*5;
+				Yvector = angulo_rotacion*Math.max(fuerza,275)*5;
 			}else{
 				if(angulo_rotacion<0){
 					angulo_rotacion=-Math.PI-angulo_rotacion;
@@ -542,8 +544,8 @@ Game.Battle.prototype ={
 					angulo_rotacion=Math.PI-angulo_rotacion;
 				}
 				//alert(angulo_rotacion);
-				Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.min(-analog.height,-275)*5;
-				Yvector = angulo_rotacion*Math.max(analog.height,275)*5;
+				Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.min(-fuerza,-275)*5;
+				Yvector = angulo_rotacion*Math.max(fuerza,275)*5;
 			}
 			balaDispara.body.moves = true;
 			if(turno==1){
@@ -1818,6 +1820,7 @@ Game.Battle.prototype ={
 		}
 		
 		if(estado=="BATALLA"){
+			/*Inicio Eliminacion choques con costrucciones propias*/
 			if(balaDispara==Bala_J1 && balaDispara.body.x<this.world.width/2 && balaDispara.body.collideWorldBounds == true){
 				balaDispara.body.collideWorldBounds = false;
 			}
@@ -1904,11 +1907,11 @@ Game.Battle.prototype ={
 				this.CannonVaquero.bringToTop();
 				this.CannonPirata.bringToTop();
 			}
+			/*Fin Eliminacion choques con costrucciones propias*/
 			this.SueloMar2.bringToTop();
 			this.SueloMar1.bringToTop();
 			this.SueloPirata.bringToTop();
 			this.SueloVaquero.bringToTop();
-			
 			
 			balaDispara.body.gravity.y=2000;
 			//CONTROL DESTRUCCION
@@ -1975,7 +1978,7 @@ Game.Battle.prototype ={
 			
 			if (catchFlag == true)
 			{
-				//  Track the ball sprite to the mouse
+				//Track the ball sprite to the mouse
 				arrow.alpha = 1;    
 				analog.alpha = 0.5;
 				analog.rotation = arrow.rotation - 3.14 / 2;
@@ -2100,7 +2103,6 @@ Game.Battle.prototype ={
 				this.telon.y=0;
 				this.telon.body.immovable = true;
 				this.telon.body.velocity.setTo(0,0);
-				//if(this.delayAux>=500){
 					if(puntuacion1==3){
 						this.textVictoria.visible=true;
 						this.textVictoria.x=this.world.width/3*2;
@@ -2119,7 +2121,6 @@ Game.Battle.prototype ={
 				}
 			}
 		}
-		//this.delayAux++;
     },
 	
 	colision:function(juga_constr){
