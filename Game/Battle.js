@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=0;//contador de tiempo constr
+var auxTiempoConstruc=5;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -462,7 +462,6 @@ Game.Battle.prototype ={
 		button_BalaComun.tint=1 * 0xffffff;
 		
 		balaDispara.visible=false;
-		/*if(turno==1){*/
 			switch(button.tipo){
 				case 'comun':
 					balaDispara.loadTexture('balaComun');
@@ -485,27 +484,6 @@ Game.Battle.prototype ={
 					button_BalaAcido.tint=0.78 * 0xffffff;
 					break;
 			}
-		/*}
-		else{
-			switch(button.tipo){
-				case 'comun':
-					balaDispara=BalaCom1_J2;
-					button_BalaComun.tint=0.78 * 0xffffff;
-					break;
-				case 'agua':
-					balaDispara=BalaAgu_J2;
-					button_BalaAgua.tint=0.78 * 0xffffff;
-					break;
-				case 'fuego':
-					balaDispara=BalaFueg_J2;
-					button_BalaFuego.tint=0.78 * 0xffffff;
-					break;
-				case 'acido':
-					balaDispara=BalaAcid_J2;
-					button_BalaAcido.tint=0.78 * 0xffffff;
-					break;
-			}			
-		}*/
 		balaDispara.visible=true;
 	},
 
@@ -564,10 +542,9 @@ Game.Battle.prototype ={
 					angulo_rotacion=Math.PI-angulo_rotacion;
 				}
 				//alert(angulo_rotacion);
-				Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.min(analog.height,-275)*5;
+				Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.min(-analog.height,-275)*5;
 				Yvector = angulo_rotacion*Math.max(analog.height,275)*5;
 			}
-			//alert(Xvector + "|------|" + Yvector);
 			balaDispara.body.moves = true;
 			if(turno==1){
 				if(num_balas_agu_J1==0){
@@ -594,6 +571,8 @@ Game.Battle.prototype ={
 		balaDispara.body.dynamic = true;
 		balaDispara.body.velocity.x=Xvector;
 		balaDispara.body.velocity.y=Yvector;
+		alert(Xvector);
+		alert(Yvector);
 		}
 	},
 	
@@ -1324,7 +1303,7 @@ Game.Battle.prototype ={
 			this.delayAux=0;
 		}
 	},
-//establece el numero de la posicion del array del jugador. input objeto, output 0.
+	//establece el numero de la posicion del array del jugador. input objeto, output 0.
 	click_jugador:function(objeto){
 		if(this.num1==-2){
 			this.auxX=objeto.body.x;
