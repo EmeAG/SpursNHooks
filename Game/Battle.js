@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=0;//contador de tiempo constr
+var auxTiempoConstruc=5;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -683,7 +683,7 @@ Game.Battle.prototype ={
 			if(obj.material=="madera"){
 				if(this.turno=="J1" && (dineroJ1-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
-					this.physics.p2.enable(this.bloq_mad_trian);
+					this.physics.p2.enable(this.bloq_mad_trian,true);
 					this.bloq_mad_trian.inputEnabled=true;
 					this.bloq_mad_trian.num=this.contConstJ1;
 					this.bloq_mad_trian.coste=10;
@@ -1248,6 +1248,11 @@ Game.Battle.prototype ={
 					else{
 						this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
 						this.construcJ1[this.num0].estado=0;
+						//Modificar para crear forma de triangulo
+						/*if(this.construcJ1[this.num0].forma=="tri"){
+							this.construcJ1[this.num0].body.clearShapes();
+							this.construcJ1[this.num0].body.loadPolygon('diamond', 'diamond');
+						}*/
 						this.num0=-2;
 					}
 					
@@ -1795,8 +1800,6 @@ Game.Battle.prototype ={
 				button_BalaFuego.inputEnabled = false;
 				button_BalaAcido.inputEnabled = false;
 			}
-		
-		
 			this.game.physics.p2.gravity.y = 1000;
 			for(var i=0;i<this.contConstJ1;i++){
 				this.construcJ1[i].body.dynamic=true;

@@ -70,7 +70,9 @@ Game.Preloader.prototype={
 		this.load.image('botonTipo', 'assets/PropsEscenario/botonTipo.png');
 		this.load.image('botonTipoConSombra', 'assets/PropsEscenario/botonTipoConSombra.png');
 		this.load.image('CuadroTiempo', 'assets/PropsEscenario/CuadroTiempo.png');
-
+		
+		//Fisicas
+		this.load.physics('diamond', 'assets/physics/Triangulo2.json');//Triangulo2.json de prueba hasta que manu suba el bueno
 
 		this.load.image('arrow', 'assets/longarrow2.png');
 		this.load.image('analog', 'assets/fusia.png');		
