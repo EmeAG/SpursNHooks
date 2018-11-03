@@ -10,6 +10,13 @@ Game.Battle = function(game){
 	var obj;
 	var construcAux;
 };
+var style_tiempo = {font: "50px Ultra",
+				fill: "Black",
+			};
+var style_compra = {	font: "25px Ultra",
+				fill: "Black",
+			};
+
 var dineroJ1;
 var dineroJ2;
 var dineroJugadores;
@@ -280,17 +287,17 @@ Game.Battle.prototype ={
 			button_BalaAgua = this.add.button(200, 20, 'BotonBala', this.selector_bala, this, 2, 1, 0);
 			this.imagen_BalaComun=this.add.sprite(205, 23, 'balaAgua');
 			button_BalaAgua.tipo='agua';
-			text_num_balas_agu=this.game.add.text(260, 65, num_balas_agu_J1);
+			text_num_balas_agu=this.game.add.text(260, 65, num_balas_agu_J1, style_compra);
 			
 			button_BalaFuego = this.add.button(300, 20, 'BotonBala', this.selector_bala, this, 2, 1, 0);
 			this.imagen_BalaComun=this.add.sprite(305, 23, 'balaFuego');
 			button_BalaFuego.tipo='fuego';
-			text_num_balas_fue=this.game.add.text(360, 65, num_balas_fue_J1);
+			text_num_balas_fue=this.game.add.text(360, 65, num_balas_fue_J1, style_compra);
 			
 			button_BalaAcido = this.add.button(400, 20, 'BotonBala', this.selector_bala, this, 2, 1, 0);
 			this.imagen_BalaComun=this.add.sprite(405, 23, 'balaAcido');
 			button_BalaAcido.tipo='acido';
-			text_num_balas_aci=this.game.add.text(460, 65, num_balas_aci_J1);
+			text_num_balas_aci=this.game.add.text(460, 65, num_balas_aci_J1, style_compra);
 
 			this.CannonVaquero.bringToTop();
 			this.CannonPirata.bringToTop();
@@ -335,26 +342,26 @@ Game.Battle.prototype ={
 
 		//Boton Materiales
 		this.button_Madera = this.add.button(this.button_Rect_Vert.x+this.cache.getImage('boton_Tipo').width+30, 40, 'boton_Material', this.change_material_madera, this, 2, 1, 0);
-		this.textMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3,this.button_Madera.y+this.cache.getImage('boton_Material').height/2,"Madera");
+		this.textMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3,this.button_Madera.y+this.cache.getImage('boton_Material').height/2,"Madera", style_compra);
 		this.textMad.anchor.setTo(0.5,0.5);
-		this.precioMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMad.y,"10$");
+		this.precioMad=this.game.add.text(this.button_Madera.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMad.y,"10$", style_compra);
 		this.precioMad.anchor.setTo(0.5,0.5);
 		this.button_Piedra = this.add.button(this.button_Madera.x, 40+this.cache.getImage('boton_Material').height+5, 'boton_Material', this.change_material_piedra, this, 2, 1, 0);
-		this.textPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3,this.button_Piedra.y+this.cache.getImage('boton_Material').height/2,"Piedra");
+		this.textPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3,this.button_Piedra.y+this.cache.getImage('boton_Material').height/2,"Piedra", style_compra);
 		this.textPied.anchor.setTo(0.5,0.5);
-		this.precioPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3*2+10,this.textPied.y,"20$");
+		this.precioPied=this.game.add.text(this.button_Piedra.x+this.cache.getImage('boton_Material').width/3*2+10,this.textPied.y,"20$", style_compra);
 		this.precioPied.anchor.setTo(0.5,0.5);
 		this.button_Metal = this.add.button(this.button_Madera.x, 40+(this.cache.getImage('boton_Material').height+5)*2, 'boton_Material', this.change_material_metal, this, 2, 1, 0);
-		this.textMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3,this.button_Metal.y+this.cache.getImage('boton_Material').height/2,"Metal");
+		this.textMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3,this.button_Metal.y+this.cache.getImage('boton_Material').height/2,"Metal", style_compra);
 		this.textMet.anchor.setTo(0.5,0.5);
-		this.precioMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMet.y,"35$");
+		this.precioMet=this.game.add.text(this.button_Metal.x+this.cache.getImage('boton_Material').width/3*2+10,this.textMet.y,"35$", style_compra);
 		this.precioMet.anchor.setTo(0.5,0.5);
 
 		//Boton Tiempo
 		this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 		cuenta_atras=this.time.create();
 		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoConstruc, this.finTiempo);
-		text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
+		text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_tiempo);
 		text_cuenta_atras.anchor.setTo(0.5,0.5);
 
 		//Boton balas
@@ -362,37 +369,37 @@ Game.Battle.prototype ={
 		this.button_bala_fuego.anchor.setTo(0.5,0.5);
 		this.balaF=this.game.add.sprite(this.button_bala_fuego.x-20,this.button_bala_fuego.y-10,"balaFuego");
 		this.balaF.anchor.setTo(0.5,0.5);
-		this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
+		this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1, style_compra);
 		this.textBFue.anchor.setTo(0.5,0.5);
-		this.precioBFue=this.game.add.text(this.button_bala_fuego.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_fuego.y-this.cache.getImage("BotonBala_B").height/3,"15$");
+		this.precioBFue=this.game.add.text(this.button_bala_fuego.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_fuego.y-this.cache.getImage("BotonBala_B").height/3,"15$", style_compra);
 		this.precioBFue.anchor.setTo(0.5,0.5);
 		this.button_bala_agua=this.add.button(1350+20+this.cache.getImage('BotonBala_B').width,200,'BotonBala_B',this.compraBalaAgua,this,2,1,0);
 		this.button_bala_agua.anchor.setTo(0.5,0.5);
 		this.balaAg=this.game.add.sprite(this.button_bala_agua.x-20,this.button_bala_agua.y-10,"balaAgua");
 		this.balaAg.anchor.setTo(0.5,0.5);
-		this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
+		this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1, style_compra);
 		this.textBAgu.anchor.setTo(0.5,0.5);
-		this.precioBAgu=this.add.text(this.button_bala_agua.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_agua.y-this.cache.getImage("BotonBala_B").height/3,"30$");
+		this.precioBAgu=this.add.text(this.button_bala_agua.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_agua.y-this.cache.getImage("BotonBala_B").height/3,"30$", style_compra);
 		this.precioBAgu.anchor.setTo(0.5,0.5);
 		this.button_bala_acido=this.add.button(1350+(20+this.cache.getImage('BotonBala_B').width)*2,200,'BotonBala_B',this.compraBalaAcido,this,2,1,0);
 		this.button_bala_acido.anchor.setTo(0.5,0.5);
 		this.balaAc=this.game.add.sprite(this.button_bala_acido.x-20,this.button_bala_acido.y-10,"balaAcido");
 		this.balaAc.anchor.setTo(0.5,0.5);
-		this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
+		this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1, style_compra);
 		this.textBAci.anchor.setTo(0.5,0.5);
-		this.precioBAci=this.add.text(this.button_bala_acido.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_acido.y-this.cache.getImage("BotonBala_B").height/3,"50$");
+		this.precioBAci=this.add.text(this.button_bala_acido.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_acido.y-this.cache.getImage("BotonBala_B").height/3,"50$", style_compra);
 		this.precioBAci.anchor.setTo(0.5,0.5);
 
 		//Boton personaje
 		this.button_Jugador=this.add.button(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje',this.crearJugador,this,2,1,0);
 		this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Pirata")
 		this.personaje.anchor.setTo(0.5,0.5);
-		this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,"3");
+		this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,"3", style_compra);
 
 		//Dinero
 		this.dineroMarc=this.add.sprite(1500,40,'BotonDinero');
 		this.dineroMarc.anchor.setTo(0.5,0.5);
-		this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
+		this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1, style_compra);
 		this.textDinero.anchor.setTo(0.7,0.5);
 
 		//Telon
@@ -1447,7 +1454,7 @@ Game.Battle.prototype ={
 					if(this.construcAux!=null){
 						this.stop_move();
 						this.textDinero.destroy();
-						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1, style_compra);
 						this.textDinero.anchor.setTo(0.7,0.5);
 					}
 
@@ -1626,35 +1633,35 @@ Game.Battle.prototype ={
 					//Actualizacion de textos
 					if(this.turno=="J1"){
 						this.textDinero.destroy();
-						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1);
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1, style_compra);
 						this.textDinero.anchor.setTo(0.7,0.5);
 						this.textBFue.destroy();
-						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1);
+						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1, style_compra);
 						this.textBFue.anchor.setTo(0.5,0.5);
 						this.textBAgu.destroy();
-						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1);
+						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1, style_compra);
 						this.textBAgu.anchor.setTo(0.5,0.5);
 						this.textBAci.destroy();
-						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
+						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1, style_compra);
 						this.textBAci.anchor.setTo(0.5,0.5);
 						this.textNum.destroy();
-						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ1);
+						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ1, style_compra);
 					}
 					if(this.turno=="J2"){
 						this.textDinero.destroy();
-						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2);
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2, style_compra);
 						this.textDinero.anchor.setTo(0.7,0.5);
 						this.textBFue.destroy();
-						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J2);
+						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J2, style_compra);
 						this.textBFue.anchor.setTo(0.5,0.5);
 						this.textBAgu.destroy();
-						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J2);
+						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J2, style_compra);
 						this.textBAgu.anchor.setTo(0.5,0.5);
 						this.textBAci.destroy();
-						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J2);
+						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J2, style_compra);
 						this.textBAci.anchor.setTo(0.5,0.5);
 						this.textNum.destroy();	
-						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);	
+						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2, style_compra);	
 					}
 					if(this.construcAux!=null){
 						this.move_sprite(this.construcAux);
@@ -1685,7 +1692,7 @@ Game.Battle.prototype ={
 					if(this.construcAux!=null){
 						this.stop_move();
 						this.textDinero.destroy();
-						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2);
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ2, style_compra);
 						this.textDinero.anchor.setTo(0.7,0.5);
 					}
 
