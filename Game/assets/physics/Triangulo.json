@@ -1,24 +1,11 @@
-{ "columns":0,
- "grid":
-    {
-     "height":1,
-     "orientation":"orthogonal",
-     "width":1
-    },
- "margin":0,
- "name":"SpritesMadera",
- "spacing":0,
- "tilecount":1,
- "tiledversion":"1.2.0",
- "tileheight":93,
- "tiles":[
+{ 
+    
+    "triangulo": [
+        
         {
-         "id":39,
-         "image":"PiedraTrian.png",
-         "imageheight":93,
-         "imagewidth":107
-        }],
- "tilewidth":107,
- "type":"tileset",
- "version":1.2
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   63, 9  ,  101, 79  ,  102, 93  ,  2, 93  ,  0, 78  ,  45, 1  ,  58, 1  ]
+        }
+    ]
 }

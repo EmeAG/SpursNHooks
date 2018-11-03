@@ -2,6 +2,8 @@ Game.MainMenu = function(game){
 };
 
 Game.MainMenu.prototype ={
+
+	
 	create:function(){
 		this.musica=this.game.add.audio("menuMusic",0.09,true);
 		//this.musica.play();
@@ -27,8 +29,11 @@ Game.MainMenu.prototype ={
 		this.button_tutorial.stage='Tutorial';
 		
 		this.text1=this.game.add.text(0, 0, "Batalla",style);
+		this.text1.font = 'Revalia';
 		this.text2=this.game.add.text(0, 0, "Ajustes",style);
+		this.text2.font = 'Revalia';
 		this.text3=this.game.add.text(0, 0, "Tutorial",style);
+		this.text3.font = 'Revalia';
 		this.text1.setTextBounds(0, 200, this.game.world.width,100);
 		this.text2.setTextBounds(0, 300, this.game.world.width,100);
 		this.text3.setTextBounds(0, 400, this.game.world.width,100);

@@ -573,8 +573,6 @@ Game.Battle.prototype ={
 		balaDispara.body.dynamic = true;
 		balaDispara.body.velocity.x=Xvector;
 		balaDispara.body.velocity.y=Yvector;
-		alert(Xvector);
-		alert(Yvector);
 		}
 	},
 	
@@ -683,7 +681,8 @@ Game.Battle.prototype ={
 			if(obj.material=="madera"){
 				if(this.turno=="J1" && (dineroJ1-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
-					this.physics.p2.enable(this.bloq_mad_trian,true);
+					this.physics.p2.enable(this.bloq_mad_trian);
+					this.physics.p2.enable(this.bloq_mad_trian,true);//ver formas
 					this.bloq_mad_trian.inputEnabled=true;
 					this.bloq_mad_trian.num=this.contConstJ1;
 					this.bloq_mad_trian.coste=10;
@@ -1249,10 +1248,10 @@ Game.Battle.prototype ={
 						this.construcJ1[this.num0].events.onInputDown.add(this.click_sprite,this);
 						this.construcJ1[this.num0].estado=0;
 						//Modificar para crear forma de triangulo
-						/*if(this.construcJ1[this.num0].forma=="tri"){
+						if(this.construcJ1[this.num0].forma=="tri"){
 							this.construcJ1[this.num0].body.clearShapes();
-							this.construcJ1[this.num0].body.loadPolygon('diamond', 'diamond');
-						}*/
+							this.construcJ1[this.num0].body.loadPolygon('triangulo', 'triangulo');
+						}
 						this.num0=-2;
 					}
 					
@@ -1282,6 +1281,10 @@ Game.Battle.prototype ={
 					else{
 						this.construcJ2[this.num0].events.onInputDown.add(this.click_sprite,this);
 						this.construcJ2[this.num0].estado=0;
+						if(this.construcJ2[this.num0].forma=="tri"){
+							this.construcJ2[this.num0].body.clearShapes();
+							this.construcJ2[this.num0].body.loadPolygon('triangulo', 'triangulo');
+						}
 						this.num0=-2;
 					}
 					
