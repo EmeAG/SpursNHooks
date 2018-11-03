@@ -10,12 +10,20 @@ Game.Battle = function(game){
 	var obj;
 	var construcAux;
 };
-var style_tiempo = {font: "50px Ultra",
+var style_tiempo = {font: "200px Ultra",
 				fill: "Black",
 			};
 var style_compra = {	font: "25px Ultra",
 				fill: "Black",
 			};
+var style_tiempo_2 = {font: "50px Ultra",
+				fill: "Black",
+			};
+
+var style_ganador={font: "150px Ultra",
+				fill: "Black",
+			};
+
 
 var dineroJ1;
 var dineroJ2;
@@ -38,11 +46,9 @@ var num_balas_agu_J1=0;
 var num_balas_agu_J2=0;
 var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
-var style_contador={font: "60px Arial"};
-var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=5;//contador de tiempo constr
+var auxTiempoConstruc=0;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -1787,7 +1793,7 @@ Game.Battle.prototype ={
 						cuenta_atras.destroy();
 						cuenta_atras=this.time.create();
 						final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoBatalla, this.finTiempo);
-						text_cuenta_atras=this.game.add.text(928, 80, '00',style_contador);
+						text_cuenta_atras=this.game.add.text(928, 80, '00',style_tiempo_2);
 						
 						this.telon.destroy();
 						estado="PREBATALLA"; //arreglar update estado=batalla
