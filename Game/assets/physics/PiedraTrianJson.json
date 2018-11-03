@@ -1,0 +1,11 @@
+{ 
+    
+    "PiedraTrian": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   69, 11  ,  105, 77  ,  107, 88  ,  101, 93  ,  3, 93  ,  0, 77  ,  48, 0  ,  62, 0  ]
+        }
+    ]
+}
