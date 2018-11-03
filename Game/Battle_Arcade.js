@@ -348,7 +348,7 @@ Game.Battle.prototype ={
 		//Boton Tiempo
 		this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 		cuenta_atras=this.time.create();
-		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * 8, this.finTiempo);
+		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoConstruc, this.finTiempo);
 		text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_contador);
 		text_cuenta_atras.anchor.setTo(0.5,0.5);
 
