@@ -1,0 +1,11 @@
+{ 
+    
+    "MaderaTriangQuem1": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   1, 83  ,  46, 1  ,  55, 1  ,  103, 85  ,  98, 93  ,  4, 93  ]
+        }
+    ]
+}

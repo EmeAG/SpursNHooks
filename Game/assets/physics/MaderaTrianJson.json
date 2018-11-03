@@ -1,0 +1,11 @@
+{ 
+    
+    "TriangMadero": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   63, 9  ,  101, 79  ,  102, 93  ,  2, 93  ,  0, 78  ,  45, 1  ,  58, 1  ]
+        }
+    ]
+}
