@@ -1,0 +1,26 @@
+{ 
+    
+    "PiedraTrianRoto": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   101, 93  ,  3, 93  ,  4, 76  ,  83, 52  ,  94, 57  ,  105, 77  ,  107, 88  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   83, 52  ,  84, 39  ,  88, 52  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   62, 0  ,  84, 39  ,  83, 52  ,  4, 76  ,  2, 74  ,  38, 13  ,  47, 2  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   4, 76  ,  3, 93  ,  0, 77  ]
+        }
+    ]
+}
