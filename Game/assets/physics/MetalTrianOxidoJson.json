@@ -1,0 +1,11 @@
+{ 
+    
+    "metalTrianOxido": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   4, 92  ,  0, 69  ,  43, 0  ,  60, 0  ,  98, 68  ,  101, 92  ]
+        }
+    ]
+}
