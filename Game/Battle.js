@@ -40,7 +40,7 @@ var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
 var peso_piedra=40;
-var peso_metal=70;
+var peso_metal=0;
 var peso_balas=1;
 var peso_personaje=10;
 //Vida
@@ -2130,7 +2130,7 @@ Game.Battle.prototype ={
     },
 	
 	colision:function(juga_constr){
-		if(disparos==0){			
+		if(disparos==0){
 			if(isNaN(Number(balaDispara.body.velocity.y))){
 				Val1=0;
 			}else{
@@ -2189,6 +2189,7 @@ Game.Battle.prototype ={
 					balaDispara.body.y=2000;
 					juga_constr.sprite.body.velocity.x=0;
 					juga_constr.sprite.body.velocity.y=0;
+					juga_constr.sprite.body.angularVelocity=0;
 				}
 				if(balaDispara.tipo=="acido"){
 					switch (juga_constr.sprite.tipo){
@@ -2223,6 +2224,7 @@ Game.Battle.prototype ={
 					balaDispara.body.y=2000;
 					juga_constr.sprite.body.velocity.x=0;
 					juga_constr.sprite.body.velocity.y=0;
+					juga_constr.sprite.body.angularVelocity=0;
 				}
 				if(balaDispara.tipo=="agua"){
 					//alert();
@@ -2258,6 +2260,7 @@ Game.Battle.prototype ={
 					balaDispara.body.y=2000;
 					juga_constr.sprite.body.velocity.x=0;
 					juga_constr.sprite.body.velocity.y=0;
+					juga_constr.sprite.body.angularVelocity=0;
 				}
 			}
 		}
