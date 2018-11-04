@@ -2144,7 +2144,7 @@ Game.Battle.prototype ={
 					}
 				//}
 				if(this.delayAux>=600){
-					this.musica.destroy();
+					musica.destroy();
 					this.state.start('MainMenu');
 				}
 			}
