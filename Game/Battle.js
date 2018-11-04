@@ -35,7 +35,7 @@ var style_contador={font: "60px Arial"};
 var style_ganador={font: "200px Arial"};
 var cargando_batalla=0;
 
-var auxTiempoConstruc=5;//contador de tiempo constr
+var auxTiempoConstruc=20;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -384,10 +384,12 @@ Game.Battle.prototype ={
 		this.precioBAci.anchor.setTo(0.5,0.5);
 
 		//Boton personaje
-		this.button_Jugador=this.add.button(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje',this.crearJugador,this,2,1,0);
+		this.button_Jugador=this.add.sprite(this.button_Madera.x+20,this.button_Trian.y,'botonPersonaje');
+		this.cartel=this.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height+this.cache.getImage("CartelPiratas").height/2,'CartelPiratas');
+		this.cartel.anchor.setTo(0.5,0.5);
 		this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Pirata")
 		this.personaje.anchor.setTo(0.5,0.5);
-		this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,"3");
+		//this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,"3");
 
 		//Dinero
 		this.dineroMarc=this.add.sprite(1500,40,'BotonDinero');
@@ -1422,8 +1424,9 @@ Game.Battle.prototype ={
 
 				//Boton personaje
 				this.button_Jugador.bringToTop();
+				this.cartel.bringToTop();
 				this.personaje.bringToTop();
-				this.textNum.bringToTop();
+				//this.textNum.bringToTop();
 				
 				//Dinero
 				this.dineroMarc.bringToTop();
@@ -1470,12 +1473,13 @@ Game.Battle.prototype ={
 					this.button_bala_fuego.visible=false;
 					this.dineroMarc.visible=false;
 					this.button_Jugador.visible=false;
+					this.cartel.destroy();
 					text_cuenta_atras.visible=false;
 					this.textDinero.visible=false;
 					this.textBFue.visible=false;
 					this.textBAgu.visible=false;
 					this.textBAci.visible=false;
-					this.textNum.visible=false;
+					//this.textNum.visible=false;
 					this.balaF.visible=false;
 					this.balaAg.visible=false;
 					this.balaAc.visible=false;
@@ -1533,6 +1537,8 @@ Game.Battle.prototype ={
 						this.precioBFue.anchor.setTo(0.5,0.5);
 						this.espejo(this.dineroMarc);
 						this.espejo(this.button_Jugador);
+						this.cartel=this.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height+this.cache.getImage("CartelPiratas").height/2,'CartelVaqueros');
+						this.cartel.anchor.setTo(0.5,0.5);
 						this.personaje.destroy();
 						this.personaje=this.game.add.sprite(this.button_Jugador.x+this.cache.getImage("botonPersonaje").width/2,this.button_Jugador.y+this.cache.getImage("botonPersonaje").height/2,"Vaquero")
 						this.personaje.anchor.setTo(0.5,0.5);
@@ -1577,6 +1583,8 @@ Game.Battle.prototype ={
 						this.dineroMarc.bringToTop();
 						this.button_Jugador.visible=true;
 						this.button_Jugador.bringToTop();
+						this.cartel.visible=true;
+						this.cartel.bringToTop();
 						text_cuenta_atras.visible=true;
 						text_cuenta_atras.bringToTop();
 						this.textDinero.visible=true;
@@ -1634,8 +1642,8 @@ Game.Battle.prototype ={
 						this.textBAci.destroy();
 						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1);
 						this.textBAci.anchor.setTo(0.5,0.5);
-						this.textNum.destroy();
-						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ1);
+						//this.textNum.destroy();
+						//this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ1);
 					}
 					if(this.turno=="J2"){
 						this.textDinero.destroy();
@@ -1650,8 +1658,8 @@ Game.Battle.prototype ={
 						this.textBAci.destroy();
 						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J2);
 						this.textBAci.anchor.setTo(0.5,0.5);
-						this.textNum.destroy();	
-						this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);	
+						//this.textNum.destroy();	
+						//this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);	
 					}
 					if(this.construcAux!=null){
 						this.move_sprite(this.construcAux);
@@ -1739,6 +1747,7 @@ Game.Battle.prototype ={
 						this.button_bala_fuego.destroy();
 						this.dineroMarc.destroy();
 						this.button_Jugador.destroy();
+						this.cartel.destroy();
 						text_cuenta_atras.visible=false;
 						this.textDinero.destroy();
 						this.textBFue.destroy();
@@ -1747,7 +1756,7 @@ Game.Battle.prototype ={
 						this.precioPied.destroy();
 						this.precioMet.destroy();
 						this.precioMad.destroy();
-						this.textNum.destroy();	
+						//this.textNum.destroy();	
 						
 						this.balaF.destroy();
 						this.balaAg.destroy();
@@ -2327,7 +2336,6 @@ Game.Battle.prototype ={
 		/*if(balaDispara){
 			this.game.debug.text(balaDispara.body.allowSleep,30,50,'white');
 		}*/
-
 		this.game.debug.text(puntuacion1 + "---" + puntuacion2,500, 300,'white');
 	},
 	
