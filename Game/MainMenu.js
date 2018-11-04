@@ -7,7 +7,7 @@ Game.MainMenu.prototype ={
 	create:function(){
 		this.game.physics.p2.gravity.y = 0;
 		this.musica=this.game.add.audio("menuMusic",0.09,true);
-		//this.musica.play();
+		this.musica.play();
         var style = {	font: "60px Ultra",
 						fill: "Black",
 						boundsAlignH: "center",

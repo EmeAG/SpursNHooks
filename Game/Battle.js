@@ -72,8 +72,8 @@ var musica;
 var array=new Array();
 Game.Battle.prototype ={
 	create:function(){
-	//	var musica=this.game.add.audio("batallaMusic",0.09,true);
-	//	musica.play();
+		var musica=this.game.add.audio("batallaMusic",0.09,true);
+		musica.play();
 
 		dineroJugadores=300;
 		dineroJ1=dineroJugadores;
@@ -2144,6 +2144,7 @@ Game.Battle.prototype ={
 					}
 				//}
 				if(this.delayAux>=600){
+					this.musica.destroy();
 					this.state.start('MainMenu');
 				}
 			}
