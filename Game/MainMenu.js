@@ -2,12 +2,14 @@ Game.MainMenu = function(game){
 };
 
 Game.MainMenu.prototype ={
+
+	
 	create:function(){
+		this.game.physics.p2.gravity.y = 0;
 		this.musica=this.game.add.audio("menuMusic",0.09,true);
 		//this.musica.play();
-        var style = {	font: "menu",
+        var style = {	font: "60px Ultra",
 						fill: "Black",
-						fontSize: "50pt",
 						boundsAlignH: "center",
 						boundsAlignV: "middle",
 					};
@@ -27,8 +29,11 @@ Game.MainMenu.prototype ={
 		this.button_tutorial.stage='Tutorial';
 		
 		this.text1=this.game.add.text(0, 0, "Batalla",style);
+		this.text1.font = 'Ultra';
 		this.text2=this.game.add.text(0, 0, "Ajustes",style);
+		this.text2.font = 'Ultra';
 		this.text3=this.game.add.text(0, 0, "Tutorial",style);
+		this.text3.font = 'Ultra';
 		this.text1.setTextBounds(0, 200, this.game.world.width,100);
 		this.text2.setTextBounds(0, 300, this.game.world.width,100);
 		this.text3.setTextBounds(0, 400, this.game.world.width,100);
