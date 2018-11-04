@@ -48,7 +48,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstruc=20;//contador de tiempo constr
+var auxTiempoConstruc=0;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -72,8 +72,8 @@ var musica;
 var array=new Array();
 Game.Battle.prototype ={
 	create:function(){
-		var musica=this.game.add.audio("batallaMusic",0.09,true);
-		musica.play();
+		this.musica1=this.game.add.audio("batallaMusic",0.09,true);
+		this.musica1.play();
 
 		dineroJugadores=300;
 		dineroJ1=dineroJugadores;
@@ -2144,7 +2144,7 @@ Game.Battle.prototype ={
 					}
 				//}
 				if(this.delayAux>=600){
-					musica.destroy();
+					this.musica1.destroy();
 					this.state.start('MainMenu');
 				}
 			}
