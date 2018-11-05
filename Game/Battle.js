@@ -48,14 +48,14 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstruc=20;//contador de tiempo constr
+var auxTiempoConstruc=0;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
 var peso_piedra=40;
-var peso_metal=0;
-var peso_balas=1;
-var peso_personaje=10;
+var peso_metal=65;
+var peso_balas=0.1;
+var peso_personaje=50;
 //Vida
 var vida_madera=20;
 var vida_piedra=40;
