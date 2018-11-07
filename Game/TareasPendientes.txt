@@ -10,8 +10,9 @@
 -objetos dañados DONE
 -animacion personajes DONE
 -animacion destrucción DONE
--humo disparo
 -json de colsiones(personajes y triangulo) DONE
-(ocional)
+-isla en el medio con altura
+-animacion olas
+-arreglar colision personajes pequeños
 -tentaculo con movimiento
 -gaviota volando
