@@ -110,9 +110,9 @@ Game.Battle.prototype ={
         this.background.width = this.game.width;
 
 		//Suelos
-	    this.SueloMar2=this.add.sprite(-50, 900, 'Suelo_Mar_osc');
+	    this.SueloMar2=this.add.sprite(-480, 915, 'Suelo_Mar_osc');
 		this.controlmar2=0;
-	    this.SueloMar1=this.add.sprite(-50, 970, 'Suelo_Mar_cla');
+	    this.SueloMar1=this.add.sprite(0, 945, 'Suelo_Mar_cla');
 		this.controlmar1=0;
 
 		this.SueloPirata=this.add.sprite(0,0, 'Suelo_Pirata');
@@ -1374,21 +1374,21 @@ Game.Battle.prototype ={
 	update:function(){
 		//Inicio Pantalla en Vertical
 
-		if(this.SueloMar1.x<300 && this.controlmar1==0){
+		if(this.SueloMar1.x<0 && this.controlmar1==0){
 			this.SueloMar1.x+=1;
 		}else{
 			this.SueloMar1.x-=1;
 			this.controlmar1=1;
-			if(this.SueloMar1.x<-550){
+			if(this.SueloMar1.x<-480){
 				this.controlmar1=0;
 			}
 		};
-		if(this.SueloMar2.x>-550 && this.controlmar2==0){
+		if(this.SueloMar2.x>-480 && this.controlmar2==0){
 			this.SueloMar2.x-=1;
 		}else{
 			this.SueloMar2.x+=1;
 			this.controlmar2=1;
-			if(this.SueloMar2.x>300){
+			if(this.SueloMar2.x>0){
 				this.controlmar2=0;
 			}
 		}
