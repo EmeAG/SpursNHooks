@@ -1,5 +1,5 @@
 //Merge sin flechas
-Game.Battle = function(game){
+Game.Battle_Offline = function(game){
 	var SueloPirata =null;
 	Objeto=function(){
 		this.tipo=null;
@@ -70,7 +70,7 @@ var angulo_rotacion;
 var musica;
 
 var array=new Array();
-Game.Battle.prototype ={
+Game.Battle_Offline.prototype ={
 	create:function(){
 		this.musica1=this.game.add.audio("batallaMusic",0.09,true);
 		this.musica1.play();
