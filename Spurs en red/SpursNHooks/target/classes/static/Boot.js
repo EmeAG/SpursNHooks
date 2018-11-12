@@ -26,7 +26,20 @@ Game.Boot.prototype = {
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.game.physics.p2.setImpactEvents(true);
+<<<<<<< HEAD
 
+=======
+		/*$.ajax({
+			url:"http://127.0.0.1:8080/nuevo_jugador",
+			}).done(function(dato) {
+				alert(dato)
+				this.aux=dato;
+			})
+			alert(this.aux)
+		this.global={
+			IdJugador:this.aux
+		}*/
+>>>>>>> 21fe1902e851d5365b00ea6370d7638d9cc94d48
 		this.state.start('Preloader');
 	}
 };

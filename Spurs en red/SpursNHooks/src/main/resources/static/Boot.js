@@ -26,7 +26,6 @@ Game.Boot.prototype = {
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.game.physics.p2.setImpactEvents(true);
-
 		this.state.start('Preloader');
 	}
 };

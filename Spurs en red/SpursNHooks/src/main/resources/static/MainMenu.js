@@ -6,6 +6,7 @@ Game.MainMenu.prototype ={
 	
 	
 	create:function(){
+		this.seleccion;
 		this.game.physics.p2.gravity.y = 0;
 		this.musica=this.game.add.audio("menuMusic",0.09,true);
 		this.musica.play();
@@ -64,8 +65,8 @@ Game.MainMenu.prototype ={
 		this.resize();
 		if(this.telon.y>=540){
 			this.musica.destroy();
-			if(button.stage=='Battle Offline'){
-				this.state.start('Battle');
+			if(this.seleccion=='Battle Offline'){
+				this.state.start('Battle_Offline');
 			}else{
 				this.state.start('Esperar_jugador');
 			}
@@ -76,6 +77,7 @@ Game.MainMenu.prototype ={
 		if (button.stage!='Battle Offline' && button.stage!='Battle Online'){
 			this.state.start(button.stage);
 		}else{
+			this.seleccion=button.stage;
 			this.telon.body.velocity.y = 360;
 			this.button_online.inputEnabled = false;
 			this.button_offline.inputEnabled = false;

@@ -1,7 +1,7 @@
-Game.MainMenu = function(game){
+Game.Esperar_jugador = function(game){
 };
 
-Game.MainMenu.prototype ={
+Game.Esperar_jugador.prototype ={
 
 	
 	
@@ -9,30 +9,20 @@ Game.MainMenu.prototype ={
 		this.game.physics.p2.gravity.y = 0;
 		this.musica=this.game.add.audio("menuMusic",0.09,true);
 		this.musica.play();
-        var style = {	font: "120px Ultra",
+        var style = {	font: "90px Ultra",
 						fill: "Black",
 						boundsAlignH: "center",
 						boundsAlignV: "middle",
 					};
-	    this.telon=this.game.add.sprite(960,0,'telon');
+	    this.telon=this.game.add.sprite(960,540,'telon');
 		this.physics.p2.enable(this.telon);
 		
-		this.text1=this.game.add.text(0, 0, "Esperando Jugador...",style);
+		this.text1=this.game.add.text(10, this.world.height/2, "Esperando Jugador...",style);
 		this.text1.font = 'Ultra';
 	},
 	
 	update:function(){
-		if (this.scale.isPortrait){
-			this.image_turn.height = this.game.height;
-			this.image_turn.width = this.game.width;
-			this.image_turn.visible=true;
-			this.image_turn.bringToTop();
-		}else{
-			if (this.image_turn.visible === true){
-				this.image_turn.visible=false;
-			}
-		}
-		this.resize();
+
 	},
 
 	render:function() {
