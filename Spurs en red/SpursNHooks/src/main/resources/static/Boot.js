@@ -9,7 +9,6 @@ Game.Boot = function(game){
 Game.Boot.prototype = {
 	
 	init:function(){
-		this.aux;
 		this.input.maxpointer=1;
 		this.stage.disableVisibilityChange = true;
 		//resize
