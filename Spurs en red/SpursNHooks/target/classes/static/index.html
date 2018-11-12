@@ -36,7 +36,7 @@
 		var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, 'Vaqueros vs Piratas');
 		
 		$.ajax({
-			url:"http://127.0.0.1:8080/nuevo_jugador",
+			url:"/nuevo_jugador",
 			}).done(function(dato) {
 				game.idJugador=dato;
 			})
