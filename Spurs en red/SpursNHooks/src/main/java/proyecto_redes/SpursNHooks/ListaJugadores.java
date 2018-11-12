@@ -27,5 +27,9 @@ public class ListaJugadores {
 	public List<Jugador> get() {
 		return this.Lista_Jugadores;
 	}
+	
+	public Jugador Devuelve_jugador(int identificador) {
+		return Lista_Jugadores.get(identificador);
+	}
 
 }

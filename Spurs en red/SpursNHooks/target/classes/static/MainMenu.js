@@ -135,11 +135,7 @@ Game.MainMenu.prototype ={
 	
 	render:function() {
 		//this.game.debug.text(this.telon.y ,40,50,"white");
-<<<<<<< HEAD
 		this.game.debug.text(this.game.idJugador ,40,50,"white");
-=======
-		//this.game.debug.text(IdJugador ,40,50,"white");
->>>>>>> 21fe1902e851d5365b00ea6370d7638d9cc94d48
 	
 	},
 };

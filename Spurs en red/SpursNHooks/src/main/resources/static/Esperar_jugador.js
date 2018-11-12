@@ -14,11 +14,19 @@ Game.Esperar_jugador.prototype ={
 						boundsAlignH: "center",
 						boundsAlignV: "middle",
 					};
-	    this.telon=this.game.add.sprite(960,540,'telon');
-		this.physics.p2.enable(this.telon);
+	    this.telon=this.game.add.sprite(0,-40,'telon');
 		
 		this.text1=this.game.add.text(10, this.world.height/2, "Esperando Jugador...",style);
 		this.text1.font = 'Ultra';
+		$.ajax({
+			method: "POST",
+			url:"/jugador_lista_espera",
+			data: JSON.stringify({identificador:1}),
+			processData: false,
+			headers: {
+			"Content-type":"application/json"
+			}
+		});
 	},
 	
 	update:function(){
