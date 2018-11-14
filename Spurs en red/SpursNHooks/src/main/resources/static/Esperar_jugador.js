@@ -14,11 +14,11 @@ Game.Esperar_jugador.prototype ={
 						boundsAlignH: "center",
 						boundsAlignV: "middle",
 					};
-	    this.telon=this.game.add.sprite(0,-40,'telon');
+	    this.telon=this.game.add.sprite(-40,0,'telon');
 		
 		this.text1=this.game.add.text(10, this.world.height/2, "Esperando Jugador...",style);
 		this.text1.font = 'Ultra';
-		$.ajax({
+		/*$.ajax({
 			method: "POST",
 			url:"/jugador_lista_espera",
 			data: JSON.stringify({identificador:1}),
@@ -26,16 +26,16 @@ Game.Esperar_jugador.prototype ={
 			headers: {
 			"Content-type":"application/json"
 			}
-		});
+		});*/
 	},
 	
 	update:function(){
-
+		this.state.start("Battle_Online");
 	},
 
 	render:function() {
 		//this.game.debug.text(this.telon.y ,40,50,"white");
-		this.game.debug.text(IdJugador ,40,50,"white");
+		this.game.debug.text(this.game.idJugador ,40,50,"white");
 	
 	},
 };
