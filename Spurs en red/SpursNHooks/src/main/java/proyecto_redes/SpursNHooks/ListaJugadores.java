@@ -1,4 +1,4 @@
-package proyecto_redes.SpursNHooks;
+/*package proyecto_redes.SpursNHooks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,4 +32,4 @@ public class ListaJugadores {
 		return Lista_Jugadores.get(identificador);
 	}
 
-}
+}*/

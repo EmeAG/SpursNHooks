@@ -1,36 +1,29 @@
 package proyecto_redes.SpursNHooks;
 
-/*public class Jugador {
-	
-	
-	private int identificador;
-	
-	public Jugador() {
-		identificador=JugadoresConectados.get();
-	}
+import java.util.ArrayList;
+import java.util.List;
 
-	public int getIDjugador() {
-		return identificador;
-	}
-	
-}*/
 public class Jugador {
 
-	private int identificador;
+	private int id=0;
+	private int lado=0;
+	private List<construcciones> Lista_Construc;
+	private int balaT=0;
+	private float anguloCanon=0;
 	
 	public Jugador() {
-		int id=0;
-		int pos=0;
-		//list construc;
-		int balaT=0;
-		float anCanon=0;
+		this.id=0;
+		this.lado=0;
+		this.Lista_Construc=new ArrayList<construcciones>();
+		this.balaT=0;
+		this.anguloCanon=0;
 	}
 
-	public int getIdentificador() {
-		return identificador;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setIdentificador(int identificador) {
-		this.identificador = identificador;
+	public void setId(int _id) {
+		this.id = _id;
 	}
 }
