@@ -18,8 +18,12 @@ public class Jugador {
 
 	private int identificador;
 	
-	public Jugador(int a) {
-		setIdentificador(a);
+	public Jugador() {
+		int id=0;
+		int pos=0;
+		//list construc;
+		int balaT=0;
+		float anCanon=0;
 	}
 
 	public int getIdentificador() {

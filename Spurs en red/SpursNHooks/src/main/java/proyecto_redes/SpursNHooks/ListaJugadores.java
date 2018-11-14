@@ -14,12 +14,12 @@ public class ListaJugadores {
 	public int anadir() {
 		int valor;
 		if(this.Lista_Jugadores.size()==0) {
-			this.Lista_Jugadores.add(new Jugador(1));
+			this.Lista_Jugadores.add(new Jugador());
 			valor=1;
 		}else {
 			valor=this.Lista_Jugadores.get(this.Lista_Jugadores.size() - 1).getIdentificador();
 			valor++;
-			this.Lista_Jugadores.add(new Jugador(valor));
+			this.Lista_Jugadores.add(new Jugador());
 		}
 		return valor;
 	}

@@ -24,7 +24,7 @@ var style_ganador={font: "150px Ultra",
 				fill: "Black",
 			};
 
-var jugador="J1";
+var jugador="J2";
 var dineroJ1;
 var dineroJ2;
 var dineroJugadores;
@@ -48,7 +48,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstruc=0;//contador de tiempo constr
+var auxTiempoConstruc=15;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -594,11 +594,11 @@ Game.Battle_Online.prototype ={
 	//Llamada por un boton.0 inputs, 0 outputs
 	compraBalaFuego:function(){
 		if(fin_tiempo!=0){
-			if(this.turno=="J1" && (dineroJ1-15)>=0){
+			if(jugador=="J1" && (dineroJ1-15)>=0){
 				num_balas_fue_J1++;
 				dineroJ1-=15;
 			}
-			if(this.turno=="J2" && (dineroJ2-15)>=0){
+			if(jugador=="J2" && (dineroJ2-15)>=0){
 				num_balas_fue_J2++;
 				dineroJ2-=15;
 			}
@@ -608,11 +608,11 @@ Game.Battle_Online.prototype ={
 	//Llamada por un boton.0 inputs, 0 outputs
 	compraBalaAgua:function(){
 		if(fin_tiempo!=0){
-			if(this.turno=="J1" && (dineroJ1-30)>=0){
+			if(jugador=="J1" && (dineroJ1-30)>=0){
 				num_balas_agu_J1++;
 				dineroJ1-=30;
 			}
-			if(this.turno=="J2" && (dineroJ2-30)>=0){
+			if(jugador=="J2" && (dineroJ2-30)>=0){
 				num_balas_agu_J2++;
 				dineroJ2-=30;
 			}
@@ -622,11 +622,11 @@ Game.Battle_Online.prototype ={
 	//Llamada por un boton.0 inputs, 0 outputs
 	compraBalaAcido:function(){
 		if(fin_tiempo!=0){
-			if(this.turno=="J1" && (dineroJ1-50)>=0){
+			if(jugador=="J1" && (dineroJ1-50)>=0){
 				num_balas_aci_J1++;
 				dineroJ1-=50;
 			}
-			if(this.turno=="J2" && (dineroJ2-50)>=0){
+			if(jugador=="J2" && (dineroJ2-50)>=0){
 				num_balas_aci_J2++;
 				dineroJ2-=50;
 			}
@@ -694,7 +694,7 @@ Game.Battle_Online.prototype ={
 	create_tipo_trian:function(){
 		if(this.construcAux==null&& fin_tiempo!=0){
 			if(obj.material=="madera"){
-				if(this.turno=="J1" && (dineroJ1-10)>=0){
+				if(jugador=="J1" && (dineroJ1-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
 					this.physics.p2.enable(this.bloq_mad_trian);
 					this.physics.p2.enable(this.bloq_mad_trian,true);//ver formas
@@ -710,7 +710,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_mad_trian;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2" && (dineroJ2-10)>=0){
+				if(jugador=="J2" && (dineroJ2-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
 					this.physics.p2.enable(this.bloq_mad_trian);
 					this.bloq_mad_trian.inputEnabled=true;
@@ -727,7 +727,7 @@ Game.Battle_Online.prototype ={
 				}
 			}
 			if(obj.material=="piedra"){
-				if(this.turno=="J1" && (dineroJ1-20)>=0){
+				if(jugador=="J1" && (dineroJ1-20)>=0){
 					this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
 					this.physics.p2.enable(this.bloq_pied_trian);
 					this.bloq_pied_trian.inputEnabled=true;
@@ -742,7 +742,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_pied_trian;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2" && (dineroJ2-20)>=0){
+				if(jugador=="J2" && (dineroJ2-20)>=0){
 					this.bloq_pied_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_pied_trian');
 					this.physics.p2.enable(this.bloq_pied_trian);
 					this.bloq_pied_trian.inputEnabled=true;
@@ -759,7 +759,7 @@ Game.Battle_Online.prototype ={
 				}
 			}
 			if(obj.material=="metal"){
-				if(this.turno=="J1" && (dineroJ1-35)>=0){
+				if(jugador=="J1" && (dineroJ1-35)>=0){
 					this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
 					this.physics.p2.enable(this.bloq_met_trian);
 					this.bloq_met_trian.inputEnabled=true;
@@ -774,7 +774,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_met_trian;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2" && (dineroJ2-35)>=0){
+				if(jugador=="J2" && (dineroJ2-35)>=0){
 					this.bloq_met_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_met_trian');
 					this.physics.p2.enable(this.bloq_met_trian);
 					this.bloq_met_trian.inputEnabled=true;
@@ -790,11 +790,11 @@ Game.Battle_Online.prototype ={
 					this.construcJ2[this.contConstJ2]=this.construcAux;
 				}
 			}
-			if(this.turno=="J1"){
+			if(jugador=="J1"){
 				dineroJ1-=this.construcJ1[this.contConstJ1].coste;
 				this.contConstJ1++;
 			}
-			if(this.turno=="J2"){
+			if(jugador=="J2"){
 				dineroJ2-=this.construcJ2[this.contConstJ2].coste;
 				this.contConstJ2++;
 			}		
@@ -805,7 +805,7 @@ Game.Battle_Online.prototype ={
 	create_tipo_cuad:function(){
 		if(this.construcAux==null&& fin_tiempo!=0){
 			if(obj.material=="madera"){
-				if(this.turno=="J1"){
+				if(jugador=="J1"){
 					this.bloq_mad_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_mad_cuad');
 					this.physics.p2.enable(this.bloq_mad_cuad);
 					this.bloq_mad_cuad.inputEnabled=true;
@@ -820,7 +820,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_mad_cuad;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2"){
+				if(jugador=="J2"){
 					this.bloq_mad_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_mad_cuad');
 					this.physics.p2.enable(this.bloq_mad_cuad);
 					this.bloq_mad_cuad.inputEnabled=true;
@@ -837,7 +837,7 @@ Game.Battle_Online.prototype ={
 				}
 			}
 			if(obj.material=="piedra"){
-				if(this.turno=="J1"){
+				if(jugador=="J1"){
 					this.bloq_pied_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_pied_cuad');
 					this.physics.p2.enable(this.bloq_pied_cuad);
 					this.bloq_pied_cuad.inputEnabled=true;
@@ -852,7 +852,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_pied_cuad;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2"){
+				if(jugador=="J2"){
 					this.bloq_pied_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_pied_cuad');
 					this.physics.p2.enable(this.bloq_pied_cuad);
 					this.bloq_pied_cuad.inputEnabled=true;
@@ -869,7 +869,7 @@ Game.Battle_Online.prototype ={
 				}
 			}
 			if(obj.material=="metal"){
-				if(this.turno=="J1"){
+				if(jugador=="J1"){
 					this.bloq_met_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_met_cuad');
 					this.physics.p2.enable(this.bloq_met_cuad);
 					this.bloq_met_cuad.inputEnabled=true;
@@ -884,7 +884,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_met_cuad;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2"){
+				if(jugador=="J2"){
 					this.bloq_met_cuad=this.add.sprite(this.button_Cuad.x,this.button_Cuad.y,'Bloq_met_cuad');
 					this.physics.p2.enable(this.bloq_met_cuad);
 					this.bloq_met_cuad.inputEnabled=true;
@@ -900,11 +900,11 @@ Game.Battle_Online.prototype ={
 					this.construcJ2[this.contConstJ2]=this.construcAux;
 				}
 			}
-			if(this.turno=="J1"){
+			if(jugador=="J1"){
 				dineroJ1-=this.construcJ1[this.contConstJ1].coste;
 				this.contConstJ1++;
 			}
-			if(this.turno=="J2"){
+			if(jugador=="J2"){
 				dineroJ2-=this.construcJ2[this.contConstJ2].coste;
 				this.contConstJ2++;
 			}		
@@ -915,7 +915,7 @@ Game.Battle_Online.prototype ={
 	create_tipo_rectH:function(){
 		if(this.construcAux==null&& fin_tiempo!=0){
 			if(obj.material=="madera"){
-				if(this.turno=="J1"){
+				if(jugador=="J1"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectH');
 					this.physics.p2.enable(this.bloq_mad_rect);
 					this.bloq_mad_rect.inputEnabled=true;
@@ -930,7 +930,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_mad_rect;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2"){
+				if(jugador=="J2"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectH');
 					this.physics.p2.enable(this.bloq_mad_rect);
 					this.bloq_mad_rect.inputEnabled=true;
@@ -947,7 +947,7 @@ Game.Battle_Online.prototype ={
 				}				
 			}
 			if(obj.material=="piedra"){
-				if(this.turno=="J1"){
+				if(jugador=="J1"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectH');
 					this.physics.p2.enable(this.bloq_pied_rect);
 					this.bloq_pied_rect.inputEnabled=true;
@@ -962,7 +962,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_pied_rect;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2"){
+				if(jugador=="J2"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectH');
 					this.physics.p2.enable(this.bloq_pied_rect);
 					this.bloq_pied_rect.inputEnabled=true;
@@ -979,7 +979,7 @@ Game.Battle_Online.prototype ={
 				}				
 			}
 			if(obj.material=="metal"){
-				if(this.turno=="J1"){
+				if(jugador=="J1"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectH');
 					this.physics.p2.enable(this.bloq_met_rect);
 					this.bloq_met_rect.inputEnabled=true;
@@ -994,7 +994,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_met_rect;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2"){
+				if(jugador=="J2"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectH');
 					this.physics.p2.enable(this.bloq_met_rect);
 					this.bloq_met_rect.inputEnabled=true;
@@ -1010,11 +1010,11 @@ Game.Battle_Online.prototype ={
 					this.construcJ2[this.contConstJ2]=this.construcAux;
 				}			
 			}
-			if(this.turno=="J1"){
+			if(jugador=="J1"){
 				dineroJ1-=this.construcJ1[this.contConstJ1].coste;
 				this.contConstJ1++;
 			}
-			if(this.turno=="J2"){
+			if(jugador=="J2"){
 				dineroJ2-=this.construcJ2[this.contConstJ2].coste;
 				this.contConstJ2++;
 			}		
@@ -1026,7 +1026,7 @@ Game.Battle_Online.prototype ={
 		if(this.construcAux==null&& fin_tiempo!=0){
 			this.game.physics.p2.gravity.y = 0;
 			if(obj.material=="madera"){
-				if(this.turno=="J1"){
+				if(jugador=="J1"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectV');
 					this.physics.p2.enable(this.bloq_mad_rect);
 					this.bloq_mad_rect.inputEnabled=true;
@@ -1041,7 +1041,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_mad_rect;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2"){
+				if(jugador=="J2"){
 					this.bloq_mad_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_mad_rectV');
 					this.physics.p2.enable(this.bloq_mad_rect);
 					this.bloq_mad_rect.inputEnabled=true;
@@ -1058,7 +1058,7 @@ Game.Battle_Online.prototype ={
 				}				
 			}
 			if(obj.material=="piedra"){
-				if(this.turno=="J1"){
+				if(jugador=="J1"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectV');
 					this.physics.p2.enable(this.bloq_pied_rect);
 					this.bloq_pied_rect.inputEnabled=true;
@@ -1073,7 +1073,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_pied_rect;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2"){
+				if(jugador=="J2"){
 					this.bloq_pied_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_pied_rectV');
 					this.physics.p2.enable(this.bloq_pied_rect);
 					this.bloq_pied_rect.inputEnabled=true;
@@ -1090,7 +1090,7 @@ Game.Battle_Online.prototype ={
 				}			
 			}
 			if(obj.material=="metal"){
-				if(this.turno=="J1"){
+				if(jugador=="J1"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectV');
 					this.physics.p2.enable(this.bloq_met_rect);
 					this.bloq_met_rect.inputEnabled=true;
@@ -1105,7 +1105,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.bloq_met_rect;
 					this.construcJ1[this.contConstJ1]=this.construcAux;
 				}
-				if(this.turno=="J2"){
+				if(jugador=="J2"){
 					this.bloq_met_rect=this.add.sprite(this.button_Rect_Vert.x,this.button_Rect_Vert.y,'Bloq_met_rectV');
 					this.physics.p2.enable(this.bloq_met_rect);
 					this.bloq_met_rect.inputEnabled=true;
@@ -1121,11 +1121,11 @@ Game.Battle_Online.prototype ={
 					this.construcJ2[this.contConstJ2]=this.construcAux;
 				}				
 			}
-			if(this.turno=="J1"){
+			if(jugador=="J1"){
 				dineroJ1-=this.construcJ1[this.contConstJ1].coste;
 				this.contConstJ1++;
 			}
-			if(this.turno=="J2"){
+			if(jugador=="J2"){
 				dineroJ2-=this.construcJ2[this.contConstJ2].coste;
 				this.contConstJ2++;
 			}			
@@ -1136,7 +1136,7 @@ Game.Battle_Online.prototype ={
 	crearJugador:function(){
 		if(this.construcAux==null && fin_tiempo!=0){
 			this.game.physics.p2.gravity.y = 0;
-			if(this.turno=="J1"&&this.numJ1<3){
+			if(jugador=="J1"&&this.numJ1<3){
 				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Pirata');
 				this.physics.p2.enable(this.jugador);
 				this.jugador.body.mass=peso_personaje;
@@ -1152,7 +1152,7 @@ Game.Battle_Online.prototype ={
 				this.numJ1++;
 			}
 
-			if(this.turno=="J2"&&this.numJ2<3){
+			if(jugador=="J2"&&this.numJ2<3){
 				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Vaquero');
 				this.physics.p2.enable(this.jugador);
 				this.jugador.body.mass=peso_personaje;
@@ -1174,7 +1174,7 @@ Game.Battle_Online.prototype ={
 	move_sprite:function(objeto){
 		objeto.body.angle=0;
 		objeto.body.kinematic=true;
-		if(this.turno=="J1"){
+		if(jugador=="J1"){
 			if(objeto.y+objeto.height/2<this.SueloPirata.y-this.SueloPirata.height/2 && objeto.x+objeto.width/2<this.world.width/3){
 				if(objeto.y-objeto.height/2<510 && objeto.x-objeto.width/2<323){
 					objeto.tint=0.4 * 0xffffff;
@@ -1206,7 +1206,7 @@ Game.Battle_Online.prototype ={
 			}
 		}
 
-		if(this.turno=="J2"){
+		if(jugador=="J2"){
 			if(objeto.y+objeto.height/2<this.SueloVaquero.y-this.SueloVaquero.height/2 && objeto.x-objeto.width/2>this.world.width/3*2){
 				if(objeto.y-objeto.height/2<510 && objeto.x+objeto.width/2>1592){
 					objeto.tint=0.4 * 0xffffff;
@@ -1250,7 +1250,7 @@ Game.Battle_Online.prototype ={
 			this.construcAux.body.velocity.y=0;
 			this.construcAux.body.kinematic=true;
 
-			if(this.turno=="J1"){
+			if(jugador=="J1"){
 				if(this.num0>-1){
 					if(this.construcJ1[this.num0].tint==0.4 * 0xffffff){
 						dineroJ1+=this.construcJ1[this.num0].coste;
@@ -1284,7 +1284,7 @@ Game.Battle_Online.prototype ={
 					}
 				}
 			}
-			if(this.turno=="J2"){
+			if(jugador=="J2"){
 				if(this.num0>-1){
 					if(this.construcJ2[this.num0].tint==0.4 * 0xffffff){
 						dineroJ2+=this.construcJ2[this.num0].coste;
@@ -1452,7 +1452,7 @@ Game.Battle_Online.prototype ={
 				}
 			}
 			if(jugador=="J2"){
-				this.telon.body.velocity.x = 360;
+				this.telon.body.velocity.x = -360;
 				this.telon.body.data.gravityScale=0;
 				if(this.telon.x+this.telon.width/2<=this.world.width/3*2){
 					this.telon.body.x=this.world.width/3*2-this.telon.width/2;
@@ -1556,6 +1556,9 @@ Game.Battle_Online.prototype ={
 					text_cuenta_atras.bringToTop();
 					this.textDinero.visible=true;
 					this.textDinero.bringToTop();
+					this.textDinero.x=this.dineroMarc.x;
+					this.textDinero.y=this.dineroMarc.y;
+					this.textDinero.anchor.setTo(0.7,0.5);
 					this.textBFue.visible=true;
 					this.textBFue.bringToTop();
 					this.textBAgu.visible=true;
@@ -1583,14 +1586,9 @@ Game.Battle_Online.prototype ={
 					this.precioMet.bringToTop();
 					this.precioMad.bringToTop();
 
-					fin_tiempo=1;
-					cuenta_atras.destroy();
-					cuenta_atras=this.time.create();
-					final_cuenta_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoConstruc, this.finTiempo);
-					cuenta_atras.start();
+					juego_empezado=true;
 					text_cuenta_atras.x=this.cuadroTiempo.width/2;
-					obj.material="madera";
-					this.turno="J2";
+					cuenta_atras.start();
 				}
 			}
 			
@@ -1604,14 +1602,28 @@ Game.Battle_Online.prototype ={
 
 			if(estado=="CONSTRUCCION"){
 				this.game.physics.p2.gravity.y=100;
-				/*if(fin_tiempo==0&&this.turno=="J1"){
+				if(fin_tiempo!=0){
+					if(this.construcAux!=null){
+						this.move_sprite(this.construcAux);
+						if(this.delayAux>15){
+							this.stop_move();
+						}
+					}
+				}
+				if(this.num0>=0){
+					this.construcAux=this.construcJ2[this.num0];
+				}
+				if(this.num1>=0){
+					this.construcAux=this.jugadoresJ2[this.num1];
+				}
+				this.delayAux++;
+				/*if(fin_tiempo==0&&jugador=="J1"){
 					if(this.construcAux!=null){
 						this.stop_move();
 						this.textDinero.destroy();
 						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1, style_compra);
 						this.textDinero.anchor.setTo(0.7,0.5);
 					}
-
 					this.telon.bringToTop();
 					this.telon.body.velocity.x=-360;
 					this.button_Madera.visible=false;
@@ -1647,10 +1659,10 @@ Game.Battle_Online.prototype ={
 					this.precioBAci.visible=false;
 					this.precioBAgu.visible=false;
 					this.precioBFue.visible=false;
-
-					
 				}
-
+			}
+			/*if(estado=="CONSTRUCCION"){
+				
 				if(fin_tiempo!=0){
 					//Actualizacion de textos
 					if(this.turno=="J1"){
@@ -1685,12 +1697,7 @@ Game.Battle_Online.prototype ={
 						//this.textNum.destroy();	
 						//this.textNum=this.add.text(this.personaje.x-50,this.personaje.y+80,3-this.numJ2);	
 					}
-					if(this.construcAux!=null){
-						this.move_sprite(this.construcAux);
-						if(this.delayAux>15){
-							this.stop_move();
-						}
-					}
+					
 				}
 
 				if(this.turno=="J1"){
@@ -1821,7 +1828,7 @@ Game.Battle_Online.prototype ={
 					}
 				}		
 			}
-			this.delayAux++;*/
+			*/
 		}
 		if(estado=="PREBATALLA"){
 
