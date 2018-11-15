@@ -24,7 +24,7 @@ var style_ganador={font: "150px Ultra",
 				fill: "Black",
 			};
 
-var jugador="J2";
+var jugador="J1";
 var dineroJ1;
 var dineroJ2;
 var dineroJugadores;
@@ -48,7 +48,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstruc=15;//contador de tiempo constr
+var auxTiempoConstruc=5;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -1370,6 +1370,87 @@ Game.Battle_Online.prototype ={
 						this.construcAux=this.jugadoresJ2[this.num1];
 					}
 					
+				}
+				if(fin_tiempo==0){
+					//mover el telon desde J1
+					if(this.telon.x>960){
+						this.telon.bringToTop();
+						this.telon.body.velocity.x=-300;
+						this.button_Madera.visible=false;
+						this.textMad.visible=false;
+						this.button_Piedra.visible=false;
+						this.textPied.visible=false;
+						this.button_Metal.visible=false;
+						this.textMet.visible=false;
+						this.button_Rect_Horz.visible=false;
+						this.textRectH.visible=false;
+						this.button_Rect_Vert.visible=false;
+						this.textRectV.visible=false;
+						this.button_Trian.visible=false;
+						this.textTrian.visible=false;
+						this.button_Cuad.visible=false;
+						this.textCuad.visible=false;
+						this.cuadroTiempo.visible=false;
+						this.button_bala_acido.visible=false;
+						this.button_bala_agua.visible=false;
+						this.button_bala_fuego.visible=false;
+						this.dineroMarc.visible=false;
+						this.button_Jugador.visible=false;
+						text_cuenta_atras.visible=false;
+						this.textDinero.visible=false;
+						this.textBFue.visible=false;
+						this.textBAgu.visible=false;
+						this.textBAci.visible=false;
+					}
+					//mover el telon desde J2 
+					//añadir objetos que destruir antes de moverlo
+					if(this.telon.x<960){
+						this.button_Madera.destroy();
+						this.textMad.destroy();
+						this.button_Piedra.destroy();
+						this.textPied.destroy();
+						this.button_Metal.destroy();
+						this.textMet.destroy();
+						this.button_Rect_Horz.destroy();
+						this.textRectH.destroy();
+						this.button_Rect_Vert.destroy();
+						this.textRectV.destroy();
+						this.button_Trian.destroy();
+						this.textTrian.destroy();
+						this.button_Cuad.destroy();
+						this.textCuad.destroy();
+						this.cuadroTiempo.destroy();
+						this.button_bala_acido.destroy();
+						this.button_bala_agua.destroy();
+						this.button_bala_fuego.destroy();
+						this.dineroMarc.destroy();
+						this.button_Jugador.destroy();
+						this.cartel.destroy();
+						text_cuenta_atras.visible=false;
+						this.textDinero.destroy();
+						this.textBFue.destroy();
+						this.textBAgu.destroy();
+						this.textBAci.destroy();
+						this.precioPied.destroy();
+						this.precioMet.destroy();
+						this.precioMad.destroy();
+						//this.textNum.destroy();	
+						
+						this.balaF.destroy();
+						this.balaAg.destroy();
+						this.balaAc.destroy();
+						this.personaje.destroy();
+						this.telon.body.velocity.x=300;
+						this.telon.body.allowGravity = false;
+						this.telon.bringToTop();
+						this.precioBAci.destroy();
+						this.precioBFue.destroy();
+						this.precioBAgu.destroy();
+					}
+					//parar elmovimiento horizontal del telon
+					if(this.telon.x<=963 && this.telon.x>=957){
+						this.telon.body.velocity.x=0;
+					}
 				}
 				this.delayAux++;
 				/*if(fin_tiempo==0&&jugador=="J1"){
