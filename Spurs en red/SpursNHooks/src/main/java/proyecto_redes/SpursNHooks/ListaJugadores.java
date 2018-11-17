@@ -1,35 +1,54 @@
-/*package proyecto_redes.SpursNHooks;
+package proyecto_redes.SpursNHooks;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListaJugadores {
 	
-	private List<Jugador> Lista_Jugadores;
+	private List<Jugador> Lista_Jugador;
 	
 	public ListaJugadores() {
-		this.Lista_Jugadores = new ArrayList<Jugador>();
+		this.Lista_Jugador = new ArrayList<Jugador>();
 	}
 
-	public int anadir() {
-		int valor;
-		if(this.Lista_Jugadores.size()==0) {
-			this.Lista_Jugadores.add(new Jugador());
-			valor=1;
-		}else {
-			valor=this.Lista_Jugadores.get(this.Lista_Jugadores.size() - 1).getIdentificador();
-			valor++;
-			this.Lista_Jugadores.add(new Jugador());
+	public int id_ultimoJugador() {
+		int ultimo_Jugador=0;
+		if (this.Lista_Jugador.size()!=0) {
+			ultimo_Jugador=this.Lista_Jugador.get(this.Lista_Jugador.size() - 1).getId();
 		}
-		return valor;
-	}
-
-	public List<Jugador> get() {
-		return this.Lista_Jugadores;
+		return ultimo_Jugador;
 	}
 	
-	public Jugador Devuelve_jugador(int identificador) {
-		return Lista_Jugadores.get(identificador);
+	public void anadir_lista_espera(Jugador nuevo_jugador) {
+		this.Lista_Jugador.add(nuevo_jugador);
 	}
-
-}*/
+	
+	public int posicion_lista(Jugador _jugador) {
+		return this.Lista_Jugador.indexOf(_jugador);
+	}
+	
+	public int tamano_lista() {
+		return this.Lista_Jugador.size();
+	}
+	
+	public void Jugadores_asignarLados() {
+		this.Lista_Jugador.get(0).setLado("J1");
+		this.Lista_Jugador.get(1).setLado("J2");
+	}
+	
+	public int PosicionJugadorID(int id) {
+		int posicion=0;
+		for (int i=0; i<this.Lista_Jugador.size(); i++) {
+			if (this.Lista_Jugador.get(0).getId()==id) {
+				posicion=i;
+				i=this.Lista_Jugador.size();
+			}
+		}
+		return posicion;
+	}
+	
+	public List<Jugador> get() {
+		return this.Lista_Jugador;
+	}
+	
+}

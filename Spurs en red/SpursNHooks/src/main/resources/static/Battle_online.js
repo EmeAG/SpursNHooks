@@ -70,7 +70,35 @@ var angulo_rotacion;
 var musica;
 
 var array=new Array();
+
+//Datos del Jugador
+var id_propio;
+var id_rival;
+
 Game.Battle_Online.prototype ={
+	
+	init:function(id_propio,idjugador1,idjugador2,idBatalla){
+		if(id_propio==idjugador1){
+			id_rival=idjugador2;
+		}else{
+			id_rival=idjugador1;
+		}
+		/*Seleccion lado*/
+		$.ajax({
+            type: 'GET',
+			url:"/datos_jugadores",
+            headers: {
+                "Content-type": "application/json"
+            }
+			}).done(function(info_jugadores) {
+				for(i=0;i<=2;i++){
+					if(info_jugadores[i].id==id_propio){
+						this.turno=info_jugadores[i].lado;
+					}
+				}
+		});
+	},
+	
 	create:function(){
 		this.musica1=this.game.add.audio("batallaMusic",0.09,true);
 		this.musica1.play();
@@ -2206,7 +2234,7 @@ Game.Battle_Online.prototype ={
 		/*if(balaDispara){
 			this.game.debug.text(balaDispara.body.allowSleep,30,50,'white');
 		}*/
-		//this.game.debug.text(puntuacion1 + "---" + puntuacion2,500, 300,'white');
+		this.game.debug.text(this.turno,500, 300,'white');
 	},
 	
 };

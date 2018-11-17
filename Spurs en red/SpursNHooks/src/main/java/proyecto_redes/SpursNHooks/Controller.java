@@ -2,34 +2,52 @@ package proyecto_redes.SpursNHooks;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 //import static com.example.bombermanserver.BomberserverApplication.numSesiones;
 //import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 public class Controller {
-	ListaEsperaPartida Jugadores_espera = new ListaEsperaPartida();
+	ListaJugadores Jugadores_espera = new ListaJugadores();
+	ListaJugadores jugadores_conectados = new ListaJugadores();
+	ListaBatallas partidas = new ListaBatallas();
+	DatosBatalla InfoBatalla = new DatosBatalla();
 
 	@GetMapping("/nuevo_jugador")
 	public int nuevo_jugador() {
 		Jugador nuevo_jugador= new Jugador();
-		nuevo_jugador.setId(Jugadores_espera.ultimo_Jugador()+1);
+		nuevo_jugador.setId(jugadores_conectados.id_ultimoJugador()+1);
+		jugadores_conectados.anadir_lista_espera(nuevo_jugador);
 		Jugadores_espera.anadir_lista_espera(nuevo_jugador);
-		//return Jugadores_espera.posicion_lista(nuevo_jugador);
 		return nuevo_jugador.getId();
 	}
 
 	@GetMapping("/comprobar_lista")
-	public String nuevo_jugador_espera(Jugador jugador) {
-		String jugadores_nueva_partida=null;
+	public DatosBatalla nuevo_jugador_espera(Jugador jugador) {
 		if(Jugadores_espera.tamano_lista()>=2) {
-			jugadores_nueva_partida=Jugadores_espera.Jugadores_nueva_partida();
+			Jugadores_espera.Jugadores_asignarLados();
+			Batalla nueva_batalla= new Batalla();
+			nueva_batalla.setId_batalla(partidas.id_ultimaPartida()+1);
+			nueva_batalla.setJugador1(Jugadores_espera.get().get(0));
+			nueva_batalla.setJugador2(Jugadores_espera.get().get(1));
+			InfoBatalla.setId_J1(nueva_batalla.getJugador1().getId());
+			InfoBatalla.setId_J2(nueva_batalla.getJugador2().getId());
+			InfoBatalla.setId_batalla(nueva_batalla.getId_batalla());
 		}
-		return jugadores_nueva_partida;
+		return InfoBatalla;
+	}
+	
+	@GetMapping("/datos_jugadores")
+	public List<Jugador> lado_jugador() {
+		return jugadores_conectados.get();
 	}
 }

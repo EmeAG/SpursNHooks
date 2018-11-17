@@ -1,7 +1,9 @@
 Game.Esperar_jugador = function(game){
 };
-nueva_partida=undefined;
 idjugador=undefined;
+idjugador1=undefined;
+idjugador2=undefined;
+idBatalla=undefined;
 Game.Esperar_jugador.prototype ={
 	create:function(){
 		this.game.physics.p2.gravity.y = 0;
@@ -27,24 +29,22 @@ Game.Esperar_jugador.prototype ={
 		$.ajax({
 			url:"/comprobar_lista",
 			}).done(function(jugadores) {
-				nueva_partida=jugadores;
-				
+				idjugador1=jugadores.id_J1;
+				idjugador2=jugadores.id_J2;
+				idBatalla=jugadores.id_batalla;
 		});
-		if (nueva_partida!= undefined){
-			cadena= nueva_partida.split("|");
-			for (var i = 0; i < cadena.length; i++) {
-				if(cadena[i]==idjugador){
-					this.state.start("Battle_Online");
-				}
+		if (idjugador1!= undefined && idjugador2!= undefined){
+			if(idjugador1==idjugador || idjugador2==idjugador){
+				this.state.start("Battle_Online",true, false,idjugador,idjugador1,idjugador2,idBatalla);
 			}
 		}
 	},
 
 	render:function() {
 		//this.game.debug.text(this.telon.y ,40,50,"white");
-		this.game.debug.text(nueva_partida ,40,50,"white");
+		this.game.debug.text(idjugador2 ,10,50,"white");
+		this.game.debug.text(idjugador1 ,40,70,"white");
 		this.game.debug.text(idjugador ,80,100,"white");
 	
 	},
 };
-
