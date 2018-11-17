@@ -1461,13 +1461,39 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.construcJ1[this.num0];
 				}
 				if(this.num1>=0){
+					this.construcAux=this.jugadoresJ1[this.num1];
+				}
+				if(fin_tiempo!=0){
+					//Actualizacion de textos
+					//alert(jugador)
 					if(jugador=="J1"){
-						this.construcAux=this.jugadoresJ1[this.num1];
+						this.textDinero.destroy();
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1, style_compra);
+						this.textDinero.anchor.setTo(0.7,0.5);
+						this.textBFue.destroy();
+						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1, style_compra);
+						this.textBFue.anchor.setTo(0.5,0.5);
+						this.textBAgu.destroy();
+						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1, style_compra);
+						this.textBAgu.anchor.setTo(0.5,0.5);
+						this.textBAci.destroy();
+						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1, style_compra);
+						this.textBAci.anchor.setTo(0.5,0.5);
 					}
 					if(jugador=="J2"){
-						this.construcAux=this.jugadoresJ2[this.num1];
+						this.textDinero.destroy();
+						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1, style_compra);
+						this.textDinero.anchor.setTo(0.7,0.5);
+						this.textBFue.destroy();
+						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J2, style_compra);
+						this.textBFue.anchor.setTo(0.5,0.5);
+						this.textBAgu.destroy();
+						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J2, style_compra);
+						this.textBAgu.anchor.setTo(0.5,0.5);
+						this.textBAci.destroy();
+						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J2, style_compra);
+						this.textBAci.anchor.setTo(0.5,0.5);
 					}
-					
 				}
 				if(fin_tiempo==0){
 					//mover el telon desde J1
@@ -1551,52 +1577,8 @@ Game.Battle_Online.prototype ={
 					}
 				}
 				this.delayAux++;
-				/*if(fin_tiempo==0&&jugador=="J1"){
-					if(this.construcAux!=null){
-						this.stop_move();
-						this.textDinero.destroy();
-						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1, style_compra);
-						this.textDinero.anchor.setTo(0.7,0.5);
-					}
-					this.telon.bringToTop();
-					this.telon.body.velocity.x=-360;
-					this.button_Madera.visible=false;
-					this.textMad.visible=false;
-					this.button_Piedra.visible=false;
-					this.textPied.visible=false;
-					this.button_Metal.visible=false;
-					this.textMet.visible=false;
-					this.button_Rect_Horz.visible=false;
-					this.textRectH.destroy();
-					this.button_Rect_Vert.visible=false;
-					this.textRectV.destroy();
-					this.button_Trian.visible=false;
-					this.textTrian.destroy();
-					this.button_Cuad.visible=false;
-					this.textCuad.destroy();
-					this.cuadroTiempo.visible=false;
-					this.button_bala_acido.visible=false;
-					this.button_bala_agua.visible=false;
-					this.button_bala_fuego.visible=false;
-					this.dineroMarc.visible=false;
-					this.button_Jugador.visible=false;
-					this.cartel.destroy();
-					text_cuenta_atras.visible=false;
-					this.textDinero.visible=false;
-					this.textBFue.visible=false;
-					this.textBAgu.visible=false;
-					this.textBAci.visible=false;
-					//this.textNum.visible=false;
-					this.balaF.visible=false;
-					this.balaAg.visible=false;
-					this.balaAc.visible=false;
-					this.precioBAci.visible=false;
-					this.precioBAgu.visible=false;
-					this.precioBFue.visible=false;
-				}
-			}
+
 			/*if(estado=="CONSTRUCCION"){
-				
 				if(fin_tiempo!=0){
 					//Actualizacion de textos
 					if(this.turno=="J1"){
@@ -1659,81 +1641,7 @@ Game.Battle_Online.prototype ={
 						this.textDinero.anchor.setTo(0.7,0.5);
 					}
 
-					//mover el telon desde J1
-					if(this.turno=="J1"&&fin_tiempo==0){
-						this.telon.bringToTop();
-						this.telon.body.velocity.x=-300;
-						this.button_Madera.visible=false;
-						this.textMad.visible=false;
-						this.button_Piedra.visible=false;
-						this.textPied.visible=false;
-						this.button_Metal.visible=false;
-						this.textMet.visible=false;
-						this.button_Rect_Horz.visible=false;
-						this.textRectH.visible=false;
-						this.button_Rect_Vert.visible=false;
-						this.textRectV.visible=false;
-						this.button_Trian.visible=false;
-						this.textTrian.visible=false;
-						this.button_Cuad.visible=false;
-						this.textCuad.visible=false;
-						this.cuadroTiempo.visible=false;
-						this.button_bala_acido.visible=false;
-						this.button_bala_agua.visible=false;
-						this.button_bala_fuego.visible=false;
-						this.dineroMarc.visible=false;
-						this.button_Jugador.visible=false;
-						text_cuenta_atras.visible=false;
-						this.textDinero.visible=false;
-						this.textBFue.visible=false;
-						this.textBAgu.visible=false;
-						this.textBAci.visible=false;
-					}
-					//mover el telon desde J2 
-					//añadir objetos que destruir antes de moverlo
-					if(this.telon.x<960){
-						this.button_Madera.destroy();
-						this.textMad.destroy();
-						this.button_Piedra.destroy();
-						this.textPied.destroy();
-						this.button_Metal.destroy();
-						this.textMet.destroy();
-						this.button_Rect_Horz.destroy();
-						this.textRectH.destroy();
-						this.button_Rect_Vert.destroy();
-						this.textRectV.destroy();
-						this.button_Trian.destroy();
-						this.textTrian.destroy();
-						this.button_Cuad.destroy();
-						this.textCuad.destroy();
-						this.cuadroTiempo.destroy();
-						this.button_bala_acido.destroy();
-						this.button_bala_agua.destroy();
-						this.button_bala_fuego.destroy();
-						this.dineroMarc.destroy();
-						this.button_Jugador.destroy();
-						this.cartel.destroy();
-						text_cuenta_atras.visible=false;
-						this.textDinero.destroy();
-						this.textBFue.destroy();
-						this.textBAgu.destroy();
-						this.textBAci.destroy();
-						this.precioPied.destroy();
-						this.precioMet.destroy();
-						this.precioMad.destroy();
-						//this.textNum.destroy();	
-						
-						this.balaF.destroy();
-						this.balaAg.destroy();
-						this.balaAc.destroy();
-						this.personaje.destroy();
-						this.telon.body.velocity.x=300;
-						this.telon.body.allowGravity = false;
-						this.telon.bringToTop();
-						this.precioBAci.destroy();
-						this.precioBFue.destroy();
-						this.precioBAgu.destroy();
-					}
+	
 					//parar elmovimiento horizontal del telon
 					if(this.telon.x>=960){
 						this.telon.body.velocity.x=0;
@@ -2304,9 +2212,11 @@ Game.Battle_Online.prototype ={
 		/*if(balaDispara){
 			this.game.debug.text(balaDispara.body.allowSleep,30,50,'white');
 		}*/
+		/*
 		this.game.debug.text(turno,500, 300,'white');
 		this.game.debug.text(id_rival,600, 300,'white');
-		this.game.debug.text(id_propio,600, 400,'white');
+		this.game.debug.text(id_propio,600, 400,'white');*/
+		
 	},
 	
 };
