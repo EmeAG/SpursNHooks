@@ -1719,7 +1719,7 @@ Game.Battle_Online.prototype ={
 						this.telon.body.velocity.x=0;
 						this.telon.body.velocity.y=-300;
 						if(cargando_batalla==0){
-							//this.cargar_batalla();
+							this.cargar_batalla();
 							cargando_batalla++;
 							this.telon.bringToTop();
 							this.game.physics.p2.gravity.y = 100;
@@ -1728,7 +1728,7 @@ Game.Battle_Online.prototype ={
 					
 					if(this.telon.y<=-1080){
 						this.telon.destroy();
-						/*
+						
 						fin_tiempo=1;
 						//tiempo cuenta atras
 						cuenta_atras.destroy();
@@ -1771,11 +1771,11 @@ Game.Battle_Online.prototype ={
 				this.jugadoresJ2[i].body.dynamic=true;
 			}
 			if(this.movimentoParado(this.construcJ1) && this.movimentoParado(this.construcJ2) && this.movimentoParado(this.jugadoresJ1) && this.movimentoParado(this.jugadoresJ2)){
-				estado="BATALLA";
+				/*estado="BATALLA";
 				this.background.events.onInputDown.add(this.set);
 				this.background.events.onInputUp.add(this.launch);
 				this.CannonVaquero.scale.x *= -1;
-				this.CannonVaquero.scale.y *= -1;
+				this.CannonVaquero.scale.y *= -1;*/
 			}
 		}
 		

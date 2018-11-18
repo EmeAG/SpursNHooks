@@ -8,6 +8,7 @@ public class Jugador {
 	private int id=0;
 	private String lado="Sin asignar";
 	private List<construcciones> Lista_Construc;
+	private List<Personajes> Lista_Personajes;
 	private int balaT=0;
 	private float anguloCanon=0;
 	
@@ -15,6 +16,7 @@ public class Jugador {
 		this.id=0;
 		this.lado="Sin asignar";
 		this.Lista_Construc=new ArrayList<construcciones>();
+		this.Lista_Personajes=new ArrayList<Personajes>();
 		this.balaT=0;
 		this.anguloCanon=0;
 	}
@@ -61,5 +63,17 @@ public class Jugador {
 	public void addListaConstruccion(construcciones nueva_contr) {
 		Lista_Construc.add(nueva_contr);
 	}
+	
+	public List<Personajes> getLista_Personajes() {
+		return Lista_Personajes;
+	}
 
+	public void setLista_Personajes(List<Personajes> lista_Personajes) {
+		Lista_Personajes = lista_Personajes;
+	}
+	
+	public void addListaPersonajes(Personajes nueva_pers) {
+		Lista_Personajes.add(nueva_pers);
+	}
+	
 }

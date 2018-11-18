@@ -62,8 +62,19 @@ public class Controller {
 	
 	@GetMapping("/cargar_objeto/{id}")
 	public List<construcciones> cargar_objetos(@PathVariable int id){
-		System.out.println("Hola"+ id);
 		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getLista_Construc();
 	}
+
+	@PostMapping("/personaje_creado")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void nuevoPersonaje(@RequestBody Personajes personaje) {
+		System.out.println("1->"+ personaje.getDuenio());
+		System.out.println("2->"+ jugadores_conectados.PosicionJugadorID(personaje.getDuenio()));
+		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(personaje.getDuenio())).addListaPersonajes(personaje);
+	}
 	
+	@GetMapping("/cargar_personaje/{id}")
+	public List<Personajes> cargar_personaje(@PathVariable int id){
+		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getLista_Personajes();
+	}	
 }
