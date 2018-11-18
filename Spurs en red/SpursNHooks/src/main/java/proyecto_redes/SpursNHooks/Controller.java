@@ -55,8 +55,8 @@ public class Controller {
 	@PostMapping("/objeto_creado")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void nuevoObjeto(@RequestBody construcciones objeto) {
-		System.out.println("1->"+ objeto.getDuenio());
-		System.out.println("2->"+ jugadores_conectados.PosicionJugadorID(objeto.getDuenio()));
+		System.out.println("Objeto 1->"+ objeto.getDuenio());
+		System.out.println("Objeto 2->"+ jugadores_conectados.PosicionJugadorID(objeto.getDuenio()));
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(objeto.getDuenio())).addListaConstruccion(objeto);
 	}
 	
@@ -68,8 +68,8 @@ public class Controller {
 	@PostMapping("/personaje_creado")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void nuevoPersonaje(@RequestBody Personajes personaje) {
-		System.out.println("1->"+ personaje.getDuenio());
-		System.out.println("2->"+ jugadores_conectados.PosicionJugadorID(personaje.getDuenio()));
+		System.out.println("Personaje 1->"+ personaje.getDuenio());
+		System.out.println("Personaje 2->"+ jugadores_conectados.PosicionJugadorID(personaje.getDuenio()));
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(personaje.getDuenio())).addListaPersonajes(personaje);
 	}
 	

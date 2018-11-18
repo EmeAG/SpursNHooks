@@ -88,44 +88,41 @@ var personaje = {
 	posx:undefined,
 	posy:undefined
 };
-var delay_init=0;
 
 var crear_objetos=0;
+var crear_personajes=0;
 var cont=0;
 var contruccion_enemigo=new Array();
 var personajes_enemigo=new Array();
+var Crearpersonajes=0;
 
 Game.Battle_Online.prototype ={
 	
 	init:function(id_jugador,idjugador1,idjugador2,idBatalla){
-		for(delay_init=0;delay_init<12000;delay_init++){
-			if (delay_init==0){
-				id_propio=id_jugador;
-				id_batalla=idBatalla;
-				if(id_propio==idjugador1){
-					id_rival=idjugador2;
-				}else{
-					id_rival=idjugador1;
-				}
-				/*Seleccion lado*/
-				$.ajax({
-					type: 'GET',
-					url:"/datos_jugadores",
-					headers: {
-						"Content-type": "application/json"
-					}
-					}).done(function(info_jugadores) {
-						for(i=0;i<2;i++){
-							if(info_jugadores[i].id==id_propio){
-								jugador=info_jugadores[i].lado;
-							}
-						}
-				});
-			}
+		id_propio=id_jugador;
+		id_batalla=idBatalla;
+		if(id_propio==idjugador1){
+			id_rival=idjugador2;
+		}else{
+			id_rival=idjugador1;
 		}
-		alert(jugador);
+		/*Seleccion lado*/
+		$.ajax({
+			type: 'GET',
+			url:"/datos_jugadores",
+			headers: {
+				"Content-type": "application/json"
+			}
+			}).done(function(info_jugadores) {
+				for(i=0;i<2;i++){
+					if(info_jugadores[i].id==id_propio){
+						jugador=info_jugadores[i].lado;
+					}
+				}
+		});
 	},
-	
+
+
 	create:function(){
 		this.musica1=this.game.add.audio("batallaMusic",0.09,true);
 		this.musica1.play();
@@ -196,104 +193,7 @@ Game.Battle_Online.prototype ={
 		this.CannonVaquero.y=(this.world.height- this.CannonVaquero.height)*0.46;	    
 		this.CannonVaquero.anchor.setTo(0.85, 0.65);
 		this.CannonPirata.anchor.setTo(0.15, 0.35);
-
-		if(jugador=="J1"){
-			//colocacion piratas
-			for(var i=this.numJ1;i<3;i++){
-				this.jugador=this.add.sprite(0,0,'Pirata')
-				this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
-				this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
-				this.jugador.vida=vida_personaje;
-				this.jugador.anchor.setTo(0.5,0.5);
-				this.physics.p2.enable(this.jugador);
-				this.jugador.body.kinematic = true;
-				this.jugador.body.mass=peso_personaje;
-				this.jugador.body.estado=1;
-				this.jugador.tipo="personaje";
-				this.jugador.inputEnabled=true;
-				this.jugador.num=this.contJugJ1;
-				this.num1=this.contJugJ1;
-				this.construcAux=this.jugador;
-				this.jugadoresJ1[this.contJugJ1]=this.construcAux;
-				this.jugadoresJ1[this.contJugJ1].events.onInputDown.add(this.click_jugador,this);
-				this.contJugJ1++;
-				this.numJ1++;
-				this.construcAux=null;
-				this.num1=-2;
-			}
-
-			for(var i=this.numJ2;i<3;i++){
-				this.jugador=this.add.sprite(0,0,'Vaquero')
-				this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
-				this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
-				this.jugador.vida=vida_personaje;
-				this.jugador.anchor.setTo(0.5,0.5);
-				this.physics.p2.enable(this.jugador);
-				this.jugador.body.kinematic = true;
-				this.jugador.body.mass=peso_personaje;
-				this.jugador.tipo="personaje";
-				this.jugador.body.estado=1;
-				this.jugador.inputEnabled=true;
-				this.jugador.num=this.contJugJ2;
-				this.num1=this.contJugJ2;
-				this.construcAux=this.jugador;
-				this.jugadoresJ2[this.contJugJ2]=this.construcAux;
-				array[this.contJugJ2]=this.construcAux;
-				this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
-				this.contJugJ2++;
-				this.numJ2++;
-				this.num1=-2;
-				this.construcAux=null;
-			}
-		}else{
-			//colocacion piratas
-			for(var i=this.numJ2;i<3;i++){
-				this.jugador=this.add.sprite(0,0,'Pirata')
-				this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
-				this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
-				this.jugador.vida=vida_personaje;
-				this.jugador.anchor.setTo(0.5,0.5);
-				this.physics.p2.enable(this.jugador);
-				this.jugador.body.kinematic = true;
-				this.jugador.body.mass=peso_personaje;
-				this.jugador.body.estado=1;
-				this.jugador.tipo="personaje";
-				this.jugador.inputEnabled=true;
-				this.jugador.num=this.contJugJ2;
-				this.num1=this.contJugJ2;
-				this.construcAux=this.jugador;
-				this.jugadoresJ2[this.contJugJ2]=this.construcAux;
-				this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
-				this.contJugJ2++;
-				this.numJ2++;
-				this.construcAux=null;
-				this.num1=-2;
-			}
-
-			for(var i=this.numJ1;i<3;i++){
-				this.jugador=this.add.sprite(0,0,'Vaquero')
-				this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
-				this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
-				this.jugador.vida=vida_personaje;
-				this.jugador.anchor.setTo(0.5,0.5);
-				this.physics.p2.enable(this.jugador);
-				this.jugador.body.kinematic = true;
-				this.jugador.body.mass=peso_personaje;
-				this.jugador.tipo="personaje";
-				this.jugador.body.estado=1;
-				this.jugador.inputEnabled=true;
-				this.jugador.num=this.contJugJ1;
-				this.num1=this.contJugJ1;
-				this.construcAux=this.jugador;
-				this.jugadoresJ1[this.contJugJ1]=this.construcAux;
-				array[this.contJugJ1]=this.construcAux;
-				this.jugadoresJ1[this.contJugJ1].events.onInputDown.add(this.click_jugador,this);
-				this.contJugJ1++;
-				this.numJ2++;
-				this.num1=-2;
-				this.construcAux=null;			
-			}
-		}
+		
 /*		this.SueloVaquero.body.collideWorldBounds = true;
 		this.SueloPirata.body.collideWorldBounds = true;
 		this.SueloVaquero.body.bounce.set(1);
@@ -1253,7 +1153,108 @@ Game.Battle_Online.prototype ={
 	
 	update:function(){
 		//Inicio Pantalla en Vertical
+		if(jugador!=undefined && Crearpersonajes!=1){
+			if(jugador=="J1"){
+				//colocacion piratas
+				for(var i=this.numJ1;i<3;i++){
+					this.jugador=this.add.sprite(0,0,'Pirata')
+					this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
+					this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
+					this.jugador.vida=vida_personaje;
+					this.jugador.anchor.setTo(0.5,0.5);
+					this.physics.p2.enable(this.jugador);
+					this.jugador.body.kinematic = true;
+					this.jugador.body.mass=peso_personaje;
+					this.jugador.body.estado=1;
+					this.jugador.tipo="personaje";
+					this.jugador.inputEnabled=true;
+					this.jugador.num=this.contJugJ1;
+					this.num1=this.contJugJ1;
+					this.construcAux=this.jugador;
+					this.jugadoresJ1[this.contJugJ1]=this.construcAux;
+					this.jugadoresJ1[this.contJugJ1].events.onInputDown.add(this.click_jugador,this);
+					this.contJugJ1++;
+					this.numJ1++;
+					this.construcAux=null;
+					this.num1=-2;
+				}
 
+				for(var i=this.numJ2;i<3;i++){
+					this.jugador=this.add.sprite(0,0,'Vaquero')
+					this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
+					this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
+					this.jugador.vida=vida_personaje;
+					this.jugador.anchor.setTo(0.5,0.5);
+					this.physics.p2.enable(this.jugador);
+					this.jugador.body.kinematic = true;
+					this.jugador.body.mass=peso_personaje;
+					this.jugador.tipo="personaje";
+					this.jugador.body.estado=1;
+					this.jugador.inputEnabled=true;
+					this.jugador.num=this.contJugJ2;
+					this.num1=this.contJugJ2;
+					this.construcAux=this.jugador;
+					this.jugadoresJ2[this.contJugJ2]=this.construcAux;
+					array[this.contJugJ2]=this.construcAux;
+					this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
+					this.contJugJ2++;
+					this.numJ2++;
+					this.num1=-2;
+					this.construcAux=null;
+				}
+			}else{
+				//colocacion piratas
+				for(var i=this.numJ2;i<3;i++){
+					this.jugador=this.add.sprite(0,0,'Pirata')
+					this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
+					this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
+					this.jugador.vida=vida_personaje;
+					this.jugador.anchor.setTo(0.5,0.5);
+					this.physics.p2.enable(this.jugador);
+					this.jugador.body.kinematic = true;
+					this.jugador.body.mass=peso_personaje;
+					this.jugador.body.estado=1;
+					this.jugador.tipo="personaje";
+					this.jugador.inputEnabled=true;
+					this.jugador.num=this.contJugJ2;
+					this.num1=this.contJugJ2;
+					this.construcAux=this.jugador;
+					this.jugadoresJ2[this.contJugJ2]=this.construcAux;
+					this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
+					this.contJugJ2++;
+					this.numJ2++;
+					this.construcAux=null;
+					this.num1=-2;
+				}
+
+				for(var i=this.numJ1;i<3;i++){
+					this.jugador=this.add.sprite(0,0,'Vaquero')
+					this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
+					this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
+					this.jugador.vida=vida_personaje;
+					this.jugador.anchor.setTo(0.5,0.5);
+					this.physics.p2.enable(this.jugador);
+					this.jugador.body.kinematic = true;
+					this.jugador.body.mass=peso_personaje;
+					this.jugador.tipo="personaje";
+					this.jugador.body.estado=1;
+					this.jugador.inputEnabled=true;
+					this.jugador.num=this.contJugJ1;
+					this.num1=this.contJugJ1;
+					this.construcAux=this.jugador;
+					this.jugadoresJ1[this.contJugJ1]=this.construcAux;
+					array[this.contJugJ1]=this.construcAux;
+					this.jugadoresJ1[this.contJugJ1].events.onInputDown.add(this.click_jugador,this);
+					this.contJugJ1++;
+					this.numJ2++;
+					this.num1=-2;
+					this.construcAux=null;			
+				}
+			}
+			this.telon.bringToTop();
+			Crearpersonajes=1;
+		}
+		
 		if(this.SueloMar1.x<0 && this.controlmar1==0){
 			this.SueloMar1.x+=1;
 		}else{
@@ -1584,9 +1585,9 @@ Game.Battle_Online.prototype ={
 							})
 						}
 						for(var i=0;i<this.contJugJ1;i++){
-							objeto.duenio=id_propio;
-							objeto.posx=this.jugadoresJ2[i].x;
-							objeto.posy=this.jugadoresJ2[i].y;
+							personaje.duenio=id_propio;
+							personaje.posx=this.jugadoresJ1[i].x;
+							personaje.posy=this.jugadoresJ1[i].y;
 							$.ajax({
 								url: '/personaje_creado',
 								type: "POST",
@@ -1599,7 +1600,8 @@ Game.Battle_Online.prototype ={
 								console.log("Item created: " + JSON.stringify(personaje));
 							})
 						}
-						crear_objetos++;
+						crear_personajes=1;
+						crear_objetos=1;
 					}
 
 					//destruccion objetos
@@ -1656,9 +1658,8 @@ Game.Battle_Online.prototype ={
 					
 					//parar el movimiento horizontal del telon
 					if(this.telon.x<=963 && this.telon.x>=957){
-						
 						//Bajar construcciones rival
-						if(crear_objetos==1){
+						if(crear_objetos==1 && crear_personajes==1){
 							$.ajax({
 								type: 'GET',
 								url:"/cargar_objeto/"+ id_rival,
@@ -1675,8 +1676,9 @@ Game.Battle_Online.prototype ={
 											posy: info_construccion[i].posy
 										});
 									}
+									crear_objetos=2;
 								});
-
+							
 							$.ajax({
 								type: 'GET',
 								url:"/cargar_personaje/"+ id_rival,
@@ -1691,11 +1693,14 @@ Game.Battle_Online.prototype ={
 											posy: info_construccion[i].posy
 										});
 									}
+									crear_personajes=2;
 								});
-							crear_objetos++;
+								if(contruccion_enemigo.length==0){
+									crear_objetos=2;
+								}
 						}
 						
-						if(crear_objetos==2){
+						if(crear_objetos==2 && crear_personajes==2){
 							for(i=0;i<personajes_enemigo.length;i++){
 								this.jugadoresJ2[i].body.x=personajes_enemigo[i].posx;
 								this.jugadoresJ2[i].body.y=personajes_enemigo[i].posy;
@@ -1804,7 +1809,7 @@ Game.Battle_Online.prototype ={
 								this.construcJ2[i]=construcAux;
 								this.contConstJ2=i;
 							}
-							crear_objetos++;
+							crear_objetos=3;
 						}
 
 						this.telon.body.velocity.x=0;
@@ -2382,7 +2387,8 @@ Game.Battle_Online.prototype ={
 		/*
 		this.game.debug.text(turno,500, 300,'white');
 		this.game.debug.text(id_rival,600, 300,'white');*/
-		this.game.debug.text(jugador,600, 400,'white');
+		this.game.debug.text(crear_objetos,600, 400,'white');
+		this.game.debug.text(crear_personajes,600, 500,'white');
 		
 	},
 	
