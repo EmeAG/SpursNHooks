@@ -22,6 +22,7 @@ public class Controller {
 	ListaBatallas partidas = new ListaBatallas();
 	DatosBatalla InfoBatalla = new DatosBatalla();
 
+	
 	@GetMapping("/nuevo_jugador")
 	public int nuevo_jugador() {
 		Jugador nuevo_jugador= new Jugador();
@@ -50,4 +51,25 @@ public class Controller {
 	public List<Jugador> lado_jugador() {
 		return jugadores_conectados.get();
 	}
+
+	@PostMapping("/objeto_creado")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void nuevoObjeto(@RequestBody construcciones objeto) {
+		System.out.println("1"+ objeto.getDuenio());
+		System.out.println("2"+ jugadores_conectados.PosicionJugadorID(objeto.getDuenio()));
+		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(objeto.getDuenio())).addListaConstruccion(objeto);
+	}
+	
+	/*@GetMapping("/cargar_objeto/{id}")
+	public List<construcciones> cargar_objetos(@PathVariable int id){
+		System.out.println("Hola"+ id);
+		return jugadores_conectados.get().get(id).getLista_Construc();
+	}*/
+	
+	@GetMapping("/cargar_objeto/{id}")
+	public Jugador cargar_objetos(@PathVariable int id){
+		System.out.println("Hola"+ id);
+		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id));
+	}
+	
 }

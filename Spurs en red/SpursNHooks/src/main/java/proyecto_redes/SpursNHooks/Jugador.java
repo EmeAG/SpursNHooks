@@ -58,6 +58,8 @@ public class Jugador {
 	public void setAnguloCanon(float anguloCanon) {
 		this.anguloCanon = anguloCanon;
 	}
-
+	public void addListaConstruccion(construcciones nueva_contr) {
+		Lista_Construc.add(nueva_contr);
+	}
 
 }

@@ -39,7 +39,7 @@ public class ListaJugadores {
 	public int PosicionJugadorID(int id) {
 		int posicion=0;
 		for (int i=0; i<this.Lista_Jugador.size(); i++) {
-			if (this.Lista_Jugador.get(0).getId()==id) {
+			if (this.Lista_Jugador.get(i).getId()==id) {
 				posicion=i;
 				i=this.Lista_Jugador.size();
 			}

@@ -3,27 +3,58 @@ package proyecto_redes.SpursNHooks;
 public class construcciones {
 	private String tipo_material;
 	private String forma;
-	private int posx;
-	private int posy;
+	private float posx;
+	private float posy;
+	private int duenio;
 	
 	public construcciones() {
 		this.tipo_material=null;
 		this.forma=null;
 		this.posx=0;
 		this.posy=0;
+		this.duenio=0;
 	}
-	public void set_tip_mater(String _tipo_material) {
-		this.tipo_material=_tipo_material;
+
+	public String getTipo_material() {
+		return tipo_material;
 	}
-	public void set_forma(String _forma) {
-		this.forma=_forma;
+
+	public void setTipo_material(String tipo_material) {
+		this.tipo_material = tipo_material;
 	}
-	public void set_posx(int _posx) {
-		this.posx=_posx;
+
+	public String getForma() {
+		return forma;
 	}
-	public void set_posy(int _posy) {
-		this.posy=_posy;
+
+	public void setForma(String forma) {
+		this.forma = forma;
 	}
+
+	public float getPosx() {
+		return posx;
+	}
+
+	public void setPosx(float posx) {
+		this.posx = posx;
+	}
+
+	public float getPosy() {
+		return posy;
+	}
+
+	public void setPosy(float posy) {
+		this.posy = posy;
+	}
+
+	public int getDuenio() {
+		return duenio;
+	}
+
+	public void setDuenio(int duenio) {
+		this.duenio = duenio;
+	}
+
 }
 
 
