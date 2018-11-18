@@ -83,34 +83,47 @@ var objeto = {
 	posx:undefined,
 	posy:undefined
 };
+var personaje = {
+	duenio:undefined,
+	posx:undefined,
+	posy:undefined
+};
+var delay_init=0;
+
 var crear_objetos=0;
 var cont=0;
 var contruccion_enemigo=new Array();
+var personajes_enemigo=new Array();
 
 Game.Battle_Online.prototype ={
 	
 	init:function(id_jugador,idjugador1,idjugador2,idBatalla){
-		id_propio=id_jugador;
-		id_batalla=idBatalla;
-		if(id_propio==idjugador1){
-			id_rival=idjugador2;
-		}else{
-			id_rival=idjugador1;
-		}
-		/*Seleccion lado*/
-		$.ajax({
-            type: 'GET',
-			url:"/datos_jugadores",
-            headers: {
-                "Content-type": "application/json"
-            }
-			}).done(function(info_jugadores) {
-				for(i=0;i<2;i++){
-					if(info_jugadores[i].id==id_propio){
-						jugador=info_jugadores[i].lado;
-					}
+		for(delay_init=0;delay_init<12000;delay_init++){
+			if (delay_init==0){
+				id_propio=id_jugador;
+				id_batalla=idBatalla;
+				if(id_propio==idjugador1){
+					id_rival=idjugador2;
+				}else{
+					id_rival=idjugador1;
 				}
-		});
+				/*Seleccion lado*/
+				$.ajax({
+					type: 'GET',
+					url:"/datos_jugadores",
+					headers: {
+						"Content-type": "application/json"
+					}
+					}).done(function(info_jugadores) {
+						for(i=0;i<2;i++){
+							if(info_jugadores[i].id==id_propio){
+								jugador=info_jugadores[i].lado;
+							}
+						}
+				});
+			}
+		}
+		alert(jugador);
 	},
 	
 	create:function(){
@@ -184,60 +197,103 @@ Game.Battle_Online.prototype ={
 		this.CannonVaquero.anchor.setTo(0.85, 0.65);
 		this.CannonPirata.anchor.setTo(0.15, 0.35);
 
+		if(jugador=="J1"){
+			//colocacion piratas
+			for(var i=this.numJ1;i<3;i++){
+				this.jugador=this.add.sprite(0,0,'Pirata')
+				this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
+				this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
+				this.jugador.vida=vida_personaje;
+				this.jugador.anchor.setTo(0.5,0.5);
+				this.physics.p2.enable(this.jugador);
+				this.jugador.body.kinematic = true;
+				this.jugador.body.mass=peso_personaje;
+				this.jugador.body.estado=1;
+				this.jugador.tipo="personaje";
+				this.jugador.inputEnabled=true;
+				this.jugador.num=this.contJugJ1;
+				this.num1=this.contJugJ1;
+				this.construcAux=this.jugador;
+				this.jugadoresJ1[this.contJugJ1]=this.construcAux;
+				this.jugadoresJ1[this.contJugJ1].events.onInputDown.add(this.click_jugador,this);
+				this.contJugJ1++;
+				this.numJ1++;
+				this.construcAux=null;
+				this.num1=-2;
+			}
 
-		//colocacion piratas
-		for(var i=this.numJ1;i<3;i++){
-			this.jugador=this.add.sprite(0,0,'Pirata')
-			this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
-			this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
-			this.jugador.vida=vida_personaje;
-			this.jugador.anchor.setTo(0.5,0.5);
-			this.physics.p2.enable(this.jugador);
-			this.jugador.body.kinematic = true;
-			this.jugador.body.mass=peso_personaje;
-			this.jugador.body.estado=1;
-			this.jugador.tipo="personaje";
-			this.jugador.inputEnabled=true;
-			//this.jugador.body.createBodyCallback(BalaCom1_J2, this.colision, this);
-			this.jugador.num=this.contJugJ1;
-			this.num1=this.contJugJ1;
-			this.construcAux=this.jugador;
-			this.jugadoresJ1[this.contJugJ1]=this.construcAux;
-			this.jugadoresJ1[this.contJugJ1].events.onInputDown.add(this.click_jugador,this);
-			this.contJugJ1++;
-			this.numJ1++;
-			this.construcAux=null;
-			this.num1=-2;
-		}
+			for(var i=this.numJ2;i<3;i++){
+				this.jugador=this.add.sprite(0,0,'Vaquero')
+				this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
+				this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
+				this.jugador.vida=vida_personaje;
+				this.jugador.anchor.setTo(0.5,0.5);
+				this.physics.p2.enable(this.jugador);
+				this.jugador.body.kinematic = true;
+				this.jugador.body.mass=peso_personaje;
+				this.jugador.tipo="personaje";
+				this.jugador.body.estado=1;
+				this.jugador.inputEnabled=true;
+				this.jugador.num=this.contJugJ2;
+				this.num1=this.contJugJ2;
+				this.construcAux=this.jugador;
+				this.jugadoresJ2[this.contJugJ2]=this.construcAux;
+				array[this.contJugJ2]=this.construcAux;
+				this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
+				this.contJugJ2++;
+				this.numJ2++;
+				this.num1=-2;
+				this.construcAux=null;
+			}
+		}else{
+			//colocacion piratas
+			for(var i=this.numJ2;i<3;i++){
+				this.jugador=this.add.sprite(0,0,'Pirata')
+				this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
+				this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
+				this.jugador.vida=vida_personaje;
+				this.jugador.anchor.setTo(0.5,0.5);
+				this.physics.p2.enable(this.jugador);
+				this.jugador.body.kinematic = true;
+				this.jugador.body.mass=peso_personaje;
+				this.jugador.body.estado=1;
+				this.jugador.tipo="personaje";
+				this.jugador.inputEnabled=true;
+				this.jugador.num=this.contJugJ2;
+				this.num1=this.contJugJ2;
+				this.construcAux=this.jugador;
+				this.jugadoresJ2[this.contJugJ2]=this.construcAux;
+				this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
+				this.contJugJ2++;
+				this.numJ2++;
+				this.construcAux=null;
+				this.num1=-2;
+			}
 
-		for(var i=this.numJ2;i<3;i++){
-			this.jugador=this.add.sprite(0,0,'Vaquero')
-			this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
-			this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
-			this.jugador.vida=vida_personaje;
-			this.jugador.anchor.setTo(0.5,0.5);
-			this.physics.p2.enable(this.jugador);
-			this.jugador.body.kinematic = true;
-			this.jugador.body.mass=peso_personaje;
-			this.jugador.tipo="personaje";
-			this.jugador.body.estado=1;
-			this.jugador.inputEnabled=true;
-			//this.jugador.body.createBodyCallback(BalaCom1_J1, this.colision, this);
-			this.jugador.num=this.contJugJ2;
-			//this.jugador.body.onBeginContact.add(this.colision, this);
-			this.num1=this.contJugJ2;
-			//alert(this.num1);
-			this.construcAux=this.jugador;
-			this.jugadoresJ2[this.contJugJ2]=this.construcAux;
-			array[this.contJugJ2]=this.construcAux;
-			this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
-			this.contJugJ2++;
-			this.numJ2++;
-			this.num1=-2;
-			this.construcAux=null;
-			//alert((this.world.width/3)/2*(2-i));
+			for(var i=this.numJ1;i<3;i++){
+				this.jugador=this.add.sprite(0,0,'Vaquero')
+				this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
+				this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
+				this.jugador.vida=vida_personaje;
+				this.jugador.anchor.setTo(0.5,0.5);
+				this.physics.p2.enable(this.jugador);
+				this.jugador.body.kinematic = true;
+				this.jugador.body.mass=peso_personaje;
+				this.jugador.tipo="personaje";
+				this.jugador.body.estado=1;
+				this.jugador.inputEnabled=true;
+				this.jugador.num=this.contJugJ1;
+				this.num1=this.contJugJ1;
+				this.construcAux=this.jugador;
+				this.jugadoresJ1[this.contJugJ1]=this.construcAux;
+				array[this.contJugJ1]=this.construcAux;
+				this.jugadoresJ1[this.contJugJ1].events.onInputDown.add(this.click_jugador,this);
+				this.contJugJ1++;
+				this.numJ2++;
+				this.num1=-2;
+				this.construcAux=null;			
+			}
 		}
-		
 /*		this.SueloVaquero.body.collideWorldBounds = true;
 		this.SueloPirata.body.collideWorldBounds = true;
 		this.SueloVaquero.body.bounce.set(1);
@@ -1518,7 +1574,6 @@ Game.Battle_Online.prototype ={
 							$.ajax({
 								url: '/objeto_creado',
 								type: "POST",
-								/*data: { "duenio": objeto.duenio,*/
 								data:JSON.stringify(objeto),
 								dataType:'json',
 								headers: {
@@ -1526,6 +1581,22 @@ Game.Battle_Online.prototype ={
 								}
 							}).done(function (item) {
 								console.log("Item created: " + JSON.stringify(objeto));
+							})
+						}
+						for(var i=0;i<this.contJugJ1;i++){
+							objeto.duenio=id_propio;
+							objeto.posx=this.jugadoresJ2[i].x;
+							objeto.posy=this.jugadoresJ2[i].y;
+							$.ajax({
+								url: '/personaje_creado',
+								type: "POST",
+								data:JSON.stringify(personaje),
+								dataType:'json',
+								headers: {
+									"Content-Type": "application/json"
+								}
+							}).done(function (item) {
+								console.log("Item created: " + JSON.stringify(personaje));
 							})
 						}
 						crear_objetos++;
@@ -1604,11 +1675,31 @@ Game.Battle_Online.prototype ={
 											posy: info_construccion[i].posy
 										});
 									}
-									crear_objetos++;
 								});
+
+							$.ajax({
+								type: 'GET',
+								url:"/cargar_personaje/"+ id_rival,
+								headers: {
+									"Content-type": "application/json"
+								}
+								}).done(function(info_construccion) {
+									for(i=0;i<info_construccion.length;i++){
+										personajes_enemigo.push({
+											duenio: info_construccion[i].duenio,
+											posx: info_construccion[i].posx,
+											posy: info_construccion[i].posy
+										});
+									}
+								});
+							crear_objetos++;
 						}
 						
 						if(crear_objetos==2){
+							for(i=0;i<personajes_enemigo.length;i++){
+								this.jugadoresJ2[i].body.x=personajes_enemigo[i].posx;
+								this.jugadoresJ2[i].body.y=personajes_enemigo[i].posy;
+							};
 							for(i=0;i<contruccion_enemigo.length;i++){
 								switch(contruccion_enemigo[i].forma){
 									case "tri":
@@ -1740,7 +1831,7 @@ Game.Battle_Online.prototype ={
 						this.turno="J1"
 						balaDispara=Bala_J1;
 						cuenta_atras.start();
-						this.delayAux=0;*/
+						this.delayAux=0;
 					}
 					
 					
@@ -2290,8 +2381,8 @@ Game.Battle_Online.prototype ={
 		}*/
 		/*
 		this.game.debug.text(turno,500, 300,'white');
-		this.game.debug.text(id_rival,600, 300,'white');
-		this.game.debug.text(id_propio,600, 400,'white');*/
+		this.game.debug.text(id_rival,600, 300,'white');*/
+		this.game.debug.text(jugador,600, 400,'white');
 		
 	},
 	
