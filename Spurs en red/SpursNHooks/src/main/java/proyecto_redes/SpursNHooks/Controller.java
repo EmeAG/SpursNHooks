@@ -60,12 +60,6 @@ public class Controller {
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(objeto.getDuenio())).addListaConstruccion(objeto);
 	}
 	
-	/*@GetMapping("/cargar_objeto/{id}")
-	public List<construcciones> cargar_objetos(@PathVariable int id){
-		System.out.println("Hola"+ id);
-		return jugadores_conectados.get().get(id).getLista_Construc();
-	}*/
-	
 	@GetMapping("/cargar_objeto/{id}")
 	public List<construcciones> cargar_objetos(@PathVariable int id){
 		System.out.println("Hola"+ id);

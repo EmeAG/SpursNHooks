@@ -84,6 +84,8 @@ var objeto = {
 	posy:undefined
 };
 var crear_objetos=0;
+var cont=0;
+var contruccion_enemigo=new Array();
 
 Game.Battle_Online.prototype ={
 	
@@ -1580,22 +1582,141 @@ Game.Battle_Online.prototype ={
 						this.telon.bringToTop();
 					}
 					
-					//Bajar construcciones rival
-					if(crear_objetos==1){
-						$.ajax({
-							type: 'GET',
-							url:"/cargar_objeto/"+ id_rival,
-							headers: {
-								"Content-type": "application/json"
-							}
-							}).done(function(info_jugadores) {
-
-						});
-						crear_objetos++;
-					}
 					
 					//parar el movimiento horizontal del telon
 					if(this.telon.x<=963 && this.telon.x>=957){
+						
+						//Bajar construcciones rival
+						if(crear_objetos==1){
+							$.ajax({
+								type: 'GET',
+								url:"/cargar_objeto/"+ id_rival,
+								headers: {
+									"Content-type": "application/json"
+								}
+								}).done(function(info_construccion) {
+									for(i=0;i<info_construccion.length;i++){
+										contruccion_enemigo.push({
+											duenio: info_construccion[i].duenio,
+											tipo_material: info_construccion[i].tipo_material,
+											forma: info_construccion[i].forma,
+											posx: info_construccion[i].posx,
+											posy: info_construccion[i].posy
+										});
+									}
+									crear_objetos++;
+								});
+						}
+						
+						if(crear_objetos==2){
+							for(i=0;i<contruccion_enemigo.length;i++){
+								switch(contruccion_enemigo[i].forma){
+									case "tri":
+										alert(contruccion_enemigo[i].tipo_material);
+										switch(contruccion_enemigo[i].tipo_material){
+											case "madera":
+											alert("madera");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_mad_trian');
+												construcAux.vida=vida_madera;
+												construcAux.body.mass=peso_madera;
+												break;
+											case "metal":
+											alert("metal");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_met_trian');
+												construcAux.vida=vida_metal;
+												construcAux.body.mass=peso_metal;
+												break;
+											case "piedra":
+											alert("piedra");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_pied_trian');
+												construcAux.vida=vida_piedra;
+												construcAux.body.mass=peso_piedra;
+												break;
+										}
+										break;
+									case "cuad":
+										alert(contruccion_enemigo[i].tipo_material);
+										switch(contruccion_enemigo[i].tipo_material){
+											case "madera":
+										alert("madera");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_mad_cuad');
+												construcAux.vida=vida_madera;
+												construcAux.body.mass=peso_madera;
+												break;
+											case "metal":
+										alert("metal");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_met_cuad');
+												construcAux.vida=vida_metal;
+												construcAux.body.mass=peso_metal;
+												break;
+											case "piedra":
+										alert("piedra");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_pied_cuad');
+												construcAux.vida=vida_piedra;
+												construcAux.body.mass=peso_piedra;
+												break;
+										}
+										break;
+									case "rect_h":
+										alert(contruccion_enemigo[i].tipo_material);
+										switch(contruccion_enemigo[i].tipo_material){
+											case "madera":
+										alert("madera");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_mad_rectH');
+												construcAux.vida=vida_madera;
+												construcAux.body.mass=peso_madera;
+												break;
+											case "metal":
+										alert("metal");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_met_rectH');
+												construcAux.vida=vida_metal;
+												construcAux.body.mass=peso_metal;
+												break;
+											case "piedra":
+										alert("piedra");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_pied_rectH');
+												construcAux.vida=vida_piedra;
+												construcAux.body.mass=peso_piedra;
+												break;
+										}
+										break;
+									case "rect_v":
+										alert(contruccion_enemigo[i].tipo_material);
+										switch(contruccion_enemigo[i].tipo_material){
+											case "madera":
+										alert("madera");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_mad_rectV');
+												construcAux.vida=vida_madera;
+												construcAux.body.mass=peso_madera;
+												break;
+											case "metal":
+										alert("metal");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_met_rectV');
+												construcAux.vida=vida_metal;
+												construcAux.body.mass=peso_metal;
+												break;
+											case "piedra":
+										alert("piedra");
+												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_pied_rectV');
+												construcAux.vida=vida_piedra;
+												construcAux.body.mass=peso_piedra;
+												break;
+										}
+										break;
+								};
+								//construcciones enemigo
+								this.physics.p2.enable(construcAux);
+								construcAux.num=i;
+								construcAux.coste=0;
+								construcAux.estado=1;
+								construcAux.forma=contruccion_enemigo[i].forma;
+								construcAux.tipo=contruccion_enemigo[i].tipo;
+								this.construcJ2[i]=construcAux;
+								this.contConstJ2=i;
+							}
+							crear_objetos++;
+						}
+
 						this.telon.body.velocity.x=0;
 						this.telon.body.velocity.y=-300;
 						if(cargando_batalla==0){
