@@ -1615,35 +1615,43 @@ Game.Battle_Online.prototype ={
 										switch(contruccion_enemigo[i].tipo_material){
 											case "madera":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_mad_trian');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_madera;
 												construcAux.body.mass=peso_madera;
 												break;
 											case "metal":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_met_trian');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_metal;
 												construcAux.body.mass=peso_metal;
 												break;
 											case "piedra":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_pied_trian');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_piedra;
 												construcAux.body.mass=peso_piedra;
 												break;
 										}
+										construcAux.body.clearShapes();
+										construcAux.body.loadPolygon('triangulo', 'triangulo');
 										break;
 									case "cuad":
 										switch(contruccion_enemigo[i].tipo_material){
 											case "madera":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_mad_cuad');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_madera;
 												construcAux.body.mass=peso_madera;
 												break;
 											case "metal":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_met_cuad');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_metal;
 												construcAux.body.mass=peso_metal;
 												break;
 											case "piedra":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_pied_cuad');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_piedra;
 												construcAux.body.mass=peso_piedra;
 												break;
@@ -1653,16 +1661,19 @@ Game.Battle_Online.prototype ={
 										switch(contruccion_enemigo[i].tipo_material){
 											case "madera":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_mad_rectH');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_madera;
 												construcAux.body.mass=peso_madera;
 												break;
 											case "metal":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_met_rectH');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_metal;
 												construcAux.body.mass=peso_metal;
 												break;
 											case "piedra":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_pied_rectH');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_piedra;
 												construcAux.body.mass=peso_piedra;
 												break;
@@ -1672,16 +1683,19 @@ Game.Battle_Online.prototype ={
 										switch(contruccion_enemigo[i].tipo_material){
 											case "madera":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_mad_rectV');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_madera;
 												construcAux.body.mass=peso_madera;
 												break;
 											case "metal":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_met_rectV');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_metal;
 												construcAux.body.mass=peso_metal;
 												break;
 											case "piedra":
 												construcAux=this.add.sprite(contruccion_enemigo[i].posx,contruccion_enemigo[i].posy,'Bloq_pied_rectV');
+												this.physics.p2.enable(construcAux);
 												construcAux.vida=vida_piedra;
 												construcAux.body.mass=peso_piedra;
 												break;
@@ -1689,12 +1703,13 @@ Game.Battle_Online.prototype ={
 										break;
 								};
 								//construcciones enemigo
-								this.physics.p2.enable(construcAux);
+										
 								construcAux.num=i;
 								construcAux.coste=0;
 								construcAux.estado=1;
 								construcAux.forma=contruccion_enemigo[i].forma;
 								construcAux.tipo=contruccion_enemigo[i].tipo;
+								construcAux.body.kinematic=true;
 								this.construcJ2[i]=construcAux;
 								this.contConstJ2=i;
 							}
