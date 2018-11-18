@@ -55,8 +55,8 @@ public class Controller {
 	@PostMapping("/objeto_creado")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void nuevoObjeto(@RequestBody construcciones objeto) {
-		System.out.println("1"+ objeto.getDuenio());
-		System.out.println("2"+ jugadores_conectados.PosicionJugadorID(objeto.getDuenio()));
+		System.out.println("1->"+ objeto.getDuenio());
+		System.out.println("2->"+ jugadores_conectados.PosicionJugadorID(objeto.getDuenio()));
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(objeto.getDuenio())).addListaConstruccion(objeto);
 	}
 	
@@ -67,9 +67,9 @@ public class Controller {
 	}*/
 	
 	@GetMapping("/cargar_objeto/{id}")
-	public Jugador cargar_objetos(@PathVariable int id){
+	public List<construcciones> cargar_objetos(@PathVariable int id){
 		System.out.println("Hola"+ id);
-		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id));
+		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getLista_Construc();
 	}
 	
 }
