@@ -1519,13 +1519,13 @@ Game.Battle_Online.prototype ={
 						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1, style_compra);
 						this.textDinero.anchor.setTo(0.7,0.5);
 						this.textBFue.destroy();
-						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J2, style_compra);
+						this.textBFue=this.add.text(this.button_bala_fuego.x,this.button_bala_fuego.y+50,num_balas_fue_J1, style_compra);
 						this.textBFue.anchor.setTo(0.5,0.5);
 						this.textBAgu.destroy();
-						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J2, style_compra);
+						this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1, style_compra);
 						this.textBAgu.anchor.setTo(0.5,0.5);
 						this.textBAci.destroy();
-						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J2, style_compra);
+						this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1, style_compra);
 						this.textBAci.anchor.setTo(0.5,0.5);
 					}
 				}
