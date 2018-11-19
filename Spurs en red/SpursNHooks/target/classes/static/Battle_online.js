@@ -2209,14 +2209,15 @@ Game.Battle_Online.prototype ={
 					if (this.game.physics.arcade.angleToPointer(this.CannonPirata)>-1 && this.game.physics.arcade.angleToPointer(this.CannonPirata)<0.55){
 						this.CannonPirata.rotation = this.game.physics.arcade.angleToPointer(this.CannonPirata);
 						angulo_rotacion=this.CannonPirata.rotation;
-						this.CannonVaquero.rotation =3.15;
+						this.CannonVaquero.rotation =jugadorRival.anguloCanon;
 					}
+					
 				}
 				if (jugador=="J2"){
 					if (this.game.physics.arcade.angleToPointer(this.CannonVaquero)<-2 || this.game.physics.arcade.angleToPointer(this.CannonVaquero)>2.5){
 						this.CannonVaquero.rotation = this.game.physics.arcade.angleToPointer(this.CannonVaquero);
 						angulo_rotacion=this.CannonVaquero.rotation;
-						this.CannonPirata.rotation =0;
+						this.CannonPirata.rotation =jugadorRival.anguloCanon;
 					}
 				}
 			}
