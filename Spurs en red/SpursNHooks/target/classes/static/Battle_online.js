@@ -96,6 +96,16 @@ var contruccion_enemigo=new Array();
 var personajes_enemigo=new Array();
 var Crearpersonajes=0;
 
+//Datos propios
+var jugadorPropio={
+	id:undefined,
+	lado:undefined,
+	Lista_Construc:undefined,
+	Lista_Personajes:undefined,
+	balaT:undefined,
+	anguloCanon:undefined
+}
+
 Game.Battle_Online.prototype ={
 	
 	init:function(id_jugador,idjugador1,idjugador2,idBatalla){
@@ -1747,8 +1757,8 @@ Game.Battle_Online.prototype ={
 								construcAux.estado=1;
 								construcAux.forma=contruccion_enemigo[i].forma;
 								construcAux.tipo=contruccion_enemigo[i].tipo;
-								construcAux.body.kinematic=true;
 								this.construcJ2[i]=construcAux;
+								this.construcJ2[i].body.kinematic=true;
 								this.contConstJ2=i;
 							}
 							crear_objetos=3;
@@ -1756,7 +1766,7 @@ Game.Battle_Online.prototype ={
 
 						this.telon.body.velocity.x=0;
 						this.telon.body.velocity.y=-300;
-						if(cargando_batalla==0){
+						if(cargando_batalla==0 && crear_objetos==3){
 							this.cargar_batalla();
 							cargando_batalla++;
 							this.telon.bringToTop();
@@ -1773,7 +1783,9 @@ Game.Battle_Online.prototype ={
 						cuenta_atras=this.time.create();
 						final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoBatalla, this.finTiempo);
 						text_cuenta_atras=this.game.add.text(928, 80, '00',style_tiempo_2);
-						
+						if(this.contConstJ2!=0){
+							this.contConstJ2++;
+						}
 						estado="PREBATALLA";
 						cuenta_atras.start();
 						this.delayAux=0;
@@ -1783,7 +1795,8 @@ Game.Battle_Online.prototype ={
 		}
 		if(estado=="PREBATALLA"){
 
-		
+			jugadorPropio.id=id_propio;
+			jugadorPropio.lado=jugador;
 			if(disparos==0){
 				button_BalaAgua.inputEnabled = false;
 				button_BalaComun.inputEnabled = false;
@@ -1794,6 +1807,7 @@ Game.Battle_Online.prototype ={
 			for(var i=0;i<this.contConstJ1;i++){
 				this.construcJ1[i].body.dynamic=true;
 			}
+			alert(this.contConstJ2);
 			for(var i=0;i<this.contConstJ2;i++){
 				this.construcJ2[i].body.dynamic=true;
 			}
@@ -1813,6 +1827,25 @@ Game.Battle_Online.prototype ={
 		}
 		
 		if(estado=="BATALLA"){
+			if(jugador=="J1"){
+				jugadorPropio.anguloCanon=this.CannonPirata.rotation;
+			}
+			else{
+				jugadorPropio.anguloCanon=this.CannonVaquero.rotation;
+			}
+			
+			$.ajax({
+				url: '/pasar_angulo_canon',
+				type: "PUT",
+				data:JSON.stringify(jugadorPropio),
+				dataType:'json',
+				headers: {
+					"Content-Type": "application/json"
+				}
+			}).done(function (item) {
+				console.log("Item created: " + JSON.stringify(objeto));
+			})
+
 			/*Inicio Eliminacion choques con costrucciones propias*/
 			if(jugador=="J1"){
 				if(Bala_J1.body.x<this.world.width/2 && Bala_J1.body.collideWorldBounds == true){
@@ -2401,7 +2434,7 @@ Game.Battle_Online.prototype ={
 		/*
 		this.game.debug.text(turno,500, 300,'white');
 		this.game.debug.text(id_rival,600, 300,'white');*/
-		this.game.debug.text(crear_objetos,600, 400,'white');
+		this.game.debug.text("----->"+ this.contConstJ2,600, 400,'white');
 		this.game.debug.text(crear_personajes,600, 500,'white');
 		
 	},

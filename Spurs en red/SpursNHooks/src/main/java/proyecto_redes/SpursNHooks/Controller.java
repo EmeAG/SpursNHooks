@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 //import static com.example.bombermanserver.BomberserverApplication.numSesiones;
 //import com.google.gson.Gson;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -76,5 +77,14 @@ public class Controller {
 	@GetMapping("/cargar_personaje/{id}")
 	public List<Personajes> cargar_personaje(@PathVariable int id){
 		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getLista_Personajes();
-	}	
+	}
+	
+	@PutMapping("/pasar_angulo_canon")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void PasarAnguloCanon(@RequestBody Jugador jugador) {
+		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setAnguloCanon(jugador.getAnguloCanon());
+		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaT(jugador.getBalaT());
+		System.out.println(jugador.getAnguloCanon());
+	}
+	
 }
