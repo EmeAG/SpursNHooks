@@ -106,6 +106,16 @@ var jugadorPropio={
 	anguloCanon:undefined
 }
 
+//Datos rival
+var jugadorRival={
+	id:undefined,
+	lado:undefined,
+	Lista_Construc:undefined,
+	Lista_Personajes:undefined,
+	balaT:undefined,
+	anguloCanon:undefined
+}
+
 Game.Battle_Online.prototype ={
 	
 	init:function(id_jugador,idjugador1,idjugador2,idBatalla){
@@ -1797,6 +1807,10 @@ Game.Battle_Online.prototype ={
 
 			jugadorPropio.id=id_propio;
 			jugadorPropio.lado=jugador;
+
+			jugadorRival.id=id_rival;
+			jugadorRival.lado=jugador;
+
 			if(disparos==0){
 				button_BalaAgua.inputEnabled = false;
 				button_BalaComun.inputEnabled = false;
@@ -1833,7 +1847,17 @@ Game.Battle_Online.prototype ={
 			else{
 				jugadorPropio.anguloCanon=this.CannonVaquero.rotation;
 			}
-			
+
+			$.ajax({
+				type: 'GET',
+				url:"/cargar_angulo_canon/"+ id_rival,
+				headers: {
+					"Content-type": "application/json"
+				}
+				}).done(function(angulo) {
+					jugadorRival.anguloCanon=angulo;
+				})
+
 			$.ajax({
 				url: '/pasar_angulo_canon',
 				type: "PUT",
@@ -2434,7 +2458,7 @@ Game.Battle_Online.prototype ={
 		/*
 		this.game.debug.text(turno,500, 300,'white');
 		this.game.debug.text(id_rival,600, 300,'white');*/
-		this.game.debug.text("----->"+ this.contConstJ2,600, 400,'white');
+		this.game.debug.text("----->"+ jugadorRival.anguloCanon,600, 400,'white');
 		this.game.debug.text(crear_personajes,600, 500,'white');
 		
 	},

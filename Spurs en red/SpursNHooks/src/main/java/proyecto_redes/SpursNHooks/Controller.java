@@ -84,7 +84,11 @@ public class Controller {
 	public void PasarAnguloCanon(@RequestBody Jugador jugador) {
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setAnguloCanon(jugador.getAnguloCanon());
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaT(jugador.getBalaT());
-		System.out.println(jugador.getAnguloCanon());
+	}
+	
+	@GetMapping("/cargar_angulo_canon/{id}")
+	public float cargar_angulo_canon(@PathVariable int id){
+		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getAnguloCanon();
 	}
 	
 }
