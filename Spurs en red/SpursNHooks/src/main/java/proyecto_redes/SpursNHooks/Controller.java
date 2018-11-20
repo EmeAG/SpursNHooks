@@ -91,4 +91,15 @@ public class Controller {
 		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getAnguloCanon();
 	}
 	
+	@PutMapping("/pasar_velocidad_bala")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void PasarVelocidadBala(@RequestBody Jugador jugador) {
+		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaVel(jugador.getBalaVel());
+	}
+	
+	@GetMapping("/pasar_velocidad_bala/{id}")
+	public float[] pasar_velocidad_bala(@PathVariable int id){
+		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getBalaVel();
+	}
+	
 }
