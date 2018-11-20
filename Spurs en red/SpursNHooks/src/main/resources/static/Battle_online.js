@@ -48,7 +48,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstruc=5;//contador de tiempo constr
+var auxTiempoConstrucion=0;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -355,7 +355,7 @@ Game.Battle_Online.prototype ={
 		this.cuadroTiempo=this.add.sprite(this.world.width-this.cache.getImage('cuadro_Tiempo').width,this.world.height-this.cache.getImage('cuadro_Tiempo').height,'cuadro_Tiempo');
 		this.cuadroTiempo.visible=false;
 		cuenta_atras=this.time.create();
-		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoConstruc, this.finTiempo);
+		final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoConstrucion, this.finTiempo);
 		text_cuenta_atras=this.game.add.text(this.world.width-this.cache.getImage('cuadro_Tiempo').width/2,this.world.height-this.cache.getImage('cuadro_Tiempo').height/2, '00',style_tiempo);
 		text_cuenta_atras.anchor.setTo(0.5,0.5);
 		text_cuenta_atras.visible=false;
