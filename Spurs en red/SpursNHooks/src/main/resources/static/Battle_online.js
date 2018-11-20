@@ -104,8 +104,7 @@ var jugadorPropio={
 	Lista_Construc:undefined,
 	Lista_Personajes:undefined,
 	balaT:undefined,
-	anguloCanon:undefined,
-	bala:undefined
+	anguloCanon:undefined
 }
 
 //Datos rival
@@ -115,8 +114,7 @@ var jugadorRival={
 	Lista_Construc:undefined,
 	Lista_Personajes:undefined,
 	balaT:undefined,
-	anguloCanon:undefined,
-	bala:undefined
+	anguloCanon:undefined
 }
 
 Game.Battle_Online.prototype ={
@@ -545,6 +543,7 @@ Game.Battle_Online.prototype ={
 			Bala_J1.body.dynamic = true;
 			Bala_J1.body.velocity.x=Xvector;
 			Bala_J1.body.velocity.y=Yvector;
+
 		}
 	},
 	
@@ -2480,9 +2479,7 @@ Game.Battle_Online.prototype ={
 			this.game.debug.text(this.construcJ1[i],20,30+20*i,'white');
 		}
 		this.game.debug.text(this.telon.x,30,this.telon.y,'white');*/
-		/*if(balaDispara){
-			this.game.debug.text(balaDispara.body.allowSleep,30,50,'white');
-		}*/
+		
 		/*
 		this.game.debug.text(turno,500, 300,'white');
 		this.game.debug.text(id_rival,600, 300,'white');*/

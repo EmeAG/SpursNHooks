@@ -11,7 +11,6 @@ public class Jugador {
 	private List<Personajes> Lista_Personajes;
 	private int balaT=0;
 	private float anguloCanon=0;
-	private float[] balaVel=new float[2];
 	
 	public Jugador() {
 		this.id=0;
@@ -20,18 +19,6 @@ public class Jugador {
 		this.Lista_Personajes=new ArrayList<Personajes>();
 		this.balaT=0;
 		this.anguloCanon=0;
-		this.balaVel[0]=0;
-		this.balaVel[1]=0;
-	}
-	
-	public float[] getBalaVel() {
-		return balaVel;
-	}
-	
-	public void setBalaVel(float[] balaVel) {
-		for(int i=0;i<2;i++) {
-			this.balaVel[i]=balaVel[i];
-		}
 	}
 
 	public int getId() {
