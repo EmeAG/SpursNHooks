@@ -91,5 +91,27 @@ public class Controller {
 		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getAnguloCanon();
 	}
 	
+	@PutMapping("/pasar_bala")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void PasarBalaVel(@RequestBody Jugador jugador) {
+		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaVelX(jugador.getBalaVelX());
+		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaVelY(jugador.getBalaVelY());
+		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setNumeroDisparos(jugador.getNumeroDisparos());
+	}
+	
+	@GetMapping("/cargar_balaVelX/{id}")
+	public float cargar_balaVelX(@PathVariable int id){
+		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getBalaVelX();
+	}
+	
+	@GetMapping("/cargar_balaVelY/{id}")
+	public float cargar_balaVelY(@PathVariable int id){
+		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getBalaVelY();
+	}
+	
+	@GetMapping("/cargar_numDisparos/{id}")
+	public float cargar_numDisparos(@PathVariable int id){
+		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getNumeroDisparos();
+	}
 	
 }
