@@ -33,10 +33,11 @@ var catchFlag = false;
 var BalaCom1_J1;
 var BalaCom1_J2;
 var puntero;
-var launchVelocity = 0;
+var launchVelocityPropia = 0;
+var launchVelocityRival = 0;
 var turno=1;
 var disparos=1;
-var balaDispara=null;
+//var balaDispara=null;
 var fin_tiempo=1;
 //cambiar en la compra
 var num_balas_fue_J1=0;
@@ -103,7 +104,8 @@ var jugadorPropio={
 	Lista_Construc:undefined,
 	Lista_Personajes:undefined,
 	balaT:undefined,
-	anguloCanon:undefined
+	anguloCanon:undefined,
+	bala:undefined
 }
 
 //Datos rival
@@ -113,7 +115,8 @@ var jugadorRival={
 	Lista_Construc:undefined,
 	Lista_Personajes:undefined,
 	balaT:undefined,
-	anguloCanon:undefined
+	anguloCanon:undefined,
+	bala:undefined
 }
 
 Game.Battle_Online.prototype ={
@@ -2186,7 +2189,7 @@ Game.Battle_Online.prototype ={
 				analog.alpha = 0.5;
 				analog.rotation = arrow.rotation - 3.14 / 2;
 				analog.height = this.physics.arcade.distanceBetween(arrow, this.input.activePointer);    
-				launchVelocity = analog.height;
+				launchVelocityPropia = analog.height;
 				this.delayAux=0;
 			}
 			//Fin Disparo
@@ -2483,7 +2486,7 @@ Game.Battle_Online.prototype ={
 		/*
 		this.game.debug.text(turno,500, 300,'white');
 		this.game.debug.text(id_rival,600, 300,'white');*/
-		this.game.debug.text("----->"+ jugadorRival.anguloCanon,600, 400,'white');
+		
 		this.game.debug.text(crear_personajes,600, 500,'white');
 		
 	},
