@@ -1821,7 +1821,7 @@ Game.Battle_Online.prototype ={
 			for(var i=0;i<this.contConstJ1;i++){
 				this.construcJ1[i].body.dynamic=true;
 			}
-			alert(this.contConstJ2);
+			//alert(this.contConstJ2);
 			for(var i=0;i<this.contConstJ2;i++){
 				this.construcJ2[i].body.dynamic=true;
 			}
@@ -1839,14 +1839,39 @@ Game.Battle_Online.prototype ={
 				this.CannonVaquero.scale.y *= -1;
 			}
 		}
-		
+
 		if(estado=="BATALLA"){
 			if(jugador=="J1"){
 				jugadorPropio.anguloCanon=this.CannonPirata.rotation;
+				this.CannonVaquero.destroy();
+				this.CannonVaquero=this.add.sprite(0,0, 'Cannon_Vaquero');	    
+				this.CannonVaquero.x=this.world.width- (this.CannonVaquero.height/2)*1.2;    
+				this.CannonVaquero.y=(this.world.height- this.CannonVaquero.height)*0.46;	    
+				this.CannonVaquero.anchor.setTo(0.85, 0.65);
+				this.CannonVaquero.scale.x *= -1;
+				this.CannonVaquero.scale.y *= -1;
+				this.game.physics.arcade.enable([this.CannonVaquero]);
+				this.CannonVaquero.rotation=jugadorRival.anguloCanon;
 			}
 			else{
 				jugadorPropio.anguloCanon=this.CannonVaquero.rotation;
+				this.CannonPirata.destroy();
+				this.CannonPirata=this.add.sprite(0,0, 'Cannon_Pirata');
+				this.CannonPirata.x=this.world.width*0.05;
+				this.CannonPirata.y=(this.world.height- this.CannonPirata.height)*0.42;
+				this.CannonPirata.anchor.setTo(0.15, 0.35);
+				this.game.physics.arcade.enable([this.CannonPirata]);
+				this.CannonPirata.rotation=jugadorRival.anguloCanon;
 			}
+			/*this.CannonPirata=this.add.sprite(0,0, 'Cannon_Pirata');
+		this.CannonPirata.x=this.world.width*0.05;
+		this.CannonPirata.y=(this.world.height- this.CannonPirata.height)*0.42;
+		this.CannonVaquero=this.add.sprite(0,0, 'Cannon_Vaquero');	    
+		this.CannonVaquero.x=this.world.width- (this.CannonVaquero.height/2)*1.2;    
+		this.CannonVaquero.y=(this.world.height- this.CannonVaquero.height)*0.46;	    
+		this.CannonVaquero.anchor.setTo(0.85, 0.65);
+		this.CannonPirata.anchor.setTo(0.15, 0.35);
+		this.game.physics.arcade.enable([this.CannonPirata, this.CannonVaquero]);*/
 
 			$.ajax({
 				type: 'GET',
@@ -2209,7 +2234,7 @@ Game.Battle_Online.prototype ={
 					if (this.game.physics.arcade.angleToPointer(this.CannonPirata)>-1 && this.game.physics.arcade.angleToPointer(this.CannonPirata)<0.55){
 						this.CannonPirata.rotation = this.game.physics.arcade.angleToPointer(this.CannonPirata);
 						angulo_rotacion=this.CannonPirata.rotation;
-						this.CannonVaquero.rotation =jugadorRival.anguloCanon;
+						//this.CannonVaquero.rotation =jugadorRival.anguloCanon;
 					}
 					
 				}
@@ -2217,7 +2242,7 @@ Game.Battle_Online.prototype ={
 					if (this.game.physics.arcade.angleToPointer(this.CannonVaquero)<-2 || this.game.physics.arcade.angleToPointer(this.CannonVaquero)>2.5){
 						this.CannonVaquero.rotation = this.game.physics.arcade.angleToPointer(this.CannonVaquero);
 						angulo_rotacion=this.CannonVaquero.rotation;
-						this.CannonPirata.rotation =jugadorRival.anguloCanon;
+						//this.CannonPirata.rotation =jugadorRival.anguloCanon;
 					}
 				}
 			}
@@ -2405,7 +2430,6 @@ Game.Battle_Online.prototype ={
 		this.game.debug.body(this.SueloVaquero);
 		this.game.debug.text(this.delayAux,10,200,"white");
 		//this.game.debug.text(dineroJ1,10,10,"white");
-
 		/*if(this.construcJ1[1]!=null){
 			this.game.debug.text(this.construcJ1[1].coste,10,20,"white");
 		}
