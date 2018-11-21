@@ -1877,7 +1877,8 @@ Game.Battle_Online.prototype ={
 					jugadorRival.anguloCanon=rival.anguloCanon;
 				})
 			if(jugadorRival.numeroDisparos<auxDisparos){
-				jugadorRival.c=auxDisparos;
+				//alert();
+				jugadorRival.numeroDisparos=auxDisparos;
 				Bala_J2.body.dynamic = true;
 				Bala_J2.body.velocity.x=Xvector;
 				Bala_J2.body.velocity.y=Yvector;
