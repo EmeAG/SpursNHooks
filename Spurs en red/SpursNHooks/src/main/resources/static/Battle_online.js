@@ -211,7 +211,7 @@ Game.Battle_Online.prototype ={
 
 		this.SueloPirata.body.static = true;
 		this.SueloVaquero.body.static = true;
-
+		
 		//Cañones
 		this.CannonPirata=this.add.sprite(0,0, 'Cannon_Pirata');
 		this.CannonPirata.x=this.world.width*0.05;
@@ -541,21 +541,33 @@ Game.Battle_Online.prototype ={
 				Yvector = angulo_rotacion*Math.max(fuerza,275)*5;
 			}
 			Bala_J1.body.moves = true;
-			if(num_balas_agu_J1==0){
-				button_BalaAgua.inputEnabled = false;
-			}
-			if(num_balas_fue_J1==0){
-				button_BalaFuego.inputEnabled = false;
-			}			
-			if(num_balas_aci_J1==0){
-				button_BalaAcido.inputEnabled = false;
-			}
 			Bala_J1.body.dynamic = true;
 			Bala_J1.body.velocity.x=Xvector;
 			Bala_J1.body.velocity.y=Yvector;
 			jugadorPropio.balaVelX=Xvector;
 			jugadorPropio.balaVelY=Yvector;
 			
+			if(num_balas_agu_J1==0){
+				button_BalaAgua.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAgua.tint=1 * 0xffffff;
+			}
+			if(num_balas_fue_J1==0){
+				button_BalaFuego.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaFuego.tint=1* 0xffffff;
+			}
+			if(num_balas_aci_J1==0){
+				button_BalaAcido.tint=0.4 * 0xffffff;
+			}else{
+				button_BalaAcido.tint=1 * 0xffffff;
+			}
+			button_BalaComun.tint=0.78 * 0xffffff;
+			button_BalaAgua.inputEnabled = false;
+			button_BalaFuego.inputEnabled = false;
+			button_BalaAcido.inputEnabled = false;
+			button_BalaComun.inputEnabled = false;			
+
 			$.ajax({
 				url: '/pasar_bala',
 				type: "PUT",
@@ -2275,11 +2287,12 @@ Game.Battle_Online.prototype ={
 			//Fin Disparo
 			
 			//Inicio Control bala J1
-			if((disparos==0 && (Bala_J1.body.x-Bala_J1.width<0 || Bala_J1.body.x + Bala_J1.width>1920 || Bala_J1.body.y+Bala_J1.height>1080 || (Bala_J1.body.velocity.x<=35 && Bala_J1.body.velocity.y<=35 && Bala_J1.body.velocity.x>=-35 && Bala_J1.body.velocity.y>=-35)))||fin_tiempo==0){
+			if((disparos==0 && (Bala_J1.body.x-Bala_J1.width<0 || Bala_J1.body.x + Bala_J1.width>1920 || Bala_J1.body.y+Bala_J1.height>1080 || (Bala_J1.body.velocity.x<=70 && Bala_J1.body.velocity.y<=70 && Bala_J1.body.velocity.x>=-70 && Bala_J1.body.velocity.y>=-70)))){
 				Bala_J1.body.moves = false;
 				Bala_J1.body.kinematic = true;
 				Bala_J1.body.velocity.x=0;
 				Bala_J1.body.velocity.y=0;
+				
 				if(jugador=="J1"){
 					//this.CartelVaqueros.tint=1 * 0xffffff;
 					//this.CartelPiratas.tint=0.4 * 0xffffff;
@@ -2306,13 +2319,30 @@ Game.Battle_Online.prototype ={
 				cuenta_atras.destroy();
 				cuenta_atras=this.time.create();
 				final_cuent_atras=cuenta_atras.add(Phaser.Timer.SECOND * auxTiempoBatalla, this.finTiempo);
-				button_BalaComun.tint=0.78 * 0xffffff;
 				cuenta_atras.start();
+				
+				if(num_balas_agu_J1==0){
+					button_BalaAgua.inputEnabled = false;
+				}else{
+					button_BalaAgua.inputEnabled = true;
+				}
+				if(num_balas_fue_J1==0){
+					button_BalaFuego.inputEnabled = false;
+				}else{
+					button_BalaFuego.inputEnabled = true;
+				}
+				if(num_balas_aci_J1==0){
+					button_BalaAcido.inputEnabled = false;
+				}else{
+					button_BalaAcido.inputEnabled = true;
+				}
+				button_BalaComun.inputEnabled = true;
+				
 				//Fin Control bala J1
 			}
 
 			//Inicio Control bala J2
-			if(((Bala_J2.body.x-Bala_J2.width<0 || Bala_J2.body.x + Bala_J2.width>1920 || Bala_J2.body.y+Bala_J2.height>1080 || (Bala_J2.body.velocity.x<=35 && Bala_J2.body.velocity.y<=35 && Bala_J2.body.velocity.x>=-35 && Bala_J2.body.velocity.y>=-35)))){
+			if(((Bala_J2.body.x-Bala_J2.width<0 || Bala_J2.body.x + Bala_J2.width>1920 || Bala_J2.body.y+Bala_J2.height>1080 || (Bala_J2.body.velocity.x<=70 && Bala_J2.body.velocity.y<=70 && Bala_J2.body.velocity.x>=-70 && Bala_J2.body.velocity.y>=-70)))){
 				//alert();
 				Bala_J2.body.moves = false;
 				Bala_J2.body.kinematic = true;
