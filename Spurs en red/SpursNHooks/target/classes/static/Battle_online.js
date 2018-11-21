@@ -1889,20 +1889,20 @@ Game.Battle_Online.prototype ={
 					Bala_J2.tipo=rival.balaT;
 					switch(jugadorRival.balaT){
 						case "comun":
-							Bala_J2.sprite.loadTexture('balaComun');
+							Bala_J2.loadTexture('balaComun');
 							break;
 						case "agua":
-							Bala_J2.sprite.loadTexture('balaAgua');
+							Bala_J2.loadTexture('balaAgua');
 							break;
 						case "acido":
-							Bala_J2.sprite.loadTexture('balaAcido');
+							Bala_J2.loadTexture('balaAcido');
 							break;
 						case "fuego":
-							Bala_J2.sprite.loadTexture('balaFuego');
+							Bala_J2.loadTexture('balaFuego');
 							break;
-						
 					}
 				})
+				
 			if(jugadorRival.numeroDisparos<auxDisparos){
 				//alert();
 				jugadorRival.numeroDisparos=auxDisparos;
