@@ -1,6 +1,7 @@
 package proyecto_redes.SpursNHooks;
 
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 //import static com.example.bombermanserver.BomberserverApplication.numSesiones;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -117,5 +119,17 @@ public class Controller {
 		System.out.println(jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getNumeroDisparos());
 		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id));
 	}
+	
+	@DeleteMapping("/borrar_espera/borrar_espera_{id}")
+	public ResponseEntity<Jugador> borraItem(@PathVariable int id) {
+		Jugador borrar_jugador = Jugadores_espera.get().get(Jugadores_espera.PosicionJugadorID(id));
+
+		if (borrar_jugador != null) {
+			Jugadores_espera.get().remove(borrar_jugador);
+			return new ResponseEntity<>(borrar_jugador, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}	
 	
 }
