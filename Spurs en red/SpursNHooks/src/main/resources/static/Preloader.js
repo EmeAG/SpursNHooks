@@ -37,7 +37,8 @@ Game.Preloader.prototype={
 		this.load.image('balaAgua', 'assets/PropsEscenario/balaAgua.png');
 		this.load.image('balaFuego', 'assets/PropsEscenario/balaFuego.png');
 		this.load.image('balaComun', 'assets/PropsEscenario/balaComun.png');
-		this.load.image('Marcador', 'assets/PropsEscenario/Marcador.png');
+		this.load.image('MarcadorOff', 'assets/PropsEscenario/MarcadorOff.png');
+		this.load.image('MarcadorOn', 'assets/PropsEscenario/MarcadorOn.png');
 		this.load.image('CartelVaqueros', 'assets/PropsEscenario/CartelVaqueros.png');
 		this.load.image('CartelPiratas', 'assets/PropsEscenario/CartelPiratas.png');
 

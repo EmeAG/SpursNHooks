@@ -241,7 +241,7 @@ Game.Battle_Online.prototype ={
 			this.game.physics.p2.setBoundsToWorld();
 
 			//Marcador
-			this.Marcador=this.add.sprite(637, 0, 'Marcador');
+			this.Marcador=this.add.sprite(637, 0, 'MarcadorOn');
 			this.CartelVaqueros=this.add.sprite(1040, 35, 'CartelVaqueros');
 			this.CartelPiratas=this.add.sprite(670, 35, 'CartelPiratas');
 			this.CartelVaqueros.tint=0.4 * 0xffffff;
