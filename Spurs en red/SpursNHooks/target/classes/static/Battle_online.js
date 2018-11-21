@@ -485,6 +485,9 @@ Game.Battle_Online.prototype ={
 					button_BalaAcido.tint=0.78 * 0xffffff;
 					break;
 			}
+
+		jugadorPropio.balaT=Bala_J1.tipo;
+
 		Bala_J1.visible=true;
 	},
 
@@ -1882,6 +1885,23 @@ Game.Battle_Online.prototype ={
 					Xvector=rival.balaVelX;
 					Yvector=rival.balaVelY;
 					jugadorRival.anguloCanon=rival.anguloCanon;
+					jugadorRival.balaT=rival.balaT;
+					Bala_J2.tipo=rival.balaT;
+					switch(jugadorRival.balaT){
+						case "comun":
+							Bala_J2.sprite.loadTexture('balaComun');
+							break;
+						case "agua":
+							Bala_J2.sprite.loadTexture('balaAgua');
+							break;
+						case "acido":
+							Bala_J2.sprite.loadTexture('balaAcido');
+							break;
+						case "fuego":
+							Bala_J2.sprite.loadTexture('balaFuego');
+							break;
+						
+					}
 				})
 			if(jugadorRival.numeroDisparos<auxDisparos){
 				//alert();
@@ -2695,7 +2715,7 @@ Game.Battle_Online.prototype ={
 		
 		/*
 		this.game.debug.text(turno,500, 300,'white');*/
-		this.game.debug.text(this.contConstJ2,600, 300,'white');
+		this.game.debug.text(jugadorRival.balaT,600, 300,'white');
 		
 		//this.game.debug.text(crear_personajes,600, 500,'white');
 		

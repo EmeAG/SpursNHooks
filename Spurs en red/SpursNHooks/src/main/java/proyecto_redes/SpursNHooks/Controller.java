@@ -100,6 +100,7 @@ public class Controller {
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaVelX(jugador.getBalaVelX());
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaVelY(jugador.getBalaVelY());
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setNumeroDisparos(jugador.getNumeroDisparos());
+		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaT(jugador.getBalaT());
 		System.out.println("numDis: "+ jugador.getNumeroDisparos());
 		System.out.println("Angulo: "+ jugador.getAnguloCanon());
 		System.out.println("ID: "+ jugador.getId());

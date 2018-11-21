@@ -9,7 +9,7 @@ public class Jugador {
 	private String lado="Sin asignar";
 	private List<construcciones> Lista_Construc;
 	private List<Personajes> Lista_Personajes;
-	private int balaT=0;
+	private String balaT="comun";
 	private float anguloCanon=0;
 	private float BalaVelX=0;
 	private float BalaVelY=0;
@@ -20,7 +20,7 @@ public class Jugador {
 		this.lado="Sin asignar";
 		this.Lista_Construc=new ArrayList<construcciones>();
 		this.Lista_Personajes=new ArrayList<Personajes>();
-		this.balaT=0;
+		this.balaT="comun";
 		this.anguloCanon=0;
 		this.BalaVelX=0;
 		this.BalaVelY=0;
@@ -51,11 +51,11 @@ public class Jugador {
 		Lista_Construc = lista_Construc;
 	}
 
-	public int getBalaT() {
+	public String getBalaT() {
 		return balaT;
 	}
 
-	public void setBalaT(int balaT) {
+	public void setBalaT(String balaT) {
 		this.balaT = balaT;
 	}
 
