@@ -2483,141 +2483,140 @@ Game.Battle_Online.prototype ={
 					juga_constr.sprite.body.velocity.y=0;
 					juga_constr.sprite.body.angularVelocity=0;
 				}
-
-
-				//BalaJ2
-				if(isNaN(Number(Bala_J2.body.velocity.y))){
-					Val3=0;
-				}else{
-					Val3=Number(Bala_J2.body.velocity.y);
+			}
+			
+		}
+		//BalaJ2
+		if(isNaN(Number(Bala_J2.body.velocity.y))){
+			Val3=0;
+		}else{
+			Val3=Number(Bala_J2.body.velocity.y);
+		}
+		if(isNaN(Number(Bala_J2.body.velocity.x))){
+			Val4=0;
+		}else{
+			Val4=Number(Bala_J2.body.velocity.x);
+		}
+		velocidad_global=Math.abs(Val3)+Math.abs(Val4);
+		if(estado=="BATALLA"){
+			if(velocidad_global>300 && (Bala_J2.tipo=="comun") ){
+				switch (velocidad_global){
+					case (velocidad_global<1500):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-8;
+						break;
+					case (velocidad_global<2000):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-15;
+						break;
+					default:
+						juga_constr.sprite.vida=juga_constr.sprite.vida-20;
+						break;
 				}
-				if(isNaN(Number(Bala_J2.body.velocity.x))){
-					Val4=0;
-				}else{
-					Val4=Number(Bala_J1.body.velocity.x);
+			}
+			if(Bala_J2.tipo=="fuego"){
+				switch (juga_constr.sprite.tipo){
+					case ("madera"):
+						juga_constr.sprite.vida=1;
+						switch(juga_constr.sprite.forma){
+							case "tri":
+								juga_constr.sprite.loadTexture('Bloq_mad_trian_quem');
+							break;
+							case "cuad":
+								juga_constr.sprite.loadTexture('Bloq_mad_cuad_quem');
+							break;
+							case "rect_v":
+								juga_constr.sprite.loadTexture('Bloq_mad_rectV_quem');
+							break;
+							case "rect_h":
+								juga_constr.sprite.loadTexture('Bloq_mad_rectH_quem');
+							break;
+						}
+					break;
+					case ("piedra"):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+					break;
+					case ("metal"):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+					break;
+					case ("personaje"):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+					break;
 				}
-				velocidad_global=Math.abs(Val3)+Math.abs(Val4);
-				if(estado=="BATALLA"){
-					if(velocidad_global>300 && (Bala_J2.tipo=="comun") ){
-						switch (velocidad_global){
-							case (velocidad_global<1500):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-8;
-								break;
-							case (velocidad_global<2000):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-15;
-								break;
-							default:
-								juga_constr.sprite.vida=juga_constr.sprite.vida-20;
-								break;
-						}
-					}
-					if(Bala_J2.tipo=="fuego"){
-						switch (juga_constr.sprite.tipo){
-							case ("madera"):
-								juga_constr.sprite.vida=1;
-								switch(juga_constr.sprite.forma){
-									case "tri":
-										juga_constr.sprite.loadTexture('Bloq_mad_trian_quem');
-									break;
-									case "cuad":
-										juga_constr.sprite.loadTexture('Bloq_mad_cuad_quem');
-									break;
-									case "rect_v":
-										juga_constr.sprite.loadTexture('Bloq_mad_rectV_quem');
-									break;
-									case "rect_h":
-										juga_constr.sprite.loadTexture('Bloq_mad_rectH_quem');
-									break;
-								}
+				Bala_J2.body.x=2000;
+				Bala_J2.body.y=2000;
+				juga_constr.sprite.body.velocity.x=0;
+				juga_constr.sprite.body.velocity.y=0;
+				juga_constr.sprite.body.angularVelocity=0;
+			}
+			if(Bala_J2.tipo=="acido"){
+				switch (juga_constr.sprite.tipo){
+					case ("piedra"):
+						juga_constr.sprite.vida=1;
+						switch(juga_constr.sprite.forma){
+							case "tri":
+								juga_constr.sprite.loadTexture('Bloq_pied_trian_aci');
 							break;
-							case ("piedra"):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							case "cuad":
+								juga_constr.sprite.loadTexture('Bloq_pied_cuad_aci');
 							break;
-							case ("metal"):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							case "rect_v":
+								juga_constr.sprite.loadTexture('Bloq_pied_rectV_aci');
 							break;
-							case ("personaje"):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							case "rect_h":
+								juga_constr.sprite.loadTexture('Bloq_pied_rectH_aci');
 							break;
 						}
-						Bala_J2.body.x=2000;
-						Bala_J2.body.y=2000;
-						juga_constr.sprite.body.velocity.x=0;
-						juga_constr.sprite.body.velocity.y=0;
-						juga_constr.sprite.body.angularVelocity=0;
-					}
-					if(Bala_J2.tipo=="acido"){
-						switch (juga_constr.sprite.tipo){
-							case ("piedra"):
-								juga_constr.sprite.vida=1;
-								switch(juga_constr.sprite.forma){
-									case "tri":
-										juga_constr.sprite.loadTexture('Bloq_pied_trian_aci');
-									break;
-									case "cuad":
-										juga_constr.sprite.loadTexture('Bloq_pied_cuad_aci');
-									break;
-									case "rect_v":
-										juga_constr.sprite.loadTexture('Bloq_pied_rectV_aci');
-									break;
-									case "rect_h":
-										juga_constr.sprite.loadTexture('Bloq_pied_rectH_aci');
-									break;
-								}
-								break;
-							case ("madera"):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-1;
-							break;
-							case ("metal"):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-1;
-							break;
-							case ("personaje"):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-1;
-							break;
-						}
-						Bala_J2.body.x=2000;
-						Bala_J2.body.y=2000;
-						juga_constr.sprite.body.velocity.x=0;
-						juga_constr.sprite.body.velocity.y=0;
-						juga_constr.sprite.body.angularVelocity=0;
-					}
-					if(Bala_J2.tipo=="agua"){
-						//alert();
-						switch (juga_constr.sprite.tipo){
-							case ("metal"):
-								juga_constr.sprite.vida=1;
-								switch(juga_constr.sprite.forma){
-									case "tri":
-										juga_constr.sprite.loadTexture('Bloq_met_trian_oxi');
-									break;
-									case "cuad":
-										juga_constr.sprite.loadTexture('Bloq_met_cuad_oxi');
-									break;
-									case "rect_v":
-										juga_constr.sprite.loadTexture('Bloq_met_rectV_oxi');
-									break;
-									case "rect_h":
-										juga_constr.sprite.loadTexture('Bloq_met_rectH_oxi');
-									break;
-								}
-								break;
-							case ("madera"):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-1;
-							break;
-							case ("piedra"):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-1;
-							break;
-							case ("personaje"):
-								juga_constr.sprite.vida=juga_constr.sprite.vida-1;
-							break;
-						}
-						Bala_J2.body.x=2000;
-						Bala_J2.body.y=2000;
-						juga_constr.sprite.body.velocity.x=0;
-						juga_constr.sprite.body.velocity.y=0;
-						juga_constr.sprite.body.angularVelocity=0;
-					}
+						break;
+					case ("madera"):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+					break;
+					case ("metal"):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+					break;
+					case ("personaje"):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+					break;
 				}
+				Bala_J2.body.x=2000;
+				Bala_J2.body.y=2000;
+				juga_constr.sprite.body.velocity.x=0;
+				juga_constr.sprite.body.velocity.y=0;
+				juga_constr.sprite.body.angularVelocity=0;
+			}
+			if(Bala_J2.tipo=="agua"){
+				//alert();
+				switch (juga_constr.sprite.tipo){
+					case ("metal"):
+						juga_constr.sprite.vida=1;
+						switch(juga_constr.sprite.forma){
+							case "tri":
+								juga_constr.sprite.loadTexture('Bloq_met_trian_oxi');
+							break;
+							case "cuad":
+								juga_constr.sprite.loadTexture('Bloq_met_cuad_oxi');
+							break;
+							case "rect_v":
+								juga_constr.sprite.loadTexture('Bloq_met_rectV_oxi');
+							break;
+							case "rect_h":
+								juga_constr.sprite.loadTexture('Bloq_met_rectH_oxi');
+							break;
+						}
+						break;
+					case ("madera"):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+					break;
+					case ("piedra"):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+					break;
+					case ("personaje"):
+						juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+					break;
+				}
+				Bala_J2.body.x=2000;
+				Bala_J2.body.y=2000;
+				juga_constr.sprite.body.velocity.x=0;
+				juga_constr.sprite.body.velocity.y=0;
+				juga_constr.sprite.body.angularVelocity=0;
 			}
 		}
 	},
