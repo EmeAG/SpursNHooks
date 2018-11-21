@@ -2234,13 +2234,26 @@ Game.Battle_Online.prototype ={
 				this.telon.body.velocity.setTo(0, +300);
 				this.delayAux=0;
 				if(puntuacion1==3){
-					this.telon.x=this.world.width/3;
+					if(jugador=="J1"){
+						this.telon.x=this.world.width/3;
+					}
+					else{
+						this.telon.x=-this.cache.getImage("telon").width+this.world.width/3*2;
+					}
+					
 				}
 				if(puntuacion2==3){
-					this.telon.x=-this.cache.getImage("telon").width+this.world.width/3*2;
+					if(jugador=="J2"){
+						this.telon.x=this.world.width/3;
+					}
+					else{
+						this.telon.x=-this.cache.getImage("telon").width+this.world.width/3*2;
+					}
 				}
 				this.textVictoria=this.add.text(this.world.width/3,this.world.height/2,"Victoria",style_ganador);
 				this.textVictoria.visible=false;
+				this.textDerrota=this.add.text(this.world.width/3,this.world.height/2,"Derrota",style_ganador);
+				this.textDerrota.visible=false;
 				estado="FINAL";
 			}
 			//FIN CONTROL FINAL JUEGO
@@ -2357,16 +2370,32 @@ Game.Battle_Online.prototype ={
 				this.telon.body.immovable = true;
 				this.telon.body.velocity.setTo(0,0);
 					if(puntuacion1==3){
-						this.textVictoria.visible=true;
-						this.textVictoria.x=this.world.width/3*2;
-						this.textVictoria.y=this.world.height/2;
-						this.textVictoria.anchor.setTo(0.5,0.5);
+						if(jugador=="J1"){
+							this.textVictoria.visible=true;
+							this.textVictoria.x=this.world.width/3*2;
+							this.textVictoria.y=this.world.height/2;
+							this.textVictoria.anchor.setTo(0.5,0.5);
+						}
+						else{
+							this.textVictoria.x=this.world.width/3;
+							this.textVictoria.y=this.world.height/2;
+							this.textVictoria.visible=true;
+							this.textVictoria.anchor.setTo(0.5,0.5);
+						}
 					}
 					if(puntuacion2==3){
-						this.textVictoria.x=this.world.width/3;
-						this.textVictoria.y=this.world.height/2;
-						this.textVictoria.visible=true;
-						this.textVictoria.anchor.setTo(0.5,0.5);
+						if(jugador=="J2"){
+							this.textDerrota.visible=true;
+							this.textDerrota.x=this.world.width/3*2;
+							this.textDerrota.y=this.world.height/2;
+							this.textDerrota.anchor.setTo(0.5,0.5);
+						}
+						else{
+							this.textDerrota.x=this.world.width/3;
+							this.textDerrota.y=this.world.height/2;
+							this.textDerrota.visible=true;
+							this.textDerrota.anchor.setTo(0.5,0.5);
+						}
 					}
 				//}
 				if(this.delayAux>=600){
@@ -2715,7 +2744,7 @@ Game.Battle_Online.prototype ={
 		
 		/*
 		this.game.debug.text(turno,500, 300,'white');*/
-		this.game.debug.text(jugadorRival.balaT,600, 300,'white');
+		this.game.debug.text(puntuacion1+"///"+puntuacion2,600, 300,'white');
 		
 		//this.game.debug.text(crear_personajes,600, 500,'white');
 		
