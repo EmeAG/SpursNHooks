@@ -1100,6 +1100,13 @@ Game.Battle_Online.prototype ={
 	update:function(){
 		//Inicio Pantalla en Vertical
 		if(jugador!=undefined && Crearpersonajes!=1){
+			///borrar_espera/borrar_espera_
+			$.ajax({
+				url: '/borrar_espera/borrar_espera_'+id_propio,
+				type: "DELETE"
+			}).done(function (item) {
+				console.log("Item borrado: ");
+			})
 			if(jugador=="J1"){
 				//colocacion piratas
 				for(var i=this.numJ1;i<3;i++){
@@ -1142,7 +1149,7 @@ Game.Battle_Online.prototype ={
 					this.construcAux=this.jugador;
 					this.jugadoresJ2[this.contJugJ2]=this.construcAux;
 					array[this.contJugJ2]=this.construcAux;
-					this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
+					//this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
 					this.contJugJ2++;
 					this.numJ2++;
 					this.num1=-2;
@@ -1185,7 +1192,7 @@ Game.Battle_Online.prototype ={
 					this.num1=this.contJugJ2;
 					this.construcAux=this.jugador;
 					this.jugadoresJ2[this.contJugJ2]=this.construcAux;
-					this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
+					//this.jugadoresJ2[this.contJugJ2].events.onInputDown.add(this.click_jugador,this);
 					this.contJugJ2++;
 					this.numJ2++;
 					this.construcAux=null;
