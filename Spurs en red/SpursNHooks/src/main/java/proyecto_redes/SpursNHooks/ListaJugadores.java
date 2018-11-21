@@ -38,7 +38,7 @@ public class ListaJugadores {
 	
 	public int PosicionJugadorID(int id) {
 		int posicion=0;
-		System.out.println("Tamano Lista->"+ this.Lista_Jugador.size() + ";  Id: " + id);
+		//System.out.println("Tamano Lista->"+ this.Lista_Jugador.size() + ";  Id: " + id);
 		for (int i=0; i<this.Lista_Jugador.size(); i++) {
 			if (this.Lista_Jugador.get(i).getId()==id) {
 				posicion=i;

@@ -24,7 +24,7 @@ public class Jugador {
 		this.anguloCanon=0;
 		this.BalaVelX=0;
 		this.BalaVelY=0;
-		this.setNumeroDisparos(0);
+		this.numeroDisparos=0;
 	}
 
 	public int getId() {
@@ -105,5 +105,6 @@ public class Jugador {
 	public void setNumeroDisparos(int numeroDisparos) {
 		this.numeroDisparos = numeroDisparos;
 	}
+
 	
 }

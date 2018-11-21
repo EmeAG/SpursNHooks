@@ -56,8 +56,8 @@ public class Controller {
 	@PostMapping("/objeto_creado")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void nuevoObjeto(@RequestBody construcciones objeto) {
-		System.out.println("Objeto 1->"+ objeto.getDuenio());
-		System.out.println("Objeto 2->"+ jugadores_conectados.PosicionJugadorID(objeto.getDuenio()));
+		//System.out.println("Objeto 1->"+ objeto.getDuenio());
+		//System.out.println("Objeto 2->"+ jugadores_conectados.PosicionJugadorID(objeto.getDuenio()));
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(objeto.getDuenio())).addListaConstruccion(objeto);
 	}
 	
@@ -69,8 +69,8 @@ public class Controller {
 	@PostMapping("/personaje_creado")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void nuevoPersonaje(@RequestBody Personajes personaje) {
-		System.out.println("Personaje 1->"+ personaje.getDuenio());
-		System.out.println("Personaje 2->"+ jugadores_conectados.PosicionJugadorID(personaje.getDuenio()));
+		//System.out.println("Personaje 1->"+ personaje.getDuenio());
+		//System.out.println("Personaje 2->"+ jugadores_conectados.PosicionJugadorID(personaje.getDuenio()));
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(personaje.getDuenio())).addListaPersonajes(personaje);
 	}
 	
@@ -97,9 +97,12 @@ public class Controller {
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaVelX(jugador.getBalaVelX());
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setBalaVelY(jugador.getBalaVelY());
 		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(jugador.getId())).setNumeroDisparos(jugador.getNumeroDisparos());
+		System.out.println("numDis: "+ jugador.getNumeroDisparos());
+		System.out.println("Angulo: "+ jugador.getAnguloCanon());
+		System.out.println("ID: "+ jugador.getId());
 	}
 	
-	@GetMapping("/cargar_balaVelX/{id}")
+	/*@GetMapping("/cargar_balaVelX/{id}")
 	public float cargar_balaVelX(@PathVariable int id){
 		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getBalaVelX();
 	}
@@ -107,11 +110,12 @@ public class Controller {
 	@GetMapping("/cargar_balaVelY/{id}")
 	public float cargar_balaVelY(@PathVariable int id){
 		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getBalaVelY();
-	}
+	}*/
 	
-	@GetMapping("/cargar_numDisparos/{id}")
-	public float cargar_numDisparos(@PathVariable int id){
-		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getNumeroDisparos();
+	@GetMapping("/cargar_numDisparos/num_dis{id}")
+	public Jugador cargar_numDisparos(@PathVariable int id){
+		System.out.println(jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getNumeroDisparos());
+		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id));
 	}
 	
 }

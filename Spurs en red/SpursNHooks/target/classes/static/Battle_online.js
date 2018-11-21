@@ -49,7 +49,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstrucion=0;//contador de tiempo constr
+var auxTiempoConstrucion=10;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -108,7 +108,7 @@ var jugadorPropio={
 	anguloCanon:undefined,
 	balaVelX:undefined,
 	balaVelY:undefined,
-	numDisparos:0
+	numeroDisparos:0
 }
 
 //Datos rival
@@ -121,7 +121,7 @@ var jugadorRival={
 	anguloCanon:undefined,
 	balaVelX:undefined,
 	balaVelY:undefined,
-	numDisparos:0
+	numeroDisparos:0
 }
 
 Game.Battle_Online.prototype ={
@@ -502,7 +502,7 @@ Game.Battle_Online.prototype ={
 	//Disparo. input PosicionRaton, output 0.
 	launch:function(pointer) {
 		if(disparos>0){
-			jugadorPropio.numDisparos++;
+			jugadorPropio.numeroDisparos++;
 			//limitar fuerza de disparo
 			fuerza=Math.min(analog.height,600); 
 			cuenta_atras.pause();
@@ -552,6 +552,7 @@ Game.Battle_Online.prototype ={
 			Bala_J1.body.velocity.y=Yvector;
 			jugadorPropio.balaVelX=Xvector;
 			jugadorPropio.balaVelY=Yvector;
+			
 			$.ajax({
 				url: '/pasar_bala',
 				type: "PUT",
@@ -563,7 +564,6 @@ Game.Battle_Online.prototype ={
 			}).done(function (item) {
 				console.log("Item created: " + JSON.stringify(objeto));
 			})
-
 		}
 	},
 	
@@ -1863,18 +1863,21 @@ Game.Battle_Online.prototype ={
 		}
 
 		if(estado=="BATALLA"){
+			/******************/
 			$.ajax({
 				type: 'GET',
-				url:"/cargar_numDisparos/"+ id_rival,
+				url:"/cargar_numDisparos/num_dis" + id_rival,
 				headers: {
 					"Content-type": "application/json"
 				}
-				}).done(function(num) {
-					auxDisparos=num;
+				}).done(function(rival) {
+					auxDisparos=rival.numeroDisparos;
+					Xvector=rival.balaVelX;
+					Yvector=rival.balaVelY;
+					jugadorRival.anguloCanon=rival.anguloCanon;
 				})
-			if(jugadorRival.numDisparos<auxDisparos){
-				alert();
-				jugadorRival.numDisparos=auxDisparos;
+			if(jugadorRival.numeroDisparos<auxDisparos){
+				jugadorRival.c=auxDisparos;
 				Bala_J2.body.dynamic = true;
 				Bala_J2.body.velocity.x=Xvector;
 				Bala_J2.body.velocity.y=Yvector;
@@ -1912,7 +1915,7 @@ Game.Battle_Online.prototype ={
 		this.CannonPirata.anchor.setTo(0.15, 0.35);
 		this.game.physics.arcade.enable([this.CannonPirata, this.CannonVaquero]);*/
 
-			$.ajax({
+			/*$.ajax({
 				type: 'GET',
 				url:"/cargar_angulo_canon/"+ id_rival,
 				headers: {
@@ -1920,7 +1923,7 @@ Game.Battle_Online.prototype ={
 				}
 				}).done(function(angulo) {
 					jugadorRival.anguloCanon=angulo;
-				})
+				})*/
 
 			$.ajax({
 				url: '/pasar_angulo_canon',
@@ -2684,7 +2687,7 @@ Game.Battle_Online.prototype ={
 		
 		/*
 		this.game.debug.text(turno,500, 300,'white');*/
-		this.game.debug.text(auxDisparos,600, 300,'white');
+		this.game.debug.text(jugadorPropio.numeroDisparos,600, 300,'white');
 		
 		//this.game.debug.text(crear_personajes,600, 500,'white');
 		
