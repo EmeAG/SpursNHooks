@@ -2272,7 +2272,8 @@ Game.Battle_Online.prototype ={
 			}
 
 			//Inicio Control bala J2
-			if((disparos==0 && (Bala_J2.body.x-Bala_J2.width<0 || Bala_J2.body.x + Bala_J2.width>1920 || Bala_J2.body.y+Bala_J2.height>1080 || (Bala_J2.body.velocity.x<=35 && Bala_J2.body.velocity.y<=35 && Bala_J2.body.velocity.x>=-35 && Bala_J2.body.velocity.y>=-35)))||fin_tiempo==0){
+			if(((Bala_J2.body.x-Bala_J2.width<0 || Bala_J2.body.x + Bala_J2.width>1920 || Bala_J2.body.y+Bala_J2.height>1080 || (Bala_J2.body.velocity.x<=35 && Bala_J2.body.velocity.y<=35 && Bala_J2.body.velocity.x>=-35 && Bala_J2.body.velocity.y>=-35)))){
+				//alert();
 				Bala_J2.body.moves = false;
 				Bala_J2.body.kinematic = true;
 				Bala_J2.body.velocity.x=0;
