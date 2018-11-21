@@ -48,6 +48,7 @@ public class Controller {
 			InfoBatalla.setId_batalla(nueva_batalla.getId_batalla());
 		}
 		return InfoBatalla;
+
 	}
 	
 	@GetMapping("/datos_jugadores")

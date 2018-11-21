@@ -49,7 +49,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstrucion=10;//contador de tiempo constr
+var auxTiempoConstrucion=20;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -979,19 +979,19 @@ Game.Battle_Online.prototype ={
 			else{
 				objeto.tint=0.4 * 0xffffff;
 			}
-			for(var i=0;i<this.contConstJ2;i++){
-				if(this.construcJ2[i]!=objeto){
-					if(objeto.x+objeto.width/2>this.construcJ2[i].x-this.construcJ2[i].width/2 && objeto.x-objeto.width/2<this.construcJ2[i].x+this.construcJ2[i].width/2){
-						if(objeto.y+objeto.height/2>this.construcJ2[i].y-this.construcJ2[i].height/2 && objeto.y-objeto.height/2<this.construcJ2[i].y+this.construcJ2[i].height/2){
+			for(var i=0;i<this.contConstJ1;i++){
+				if(this.construcJ1[i]!=objeto){
+					if(objeto.x+objeto.width/2>this.construcJ1[i].x-this.construcJ1[i].width/2 && objeto.x-objeto.width/2<this.construcJ1[i].x+this.construcJ1[i].width/2){
+						if(objeto.y+objeto.height/2>this.construcJ1[i].y-this.construcJ1[i].height/2 && objeto.y-objeto.height/2<this.construcJ1[i].y+this.construcJ1[i].height/2){
 							objeto.tint=0.4 * 0xffffff;
 						}
 					}
 				}
 			}
-			for(var i=0;i<this.contJugJ2;i++){
-				if(this.jugadoresJ2[i]!=objeto){
-					if(objeto.x+objeto.width/2>this.jugadoresJ2[i].x-this.jugadoresJ2[i].width/2 && objeto.x-objeto.width/2<this.jugadoresJ2[i].x+this.jugadoresJ2[i].width/2){
-						if(objeto.y+objeto.height/2>this.jugadoresJ2[i].y-this.jugadoresJ2[i].height/2 && objeto.y-objeto.height/2<this.jugadoresJ2[i].y+this.jugadoresJ2[i].height/2){
+			for(var i=0;i<this.contJugJ1;i++){
+				if(this.jugadoresJ1[i]!=objeto){
+					if(objeto.x+objeto.width/2>this.jugadoresJ1[i].x-this.jugadoresJ1[i].width/2 && objeto.x-objeto.width/2<this.jugadoresJ1[i].x+this.jugadoresJ1[i].width/2){
+						if(objeto.y+objeto.height/2>this.jugadoresJ1[i].y-this.jugadoresJ1[i].height/2 && objeto.y-objeto.height/2<this.jugadoresJ1[i].y+this.jugadoresJ1[i].height/2){
 							objeto.tint=0.4 * 0xffffff;
 						}
 					}
