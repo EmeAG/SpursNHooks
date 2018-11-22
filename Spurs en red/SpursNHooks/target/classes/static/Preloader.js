@@ -42,10 +42,10 @@ Game.Preloader.prototype={
 		this.load.image('CartelVaqueros', 'assets/PropsEscenario/CartelVaqueros.png');
 		this.load.image('CartelPiratas', 'assets/PropsEscenario/CartelPiratas.png');
 
-		this.load.image('Bloq_mad_cuad_quem', 'assets/sprites/MaderaCuadQuem.png');
-		this.load.image('Bloq_mad_rectV_quem', 'assets/sprites/MaderaRectVertQuem.png');
-		this.load.image('Bloq_mad_trian_quem', 'assets/sprites/MaderaTriangQuem.png');
-		this.load.image('Bloq_mad_rectH_quem', 'assets/sprites/MaderaRectHorzQuem.png');
+		this.load.image('Bloq_mad_cuad_quem', 'assets/sprites/MaderaCuadQuem1.png');
+		this.load.image('Bloq_mad_rectV_quem', 'assets/sprites/MaderaRectVertQuem1.png');
+		this.load.image('Bloq_mad_trian_quem', 'assets/sprites/MaderaTriangQuem1.png');
+		this.load.image('Bloq_mad_rectH_quem', 'assets/sprites/MaderaRectHorizQuem1.png');
 		this.load.image('Bloq_pied_cuad_aci', 'assets/sprites/PiedraCuadrAcido.png');
 		this.load.image('Bloq_pied_trian_aci', 'assets/sprites/PiedraTrianAcido.png');
 		this.load.image('Bloq_pied_rectH_aci', 'assets/sprites/PiedraRectAcido.png');

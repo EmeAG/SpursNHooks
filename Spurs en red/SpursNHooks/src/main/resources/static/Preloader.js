@@ -45,7 +45,7 @@ Game.Preloader.prototype={
 		this.load.image('Bloq_mad_cuad_quem', 'assets/sprites/MaderaCuadQuem1.png');
 		this.load.image('Bloq_mad_rectV_quem', 'assets/sprites/MaderaRectVertQuem1.png');
 		this.load.image('Bloq_mad_trian_quem', 'assets/sprites/MaderaTriangQuem1.png');
-		this.load.image('Bloq_mad_rectH_quem', 'assets/sprites/MaderaRectHorzQuem1.png');
+		this.load.image('Bloq_mad_rectH_quem', 'assets/sprites/MaderaRectHorizQuem1.png');
 		this.load.image('Bloq_pied_cuad_aci', 'assets/sprites/PiedraCuadrAcido.png');
 		this.load.image('Bloq_pied_trian_aci', 'assets/sprites/PiedraTrianAcido.png');
 		this.load.image('Bloq_pied_rectH_aci', 'assets/sprites/PiedraRectAcido.png');
