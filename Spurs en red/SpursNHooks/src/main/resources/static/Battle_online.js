@@ -913,7 +913,10 @@ Game.Battle_Online.prototype ={
 		if(this.construcAux==null && fin_tiempo!=0){
 			this.game.physics.p2.gravity.y = 0;
 			if(jugador=="J1"&&this.numJ1<3){
-				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Pirata');
+				//this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Pirata');
+				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'PirataMov');
+				this.idle = this.jugador.animations.add('idle');  //Animacion Pirata
+				this.jugador.animations.play('idle', 5, true);
 				this.physics.p2.enable(this.jugador);
 				this.jugador.body.mass=peso_personaje;
 				this.jugador.vida=vida_personaje;
@@ -929,7 +932,10 @@ Game.Battle_Online.prototype ={
 			}
 
 			if(jugador=="J2"&&this.numJ2<3){
-				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Vaquero');
+				//this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'Vaquero');
+				this.jugador=this.add.sprite(this.button_Jugador.x,this.button_Jugador.y,'VaqueroMov');
+				this.idle = this.jugador.animations.add('idle');  //Animacion Pirata
+				this.jugador.animations.play('idle', 5, true);
 				this.physics.p2.enable(this.jugador);
 				this.jugador.body.mass=peso_personaje;
 				this.jugador.vida=vida_personaje;
@@ -1125,7 +1131,9 @@ Game.Battle_Online.prototype ={
 			if(jugador=="J1"){
 				//colocacion piratas
 				for(var i=this.numJ1;i<3;i++){
-					this.jugador=this.add.sprite(0,0,'Pirata')
+					this.jugador=this.add.sprite(0,0,'PirataMov')
+					this.idle = this.jugador.animations.add('idle');  //Animacion Pirata
+					this.jugador.animations.play('idle', 5, true);
 					this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
 					this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
 					this.jugador.vida=vida_personaje;
@@ -1148,7 +1156,9 @@ Game.Battle_Online.prototype ={
 				}
 
 				for(var i=this.numJ2;i<3;i++){
-					this.jugador=this.add.sprite(0,0,'Vaquero')
+					this.jugador=this.add.sprite(0,0,'VaqueroMov')
+					this.idle = this.jugador.animations.add('idle');  //Animacion Pirata
+					this.jugador.animations.play('idle', 5, true);
 					this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
 					this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
 					this.jugador.vida=vida_personaje;
@@ -1192,7 +1202,9 @@ Game.Battle_Online.prototype ={
 			}else{
 				//colocacion piratas
 				for(var i=this.numJ2;i<3;i++){
-					this.jugador=this.add.sprite(0,0,'Pirata')
+					this.jugador=this.add.sprite(0,0,'PirataMov')
+					this.idle = this.jugador.animations.add('idle');  //Animacion Pirata
+					this.jugador.animations.play('idle', 5, true);
 					this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
 					this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
 					this.jugador.vida=vida_personaje;
@@ -1215,7 +1227,9 @@ Game.Battle_Online.prototype ={
 				}
 
 				for(var i=this.numJ1;i<3;i++){
-					this.jugador=this.add.sprite(0,0,'Vaquero')
+					this.jugador=this.add.sprite(0,0,'VaqueroMov')
+					this.idle = this.jugador.animations.add('idle');  //Animacion Pirata
+					this.jugador.animations.play('idle', 5, true);
 					this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
 					this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
 					this.jugador.vida=vida_personaje;
