@@ -146,7 +146,9 @@ Game.Battle_Offline.prototype ={
 
 		//colocacion piratas
 		for(var i=this.numJ1;i<3;i++){
-			this.jugador=this.add.sprite(0,0,'Pirata')
+			this.jugador=this.add.sprite(0,0,'PirataMov');
+			this.idle = this.jugador.animations.add('idle');  //Animacion Pirata
+			this.jugador.animations.play('idle', 5, true);
 			this.jugador.x=this.jugador.width/2+this.world.width/7*(2-i);
 			this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
 			this.jugador.vida=vida_personaje;
@@ -168,9 +170,11 @@ Game.Battle_Offline.prototype ={
 			this.construcAux=null;
 			this.num1=-2;
 		}
-
+		//colocacion vaqueros
 		for(var i=this.numJ2;i<3;i++){
-			this.jugador=this.add.sprite(0,0,'Vaquero')
+			this.jugador=this.add.sprite(0,0,'VaqueroMov');
+			this.idle = this.jugador.animations.add('idle');  //Animacion Vaquero
+			this.jugador.animations.play('idle', 5, true);
 			this.jugador.x=this.world.width-(this.jugador.width/2)-this.world.width/7*(2-i);
 			this.jugador.y=this.world.height-this.SueloVaquero.height-this.jugador.height/2;
 			this.jugador.vida=vida_personaje;
@@ -2179,7 +2183,7 @@ Game.Battle_Offline.prototype ={
 					}
 					
 					//Cambiar sprite del material a sprite roto cuando la vida sea menor que 10
-					if((juga_constr.sprite.vida <= 19) && (juga_constr.sprite.vida >=1)){
+					if((juga_constr.sprite.vida <= 10) && (juga_constr.sprite.vida >=1)){
 						switch (juga_constr.sprite.tipo){
 							case ("madera"):
 								

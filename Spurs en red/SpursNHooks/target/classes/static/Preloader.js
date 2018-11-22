@@ -14,7 +14,9 @@ Game.Preloader.prototype={
 		
 		//Game Images
 		this.load.image('Vaquero', 'assets/sprites/Vaquero.png');
+		this.load.spritesheet('VaqueroMov', 'assets/sprites/MovVaquero.png', 52, 94, 2);
 		this.load.image('Pirata', 'assets/sprites/Pirata.png');
+		this.load.spritesheet('PirataMov', 'assets/sprites/MovPirata.png', 58, 88, 2);
 		this.load.image('Suelo_Pirata', 'assets/PropsEscenario/SueloPirata.png');
 		this.load.image('Suelo_Vaquero', 'assets/PropsEscenario/sueloVaquero.png')
 		this.load.image('Suelo_Mar_cla', 'assets/PropsEscenario/olas.png')
@@ -54,6 +56,19 @@ Game.Preloader.prototype={
 		this.load.image('Bloq_met_rectH_oxi', 'assets/sprites/metalRectOxido.png');
 		this.load.image('Bloq_met_rectV_oxi', 'assets/sprites/MetalRectVertOxido.png');		
 		this.load.image('Bloq_met_cuad_oxi', 'assets/sprites/metalCuadrOxido.png');
+		
+		this.load.image('Bloq_mad_cuad_roto', 'assets/sprites/MaderaCuadRoto.png');
+		this.load.image('Bloq_mad_rectV_roto', 'assets/sprites/MaderaRectVertRoto.png');
+		this.load.image('Bloq_mad_trian_roto', 'assets/sprites/MaderaTriangRoto.png');
+		this.load.image('Bloq_mad_rectH_roto', 'assets/sprites/MaderaRectHorizRoto.png');
+		this.load.image('Bloq_pied_cuad_roto', 'assets/sprites/PiedraCuadrRoto.png');
+		this.load.image('Bloq_pied_trian_roto', 'assets/sprites/PiedraTrianRoto.png');
+		this.load.image('Bloq_pied_rectH_roto', 'assets/sprites/PiedraRectRoto.png');
+		this.load.image('Bloq_pied_rectV_roto', 'assets/sprites/PiedraRectVertRoto.png');
+		this.load.image('Bloq_met_trian_roto', 'assets/sprites/metalTrianRoto.png');
+		this.load.image('Bloq_met_rectH_roto', 'assets/sprites/metalRectRoto.png');
+		this.load.image('Bloq_met_rectV_roto', 'assets/sprites/MetalRectVertRoto.png');		
+		this.load.image('Bloq_met_cuad_roto', 'assets/sprites/metalCuadrRoto.png');
 
 		//Contruccion Images
 		this.load.image('telon','assets/PropsEscenario/Telon.png');
