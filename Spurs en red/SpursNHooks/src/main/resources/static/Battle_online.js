@@ -63,6 +63,9 @@ var vida_piedra=40;
 var vida_metal=65;
 var vida_personaje=10;
 
+//Velocidad de reaparicion del cañon 
+var velocidad_minima=70;
+
 var puntuacion1=0;
 var puntuacion2=0;
 
@@ -2305,7 +2308,7 @@ Game.Battle_Online.prototype ={
 			//Fin Disparo
 			
 			//Inicio Control bala J1
-			if((disparos==0 && (Bala_J1.body.x-Bala_J1.width<0 || Bala_J1.body.x + Bala_J1.width>1920 || Bala_J1.body.y+Bala_J1.height>1080 || (Bala_J1.body.velocity.x<=70 && Bala_J1.body.velocity.y<=70 && Bala_J1.body.velocity.x>=-70 && Bala_J1.body.velocity.y>=-70)))){
+			if((disparos==0 && (Bala_J1.body.x-Bala_J1.width<0 || Bala_J1.body.x + Bala_J1.width>1920 || Bala_J1.body.y+Bala_J1.height>1080 || (Bala_J1.body.velocity.x<=velocidad_minima && Bala_J1.body.velocity.y<=velocidad_minima && Bala_J1.body.velocity.x>=-velocidad_minima && Bala_J1.body.velocity.y>=-velocidad_minima)))){
 				Bala_J1.body.moves = false;
 				Bala_J1.body.kinematic = true;
 				Bala_J1.body.velocity.x=0;
@@ -2360,7 +2363,7 @@ Game.Battle_Online.prototype ={
 			}
 
 			//Inicio Control bala J2
-			if(((Bala_J2.body.x-Bala_J2.width<0 || Bala_J2.body.x + Bala_J2.width>1920 || Bala_J2.body.y+Bala_J2.height>1080 || (Bala_J2.body.velocity.x<=70 && Bala_J2.body.velocity.y<=70 && Bala_J2.body.velocity.x>=-70 && Bala_J2.body.velocity.y>=-70)))){
+			if(((Bala_J2.body.x-Bala_J2.width<0 || Bala_J2.body.x + Bala_J2.width>1920 || Bala_J2.body.y+Bala_J2.height>1080 || (Bala_J2.body.velocity.x<=velocidad_minima && Bala_J2.body.velocity.y<=velocidad_minima && Bala_J2.body.velocity.x>=-velocidad_minima && Bala_J2.body.velocity.y>=-velocidad_minima)))){
 				//alert();
 				Bala_J2.body.moves = false;
 				Bala_J2.body.kinematic = true;
