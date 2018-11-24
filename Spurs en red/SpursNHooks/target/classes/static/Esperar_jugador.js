@@ -15,8 +15,8 @@ Game.Esperar_jugador.prototype ={
 						boundsAlignV: "middle",
 					};
 	    this.telon=this.game.add.sprite(-40,0,'telon');
-	    this.telon=this.game.add.sprite(40,0,'CartelEspera');
-		this.text1=this.game.add.text(90, (this.world.height/2)+200, "Esperando Jugador...",style);
+	    this.cartelEsp=this.game.add.sprite(40,0,'CartelEspera');
+		this.text1=this.game.add.text(90, (this.world.height/2)+250, "Esperando Jugador...",style);
 		this.text1.font = 'Ultra';
 		$.ajax({
 			url:"/nuevo_jugador",

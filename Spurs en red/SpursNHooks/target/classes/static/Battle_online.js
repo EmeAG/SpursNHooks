@@ -2283,6 +2283,8 @@ Game.Battle_Online.prototype ={
 						this.telon.x=-this.cache.getImage("telon").width+this.world.width/3*2;
 					}
 				}
+				this.cartelFin=this.game.add.sprite((this.world.width/3)+60,0,'CartelEspera');
+				this.cartelFin.visible = false;
 				this.textVictoria=this.add.text(this.world.width/3,this.world.height/2,"Victoria",style_ganador);
 				this.textVictoria.visible=false;
 				this.textDerrota=this.add.text(this.world.width/3,this.world.height/2,"Derrota",style_ganador);
@@ -2422,28 +2424,36 @@ Game.Battle_Online.prototype ={
 				this.telon.body.velocity.setTo(0,0);
 					if(puntuacion1==3){
 						if(jugador=="J1"){
+							this.cartelFin.x = (this.world.width/3)+60;
+							this.cartelFin.visible = true;
 							this.textVictoria.visible=true;
 							this.textVictoria.x=this.world.width/3*2;
-							this.textVictoria.y=this.world.height/2;
+							this.textVictoria.y=(this.world.height/2)+260;
 							this.textVictoria.anchor.setTo(0.5,0.5);
 						}
 						else{
+							this.cartelFin.x = 40;
+							this.cartelFin.visible = true;
 							this.textVictoria.x=this.world.width/3;
-							this.textVictoria.y=this.world.height/2;
+							this.textVictoria.y=(this.world.height/2)+260;
 							this.textVictoria.visible=true;
 							this.textVictoria.anchor.setTo(0.5,0.5);
 						}
 					}
 					if(puntuacion2==3){
 						if(jugador=="J2"){
+							this.cartelFin.x = (this.world.width/3)+60;
+							this.cartelFin.visible = true;
 							this.textDerrota.visible=true;
 							this.textDerrota.x=this.world.width/3*2;
-							this.textDerrota.y=this.world.height/2;
+							this.textDerrota.y=(this.world.height/2)+260;
 							this.textDerrota.anchor.setTo(0.5,0.5);
 						}
 						else{
+							this.cartelFin.x = 40;
+							this.cartelFin.visible = true;
 							this.textDerrota.x=this.world.width/3;
-							this.textDerrota.y=this.world.height/2;
+							this.textDerrota.y=(this.world.height/2)+260;
 							this.textDerrota.visible=true;
 							this.textDerrota.anchor.setTo(0.5,0.5);
 						}
