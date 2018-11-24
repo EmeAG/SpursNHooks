@@ -73,6 +73,7 @@ Game.Preloader.prototype={
 
 		//Contruccion Images
 		this.load.image('telon','assets/PropsEscenario/Telon.png');
+		this.load.image('CartelEspera','assets/PropsEscenario/CartelEspera.png');
 		this.load.image('boton_Tipo','assets/PropsEscenario/botonMaterial.png');
 		this.load.image('boton_Material','assets/PropsEscenario/botonTipo.png');
 		this.load.image('cuadro_Tiempo','assets/PropsEscenario/CuadroTiempo.png');

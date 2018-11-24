@@ -9,14 +9,14 @@ Game.Esperar_jugador.prototype ={
 		this.game.physics.p2.gravity.y = 0;
 		this.musica=this.game.add.audio("menuMusic",0.09,true);
 		this.musica.play();
-        var style = {	font: "90px Ultra",
+        var style = {	font: "50px Ultra",
 						fill: "Black",
 						boundsAlignH: "center",
 						boundsAlignV: "middle",
 					};
 	    this.telon=this.game.add.sprite(-40,0,'telon');
-		
-		this.text1=this.game.add.text(10, this.world.height/2, "Esperando Jugador...",style);
+	    this.telon=this.game.add.sprite(40,0,'CartelEspera');
+		this.text1=this.game.add.text(90, (this.world.height/2)+250, "Esperando Jugador...",style);
 		this.text1.font = 'Ultra';
 		$.ajax({
 			url:"/nuevo_jugador",
