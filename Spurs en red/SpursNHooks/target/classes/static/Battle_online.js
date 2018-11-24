@@ -1930,7 +1930,6 @@ Game.Battle_Online.prototype ={
 				})
 				
 			if(jugadorRival.numeroDisparos<auxDisparos){
-				//alert();
 				jugadorRival.numeroDisparos=auxDisparos;
 				Bala_J2.body.dynamic = true;
 				Bala_J2.body.velocity.x=Xvector;
@@ -1959,25 +1958,6 @@ Game.Battle_Online.prototype ={
 				this.game.physics.arcade.enable([this.CannonPirata]);
 				this.CannonPirata.rotation=jugadorRival.anguloCanon;
 			}
-			/*this.CannonPirata=this.add.sprite(0,0, 'Cannon_Pirata');
-		this.CannonPirata.x=this.world.width*0.05;
-		this.CannonPirata.y=(this.world.height- this.CannonPirata.height)*0.42;
-		this.CannonVaquero=this.add.sprite(0,0, 'Cannon_Vaquero');	    
-		this.CannonVaquero.x=this.world.width- (this.CannonVaquero.height/2)*1.2;    
-		this.CannonVaquero.y=(this.world.height- this.CannonVaquero.height)*0.46;	    
-		this.CannonVaquero.anchor.setTo(0.85, 0.65);
-		this.CannonPirata.anchor.setTo(0.15, 0.35);
-		this.game.physics.arcade.enable([this.CannonPirata, this.CannonVaquero]);*/
-
-			/*$.ajax({
-				type: 'GET',
-				url:"/cargar_angulo_canon/"+ id_rival,
-				headers: {
-					"Content-type": "application/json"
-				}
-				}).done(function(angulo) {
-					jugadorRival.anguloCanon=angulo;
-				})*/
 
 			$.ajax({
 				url: '/pasar_angulo_canon',
@@ -2176,6 +2156,12 @@ Game.Battle_Online.prototype ={
 			if(jugador=="J1"){
 				for(var i=0;i<this.contConstJ2;i++){
 					if(this.construcJ2[i].vida<=0 || this.construcJ2[i].body.x<this.world.width/3 || this.construcJ2[i].body.y>=this.world.height/10*8.5 ){
+						/*Posicion borrado
+						this.construcJ2[i].body.x
+						this.construcJ2[i].body.y*/
+						this.expl = this.add.sprite(this.construcJ2[i].body.x-30,this.construcJ2[i].body.y-30,'Explosion');
+						this.secExpl = this.expl.animations.add('secExpl');  //Animacion explosion
+						this.expl.animations.play('secExpl', 15, false, true);
 						this.construcJ2[i].destroy();
 						this.construcJ2[i].estado=0;
 						this.construcJ2.splice(i, 1);
@@ -2184,6 +2170,9 @@ Game.Battle_Online.prototype ={
 				}
 				for(var i=0;i<this.contJugJ2;i++){
 					if((this.jugadoresJ2[i].vida<=0 || this.jugadoresJ2[i].body.x<this.world.width/3 || this.jugadoresJ2[i].body.y>=this.world.height/10*8.5 ) && this.jugadoresJ2[i].estado!=0){
+						this.expl = this.add.sprite(this.jugadoresJ2[i].body.x-30,this.jugadoresJ2[i].body.y-30,'Explosion');
+						this.secExpl = this.expl.animations.add('secExpl');  //Animacion explosion
+						this.expl.animations.play('secExpl', 15, false, true);
 						this.jugadoresJ2[i].destroy();
 						this.jugadoresJ2[i].estado=0;
 						this.jugadoresJ2.splice(i, 1);
@@ -2193,7 +2182,11 @@ Game.Battle_Online.prototype ={
 				}
 				for(var i=0;i<this.contConstJ1;i++){
 					if(this.construcJ1[i].vida<=0 || this.construcJ1[i].body.x>this.world.width/3*2 || this.construcJ1[i].body.y>=this.world.height/10*8.5 ){
+						this.expl = this.add.sprite(this.construcJ1[i].body.x-30,this.construcJ1[i].body.y-30,'Explosion');
+						this.secExpl = this.expl.animations.add('secExpl');  //Animacion explosion
+						this.expl.animations.play('secExpl', 15, false, true);
 						this.construcJ1[i].destroy();
+						//this.expl.destroy();
 						this.construcJ1[i].estado=0;
 						this.construcJ1.splice(i, 1);
 						this.contConstJ1--;
@@ -2201,6 +2194,9 @@ Game.Battle_Online.prototype ={
 				}
 				for(var i=0;i<this.contJugJ1;i++){
 					if((this.jugadoresJ1[i].vida<=0 || this.jugadoresJ1[i].body.x>this.world.width/3*2 || this.jugadoresJ1[i].body.y>=this.world.height/10*8.5 ) && this.jugadoresJ1[i].estado!=0){
+						this.expl = this.add.sprite(this.jugadoresJ1[i].body.x-30,this.jugadoresJ1[i].body.y-30,'Explosion');
+						this.secExpl = this.expl.animations.add('secExpl');  //Animacion explosion
+						this.expl.animations.play('secExpl', 15, false, true);
 						this.jugadoresJ1[i].destroy();
 						this.jugadoresJ1[i].estado=0;
 						this.jugadoresJ1.splice(i, 1);
@@ -2212,6 +2208,9 @@ Game.Battle_Online.prototype ={
 			if(jugador=="J2"){
 				for(var i=0;i<this.contConstJ1;i++){
 					if(this.construcJ1[i].vida<=0 || this.construcJ1[i].body.x<this.world.width/3 || this.construcJ1[i].body.y>=this.world.height/10*8.5 ){
+						this.expl = this.add.sprite(this.construcJ1[i].body.x-30,this.construcJ1[i].body.y-30,'Explosion');
+						this.secExpl = this.expl.animations.add('secExpl');  //Animacion explosion
+						this.expl.animations.play('secExpl', 15, false, true);
 						this.construcJ1[i].destroy();
 						this.construcJ1[i].estado=0;
 						this.construcJ1.splice(i, 1);
@@ -2220,6 +2219,9 @@ Game.Battle_Online.prototype ={
 				}
 				for(var i=0;i<this.contJugJ1;i++){
 					if((this.jugadoresJ1[i].vida<=0 || this.jugadoresJ1[i].body.x<this.world.width/3 || this.jugadoresJ1[i].body.y>=this.world.height/10*8.5 ) && this.jugadoresJ1[i].estado!=0){
+						this.expl = this.add.sprite(this.jugadoresJ1[i].body.x-30,this.jugadoresJ1[i].body.y-30,'Explosion');
+						this.secExpl = this.expl.animations.add('secExpl');  //Animacion explosion
+						this.expl.animations.play('secExpl', 15, false, true);
 						this.jugadoresJ1[i].destroy();
 						this.jugadoresJ1[i].estado=0;
 						this.jugadoresJ1.splice(i, 1);
@@ -2229,6 +2231,9 @@ Game.Battle_Online.prototype ={
 				}
 				for(var i=0;i<this.contConstJ2;i++){
 					if(this.construcJ2[i].vida<=0 || this.construcJ2[i].body.x>this.world.width/3*2 || this.construcJ2[i].body.y>=this.world.height/10*8.5 ){
+						this.expl = this.add.sprite(this.construcJ2[i].body.x-30,this.construcJ2[i].body.y-30,'Explosion');
+						this.secExpl = this.expl.animations.add('secExpl');  //Animacion explosion
+						this.expl.animations.play('secExpl', 15, false, true);
 						this.construcJ2[i].destroy();
 						this.construcJ2[i].estado=0;
 						this.construcJ2.splice(i, 1);
@@ -2237,6 +2242,9 @@ Game.Battle_Online.prototype ={
 				}
 				for(var i=0;i<this.contJugJ2;i++){
 					if((this.jugadoresJ2[i].vida<=0 || this.jugadoresJ2[i].body.x>this.world.width/3*2 || this.jugadoresJ2[i].body.y>=this.world.height/10*8.5 ) && this.jugadoresJ2[i].estado!=0){
+						this.expl = this.add.sprite(this.jugadoresJ2[i].body.x-30,this.jugadoresJ2[i].body.y-30,'Explosion');
+						this.secExpl = this.expl.animations.add('secExpl');  //Animacion explosion
+						this.expl.animations.play('secExpl', 15, false, true);
 						this.jugadoresJ2[i].destroy();
 						this.jugadoresJ2[i].estado=0;
 						this.jugadoresJ2.splice(i, 1);

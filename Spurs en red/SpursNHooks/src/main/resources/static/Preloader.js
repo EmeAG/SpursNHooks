@@ -43,6 +43,7 @@ Game.Preloader.prototype={
 		this.load.image('MarcadorOn', 'assets/PropsEscenario/MarcadorOn.png');
 		this.load.image('CartelVaqueros', 'assets/PropsEscenario/CartelVaqueros.png');
 		this.load.image('CartelPiratas', 'assets/PropsEscenario/CartelPiratas.png');
+		this.load.spritesheet('Explosion', 'assets/sprites/ExplosionSS.png', 122, 119, 4);
 
 		this.load.image('Bloq_mad_cuad_quem', 'assets/sprites/MaderaCuadQuem1.png');
 		this.load.image('Bloq_mad_rectV_quem', 'assets/sprites/MaderaRectVertQuem1.png');
