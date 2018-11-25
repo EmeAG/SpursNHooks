@@ -382,7 +382,7 @@ Ambos jugadores intentan eliminar a su contrincante</br>
 El telon cubre la zona del jugador que ha perdido</br>
 <img src="Capturas/Esperar_jugador.png" ></img></br>
 Pantalla de espera de jugador contrincante </br>
-<img src="Capturas/diagrama_estados.png" ></img></br>
+<img src="Capturas/diagrama_estados.PNG" ></img></br>
 Diagrama de los estados </br>
 
 <h2><b>MIEMBROS DEL EQUIPO:</b></h2>
