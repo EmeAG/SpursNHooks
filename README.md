@@ -311,14 +311,13 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <h2><b>IMÁGENES DE CONCEPTO:</b></h2>
 
 -Boceto:
-<img src="Bocetoescenario1-5.png" ></img>
+<img src="SpursNHooks/blob/master/Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/Bocetoescenario1-5.png" ></img>
 -Materiales de madera:</br>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/RectMaderoHoriz.png" ></img>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_cuad.png" ></img>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_rect.png" ></img>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_trian.png" ></img>
-
-      
+    
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectHorzQuem.png" ></img>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaCuadQuem.png" ></img>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectVertQuem.png" ></img>
