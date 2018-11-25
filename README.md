@@ -311,7 +311,7 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <h2><b>IMÁGENES DE CONCEPTO:</b></h2>
 
 -Boceto:
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/Bocetoescenario1-5.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/fondoMenu.png" ></img>
 -Materiales de madera:</br>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/RectMaderoHoriz.png" ></img>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_cuad.png" ></img>
