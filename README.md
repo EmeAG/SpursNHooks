@@ -311,14 +311,14 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <h2><b>IMÁGENES DE CONCEPTO:</b></h2>
 
 -Boceto:
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/fondoMenu.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/background.png" ></img>
 -Materiales de madera:</br>
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/RectMaderoHoriz.png" ></img>
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Madera_cuad.png" ></img>
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Madera_rect.png" ></img>
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Madera_trian.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/RectMaderoHoriz.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_cuad.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_rect.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_trian.png" ></img>
     
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectHorzQuem1.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectHorizQuem1.png" ></img>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaCuadQuem1.png" ></img>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectVertQuem1.png" ></img>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaTriangQuem1.png" ></img></br>
@@ -344,10 +344,15 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalTrianOxido.png" ></img></br>
  
 -Pirata:</br>
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/pirata.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/pirata.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MovPirata.png" ></img></br>
  
 -Vaquero:</br>
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Vaquero.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Vaquero.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MovVaquero.png" ></img></br>
+
+-Explosión:</br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/ExplosionSS.png" ></img></br>
 
 -Balas:</br>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/balaComun.png" ></img>
@@ -363,11 +368,13 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/Telon.png" ></img>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/SueloPirata.png" ></img>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets//PropsEscenario/sueloVaquero.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets//PropsEscenario/CartelEspera.png" ></img>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/Marcador.png" ></img></br>
 
 -Backgrounds:</br>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/FondoBatalla.png" ></img>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/fondoMenu.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/BarraCarga.png" ></img>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/FondoPreload.png" ></img></br>
 -Paginas Principales:</br>
 <img src="Capturas/Preload.png" ></img></br>
