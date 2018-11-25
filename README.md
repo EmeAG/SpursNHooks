@@ -313,15 +313,15 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 -Boceto:
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/fondoMenu.png" ></img>
 -Materiales de madera:</br>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/RectMaderoHoriz.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_cuad.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_rect.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Madera_trian.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/RectMaderoHoriz.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Madera_cuad.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Madera_rect.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Madera_trian.png" ></img>
     
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectHorzQuem.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaCuadQuem.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectVertQuem.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaTriangQuem.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectHorzQuem.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaCuadQuem.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectVertQuem.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaTriangQuem.png" ></img></br>
 -Materiales de piedra:</br>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraRect.png" ></img>
 <img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraCuadr.png" ></img>
