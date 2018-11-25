@@ -64,7 +64,7 @@ var vida_metal=65;
 var vida_personaje=10;
 
 //Velocidad de reaparicion del cañon 
-var velocidad_minima=70;
+var velocidad_minima=95;
 
 var puntuacion1=0;
 var puntuacion2=0;
@@ -209,8 +209,8 @@ Game.Battle_Online.prototype ={
 		this.SueloVaquero.x=this.world.width-this.world.width/3+this.SueloPirata.width/2;
 		this.SueloVaquero.y=this.world.height-this.SueloVaquero.height/2;
 
-		this.physics.p2.enable(this.SueloPirata,true);
-		this.physics.p2.enable(this.SueloVaquero,true);
+		this.physics.p2.enable(this.SueloPirata);
+		this.physics.p2.enable(this.SueloVaquero);
 
 		this.SueloPirata.body.static = true;
 		this.SueloVaquero.body.static = true;
@@ -223,16 +223,7 @@ Game.Battle_Online.prototype ={
 		this.CannonVaquero.x=this.world.width- (this.CannonVaquero.height/2)*1.2;    
 		this.CannonVaquero.y=(this.world.height- this.CannonVaquero.height)*0.46;	    
 		this.CannonVaquero.anchor.setTo(0.85, 0.65);
-		this.CannonPirata.anchor.setTo(0.15, 0.35);
-		
-/*		this.SueloVaquero.body.collideWorldBounds = true;
-		this.SueloPirata.body.collideWorldBounds = true;
-		this.SueloVaquero.body.bounce.set(1);
-		this.SueloPirata.body.bounce.set(1);
-		this.SueloVaquero.body.friction = new Phaser.Point(8,8);
-		this.SueloPirata.body.friction = new Phaser.Point(8, 8);
-*/		
-		
+		this.CannonPirata.anchor.setTo(0.15, 0.35);		
 
 		//Cargar los objetos del estado batalla. 0 inputs, 0 outputs
 		this.cargar_batalla = function (){
@@ -1276,6 +1267,9 @@ Game.Battle_Online.prototype ={
 			}
 			this.telon.bringToTop();
 			Crearpersonajes=1;
+			this.CannonPirata.bringToTop();
+			this.CannonVaquero.bringToTop();
+			this.telon.bringToTop();
 		}
 		
 		if(this.SueloMar1.x<0 && this.controlmar1==0){
@@ -2424,36 +2418,36 @@ Game.Battle_Online.prototype ={
 				this.telon.body.velocity.setTo(0,0);
 					if(puntuacion1==3){
 						if(jugador=="J1"){
-							this.cartelFin.x = (this.world.width/3)+60;
+							this.cartelFin.x = (this.world.width/3)+230;
 							this.cartelFin.visible = true;
 							this.textVictoria.visible=true;
 							this.textVictoria.x=this.world.width/3*2;
-							this.textVictoria.y=(this.world.height/2)+260;
+							this.textVictoria.y=(this.world.height/2)+95;
 							this.textVictoria.anchor.setTo(0.5,0.5);
 						}
 						else{
-							this.cartelFin.x = 40;
+							this.cartelFin.x = 230;
 							this.cartelFin.visible = true;
 							this.textVictoria.x=this.world.width/3;
-							this.textVictoria.y=(this.world.height/2)+260;
+							this.textVictoria.y=(this.world.height/2)+95;
 							this.textVictoria.visible=true;
 							this.textVictoria.anchor.setTo(0.5,0.5);
 						}
 					}
 					if(puntuacion2==3){
 						if(jugador=="J2"){
-							this.cartelFin.x = (this.world.width/3)+60;
+							this.cartelFin.x = (this.world.width/3)+230;
 							this.cartelFin.visible = true;
 							this.textDerrota.visible=true;
 							this.textDerrota.x=this.world.width/3*2;
-							this.textDerrota.y=(this.world.height/2)+260;
+							this.textDerrota.y=(this.world.height/2)+95;
 							this.textDerrota.anchor.setTo(0.5,0.5);
 						}
 						else{
-							this.cartelFin.x = 40;
+							this.cartelFin.x = 230;
 							this.cartelFin.visible = true;
 							this.textDerrota.x=this.world.width/3;
-							this.textDerrota.y=(this.world.height/2)+260;
+							this.textDerrota.y=(this.world.height/2)+95;
 							this.textDerrota.visible=true;
 							this.textDerrota.anchor.setTo(0.5,0.5);
 						}
@@ -2482,7 +2476,7 @@ Game.Battle_Online.prototype ={
 			}
 			velocidad_global=Math.abs(Val1)+Math.abs(Val2);
 			if(estado=="BATALLA"){
-				if(velocidad_global>300 && (Bala_J1.tipo=="comun") ){
+				if(velocidad_global>200 && (Bala_J1.tipo=="comun") ){
 					switch (velocidad_global){
 						case (velocidad_global<1500):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-8;
@@ -2617,7 +2611,7 @@ Game.Battle_Online.prototype ={
 		}
 		velocidad_global=Math.abs(Val3)+Math.abs(Val4);
 		if(estado=="BATALLA"){
-			if(velocidad_global>300 && (Bala_J2.tipo=="comun") ){
+			if(velocidad_global>200 && (Bala_J2.tipo=="comun") ){
 				switch (velocidad_global){
 					case (velocidad_global<1500):
 						juga_constr.sprite.vida=juga_constr.sprite.vida-8;
