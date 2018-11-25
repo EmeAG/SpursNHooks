@@ -380,6 +380,10 @@ El jugador puede pulsar los botones de los objetos para crearse un fuerte durant
 Ambos jugadores intentan eliminar a su contrincante</br>
 <img src="Capturas/FinBatalla.png" ></img></br>
 El telon cubre la zona del jugador que ha perdido</br>
+<img src="Capturas/Esperar_jugador.png" ></img></br>
+Pantalla de espera de jugador contrincante </br>
+<img src="Capturas/diagrama_estados.png" ></img></br>
+Diagrama de los estados </br>
 
 <h2><b>MIEMBROS DEL EQUIPO:</b></h2>
 
