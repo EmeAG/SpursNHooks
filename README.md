@@ -318,57 +318,57 @@ Los piratas y los vaqueros batallan para conseguir el dinero.
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Madera_rect.png" ></img>
 <img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Madera_trian.png" ></img>
     
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectHorzQuem.png" ></img>
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaCuadQuem.png" ></img>
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectVertQuem.png" ></img>
-<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaTriangQuem.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectHorzQuem1.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaCuadQuem1.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaRectVertQuem1.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MaderaTriangQuem1.png" ></img></br>
 -Materiales de piedra:</br>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraRect.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraCuadr.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraRectVert.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraTrian.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraRect.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraCuadr.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraRectVert.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraTrian.png" ></img>
 
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraRectAcido.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraCuadrAcido.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraRectVertAcido.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraTrianAcido.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraRectAcido.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraCuadrAcido.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraRectVertAcido.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/PiedraTrianAcido.png" ></img></br>
 -Materiales de hierro:</br>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalRect.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalCuadr.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MetalRectVert.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalTrian.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalRect.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalCuadr.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MetalRectVert.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalTrian.png" ></img>
 
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalRectOxido.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalCuadrOxido.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MetalRectVertOxido.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalTrianOxido.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalRectOxido.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalCuadrOxido.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/MetalRectVertOxido.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/metalTrianOxido.png" ></img></br>
  
 -Pirata:</br>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/pirata.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/pirata.png" ></img></br>
  
 -Vaquero:</br>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Vaquero.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/sprites/Vaquero.png" ></img></br>
 
 -Balas:</br>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/balaComun.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/balaAgua.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/balaFuego.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/balaAcido.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/balaComun.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/balaAgua.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/balaFuego.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/balaAcido.png" ></img></br>
 
 -Objetos del escenario:</br>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/BotonMaterial.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/botonPersonaje.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/CannonPirata.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/CannonVaquero.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/Telon.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/SueloPirata.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets//PropsEscenario/sueloVaquero.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/Marcador.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/BotonMaterial.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/botonPersonaje.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/CannonPirata.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/CannonVaquero.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/Telon.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/SueloPirata.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets//PropsEscenario/sueloVaquero.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/PropsEscenario/Marcador.png" ></img></br>
 
 -Backgrounds:</br>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/FondoBatalla.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/fondoMenu.png" ></img>
-<img src="SpursNHooks/Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/FondoPreload.png" ></img></br>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/FondoBatalla.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/fondoMenu.png" ></img>
+<img src="Spurs en red/SpursNHooks/src/main/resources/static/assets/Backgrounds/FondoPreload.png" ></img></br>
 -Paginas Principales:</br>
 <img src="Capturas/Preload.png" ></img></br>
 Se va creando la imagen de una pistola a medida que carga el juego</br>
