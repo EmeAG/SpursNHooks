@@ -7,12 +7,12 @@
 - sonido disparo
 - sonido destruccion material (uno diferente para cada material)
 - sonido destruccion personaje
-
+- Cartel de Victoria en Offline
 
  //Arte
 
 -tentaculo con movimiento
 -Pez saltando
--personajes mas grandes
+-personajes mas grandes <---DONE
 -boton continuar
 -flecha
