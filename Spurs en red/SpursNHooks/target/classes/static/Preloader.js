@@ -14,9 +14,9 @@ Game.Preloader.prototype={
 		
 		//Game Images
 		this.load.image('Vaquero', 'assets/sprites/Vaquero.png');
-		this.load.spritesheet('VaqueroMov', 'assets/sprites/MovVaquero.png', 52, 94, 2);
+		this.load.spritesheet('VaqueroMov', 'assets/sprites/MovVaquero.png', 76, 139, 2);
 		this.load.image('Pirata', 'assets/sprites/Pirata.png');
-		this.load.spritesheet('PirataMov', 'assets/sprites/MovPirata.png', 58, 88, 2);
+		this.load.spritesheet('PirataMov', 'assets/sprites/MovPirata.png', 86, 131, 2);
 		this.load.image('Suelo_Pirata', 'assets/PropsEscenario/SueloPirata.png');
 		this.load.image('Suelo_Vaquero', 'assets/PropsEscenario/sueloVaquero.png')
 		this.load.image('Suelo_Mar_cla', 'assets/PropsEscenario/olas.png')
