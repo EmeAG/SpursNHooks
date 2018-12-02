@@ -2010,6 +2010,8 @@ Game.Battle_Offline.prototype ={
 				if(puntuacion2==3){
 					this.telon.x=-this.cache.getImage("telon").width+this.world.width/3*2;
 				}
+				this.cartelFin=this.game.add.sprite((this.world.width/3)+60,0,'CartelEspera');
+				this.cartelFin.visible = false;
 				this.textVictoria=this.add.text(this.world.width/3,this.world.height/2,"Victoria",style_ganador);
 				this.textVictoria.visible=false;
 				estado="FINAL";
@@ -2147,14 +2149,18 @@ Game.Battle_Offline.prototype ={
 				this.telon.body.immovable = true;
 				this.telon.body.velocity.setTo(0,0);
 					if(puntuacion1==3){
+						this.cartelFin.x = (this.world.width/3)+230;
+						this.cartelFin.visible = true;
 						this.textVictoria.visible=true;
 						this.textVictoria.x=this.world.width/3*2;
-						this.textVictoria.y=this.world.height/2;
+						this.textVictoria.y=this.world.height/2+95;
 						this.textVictoria.anchor.setTo(0.5,0.5);
 					}
 					if(puntuacion2==3){
+						this.cartelFin.x = 230;
+						this.cartelFin.visible = true;
 						this.textVictoria.x=this.world.width/3;
-						this.textVictoria.y=this.world.height/2;
+						this.textVictoria.y=this.world.height/2+95;
 						this.textVictoria.visible=true;
 						this.textVictoria.anchor.setTo(0.5,0.5);
 					}

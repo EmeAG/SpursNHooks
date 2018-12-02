@@ -14,5 +14,5 @@
 -tentaculo con movimiento
 -Pez saltando
 -personajes mas grandes <---DONE
--boton continuar
--flecha
+-boton continuar <---DONE
+-flecha <---DONE
