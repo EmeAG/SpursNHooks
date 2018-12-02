@@ -13,19 +13,24 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.socket.config.annotation.EnableWebSocket;
+import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
 
-@RestController
-public class Controller {
+@SpringBootApplication
+@EnableWebSocket
+public class Controller{
 	ListaJugadores Jugadores_espera = new ListaJugadores();
 	ListaJugadores jugadores_conectados = new ListaJugadores();
 	ListaBatallas partidas = new ListaBatallas();
 	DatosBatalla InfoBatalla = new DatosBatalla();
 
-	
+	/*
 	@GetMapping("/nuevo_jugador")
 	public int nuevo_jugador() {
 		Jugador nuevo_jugador= new Jugador();
@@ -106,16 +111,6 @@ public class Controller {
 		System.out.println("ID: "+ jugador.getId());
 	}
 	
-	/*@GetMapping("/cargar_balaVelX/{id}")
-	public float cargar_balaVelX(@PathVariable int id){
-		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getBalaVelX();
-	}
-	
-	@GetMapping("/cargar_balaVelY/{id}")
-	public float cargar_balaVelY(@PathVariable int id){
-		return jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getBalaVelY();
-	}*/
-	
 	@GetMapping("/cargar_numDisparos/num_dis{id}")
 	public Jugador cargar_numDisparos(@PathVariable int id){
 		System.out.println(jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(id)).getNumeroDisparos());
@@ -132,6 +127,6 @@ public class Controller {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}	
-	
+	}
+	*/
 }

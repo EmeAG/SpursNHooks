@@ -4,6 +4,9 @@ idjugador=undefined;
 idjugador1=undefined;
 idjugador2=undefined;
 idBatalla=undefined;
+
+var connection = new WebSocket('ws://127.0.0.1:8080/echo');
+
 Game.Esperar_jugador.prototype ={
 	create:function(){
 		this.game.physics.p2.gravity.y = 0;
@@ -18,21 +21,42 @@ Game.Esperar_jugador.prototype ={
 	    this.cartelEsp=this.game.add.sprite(40,0,'CartelEspera');
 		this.text1=this.game.add.text(90, (this.world.height/2)+60, "Esperando Jugador...",style);
 		this.text1.font = 'Ultra';
-		$.ajax({
+		
+		/*Conexion servidor local*/
+			connection.onerror = function(e) {
+				console.log("WS error: " + e);
+			}
+			connection.onmessage = function(msg) {
+				console.log("WS message: " + msg.data);
+			}
+			connection.onclose = function() {
+				console.log("Closing socket");
+			}
+		/*Conexion servidor local*/		
+		
+		/*$.ajax({
 			url:"/nuevo_jugador",
 			}).done(function(dato) {
 				idjugador=dato;
-		});
+		});*/
 	},
 	
 	update:function(){
-		$.ajax({
+		/*$.ajax({
 			url:"/comprobar_lista",
 			}).done(function(jugadores) {
 				idjugador1=jugadores.id_J1;
 				idjugador2=jugadores.id_J2;
 				idBatalla=jugadores.id_batalla;
-		});
+		});*/
+
+		var msg = {
+			name : $('#name').val(),
+			message : $('#message').val()
+		}
+	    $('#echo').val($('#echo').val() + "\n" + "nombre1" + ": " + "mensaje1");
+		connection.send(JSON.stringify("aaa"));
+		
 		if (idjugador1!= undefined && idjugador2!= undefined){
 			if(idjugador1==idjugador || idjugador2==idjugador){
 				this.state.start("Battle_Online",true, false,idjugador,idjugador1,idjugador2,idBatalla);

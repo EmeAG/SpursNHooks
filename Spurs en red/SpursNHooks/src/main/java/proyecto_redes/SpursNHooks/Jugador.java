@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Jugador {
 
-	private int id=0;
+	private String id="0";
 	private String lado="Sin asignar";
 	private List<construcciones> Lista_Construc;
 	private List<Personajes> Lista_Personajes;
@@ -16,7 +16,7 @@ public class Jugador {
 	private int numeroDisparos=0;
 	
 	public Jugador() {
-		this.id=0;
+		this.id="0";
 		this.lado="Sin asignar";
 		this.Lista_Construc=new ArrayList<construcciones>();
 		this.Lista_Personajes=new ArrayList<Personajes>();
@@ -26,12 +26,12 @@ public class Jugador {
 		this.BalaVelY=0;
 		this.numeroDisparos=0;
 	}
-
-	public int getId() {
+	
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

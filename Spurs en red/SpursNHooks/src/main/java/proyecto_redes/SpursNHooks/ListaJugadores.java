@@ -11,8 +11,8 @@ public class ListaJugadores {
 		this.Lista_Jugador = new ArrayList<Jugador>();
 	}
 
-	public int id_ultimoJugador() {
-		int ultimo_Jugador=0;
+	public String id_ultimoJugador() {
+		String ultimo_Jugador="0";
 		if (this.Lista_Jugador.size()!=0) {
 			ultimo_Jugador=this.Lista_Jugador.get(this.Lista_Jugador.size() - 1).getId();
 		}
@@ -36,7 +36,7 @@ public class ListaJugadores {
 		this.Lista_Jugador.get(1).setLado("J2");
 	}
 	
-	public int PosicionJugadorID(int id) {
+	public int PosicionJugadorID(String id) {
 		int posicion=0;
 		//System.out.println("Tamano Lista->"+ this.Lista_Jugador.size() + ";  Id: " + id);
 		for (int i=0; i<this.Lista_Jugador.size(); i++) {
