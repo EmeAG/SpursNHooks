@@ -8,11 +8,13 @@ public class Batalla {
 	private int id_batalla;
 	private Jugador jugador1;
 	private Jugador jugador2;
+	private int jugadoresConectados;
 	
 	public Batalla() {
 		this.jugador1 = new Jugador();
 		this.jugador2 = new Jugador();
 		this.id_batalla=0;
+		this.jugadoresConectados=0;
 	}
 
 	public int getId_batalla() {
@@ -37,5 +39,13 @@ public class Batalla {
 
 	public void setJugador2(Jugador jugador2) {
 		this.jugador2 = jugador2;
+	}
+
+	public int getJugadoresConectados() {
+		return jugadoresConectados;
+	}
+
+	public void setJugadoresConectados(int jugadoresConectados) {
+		this.jugadoresConectados = jugadoresConectados;
 	}
 }

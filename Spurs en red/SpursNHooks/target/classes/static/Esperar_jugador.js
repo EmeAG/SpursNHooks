@@ -29,6 +29,7 @@ connection.onmessage = function (message) {
            /* console.log('pos: (' + msg.player.x + ',' + msg.player.y + ')')
             console.log('score: ' + msg.player.score)*/
             break
+            
         case "GAME_COMPLETE":
             console.log('##### GAME IS COMPLETE #####')
             break
@@ -72,6 +73,7 @@ Game.Esperar_jugador.prototype ={
 	},
 	
 	update:function(){
+		
 		/*$.ajax({
 			url:"/comprobar_lista",
 			}).done(function(jugadores) {
@@ -80,12 +82,10 @@ Game.Esperar_jugador.prototype ={
 				idBatalla=jugadores.id_batalla;
 		});*/
 
-		var msg = {
-			name : $('#name').val(),
-			message : $('#message').val()
-		}
-	    $('#echo').val($('#echo').val() + "\n" + "nombre1" + ": " + "mensaje1");
-		connection.send(JSON.stringify("aaa"));
+	    data = {
+	            type: 'EsperarJugador'
+	        }
+	    connection.send(JSON.stringify(data))
 		
 		if (idjugador1!= undefined && idjugador2!= undefined){
 			if(idjugador1==idjugador || idjugador2==idjugador){

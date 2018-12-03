@@ -8,8 +8,10 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
 
 public class WebsocketEchoHandler extends TextWebSocketHandler{
 	
@@ -38,18 +40,27 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 	}
 	
 	@Override
-	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		System.out.println("Session closed: " + session.getId());
-		//Borrar jugadores_conectados
-		//Borrar Jugadores_espera
-		sessions.remove(session.getId());
-	}
-	
-	@Override
-	protected void handleTextMessage(WebSocketSession session,	TextMessage message) throws Exception {
-		System.out.println("Message received: " + message.getPayload());
-		/*String msg = message.getPayload();
-		session.sendMessage(new TextMessage(msg));*/
+	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 
+		synchronized (sessions) {
+			JsonNode node = mapper.readTree(message.getPayload());
+			ObjectNode json = mapper.createObjectNode();
+
+			switch (node.get("type").asText()) {
+			case "EsperarJugador":
+				if(Jugadores_espera.tamano_lista()>=2) {
+					Jugadores_espera.Jugadores_asignarLados();
+					Batalla nueva_batalla= new Batalla();
+					nueva_batalla.setId_batalla(partidas.id_ultimaPartida()+1);
+					nueva_batalla.setJugador1(Jugadores_espera.get().get(0));
+					nueva_batalla.setJugador2(Jugadores_espera.get().get(1));
+					InfoBatalla.setId_J1(nueva_batalla.getJugador1().getId());
+					InfoBatalla.setId_J2(nueva_batalla.getJugador2().getId());
+					InfoBatalla.setId_batalla(nueva_batalla.getId_batalla());
+				}
+				System.out.println("Sali");
+				break;
+			}
+		}
 	}
 }
