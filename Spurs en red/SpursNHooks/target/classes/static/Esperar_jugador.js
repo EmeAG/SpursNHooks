@@ -7,6 +7,37 @@ idBatalla=undefined;
 
 var connection = new WebSocket('ws://127.0.0.1:8080/echo');
 
+debug = {
+		connection: 1
+	}
+
+connection.onmessage = function (message) {
+	
+    if (debug.connection) {
+        console.log('[DEBUG-WS] Se ha recibido un mensaje: ' + message.data)
+    }
+
+    var msg = JSON.parse(message.data)
+
+    console.log('INFO RECIBIDA ' + msg.type)
+
+    switch (msg.type) {
+        case "ConexionCreada":
+           // console.log('@@@@@@ PLAYER CREATED @@@@@')
+            console.log('id: ' + msg.id)
+            idjugador=msg.id;
+           /* console.log('pos: (' + msg.player.x + ',' + msg.player.y + ')')
+            console.log('score: ' + msg.player.score)*/
+            break
+        case "GAME_COMPLETE":
+            console.log('##### GAME IS COMPLETE #####')
+            break
+        case "UPDATE_STATE":
+            console.log('!!!!! GAME SENDS UPDATE !!!!!')
+            break
+    }
+}
+
 Game.Esperar_jugador.prototype ={
 	create:function(){
 		this.game.physics.p2.gravity.y = 0;
@@ -33,7 +64,6 @@ Game.Esperar_jugador.prototype ={
 				console.log("Closing socket");
 			}
 		/*Conexion servidor local*/		
-		
 		/*$.ajax({
 			url:"/nuevo_jugador",
 			}).done(function(dato) {

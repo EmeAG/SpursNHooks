@@ -9,6 +9,7 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class WebsocketEchoHandler extends TextWebSocketHandler{
 	
@@ -28,6 +29,12 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 		jugadores_conectados.anadir_lista_espera(nuevo_jugador);
 		Jugadores_espera.anadir_lista_espera(nuevo_jugador);		
 		sessions.put(session.getId(), session);
+		
+		ObjectNode json = mapper.createObjectNode();
+		json.put("id", session.getId());
+		json.put("type", "ConexionCreada");
+		session.sendMessage(new TextMessage(json.toString()));
+		
 	}
 	
 	@Override
@@ -43,5 +50,6 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 		System.out.println("Message received: " + message.getPayload());
 		/*String msg = message.getPayload();
 		session.sendMessage(new TextMessage(msg));*/
+
 	}
 }
