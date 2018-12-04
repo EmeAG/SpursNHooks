@@ -49,6 +49,7 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 			switch (node.get("type").asText()) {
 			case "EsperarJugador":
 				if(Jugadores_espera.tamano_lista()>=2) {
+					ObjectNode jsonBatalla = mapper.createObjectNode();
 					Jugadores_espera.Jugadores_asignarLados();
 					Batalla nueva_batalla= new Batalla();
 					nueva_batalla.setId_batalla(partidas.id_ultimaPartida()+1);
@@ -57,8 +58,15 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 					InfoBatalla.setId_J1(nueva_batalla.getJugador1().getId());
 					InfoBatalla.setId_J2(nueva_batalla.getJugador2().getId());
 					InfoBatalla.setId_batalla(nueva_batalla.getId_batalla());
+					//System.out.println("Sali");
+					/*jsonBatalla.put("id_J1", InfoBatalla.getId_J1());
+					jsonBatalla.put("id_J2", InfoBatalla.getId_J2());
+					jsonBatalla.put("id_batalla", InfoBatalla.getId_batalla());*/
+					json.put("type", "Batalla");
+					json.putPOJO("InfoBatalla", InfoBatalla);
 				}
-				System.out.println("Sali");
+				session.sendMessage(new TextMessage(json.toString()));
+				
 				break;
 			}
 		}

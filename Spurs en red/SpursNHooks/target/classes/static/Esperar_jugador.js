@@ -23,15 +23,21 @@ connection.onmessage = function (message) {
 
     switch (msg.type) {
         case "ConexionCreada":
-           // console.log('@@@@@@ PLAYER CREATED @@@@@')
+            console.log('@@@@@@ PLAYER CREATED @@@@@')
             console.log('id: ' + msg.id)
             idjugador=msg.id;
            /* console.log('pos: (' + msg.player.x + ',' + msg.player.y + ')')
             console.log('score: ' + msg.player.score)*/
             break
             
-        case "GAME_COMPLETE":
-            console.log('##### GAME IS COMPLETE #####')
+        case "Batalla":
+        	console.log('##### Batalla #####')
+        	console.log('idjugador1: ' + msg.id_J1)
+        	console.log('idjugador2: ' + msg.id_J2)
+        	console.log('idBatalla: ' + msg.id_batalla)
+        	idjugador1=msg.id_J1;
+        	idjugador2=msg.id_J2;
+        	idBatalla=msg.id_batalla;       
             break
         case "UPDATE_STATE":
             console.log('!!!!! GAME SENDS UPDATE !!!!!')

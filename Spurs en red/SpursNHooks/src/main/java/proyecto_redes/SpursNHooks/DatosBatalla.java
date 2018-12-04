@@ -34,4 +34,8 @@ public class DatosBatalla {
 	public void setId_batalla(int id_batalla) {
 		this.id_batalla = id_batalla;
 	}
+	@Override
+	public String toString() {
+		return "DatosBatalla [id_J1=" + id_J1 + ", id_J2"+ id_J2 + ", id_batalla=" + id_batalla;
+	}
 }
