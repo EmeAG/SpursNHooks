@@ -4,46 +4,8 @@ idjugador=undefined;
 idjugador1=undefined;
 idjugador2=undefined;
 idBatalla=undefined;
+connection=undefined;
 
-var connection = new WebSocket('ws://127.0.0.1:8080/echo');
-
-debug = {
-		connection: 1
-	}
-
-connection.onmessage = function (message) {
-	
-    if (debug.connection) {
-        console.log('[DEBUG-WS] Se ha recibido un mensaje: ' + message.data)
-    }
-
-    var msg = JSON.parse(message.data)
-
-    console.log('INFO RECIBIDA ' + msg.type)
-
-    switch (msg.type) {
-        case "ConexionCreada":
-            console.log('@@@@@@ PLAYER CREATED @@@@@')
-            console.log('id: ' + msg.id)
-            idjugador=msg.id;
-           /* console.log('pos: (' + msg.player.x + ',' + msg.player.y + ')')
-            console.log('score: ' + msg.player.score)*/
-            break
-            
-        case "Batalla":
-        	console.log('##### Batalla #####')
-        	console.log('idjugador1: ' + msg.id_J1)
-        	console.log('idjugador2: ' + msg.id_J2)
-        	console.log('idBatalla: ' + msg.id_batalla)
-        	idjugador1=msg.id_J1;
-        	idjugador2=msg.id_J2;
-        	idBatalla=msg.id_batalla;       
-            break
-        case "UPDATE_STATE":
-            console.log('!!!!! GAME SENDS UPDATE !!!!!')
-            break
-    }
-}
 
 Game.Esperar_jugador.prototype ={
 	create:function(){
@@ -60,6 +22,48 @@ Game.Esperar_jugador.prototype ={
 		this.text1=this.game.add.text(90, (this.world.height/2)+60, "Esperando Jugador...",style);
 		this.text1.font = 'Ultra';
 		
+		
+		/*Crear jugador y unir lista espera*/
+		connection = new WebSocket('ws://127.0.0.1:8080/echo');
+
+		debug = {
+				connection: 1
+			}
+
+		connection.onmessage = function (message) {
+			
+			if (debug.connection) {
+				console.log('[DEBUG-WS] Se ha recibido un mensaje: ' + message.data)
+			}
+
+			var msg = JSON.parse(message.data)
+
+			console.log('INFO RECIBIDA ' + msg.type)
+
+			switch (msg.type) {
+				case "ConexionCreada":
+					console.log('@@@@@@ PLAYER CREATED @@@@@')
+					console.log('id: ' + msg.id)
+					idjugador=msg.id;
+				   /* console.log('pos: (' + msg.player.x + ',' + msg.player.y + ')')
+					console.log('score: ' + msg.player.score)*/
+					break
+					
+				case "Batalla":
+					console.log('##### Batalla #####')
+					console.log('idjugador1: ' + msg.id_J1)
+					console.log('idjugador2: ' + msg.id_J2)
+					console.log('idBatalla: ' + msg.id_batalla)
+					idjugador1=msg.id_J1;
+					idjugador2=msg.id_J2;
+					idBatalla=msg.id_batalla;       
+					break
+				case "UPDATE_STATE":
+					console.log('!!!!! GAME SENDS UPDATE !!!!!')
+					break
+			}
+		}
+		/*Crear jugador y unir lista espera*/		
 
 		/*$.ajax({
 			url:"/nuevo_jugador",
@@ -70,32 +74,39 @@ Game.Esperar_jugador.prototype ={
 	
 	update:function(){
 
+		if(connection.readyState===1){//Esperar a que se establezca conexion
+			/*Conexion servidor local*/
+			connection.onerror = function(e) {
+				console.log("WS error: " + e);
+			}
+			connection.onmessage = function(message) {
+				console.log("WS message: " + message.data);
+				var msg = JSON.parse(message.data)
+
+				console.log('INFO RECIBIDA ' + msg.type)
+
+				switch (msg.type) {			            
+					case "Batalla":
+						console.log('##### Batalla #####')
+						console.log('idjugador1: ' + msg.Batalla.jugador1.id)
+						console.log('idjugador2: ' + msg.Batalla.jugador2.id)
+						console.log('idBatalla: ' + msg.Batalla.id_batalla)
+						idjugador1=msg.Batalla.jugador1.id;
+						idjugador2=msg.Batalla.jugador2.id;
+						idBatalla=msg.Batalla.id_batalla;       
+						break
+				}
+			}
+			connection.onclose = function() {
+				console.log("Closing socket");
+			}
+			
+			data = {
+					type: 'EsperarJugador'
+				}
+			connection.send(JSON.stringify(data))
+		}
 		
-		/*Conexion servidor local*/
-		connection.onerror = function(e) {
-			console.log("WS error: " + e);
-		}
-		connection.onmessage = function(message) {
-			console.log("WS message: " + message.data);
-		    var msg = JSON.parse(message.data)
-
-		    console.log('INFO RECIBIDA ' + msg.type)
-
-		    switch (msg.type) {			            
-		        case "Batalla":
-		        	console.log('##### Batalla #####')
-		        	console.log('idjugador1: ' + msg.InfoBatalla.id_J1)
-		        	console.log('idjugador2: ' + msg.InfoBatalla.id_J2)
-		        	console.log('idBatalla: ' + msg.InfoBatalla.id_batalla)
-		        	idjugador1=msg.InfoBatalla.id_J1;
-		        	idjugador2=msg.InfoBatalla.id_J2;
-		        	idBatalla=msg.InfoBatalla.id_batalla;       
-		            break
-		    }
-		}
-		connection.onclose = function() {
-			console.log("Closing socket");
-		}
 	/*Conexion servidor local*/
 		
 		/*$.ajax({
@@ -106,10 +117,6 @@ Game.Esperar_jugador.prototype ={
 				idBatalla=jugadores.id_batalla;
 		});*/
 
-	    data = {
-	            type: 'EsperarJugador'
-	        }
-	    connection.send(JSON.stringify(data))
 		
 		if (idjugador1!= undefined && idjugador2!= undefined){
 			if(idjugador1==idjugador || idjugador2==idjugador){

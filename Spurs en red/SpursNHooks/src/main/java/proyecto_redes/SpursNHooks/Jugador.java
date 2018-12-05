@@ -105,6 +105,8 @@ public class Jugador {
 	public void setNumeroDisparos(int numeroDisparos) {
 		this.numeroDisparos = numeroDisparos;
 	}
-
 	
+	public String toString() {
+		return "{\"id\":\"" + id + "\",\"lado\":\""+ lado + "\",\"balaT\":\"" + balaT + "\",\"anguloCanon\":" + anguloCanon + ",\"BalaVelX\":" + BalaVelX + ",\"BalaVelY\":" + BalaVelY + ",\"numeroDisparos\":" + numeroDisparos + "}";
+	}
 }

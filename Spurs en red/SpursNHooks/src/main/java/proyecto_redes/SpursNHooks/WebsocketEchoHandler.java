@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-
 public class WebsocketEchoHandler extends TextWebSocketHandler{
 	
 	private Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
@@ -59,11 +58,8 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 					InfoBatalla.setId_J2(nueva_batalla.getJugador2().getId());
 					InfoBatalla.setId_batalla(nueva_batalla.getId_batalla());
 					//System.out.println("Sali");
-					jsonBatalla.put("id_J1", InfoBatalla.getId_J1());
-					jsonBatalla.put("id_J2", InfoBatalla.getId_J2());
-					jsonBatalla.put("id_batalla", InfoBatalla.getId_batalla());
 					json.put("type", "Batalla");
-					json.putPOJO("InfoBatalla", jsonBatalla);
+					json.putPOJO("Batalla", nueva_batalla);
 					session.sendMessage(new TextMessage(json.toString()));
 				}			
 				break;

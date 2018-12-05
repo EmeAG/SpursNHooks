@@ -48,4 +48,8 @@ public class Batalla {
 	public void setJugadoresConectados(int jugadoresConectados) {
 		this.jugadoresConectados = jugadoresConectados;
 	}
+	
+	public String toString() {
+		return "{\"id_batalla\":" + id_batalla + ",\"jugador1\":"+ jugador1.toString() + ",\"jugador2\":" + jugador2.toString() + ",\"jugadoresConectados\":" + jugadoresConectados +"}";
+	}
 }
