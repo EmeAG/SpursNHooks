@@ -60,17 +60,7 @@ Game.Esperar_jugador.prototype ={
 		this.text1=this.game.add.text(90, (this.world.height/2)+60, "Esperando Jugador...",style);
 		this.text1.font = 'Ultra';
 		
-		/*Conexion servidor local*/
-			connection.onerror = function(e) {
-				console.log("WS error: " + e);
-			}
-			connection.onmessage = function(msg) {
-				console.log("WS message: " + msg.data);
-			}
-			connection.onclose = function() {
-				console.log("Closing socket");
-			}
-		/*Conexion servidor local*/		
+
 		/*$.ajax({
 			url:"/nuevo_jugador",
 			}).done(function(dato) {
@@ -79,6 +69,34 @@ Game.Esperar_jugador.prototype ={
 	},
 	
 	update:function(){
+
+		
+		/*Conexion servidor local*/
+		connection.onerror = function(e) {
+			console.log("WS error: " + e);
+		}
+		connection.onmessage = function(message) {
+			console.log("WS message: " + message.data);
+		    var msg = JSON.parse(message.data)
+
+		    console.log('INFO RECIBIDA ' + msg.type)
+
+		    switch (msg.type) {			            
+		        case "Batalla":
+		        	console.log('##### Batalla #####')
+		        	console.log('idjugador1: ' + msg.InfoBatalla.id_J1)
+		        	console.log('idjugador2: ' + msg.InfoBatalla.id_J2)
+		        	console.log('idBatalla: ' + msg.InfoBatalla.id_batalla)
+		        	idjugador1=msg.InfoBatalla.id_J1;
+		        	idjugador2=msg.InfoBatalla.id_J2;
+		        	idBatalla=msg.InfoBatalla.id_batalla;       
+		            break
+		    }
+		}
+		connection.onclose = function() {
+			console.log("Closing socket");
+		}
+	/*Conexion servidor local*/
 		
 		/*$.ajax({
 			url:"/comprobar_lista",

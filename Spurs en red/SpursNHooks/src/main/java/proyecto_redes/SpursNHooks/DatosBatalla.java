@@ -36,6 +36,7 @@ public class DatosBatalla {
 	}
 	@Override
 	public String toString() {
-		return "DatosBatalla [id_J1=" + id_J1 + ", id_J2"+ id_J2 + ", id_batalla=" + id_batalla;
+		//return "DatosBatalla [id_J1=" + id_J1 + ", id_J2"+ id_J2 + ", id_batalla=" + id_batalla +"]";
+		return "{\"id_J1\":" + id_J1 + ",\"id_J2\":"+ id_J2 + ",\"id_batalla\":" + id_batalla+ "}";
 	}
 }
