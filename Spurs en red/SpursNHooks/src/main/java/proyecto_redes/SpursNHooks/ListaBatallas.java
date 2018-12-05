@@ -2,6 +2,8 @@ package proyecto_redes.SpursNHooks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import proyecto_redes.SpursNHooks.Batalla;
 
 public class ListaBatallas {
@@ -22,5 +24,21 @@ public class ListaBatallas {
 			ultimo_Jugador=this.Lista_Partidas.get(this.Lista_Partidas.size() - 1).getId_batalla();
 		}
 		return ultimo_Jugador;
+	}
+	
+	public int pos_partida_sinEmpezar() {
+		int devolver=-1;
+		for (int i=this.Lista_Partidas.size()-1; i>=0; i--) {
+			System.out.println(i);
+			if(this.Lista_Partidas.get(i).getJugadoresConectados()<2) {	
+				devolver=i;
+				//i=this.Lista_Partidas.size();
+			}
+		}
+		return devolver;
+	}
+
+	public List<Batalla> getLista_Partidas() {
+		return Lista_Partidas;
 	}
 }

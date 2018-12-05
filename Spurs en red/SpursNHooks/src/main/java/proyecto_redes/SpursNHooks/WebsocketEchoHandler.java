@@ -20,7 +20,6 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 	ListaJugadores Jugadores_espera = new ListaJugadores();
 	ListaJugadores jugadores_conectados = new ListaJugadores();
 	ListaBatallas partidas = new ListaBatallas();
-	DatosBatalla InfoBatalla = new DatosBatalla();
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -51,17 +50,17 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 				case "EsperarJugador":
 					if(Jugadores_espera.tamano_lista()>=2) {
 						//ObjectNode jsonBatalla = mapper.createObjectNode();
-						Jugadores_espera.Jugadores_asignarLados();
-						Batalla nueva_batalla= new Batalla();
-						nueva_batalla.setId_batalla(partidas.id_ultimaPartida()+1);
-						nueva_batalla.setJugador1(Jugadores_espera.get().get(0));
-						nueva_batalla.setJugador2(Jugadores_espera.get().get(1));
-						InfoBatalla.setId_J1(nueva_batalla.getJugador1().getId());
-						InfoBatalla.setId_J2(nueva_batalla.getJugador2().getId());
-						InfoBatalla.setId_batalla(nueva_batalla.getId_batalla());
-						//System.out.println("Sali");
+						if(partidas.pos_partida_sinEmpezar()<0) {
+							System.out.println("Crea partida");
+							Jugadores_espera.Jugadores_asignarLados();
+							Batalla nueva_batalla= new Batalla();
+							nueva_batalla.setId_batalla(partidas.id_ultimaPartida()+1);
+							nueva_batalla.setJugador1(Jugadores_espera.get().get(0));
+							nueva_batalla.setJugador2(Jugadores_espera.get().get(1));
+							partidas.add_partida(nueva_batalla);
+						}
 						json.put("type", "Batalla");
-						json.putPOJO("Batalla", nueva_batalla);
+						json.putPOJO("Batalla", partidas.getLista_Partidas().get(partidas.pos_partida_sinEmpezar()));
 						session.sendMessage(new TextMessage(json.toString()));
 					}			
 				break;

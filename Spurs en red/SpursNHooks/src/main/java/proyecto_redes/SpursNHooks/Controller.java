@@ -28,7 +28,6 @@ public class Controller{
 	ListaJugadores Jugadores_espera = new ListaJugadores();
 	ListaJugadores jugadores_conectados = new ListaJugadores();
 	ListaBatallas partidas = new ListaBatallas();
-	DatosBatalla InfoBatalla = new DatosBatalla();
 
 	/*
 	@GetMapping("/nuevo_jugador")
