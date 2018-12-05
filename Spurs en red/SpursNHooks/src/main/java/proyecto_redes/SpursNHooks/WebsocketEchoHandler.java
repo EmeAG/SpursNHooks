@@ -28,7 +28,6 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 		Jugador nuevo_jugador= new Jugador();
 		nuevo_jugador.setId(session.getId());
 		jugadores_conectados.anadir_lista_espera(nuevo_jugador);
-		Jugadores_espera.anadir_lista_espera(nuevo_jugador);		
 		sessions.put(session.getId(), session);
 		
 		ObjectNode json = mapper.createObjectNode();
@@ -46,22 +45,25 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 			ObjectNode json = mapper.createObjectNode();
 
 			switch (node.get("type").asText()) {
-			case "EsperarJugador":
-				if(Jugadores_espera.tamano_lista()>=2) {
-					ObjectNode jsonBatalla = mapper.createObjectNode();
-					Jugadores_espera.Jugadores_asignarLados();
-					Batalla nueva_batalla= new Batalla();
-					nueva_batalla.setId_batalla(partidas.id_ultimaPartida()+1);
-					nueva_batalla.setJugador1(Jugadores_espera.get().get(0));
-					nueva_batalla.setJugador2(Jugadores_espera.get().get(1));
-					InfoBatalla.setId_J1(nueva_batalla.getJugador1().getId());
-					InfoBatalla.setId_J2(nueva_batalla.getJugador2().getId());
-					InfoBatalla.setId_batalla(nueva_batalla.getId_batalla());
-					//System.out.println("Sali");
-					json.put("type", "Batalla");
-					json.putPOJO("Batalla", nueva_batalla);
-					session.sendMessage(new TextMessage(json.toString()));
-				}			
+				case "Anadir_espera":
+					Jugadores_espera.anadir_lista_espera(jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("id").asText())));
+				break;
+				case "EsperarJugador":
+					if(Jugadores_espera.tamano_lista()>=2) {
+						//ObjectNode jsonBatalla = mapper.createObjectNode();
+						Jugadores_espera.Jugadores_asignarLados();
+						Batalla nueva_batalla= new Batalla();
+						nueva_batalla.setId_batalla(partidas.id_ultimaPartida()+1);
+						nueva_batalla.setJugador1(Jugadores_espera.get().get(0));
+						nueva_batalla.setJugador2(Jugadores_espera.get().get(1));
+						InfoBatalla.setId_J1(nueva_batalla.getJugador1().getId());
+						InfoBatalla.setId_J2(nueva_batalla.getJugador2().getId());
+						InfoBatalla.setId_batalla(nueva_batalla.getId_batalla());
+						//System.out.println("Sali");
+						json.put("type", "Batalla");
+						json.putPOJO("Batalla", nueva_batalla);
+						session.sendMessage(new TextMessage(json.toString()));
+					}			
 				break;
 			}
 		}

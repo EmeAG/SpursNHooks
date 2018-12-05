@@ -4,8 +4,34 @@ idjugador=undefined;
 idjugador1=undefined;
 idjugador2=undefined;
 idBatalla=undefined;
-connection=undefined;
 
+
+/*Crear jugador y unir lista jugadores_conectados*/
+var connection = new WebSocket('ws://127.0.0.1:8080/echo');
+
+debug = {
+		connection: 1
+	}
+
+connection.onmessage = function (message) {
+	
+	if (debug.connection) {
+		console.log('[DEBUG-WS] Se ha recibido un mensaje: ' + message.data)
+	}
+
+	var msg = JSON.parse(message.data)
+
+	console.log('INFO RECIBIDA ' + msg.type)
+
+	switch (msg.type) {
+		case "ConexionCreada":
+			console.log('@@@@@@ PLAYER CREATED @@@@@')
+			console.log('id: ' + msg.id)
+			idjugador=msg.id;
+			break
+	}
+}
+/*Crear jugador y unir lista jugadores_conectados*/
 
 Game.Esperar_jugador.prototype ={
 	create:function(){
@@ -22,48 +48,15 @@ Game.Esperar_jugador.prototype ={
 		this.text1=this.game.add.text(90, (this.world.height/2)+60, "Esperando Jugador...",style);
 		this.text1.font = 'Ultra';
 		
-		
-		/*Crear jugador y unir lista espera*/
-		connection = new WebSocket('ws://127.0.0.1:8080/echo');
+		/*Añadir lista de espera*/
 
-		debug = {
-				connection: 1
-			}
-
-		connection.onmessage = function (message) {
-			
-			if (debug.connection) {
-				console.log('[DEBUG-WS] Se ha recibido un mensaje: ' + message.data)
-			}
-
-			var msg = JSON.parse(message.data)
-
-			console.log('INFO RECIBIDA ' + msg.type)
-
-			switch (msg.type) {
-				case "ConexionCreada":
-					console.log('@@@@@@ PLAYER CREATED @@@@@')
-					console.log('id: ' + msg.id)
-					idjugador=msg.id;
-				   /* console.log('pos: (' + msg.player.x + ',' + msg.player.y + ')')
-					console.log('score: ' + msg.player.score)*/
-					break
-					
-				case "Batalla":
-					console.log('##### Batalla #####')
-					console.log('idjugador1: ' + msg.id_J1)
-					console.log('idjugador2: ' + msg.id_J2)
-					console.log('idBatalla: ' + msg.id_batalla)
-					idjugador1=msg.id_J1;
-					idjugador2=msg.id_J2;
-					idBatalla=msg.id_batalla;       
-					break
-				case "UPDATE_STATE":
-					console.log('!!!!! GAME SENDS UPDATE !!!!!')
-					break
-			}
-		}		
-		/*Crear jugador y unir lista espera*/		
+			data = {
+					type: 'Anadir_espera',
+					id: idjugador
+				}
+			connection.send(JSON.stringify(data))
+	
+		/*Añadir lista de espera*/
 
 		/*$.ajax({
 			url:"/nuevo_jugador",

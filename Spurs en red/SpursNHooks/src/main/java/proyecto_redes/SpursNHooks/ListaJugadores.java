@@ -2,6 +2,7 @@ package proyecto_redes.SpursNHooks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ListaJugadores {
 	
@@ -37,10 +38,9 @@ public class ListaJugadores {
 	}
 	
 	public int PosicionJugadorID(String id) {
-		int posicion=0;
-		//System.out.println("Tamano Lista->"+ this.Lista_Jugador.size() + ";  Id: " + id);
+		int posicion=-1;
 		for (int i=0; i<this.Lista_Jugador.size(); i++) {
-			if (this.Lista_Jugador.get(i).getId()==id) {
+			if(Objects.equals(id, this.Lista_Jugador.get(i).getId())) {	
 				posicion=i;
 				i=this.Lista_Jugador.size();
 			}
