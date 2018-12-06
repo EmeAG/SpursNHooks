@@ -70,6 +70,22 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 					json.putPOJO("Batalla", partidas.getLista_Partidas().get(partidas.pos_partidaID(node.get("id_batalla").asInt())));
 					session.sendMessage(new TextMessage(json.toString()));
 				break;
+				case "eviar_objetos":
+					construcciones objeto = new construcciones();
+					objeto.setDuenio(node.get("objeto").get("duenio").asText());
+					objeto.setForma(node.get("objeto").get("forma").asText());
+					objeto.setPosx(node.get("objeto").get("posx").asLong());
+					objeto.setPosy(node.get("objeto").get("posy").asLong());
+					objeto.setTipo_material(node.get("objeto").get("tipo_material").asText());					
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("objeto").get("duenio").asText())).addListaConstruccion(objeto);
+				break;
+				case "eviar_personajes":
+					Personajes personaje = new Personajes();
+					personaje.setDuenio(node.get("personaje").get("duenio").asText());
+					personaje.setPosx(node.get("personaje").get("posx").asLong());
+					personaje.setPosy(node.get("personaje").get("posy").asLong());
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("personaje").get("duenio").asText())).addListaPersonajes(personaje);
+				break;
 			}
 		}
 	}

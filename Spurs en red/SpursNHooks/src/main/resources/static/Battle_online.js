@@ -1153,15 +1153,7 @@ Game.Battle_Online.prototype ={
 	},
 	
 	update:function(){
-		//Inicio Pantalla en Vertical
 		if(jugador!=undefined && Crearpersonajes!=1){
-			///borrar_espera/borrar_espera_
-			$.ajax({
-				url: '/borrar_espera/borrar_espera_'+id_propio,
-				type: "DELETE"
-			}).done(function (item) {
-				console.log("Item borrado: ");
-			})
 			if(jugador=="J1"){
 				//colocacion piratas
 				for(var i=this.numJ1;i<3;i++){
@@ -1629,6 +1621,13 @@ Game.Battle_Online.prototype ={
 							objeto.forma=this.construcJ1[i].forma;
 							objeto.posx=this.construcJ1[i].x;
 							objeto.posy=this.construcJ1[i].y;
+							data = {
+									type: 'eviar_objetos',
+									objeto: objeto
+								}
+							connection.send(JSON.stringify(data))
+							
+							/*
 							$.ajax({
 								url: '/objeto_creado',
 								type: "POST",
@@ -1639,12 +1638,18 @@ Game.Battle_Online.prototype ={
 								}
 							}).done(function (item) {
 								console.log("Item created: " + JSON.stringify(objeto));
-							})
+							})*/
 						}
 						for(var i=0;i<this.contJugJ1;i++){
 							personaje.duenio=id_propio;
 							personaje.posx=this.jugadoresJ1[i].x;
 							personaje.posy=this.jugadoresJ1[i].y;
+							data = {
+									type: 'eviar_personajes',
+									personaje: personaje
+								}
+							connection.send(JSON.stringify(data))
+							/*
 							$.ajax({
 								url: '/personaje_creado',
 								type: "POST",
@@ -1655,7 +1660,7 @@ Game.Battle_Online.prototype ={
 								}
 							}).done(function (item) {
 								console.log("Item created: " + JSON.stringify(personaje));
-							})
+							})*/
 						}
 						crear_personajes=1;
 						crear_objetos=1;

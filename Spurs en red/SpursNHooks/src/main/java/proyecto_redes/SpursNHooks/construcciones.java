@@ -5,14 +5,14 @@ public class construcciones {
 	private String forma;
 	private float posx;
 	private float posy;
-	private int duenio;
+	private String duenio;
 	
 	public construcciones() {
 		this.tipo_material=null;
 		this.forma=null;
 		this.posx=0;
 		this.posy=0;
-		this.duenio=0;
+		this.duenio="0";
 	}
 
 	public String getTipo_material() {
@@ -47,11 +47,11 @@ public class construcciones {
 		this.posy = posy;
 	}
 
-	public int getDuenio() {
+	public String getDuenio() {
 		return duenio;
 	}
 
-	public void setDuenio(int duenio) {
+	public void setDuenio(String duenio) {
 		this.duenio = duenio;
 	}
 
