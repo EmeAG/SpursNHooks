@@ -29,16 +29,34 @@ public class ListaBatallas {
 	public int pos_partida_sinEmpezar() {
 		int devolver=-1;
 		for (int i=this.Lista_Partidas.size()-1; i>=0; i--) {
-			System.out.println(i);
 			if(this.Lista_Partidas.get(i).getJugadoresConectados()<2) {	
 				devolver=i;
-				//i=this.Lista_Partidas.size();
 			}
 		}
 		return devolver;
 	}
-
+	
+	public int pos_partidaID(int ID_batalla) {
+		int encontrada=-1;
+		for (int i=0; i<this.Lista_Partidas.size(); i++) {
+			if(this.Lista_Partidas.get(i).getId_batalla()==ID_batalla) {	
+				encontrada=i;
+				i=this.Lista_Partidas.size();
+			}
+		}		
+		return encontrada;
+	}
+	
 	public List<Batalla> getLista_Partidas() {
 		return Lista_Partidas;
+	}
+	
+	public void borrar_jugadoresEspera(int ID_batalla, ListaJugadores Jugadores_espera) {
+		this.Lista_Partidas.get(this.pos_partidaID(ID_batalla)).setJugadoresConectados(this.Lista_Partidas.get(this.pos_partidaID(ID_batalla)).getJugadoresConectados()+1);
+		if(this.Lista_Partidas.get(this.pos_partidaID(ID_batalla)).getJugadoresConectados()==2) {
+			System.out.println("Eliminar de Lista de Espera");
+			Jugadores_espera.get().remove(this.Lista_Partidas.get(this.pos_partidaID(ID_batalla)).getJugador1());
+			Jugadores_espera.get().remove(this.Lista_Partidas.get(this.pos_partidaID(ID_batalla)).getJugador2());
+		}
 	}
 }

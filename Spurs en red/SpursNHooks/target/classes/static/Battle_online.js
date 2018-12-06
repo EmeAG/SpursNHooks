@@ -127,6 +127,7 @@ var jugadorRival={
 	numeroDisparos:0
 }
 
+
 Game.Battle_Online.prototype ={
 	
 	init:function(id_jugador,idjugador1,idjugador2,idBatalla){
@@ -137,8 +138,46 @@ Game.Battle_Online.prototype ={
 		}else{
 			id_rival=idjugador1;
 		}
+		
+		data = {
+				type: 'Datos_jugadores',
+				id_batalla: idBatalla
+			}
+		connection.send(JSON.stringify(data))
+
+		
+		connection.onerror = function(e) {
+			console.log("WS error: " + e);
+		}
+		connection.onmessage = function(message) {
+			console.log("WS message: " + message.data);
+			var msg = JSON.parse(message.data)
+
+			console.log('INFO BATALLA_ONLINE RECIBIDA ' + msg.type)
+
+			switch (msg.type) {			            
+				case "Datos_jugadores":
+					console.log('##### BATALLA ONLINE #####')
+					console.log('idjugador1: ' + msg.Batalla.jugador1.lado)
+					console.log('idjugador2: ' + msg.Batalla.jugador2.lado)
+					console.log('idBatalla: ' + msg.Batalla.id_batalla)
+					idjugador1=msg.Batalla.jugador1.id;
+					idjugador2=msg.Batalla.jugador2.id;
+					idBatalla=msg.Batalla.id_batalla;
+					if(id_jugador==msg.Batalla.jugador1.id){
+						jugador=msg.Batalla.jugador1.lado;
+					}else{
+						jugador=msg.Batalla.jugador2.lado;
+					}
+					break
+			}
+		}
+		connection.onclose = function() {
+			console.log("Closing socket");
+		}
+		
 		/*Seleccion lado*/
-		$.ajax({
+/*		$.ajax({
 			type: 'GET',
 			url:"/datos_jugadores",
 			headers: {
@@ -151,6 +190,7 @@ Game.Battle_Online.prototype ={
 					}
 				}
 		});
+*/
 	},
 
 

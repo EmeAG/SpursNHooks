@@ -64,6 +64,12 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 						session.sendMessage(new TextMessage(json.toString()));
 					}			
 				break;
+				case "Datos_jugadores":
+					partidas.borrar_jugadoresEspera(node.get("id_batalla").asInt(), Jugadores_espera);
+					json.put("type", "Datos_jugadores");
+					json.putPOJO("Batalla", partidas.getLista_Partidas().get(partidas.pos_partidaID(node.get("id_batalla").asInt())));
+					session.sendMessage(new TextMessage(json.toString()));
+				break;
 			}
 		}
 	}

@@ -80,7 +80,7 @@ Game.Esperar_jugador.prototype ={
 
 				switch (msg.type) {			            
 					case "Batalla":
-						console.log('##### Batalla #####')
+						console.log('##### ESPERAR PARTIDA #####')
 						console.log('idjugador1: ' + msg.Batalla.jugador1.id)
 						console.log('idjugador2: ' + msg.Batalla.jugador2.id)
 						console.log('idBatalla: ' + msg.Batalla.id_batalla)
