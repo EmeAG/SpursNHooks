@@ -107,6 +107,16 @@ public class Jugador {
 	}
 	
 	public String toString() {
-		return "{\"id\":\"" + id + "\",\"lado\":\""+ lado + "\",\"balaT\":\"" + balaT + "\",\"anguloCanon\":" + anguloCanon + ",\"BalaVelX\":" + BalaVelX + ",\"BalaVelY\":" + BalaVelY + ",\"numeroDisparos\":" + numeroDisparos + "}";
+		String Construc="\"Construc\":[";
+		for(int i=0;i<Lista_Construc.size();i++) {
+			if(i!=0) {
+				Construc=Construc + ",";
+			}
+			Construc=Construc + Lista_Construc.get(i).toString();
+		}
+		Construc=Construc+ "]";
+		System.out.println("Constr :" + Construc);
+		
+		return "{\"id\":\"" + id + "\","+ Construc + ",\"lado\":\""+ lado + "\",\"balaT\":\"" + balaT + "\",\"anguloCanon\":" + anguloCanon + ",\"BalaVelX\":" + BalaVelX + ",\"BalaVelY\":" + BalaVelY + ",\"numeroDisparos\":" + numeroDisparos + "}";
 	}
 }

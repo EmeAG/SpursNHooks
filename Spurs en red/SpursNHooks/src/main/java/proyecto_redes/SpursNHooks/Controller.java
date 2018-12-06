@@ -78,7 +78,7 @@ public class Controller{
 	public void nuevoPersonaje(@RequestBody Personajes personaje) {
 		//System.out.println("Personaje 1->"+ personaje.getDuenio());
 		//System.out.println("Personaje 2->"+ jugadores_conectados.PosicionJugadorID(personaje.getDuenio()));
-		jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(personaje.getDuenio())).addListaPersonajes(personaje);
+		jugadores_conectados.get().get(jugadoresc_onectados.PosicionJugadorID(personaje.getDuenio())).addListaPersonajes(personaje);
 	}
 	
 	@GetMapping("/cargar_personaje/{id}")

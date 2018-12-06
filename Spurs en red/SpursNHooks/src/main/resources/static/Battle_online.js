@@ -145,7 +145,6 @@ Game.Battle_Online.prototype ={
 			}
 		connection.send(JSON.stringify(data))
 
-		
 		connection.onerror = function(e) {
 			console.log("WS error: " + e);
 		}
@@ -177,7 +176,7 @@ Game.Battle_Online.prototype ={
 		}
 		
 		/*Seleccion lado*/
-/*		$.ajax({
+		/*$.ajax({
 			type: 'GET',
 			url:"/datos_jugadores",
 			headers: {
@@ -189,8 +188,7 @@ Game.Battle_Online.prototype ={
 						jugador=info_jugadores[i].lado;
 					}
 				}
-		});
-*/
+		});*/
 	},
 
 
@@ -1627,8 +1625,7 @@ Game.Battle_Online.prototype ={
 								}
 							connection.send(JSON.stringify(data))
 							
-							/*
-							$.ajax({
+							/*$.ajax({
 								url: '/objeto_creado',
 								type: "POST",
 								data:JSON.stringify(objeto),
@@ -1649,8 +1646,7 @@ Game.Battle_Online.prototype ={
 									personaje: personaje
 								}
 							connection.send(JSON.stringify(data))
-							/*
-							$.ajax({
+							/*$.ajax({
 								url: '/personaje_creado',
 								type: "POST",
 								data:JSON.stringify(personaje),
@@ -1722,7 +1718,13 @@ Game.Battle_Online.prototype ={
 					if(this.telon.x<=963 && this.telon.x>=957){
 						//Bajar construcciones rival
 						if(crear_objetos==1 && crear_personajes==1){
-							$.ajax({
+							data = {
+									type: 'cargar_objeto',
+									id_rival: id_rival
+								}
+							connection.send(JSON.stringify(data))
+
+/*							$.ajax({
 								type: 'GET',
 								url:"/cargar_objeto/"+ id_rival,
 								headers: {
@@ -1739,7 +1741,7 @@ Game.Battle_Online.prototype ={
 										});
 									}
 									crear_objetos=2;
-								});
+								});*/
 							
 							$.ajax({
 								type: 'GET',

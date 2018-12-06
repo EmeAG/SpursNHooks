@@ -54,7 +54,10 @@ public class construcciones {
 	public void setDuenio(String duenio) {
 		this.duenio = duenio;
 	}
-
+	
+	public String toString() {
+		return "{\"tipo_material\":\"" + tipo_material + "\",\"forma\":\""+ forma + "\",\"posx\":" + posx + ",\"posy\":" + posy + ",\"duenio\":\""+ duenio + "\"}";
+	}
 }
 
 
