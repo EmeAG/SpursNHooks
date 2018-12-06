@@ -145,7 +145,6 @@ Game.Battle_Online.prototype ={
 			}
 		connection.send(JSON.stringify(data))
 
-		
 		connection.onerror = function(e) {
 			console.log("WS error: " + e);
 		}
@@ -601,7 +600,12 @@ Game.Battle_Online.prototype ={
 			button_BalaAcido.inputEnabled = false;
 			button_BalaComun.inputEnabled = false;			
 
-			$.ajax({
+			data = {
+				type: 'enviar_bala',
+				jugadorPropio: jugadorPropio
+			}
+			connection.send(JSON.stringify(data))
+			/*$.ajax({
 				url: '/pasar_bala',
 				type: "PUT",
 				data:JSON.stringify(jugadorPropio),
@@ -611,7 +615,7 @@ Game.Battle_Online.prototype ={
 				}
 			}).done(function (item) {
 				console.log("Item created: " + JSON.stringify(objeto));
-			})
+			})*/
 		}
 	},
 	
@@ -1151,7 +1155,7 @@ Game.Battle_Online.prototype ={
 		return this.Aux;
 	},
 	
-	update:function(){
+	update:function(){		
 		if(jugador!=undefined && Crearpersonajes!=1){
 			if(jugador=="J1"){
 				//colocacion piratas
@@ -1724,7 +1728,36 @@ Game.Battle_Online.prototype ={
 									id_rival: id_rival
 								}
 							connection.send(JSON.stringify(data))
+		connection.onerror = function(e) {
+			console.log("WS error: " + e);
+		}
+		connection.onmessage = function(message) {
+			console.log("WS message: " + message.data);
+			var msg = JSON.parse(message.data)
 
+			console.log('INFO BATALLA_ONLINE RECIBIDA ' + msg.type)
+
+			switch (msg.type) {			            
+				case "objeto_enemigo":
+					console.log('##### BATALLA cargar objeto enemigos #####')
+					for(i=0;i<msg.Construcciones.Construc.length;i++){
+						contruccion_enemigo.push({
+							duenio: msg.Construcciones.Construc[i].duenio,
+							tipo_material: msg.Construcciones.Construc[i].tipo_material,
+							forma: msg.Construcciones.Construc[i].forma,
+							posx: msg.Construcciones.Construc[i].posx,
+							posy: msg.Construcciones.Construc[i].posy
+						});
+					}
+					crear_objetos=2;					
+				break;
+			}
+		}
+		connection.onclose = function() {
+			console.log("Closing socket");
+		}
+							
+							
 /*							$.ajax({
 								type: 'GET',
 								url:"/cargar_objeto/"+ id_rival,
@@ -2003,8 +2036,12 @@ Game.Battle_Online.prototype ={
 				this.game.physics.arcade.enable([this.CannonPirata]);
 				this.CannonPirata.rotation=jugadorRival.anguloCanon;
 			}
-
-			$.ajax({
+			data = {
+				type: 'enviar_angulo_canon',
+				jugadorPropio: jugadorPropio
+			}
+			connection.send(JSON.stringify(data))
+			/*$.ajax({
 				url: '/pasar_angulo_canon',
 				type: "PUT",
 				data:JSON.stringify(jugadorPropio),
@@ -2014,7 +2051,7 @@ Game.Battle_Online.prototype ={
 				}
 			}).done(function (item) {
 				console.log("Item created: " + JSON.stringify(objeto));
-			})
+			})*/
 
 			/*Inicio Eliminacion choques con costrucciones propias*/
 			if(jugador=="J1"){
