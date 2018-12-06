@@ -70,7 +70,7 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 					json.putPOJO("Batalla", partidas.getLista_Partidas().get(partidas.pos_partidaID(node.get("id_batalla").asInt())));
 					session.sendMessage(new TextMessage(json.toString()));
 				break;
-				case "eviar_objetos":
+				case "enviar_objetos":
 					construcciones objeto = new construcciones();
 					objeto.setDuenio(node.get("objeto").get("duenio").asText());
 					objeto.setForma(node.get("objeto").get("forma").asText());
@@ -79,22 +79,20 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 					objeto.setTipo_material(node.get("objeto").get("tipo_material").asText());					
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("objeto").get("duenio").asText())).addListaConstruccion(objeto);
 				break;
-				case "eviar_personajes":
+				case "enviar_personajes":
 					Personajes personaje = new Personajes();
 					personaje.setDuenio(node.get("personaje").get("duenio").asText());
 					personaje.setPosx(node.get("personaje").get("posx").asLong());
 					personaje.setPosy(node.get("personaje").get("posy").asLong());
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("personaje").get("duenio").asText())).addListaPersonajes(personaje);
 				break;
-				case "cargar_objeto":
+				case "cargar_enemigo":
 					System.out.println("Cargar Objetos");
-					json.put("type", "objeto_enemigo");
-					
-					json.putPOJO("Construcciones", jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("id_rival").asText())));
-					
+					json.put("type", "enemigo");
+					json.putPOJO("Enemigo", jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("id_rival").asText())));
 					session.sendMessage(new TextMessage(json.toString()));
 				break;
-
+				
 				case "enviar_angulo_canon":
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setAnguloCanon(node.get("jugadorPropio").get("anguloCanon").asLong());
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaT(node.get("jugadorPropio").get("balaT").asText());

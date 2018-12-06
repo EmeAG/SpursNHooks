@@ -36,5 +36,8 @@ public class Personajes {
 		this.duenio = duenio;
 	}
 	
+	public String toString() {
+		return "{\"posx\":" + posx + ",\"posy\":" + posy + ",\"duenio\":\""+ duenio + "\"}";
+	}
 }
 

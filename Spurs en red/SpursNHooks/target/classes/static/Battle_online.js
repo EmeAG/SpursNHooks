@@ -1625,7 +1625,7 @@ Game.Battle_Online.prototype ={
 							objeto.posx=this.construcJ1[i].x;
 							objeto.posy=this.construcJ1[i].y;
 							data = {
-									type: 'eviar_objetos',
+									type: 'enviar_objetos',
 									objeto: objeto
 								}
 							connection.send(JSON.stringify(data))
@@ -1647,7 +1647,7 @@ Game.Battle_Online.prototype ={
 							personaje.posx=this.jugadoresJ1[i].x;
 							personaje.posy=this.jugadoresJ1[i].y;
 							data = {
-									type: 'eviar_personajes',
+									type: 'enviar_personajes',
 									personaje: personaje
 								}
 							connection.send(JSON.stringify(data))
@@ -1724,39 +1724,49 @@ Game.Battle_Online.prototype ={
 						//Bajar construcciones rival
 						if(crear_objetos==1 && crear_personajes==1){
 							data = {
-									type: 'cargar_objeto',
+									type: 'cargar_enemigo',
 									id_rival: id_rival
 								}
-							connection.send(JSON.stringify(data))
-		connection.onerror = function(e) {
-			console.log("WS error: " + e);
-		}
-		connection.onmessage = function(message) {
-			console.log("WS message: " + message.data);
-			var msg = JSON.parse(message.data)
-
-			console.log('INFO BATALLA_ONLINE RECIBIDA ' + msg.type)
-
-			switch (msg.type) {			            
-				case "objeto_enemigo":
-					console.log('##### BATALLA cargar objeto enemigos #####')
-					for(i=0;i<msg.Construcciones.Construc.length;i++){
-						contruccion_enemigo.push({
-							duenio: msg.Construcciones.Construc[i].duenio,
-							tipo_material: msg.Construcciones.Construc[i].tipo_material,
-							forma: msg.Construcciones.Construc[i].forma,
-							posx: msg.Construcciones.Construc[i].posx,
-							posy: msg.Construcciones.Construc[i].posy
-						});
-					}
-					crear_objetos=2;					
-				break;
-			}
-		}
-		connection.onclose = function() {
-			console.log("Closing socket");
-		}
+							connection.send(JSON.stringify(data));
+						
 							
+							connection.onerror = function(e) {
+								console.log("WS error: " + e);
+							}
+							connection.onmessage = function(message) {
+								console.log("WS message: " + message.data);
+								var msg = JSON.parse(message.data)
+
+								console.log('INFO BATALLA_ONLINE RECIBIDA ' + msg.type)
+
+								switch (msg.type) {			            
+									case "enemigo":
+										console.log('##### BATALLA cargar objeto enemigos #####')
+										for(i=0;i<msg.Enemigo.Construc.length;i++){
+											console.log('##### Construye objeto #####')
+											contruccion_enemigo.push({
+												duenio: msg.Enemigo.Construc[i].duenio,
+												tipo_material: msg.Enemigo.Construc[i].tipo_material,
+												forma: msg.Enemigo.Construc[i].forma,
+												posx: msg.Enemigo.Construc[i].posx,
+												posy: msg.Enemigo.Construc[i].posy
+											});
+										}
+										for(i=0;i<msg.Enemigo.Personajes.length;i++){
+											personajes_enemigo.push({
+												duenio: msg.Enemigo.Personajes[i].duenio,
+												posx: msg.Enemigo.Personajes[i].posx,
+												posy: msg.Enemigo.Personajes[i].posy
+											});
+										}
+										crear_personajes=2;
+										crear_objetos=2;
+									break;
+								}
+							}
+							connection.onclose = function() {
+								console.log("Closing socket");
+							}
 							
 /*							$.ajax({
 								type: 'GET',
@@ -1777,7 +1787,7 @@ Game.Battle_Online.prototype ={
 									crear_objetos=2;
 								});*/
 							
-							$.ajax({
+							/*$.ajax({
 								type: 'GET',
 								url:"/cargar_personaje/"+ id_rival,
 								headers: {
@@ -1792,7 +1802,7 @@ Game.Battle_Online.prototype ={
 										});
 									}
 									crear_personajes=2;
-								});
+								});*/
 								if(contruccion_enemigo.length==0){
 									crear_objetos=2;
 								}
@@ -1968,7 +1978,7 @@ Game.Battle_Online.prototype ={
 				this.jugadoresJ2[i].body.dynamic=true;
 			}
 			if(this.movimentoParado(this.construcJ1) && this.movimentoParado(this.construcJ2) && this.movimentoParado(this.jugadoresJ1) && this.movimentoParado(this.jugadoresJ2)){
-				estado="BATALLA";
+//				estado="BATALLA";
 				this.background.events.onInputDown.add(this.set);
 				this.background.events.onInputUp.add(this.launch);
 				this.CannonVaquero.scale.x *= -1;
