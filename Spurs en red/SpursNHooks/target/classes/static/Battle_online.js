@@ -602,7 +602,12 @@ Game.Battle_Online.prototype ={
 			button_BalaAcido.inputEnabled = false;
 			button_BalaComun.inputEnabled = false;			
 
-			$.ajax({
+			data = {
+				type: 'enviar_bala',
+				jugadorPropio: jugadorPropio
+			}
+			connection.send(JSON.stringify(data))
+			/*$.ajax({
 				url: '/pasar_bala',
 				type: "PUT",
 				data:JSON.stringify(jugadorPropio),
@@ -612,7 +617,7 @@ Game.Battle_Online.prototype ={
 				}
 			}).done(function (item) {
 				console.log("Item created: " + JSON.stringify(objeto));
-			})
+			})*/
 		}
 	},
 	
@@ -2000,8 +2005,12 @@ Game.Battle_Online.prototype ={
 				this.game.physics.arcade.enable([this.CannonPirata]);
 				this.CannonPirata.rotation=jugadorRival.anguloCanon;
 			}
-
-			$.ajax({
+			data = {
+				type: 'enviar_angulo_canon',
+				jugadorPropio: jugadorPropio
+			}
+			connection.send(JSON.stringify(data))
+			/*$.ajax({
 				url: '/pasar_angulo_canon',
 				type: "PUT",
 				data:JSON.stringify(jugadorPropio),
@@ -2011,7 +2020,7 @@ Game.Battle_Online.prototype ={
 				}
 			}).done(function (item) {
 				console.log("Item created: " + JSON.stringify(objeto));
-			})
+			})*/
 
 			/*Inicio Eliminacion choques con costrucciones propias*/
 			if(jugador=="J1"){

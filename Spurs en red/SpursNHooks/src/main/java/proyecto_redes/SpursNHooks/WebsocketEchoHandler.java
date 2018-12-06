@@ -86,6 +86,19 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 					personaje.setPosy(node.get("personaje").get("posy").asLong());
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("personaje").get("duenio").asText())).addListaPersonajes(personaje);
 				break;
+				case "enviar_angulo_canon":
+					
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setAnguloCanon(node.get("jugadorPropio").get("anguloCanon").asLong());
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaT(node.get("jugadorPropio").get("balaT").asText());
+					System.out.println(node.get("jugadorPropio").get("anguloCanon").asLong());
+				break;
+				case "enviar_bala":
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaVelX(node.get("jugadorPropio").get("balaVelX").asLong());
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaVelY(node.get("jugadorPropio").get("balaVelY").asLong());
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setNumeroDisparos(node.get("jugadorPropio").get("numeroDisparos").asInt());
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaT(node.get("jugadorPropio").get("balaT").asText());
+				break;			
+					
 			}
 		}
 	}
