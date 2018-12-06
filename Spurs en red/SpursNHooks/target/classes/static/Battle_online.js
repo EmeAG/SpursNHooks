@@ -109,8 +109,8 @@ var jugadorPropio={
 	Lista_Personajes:undefined,
 	balaT:"comun",
 	anguloCanon:undefined,
-	balaVelX:undefined,
-	balaVelY:undefined,
+	BalaVelX:undefined,
+	BalaVelY:undefined,
 	numeroDisparos:0
 }
 
@@ -122,8 +122,8 @@ var jugadorRival={
 	Lista_Personajes:undefined,
 	balaT:"comun",
 	anguloCanon:undefined,
-	balaVelX:undefined,
-	balaVelY:undefined,
+	BalaVelX:undefined,
+	BalaVelY:undefined,
 	numeroDisparos:0
 }
 
@@ -576,8 +576,8 @@ Game.Battle_Online.prototype ={
 			Bala_J1.body.dynamic = true;
 			Bala_J1.body.velocity.x=Xvector;
 			Bala_J1.body.velocity.y=Yvector;
-			jugadorPropio.balaVelX=Xvector;
-			jugadorPropio.balaVelY=Yvector;
+			jugadorPropio.BalaVelX=Xvector;
+			jugadorPropio.BalaVelY=Yvector;
 			
 			if(num_balas_agu_J1==0){
 				button_BalaAgua.tint=0.4 * 0xffffff;
@@ -2002,9 +2002,13 @@ Game.Battle_Online.prototype ={
 				switch (msg.type) {
 					case "enemigo":
 						console.log('##### BATALLA cargar objeto enemigos #####')
+						console.log('Velocidad X:'+msg.Enemigo.BalaVelX)
+						console.log('Velocidad X:'+msg.Enemigo.BalaVelY)
+						console.log('Velocidad X:'+msg.Enemigo.balaT)
+						console.log('Velocidad X:'+msg.Enemigo.numeroDisparos)
 						auxDisparos=msg.Enemigo.numeroDisparos;
-						Xvector=msg.Enemigo.balaVelX;
-						Yvector=msg.Enemigo.balaVelY;
+						Xvector=msg.Enemigo.BalaVelX;
+						Yvector=msg.Enemigo.BalaVelY;
 						jugadorRival.anguloCanon=msg.Enemigo.anguloCanon;
 						jugadorRival.balaT=msg.Enemigo.balaT;
 						Bala_J2.tipo=msg.Enemigo.balaT;
@@ -2022,6 +2026,14 @@ Game.Battle_Online.prototype ={
 								Bala_J2.loadTexture('balaFuego');
 								break;
 						}
+						if(jugadorRival.numeroDisparos<msg.Enemigo.numeroDisparos){
+							//alert(msg.Enemigo.BalaVelX);
+							jugadorRival.numeroDisparos=msg.Enemigo.numeroDisparos;
+							Bala_J2.body.dynamic = true;
+							Bala_J2.body.velocity.x=msg.Enemigo.BalaVelX;
+							Bala_J2.body.velocity.y=msg.Enemigo.BalaVelY;
+							//alert(Bala_J2.body.velocity.x);
+						}
 					break;
 				}
 			}
@@ -2038,8 +2050,8 @@ Game.Battle_Online.prototype ={
 				}
 				}).done(function(rival) {
 					auxDisparos=rival.numeroDisparos;
-					Xvector=rival.balaVelX;
-					Yvector=rival.balaVelY;
+					Xvector=rival.BalaVelX;
+					Yvector=rival.BalaVelY;
 					jugadorRival.anguloCanon=rival.anguloCanon;
 					jugadorRival.balaT=rival.balaT;
 					Bala_J2.tipo=rival.balaT;
@@ -2058,14 +2070,6 @@ Game.Battle_Online.prototype ={
 							break;
 					}
 				})*/
-				
-			if(jugadorRival.numeroDisparos<auxDisparos){
-				jugadorRival.numeroDisparos=auxDisparos;
-				Bala_J2.body.dynamic = true;
-				Bala_J2.body.velocity.x=Xvector;
-				Bala_J2.body.velocity.y=Yvector;
-			}
-
 			if(jugador=="J1"){
 				jugadorPropio.anguloCanon=this.CannonPirata.rotation;
 				this.CannonVaquero.destroy();
@@ -2872,7 +2876,8 @@ Game.Battle_Online.prototype ={
 	
 	
 	render:function() {
-		//this.game.debug.text(this.game.physics.p2.angleToPointer(BalaCom1_J2),32,32,"white");
+		if(estado=="BATALLA"){
+		this.game.debug.text(Bala_J2.body.velocity.x,32,32,"white");}
 		//this.game.debug.text(balaDispara.body.velocity.x +"---"+balaDispara.body.velocity.y ,32,15,"white");
 	//	this.game.debug.text(cuenta_atras.duration.toFixed(0),32,15,"white");
 	//	this.game.debug.text(fin_tiempo,92,15,"white");
@@ -2936,7 +2941,7 @@ Game.Battle_Online.prototype ={
 		
 		/*
 		this.game.debug.text(turno,500, 300,'white');*/
-		this.game.debug.text(puntuacion1+"///"+puntuacion2,600, 300,'white');
+
 		
 		//this.game.debug.text(crear_personajes,600, 500,'white');
 		

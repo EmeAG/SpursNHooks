@@ -93,13 +93,16 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 				break;
 				
 				case "enviar_angulo_canon":
-					System.out.println("angulo cannon:" + node.get("jugadorPropio").get("anguloCanon").asDouble());
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setAnguloCanon(node.get("jugadorPropio").get("anguloCanon").asDouble());
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaT(node.get("jugadorPropio").get("balaT").asText());
 				break;
 				case "enviar_bala":
-					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaVelX(node.get("jugadorPropio").get("balaVelX").asLong());
-					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaVelY(node.get("jugadorPropio").get("balaVelY").asLong());
+					System.out.println("vel X:" +node.get("jugadorPropio").get("BalaVelX").asDouble());
+					System.out.println("vel Y:" +node.get("jugadorPropio").get("BalaVelY").asDouble());
+					System.out.println("N Disparos:" +node.get("jugadorPropio").get("numeroDisparos").asInt());
+					System.out.println("tip bala:" +node.get("jugadorPropio").get("balaT").asText());
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaVelX(node.get("jugadorPropio").get("BalaVelX").asDouble());
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaVelY(node.get("jugadorPropio").get("BalaVelY").asDouble());
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setNumeroDisparos(node.get("jugadorPropio").get("numeroDisparos").asInt());
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaT(node.get("jugadorPropio").get("balaT").asText());
 				break;

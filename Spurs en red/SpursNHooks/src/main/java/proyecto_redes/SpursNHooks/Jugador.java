@@ -11,8 +11,8 @@ public class Jugador {
 	private List<Personajes> Lista_Personajes;
 	private String balaT="comun";
 	private double anguloCanon=0;
-	private float BalaVelX=0;
-	private float BalaVelY=0;
+	private double BalaVelX=0;
+	private double BalaVelY=0;
 	private int numeroDisparos=0;
 	
 	public Jugador() {
@@ -82,19 +82,19 @@ public class Jugador {
 		Lista_Personajes.add(nueva_pers);
 	}
 
-	public float getBalaVelX() {
+	public double getBalaVelX() {
 		return BalaVelX;
 	}
 
-	public void setBalaVelX(float balaVelX) {
+	public void setBalaVelX(double balaVelX) {
 		BalaVelX = balaVelX;
 	}
 
-	public float getBalaVelY() {
+	public double getBalaVelY() {
 		return BalaVelY;
 	}
 
-	public void setBalaVelY(float balaVelY) {
+	public void setBalaVelY(double balaVelY) {
 		BalaVelY = balaVelY;
 	}
 
