@@ -10,7 +10,7 @@ public class Jugador {
 	private List<construcciones> Lista_Construc;
 	private List<Personajes> Lista_Personajes;
 	private String balaT="comun";
-	private float anguloCanon=0;
+	private double anguloCanon=0;
 	private float BalaVelX=0;
 	private float BalaVelY=0;
 	private int numeroDisparos=0;
@@ -59,11 +59,11 @@ public class Jugador {
 		this.balaT = balaT;
 	}
 
-	public float getAnguloCanon() {
+	public double getAnguloCanon() {
 		return anguloCanon;
 	}
 
-	public void setAnguloCanon(float anguloCanon) {
+	public void setAnguloCanon(double anguloCanon) {
 		this.anguloCanon = anguloCanon;
 	}
 	public void addListaConstruccion(construcciones nueva_contr) {

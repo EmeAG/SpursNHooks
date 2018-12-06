@@ -87,16 +87,15 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("personaje").get("duenio").asText())).addListaPersonajes(personaje);
 				break;
 				case "cargar_enemigo":
-					System.out.println("Cargar Objetos");
 					json.put("type", "enemigo");
 					json.putPOJO("Enemigo", jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("id_rival").asText())));
 					session.sendMessage(new TextMessage(json.toString()));
 				break;
 				
 				case "enviar_angulo_canon":
-					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setAnguloCanon(node.get("jugadorPropio").get("anguloCanon").asLong());
+					System.out.println("angulo cannon:" + node.get("jugadorPropio").get("anguloCanon").asDouble());
+					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setAnguloCanon(node.get("jugadorPropio").get("anguloCanon").asDouble());
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaT(node.get("jugadorPropio").get("balaT").asText());
-					System.out.println(node.get("jugadorPropio").get("anguloCanon").asLong());
 				break;
 				case "enviar_bala":
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaVelX(node.get("jugadorPropio").get("balaVelX").asLong());

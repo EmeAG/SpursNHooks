@@ -49,7 +49,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstrucion=20;//contador de tiempo constr
+var auxTiempoConstrucion=1;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -107,7 +107,7 @@ var jugadorPropio={
 	lado:undefined,
 	Lista_Construc:undefined,
 	Lista_Personajes:undefined,
-	balaT:undefined,
+	balaT:"comun",
 	anguloCanon:undefined,
 	balaVelX:undefined,
 	balaVelY:undefined,
@@ -120,7 +120,7 @@ var jugadorRival={
 	lado:undefined,
 	Lista_Construc:undefined,
 	Lista_Personajes:undefined,
-	balaT:undefined,
+	balaT:"comun",
 	anguloCanon:undefined,
 	balaVelX:undefined,
 	balaVelY:undefined,
@@ -1728,8 +1728,7 @@ Game.Battle_Online.prototype ={
 									id_rival: id_rival
 								}
 							connection.send(JSON.stringify(data));
-						
-							
+
 							connection.onerror = function(e) {
 								console.log("WS error: " + e);
 							}
@@ -1768,7 +1767,7 @@ Game.Battle_Online.prototype ={
 								console.log("Closing socket");
 							}
 							
-/*							$.ajax({
+							/*$.ajax({
 								type: 'GET',
 								url:"/cargar_objeto/"+ id_rival,
 								headers: {
@@ -1985,7 +1984,53 @@ Game.Battle_Online.prototype ={
 
 		if(estado=="BATALLA"){
 			/******************/
-			$.ajax({
+			data = {
+					type: 'cargar_enemigo',
+					id_rival: id_rival
+				}
+			connection.send(JSON.stringify(data));			
+			
+			connection.onerror = function(e) {
+				console.log("WS error: " + e);
+			}
+			connection.onmessage = function(message) {
+				console.log("WS message: " + message.data);
+				var msg = JSON.parse(message.data)
+
+				console.log('INFO BATALLA_ONLINE BATALLA ' + msg.type)
+
+				switch (msg.type) {
+					case "enemigo":
+						console.log('##### BATALLA cargar objeto enemigos #####')
+						auxDisparos=msg.Enemigo.numeroDisparos;
+						Xvector=msg.Enemigo.balaVelX;
+						Yvector=msg.Enemigo.balaVelY;
+						jugadorRival.anguloCanon=msg.Enemigo.anguloCanon;
+						jugadorRival.balaT=msg.Enemigo.balaT;
+						Bala_J2.tipo=msg.Enemigo.balaT;
+						switch(jugadorRival.balaT){
+							case "comun":
+								Bala_J2.loadTexture('balaComun');
+								break;
+							case "agua":
+								Bala_J2.loadTexture('balaAgua');
+								break;
+							case "acido":
+								Bala_J2.loadTexture('balaAcido');
+								break;
+							case "fuego":
+								Bala_J2.loadTexture('balaFuego');
+								break;
+						}
+					break;
+				}
+			}
+			connection.onclose = function() {
+				console.log("Closing socket");
+			}
+			
+			
+			/*$.ajax({
 				type: 'GET',
 				url:"/cargar_numDisparos/num_dis" + id_rival,
 				headers: {
@@ -2012,7 +2057,7 @@ Game.Battle_Online.prototype ={
 							Bala_J2.loadTexture('balaFuego');
 							break;
 					}
-				})
+				})*/
 				
 			if(jugadorRival.numeroDisparos<auxDisparos){
 				jugadorRival.numeroDisparos=auxDisparos;
