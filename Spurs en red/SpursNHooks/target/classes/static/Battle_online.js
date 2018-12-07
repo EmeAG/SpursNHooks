@@ -1062,7 +1062,7 @@ Game.Battle_Online.prototype ={
 
 	//Construye el objeto si esta en la posicion correcta o lo elimina si este no lo esta. inputs 0, outputs 0.
 	stop_move:function(){
-		if((this.input.mousePointer.isDown && this.construcAux!=null && this.delayAux>15) || fin_tiempo==0){
+		if((this.input.mousePointer.isDown && this.construcAux!=null && this.delayAux>15) ||this.construcAux!=null && fin_tiempo==0){
 			this.game.physics.p2.enable(this.construcAux, true);
 			this.construcAux.body.angularVelocity=0;											   
 			this.construcAux.body.velocity.x=0;
@@ -1616,6 +1616,9 @@ Game.Battle_Online.prototype ={
 					}
 				}
 				if(fin_tiempo==0){
+					this.stop_move();
+					
+
 					//enviar objetos al servidor
 					if (crear_objetos==0){
 						for(var i=0;i<this.contConstJ1;i++){
@@ -2943,7 +2946,7 @@ Game.Battle_Online.prototype ={
 		this.game.debug.text(turno,500, 300,'white');*/
 
 		
-		//this.game.debug.text(crear_personajes,600, 500,'white');
+		this.game.debug.text(this.construcAux,600, 500,'white');
 		
 	},
 	
