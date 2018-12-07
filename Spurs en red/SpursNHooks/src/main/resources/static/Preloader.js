@@ -86,6 +86,7 @@ Game.Preloader.prototype={
 		this.load.image('BotonMaterialConSombra', 'assets/PropsEscenario/BotonMaterialConSombra.png');
 		this.load.image('botonPersonaje', 'assets/PropsEscenario/botonPersonaje.png');
 		this.load.image('botonTipo', 'assets/PropsEscenario/botonTipo.png');
+		this.load.image('botonSiguiente', 'assets/PropsEscenario/BotonSiguiente.png');
 		this.load.image('botonTipoConSombra', 'assets/PropsEscenario/botonTipoConSombra.png');
 		this.load.image('CuadroTiempo', 'assets/PropsEscenario/CuadroTiempo.png');
 		
