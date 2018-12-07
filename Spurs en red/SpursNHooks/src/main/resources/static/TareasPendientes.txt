@@ -7,7 +7,7 @@
 - sonido disparo
 - sonido destruccion material (uno diferente para cada material)
 - sonido destruccion personaje
-- Cartel de Victoria en Offline
+- Cartel de Victoria en Offline <---DONE
 
  //Arte
 
