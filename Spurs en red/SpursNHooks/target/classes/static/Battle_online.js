@@ -573,7 +573,6 @@ Game.Battle_Online.prototype ={
 				}else{
 					angulo_rotacion=Math.PI-angulo_rotacion;
 				}
-				//alert(angulo_rotacion);
 				Xvector = Math.cos(Math.asin(angulo_rotacion))*Math.min(-fuerza,-275)*5;
 				Yvector = angulo_rotacion*Math.max(fuerza,275)*5;
 			}
@@ -1594,7 +1593,6 @@ Game.Battle_Online.prototype ={
 				}
 				if(fin_tiempo!=0){
 					//Actualizacion de textos
-					//alert(jugador)
 					if(jugador=="J1"){
 						this.textDinero.destroy();
 						this.textDinero=this.add.text(this.dineroMarc.x,this.dineroMarc.y,dineroJ1, style_compra);
@@ -1975,7 +1973,6 @@ Game.Battle_Online.prototype ={
 			for(var i=0;i<this.contConstJ1;i++){
 				this.construcJ1[i].body.dynamic=true;
 			}
-			//alert(this.contConstJ2);
 			for(var i=0;i<this.contConstJ2;i++){
 				this.construcJ2[i].body.dynamic=true;
 			}
@@ -2039,12 +2036,10 @@ Game.Battle_Online.prototype ={
 								break;
 						}
 						if(jugadorRival.numeroDisparos<msg.Enemigo.numeroDisparos){
-							//alert(msg.Enemigo.BalaVelX);
 							jugadorRival.numeroDisparos=msg.Enemigo.numeroDisparos;
 							Bala_J2.body.dynamic = true;
 							Bala_J2.body.velocity.x=msg.Enemigo.BalaVelX;
 							Bala_J2.body.velocity.y=msg.Enemigo.BalaVelY;
-							//alert(Bala_J2.body.velocity.x);
 						}
 					break;
 				}
@@ -2288,7 +2283,6 @@ Game.Battle_Online.prototype ={
 						this.jugadoresJ2[i].body.createBodyCallback(Bala_J1, this.colision, this);
 					}
 					for(var i=0;i<this.contConstJ2;i++){
-						alert(this.construcJ2[i].vida);
 						this.construcJ2[i].body.createBodyCallback(Bala_J1, this.colision, this);
 					}
 					this.CannonVaquero.bringToTop();
@@ -2471,6 +2465,7 @@ Game.Battle_Online.prototype ={
 					Bala_J1.body.y=420;
 					Bala_J1.visible = false;
 					Bala_J1.tipo="comun";
+					jugadorPropio.balaT="comun";
 					Bala_J1.loadTexture('balaComun');
 					Bala_J1.visible = true;
 				}
@@ -2514,7 +2509,6 @@ Game.Battle_Online.prototype ={
 
 			//Inicio Control bala J2
 			if(((Bala_J2.body.x-Bala_J2.width<0 || Bala_J2.body.x + Bala_J2.width>1920 || Bala_J2.body.y+Bala_J2.height>1080 || (Bala_J2.body.velocity.x<=velocidad_minima && Bala_J2.body.velocity.y<=velocidad_minima && Bala_J2.body.velocity.x>=-velocidad_minima && Bala_J2.body.velocity.y>=-velocidad_minima)))){
-				//alert();
 				Bala_J2.body.moves = false;
 				Bala_J2.body.kinematic = true;
 				Bala_J2.body.velocity.x=0;
@@ -2526,6 +2520,7 @@ Game.Battle_Online.prototype ={
 					Bala_J2.body.y=420;
 					Bala_J2.visible = false;
 					Bala_J2.tipo="comun";
+					jugadorPropio.balaT="comun";
 					Bala_J2.loadTexture('balaComun');
 					Bala_J2.visible = true;
 				}
@@ -3087,7 +3082,7 @@ Game.Battle_Online.prototype ={
 		this.game.debug.text(turno,500, 300,'white');*/
 
 		if(estado=="BATALLA"){
-			this.game.debug.text(this.construcJ2.length,600, 500,'white');
+			this.game.debug.text(Bala_J2.tipo,600, 500,'white');
 		}
 		
 	},
