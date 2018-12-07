@@ -1302,7 +1302,7 @@ Game.Battle_Online.prototype ={
 				Bala_J2=this.add.sprite(0,0, 'balaComun');
 				Bala_J2.x=100;
 				Bala_J2.y=420;
-				this.physics.p2.enable(Bala_J2,true);
+				this.physics.p2.enable(Bala_J2/*,true*/);
 				Bala_J2.body.setCircle(35);
 				Bala_J2.body.kinematic = true;
 				Bala_J2.body.mass=peso_balas;
