@@ -7,7 +7,8 @@ idBatalla=undefined;
 Delay=0;
 
 /*Crear jugador y unir lista jugadores_conectados*/
-var connection = new WebSocket('ws://127.0.0.1:8080/echo');
+//var connection = new WebSocket('ws://127.0.0.1:8080/echo');
+var connection = new WebSocket(window.location.href.replace('http','ws') + 'echo');
 
 debug = {
 		connection: 1
