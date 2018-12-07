@@ -2255,10 +2255,7 @@ Game.Battle_Offline.prototype ={
 								}
 							break;
 						}
-					}
-					
-					
-					
+					}	
 				}
 				if(balaDispara.tipo=="fuego"){
 					switch (juga_constr.sprite.tipo){

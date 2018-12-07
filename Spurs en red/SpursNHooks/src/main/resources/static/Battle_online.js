@@ -2632,6 +2632,63 @@ Game.Battle_Online.prototype ={
 							juga_constr.sprite.vida=juga_constr.sprite.vida-20;
 							break;
 					}
+					
+					//Cambiar sprite del material a sprite roto cuando la vida sea menor que 10
+					if((juga_constr.sprite.vida <= 10) && (juga_constr.sprite.vida >=1)){
+						switch (juga_constr.sprite.tipo){
+							case ("madera"):
+								
+								switch(juga_constr.sprite.forma){
+									case "tri":
+										juga_constr.sprite.loadTexture('Bloq_mad_trian_roto');
+									break;
+									case "cuad":
+										juga_constr.sprite.loadTexture('Bloq_mad_cuad_roto');
+									break;
+									case "rect_v":
+										juga_constr.sprite.loadTexture('Bloq_mad_rectV_roto');
+									break;
+									case "rect_h":
+										juga_constr.sprite.loadTexture('Bloq_mad_rectH_roto');
+									break;
+								}
+							break;
+							case ("piedra"):
+								
+								switch(juga_constr.sprite.forma){
+									case "tri":
+										juga_constr.sprite.loadTexture('Bloq_pied_trian_roto');
+									break;
+									case "cuad":
+										juga_constr.sprite.loadTexture('Bloq_pied_cuad_roto');
+									break;
+									case "rect_v":
+										juga_constr.sprite.loadTexture('Bloq_pied_rectV_roto');
+									break;
+									case "rect_h":
+										juga_constr.sprite.loadTexture('Bloq_pied_rectH_roto');
+									break;
+								}
+							break;
+							case ("metal"):
+								
+								switch(juga_constr.sprite.forma){
+									case "tri":
+										juga_constr.sprite.loadTexture('Bloq_met_trian_roto');
+									break;
+									case "cuad":
+										juga_constr.sprite.loadTexture('Bloq_met_cuad_roto');
+									break;
+									case "rect_v":
+										juga_constr.sprite.loadTexture('Bloq_met_rectV_roto');
+									break;
+									case "rect_h":
+										juga_constr.sprite.loadTexture('Bloq_met_rectH_roto');
+									break;
+								}
+							break;
+						}
+					}
 				}
 				if(Bala_J1.tipo=="fuego"){
 					switch (juga_constr.sprite.tipo){
@@ -2767,6 +2824,62 @@ Game.Battle_Online.prototype ={
 						juga_constr.sprite.vida=juga_constr.sprite.vida-20;
 						break;
 				}
+				//Cambiar sprite del material a sprite roto cuando la vida sea menor que 10
+					if((juga_constr.sprite.vida <= 10) && (juga_constr.sprite.vida >=1)){
+						switch (juga_constr.sprite.tipo){
+							case ("madera"):
+								
+								switch(juga_constr.sprite.forma){
+									case "tri":
+										juga_constr.sprite.loadTexture('Bloq_mad_trian_roto');
+									break;
+									case "cuad":
+										juga_constr.sprite.loadTexture('Bloq_mad_cuad_roto');
+									break;
+									case "rect_v":
+										juga_constr.sprite.loadTexture('Bloq_mad_rectV_roto');
+									break;
+									case "rect_h":
+										juga_constr.sprite.loadTexture('Bloq_mad_rectH_roto');
+									break;
+								}
+							break;
+							case ("piedra"):
+								
+								switch(juga_constr.sprite.forma){
+									case "tri":
+										juga_constr.sprite.loadTexture('Bloq_pied_trian_roto');
+									break;
+									case "cuad":
+										juga_constr.sprite.loadTexture('Bloq_pied_cuad_roto');
+									break;
+									case "rect_v":
+										juga_constr.sprite.loadTexture('Bloq_pied_rectV_roto');
+									break;
+									case "rect_h":
+										juga_constr.sprite.loadTexture('Bloq_pied_rectH_roto');
+									break;
+								}
+							break;
+							case ("metal"):
+								
+								switch(juga_constr.sprite.forma){
+									case "tri":
+										juga_constr.sprite.loadTexture('Bloq_met_trian_roto');
+									break;
+									case "cuad":
+										juga_constr.sprite.loadTexture('Bloq_met_cuad_roto');
+									break;
+									case "rect_v":
+										juga_constr.sprite.loadTexture('Bloq_met_rectV_roto');
+									break;
+									case "rect_h":
+										juga_constr.sprite.loadTexture('Bloq_met_rectH_roto');
+									break;
+								}
+							break;
+						}
+					}
 			}
 			if(Bala_J2.tipo=="fuego"){
 				switch (juga_constr.sprite.tipo){
