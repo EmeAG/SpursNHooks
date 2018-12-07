@@ -49,7 +49,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstrucion=15;//contador de tiempo constr
+var auxTiempoConstrucion=0;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -341,6 +341,11 @@ Game.Battle_Online.prototype ={
 				button_BalaAcido.tint=1 * 0xffffff;
 			}
 		}
+		//Boton vuelta al Menu
+		this.button_menu = this.add.button(this.world.centerX, 200, 'botonTipo', this.vuelta_menu, this, 2, 1, 0);
+		this.button_menu.visible=false;
+		this.textMenu=this.game.add.text(0, 0, "MENU", style_compra);
+		this.textMenu.visible=false;
 
 		//Boton Tipos de Objetos
 		this.button_Rect_Vert = this.add.button(this.world.width/3+100, 40, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
@@ -885,6 +890,10 @@ Game.Battle_Online.prototype ={
 		}
 	},
 
+	//Llamada por un boton, 0 inputs, 0 outputs
+	vuelta_menu:function(){
+		this.state.start('MainMenu');
+	},
 	//Llamada por un boton.0 inputs, 0 outputs
 	create_tipo_rectV:function(){
 		if(this.construcAux==null&& fin_tiempo!=0){
@@ -2596,6 +2605,16 @@ Game.Battle_Online.prototype ={
 							this.textDerrota.anchor.setTo(0.5,0.5);
 						}
 					}
+					this.button_menu.visible=true;
+					this.button_menu.bringToTop();
+					this.button_menu.anchor.setTo(0.5,0.5);
+					this.button_menu.x=this.cartelFin.x + this.cache.getImage("CartelEspera").width/2 ;
+					this.button_menu.y=this.cartelFin.y+this.cache.getImage("CartelEspera").height-150;
+					this.textMenu.visible=true;
+					this.textMenu.bringToTop();
+					this.textMenu.anchor.setTo(0.5,0.5);
+					this.textMenu.x=this.button_menu.x;
+					this.textMenu.y=this.button_menu.y;
 				//}
 				if(this.delayAux>=600){
 					this.musica1.destroy();
