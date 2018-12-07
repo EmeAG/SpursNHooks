@@ -718,7 +718,7 @@ Game.Battle_Online.prototype ={
 				if((dineroJ1-10)>=0){
 					this.bloq_mad_trian=this.add.sprite(this.button_Trian.x,this.button_Trian.y,'Bloq_mad_trian');
 					this.physics.p2.enable(this.bloq_mad_trian);
-					this.physics.p2.enable(this.bloq_mad_trian,true);//ver formas
+					this.physics.p2.enable(this.bloq_mad_trian/*,true*/);//ver formas
 					this.bloq_mad_trian.inputEnabled=true;
 					this.bloq_mad_trian.num=this.contConstJ1;
 					this.bloq_mad_trian.coste=10;
@@ -1222,7 +1222,7 @@ Game.Battle_Online.prototype ={
 				Bala_J1=this.add.sprite(0,0, 'balaComun');
 				Bala_J1.x=100;
 				Bala_J1.y=420;
-				this.physics.p2.enable(Bala_J1,true);
+				this.physics.p2.enable(Bala_J1/*,true*/);
 				Bala_J1.body.setCircle(35);
 				Bala_J1.body.kinematic = true;
 				Bala_J1.tipo="comun";
@@ -1232,7 +1232,7 @@ Game.Battle_Online.prototype ={
 				Bala_J2=this.add.sprite(0,0, 'balaComun');
 				Bala_J2.x=1820;
 				Bala_J2.y=400;
-				this.physics.p2.enable(Bala_J2,true);
+				this.physics.p2.enable(Bala_J2/*,true*/);
 				Bala_J2.body.setCircle(35);
 				Bala_J2.body.kinematic = true;
 				Bala_J2.body.mass=peso_balas;
@@ -1293,7 +1293,7 @@ Game.Battle_Online.prototype ={
 				Bala_J1=this.add.sprite(0,0, 'balaComun');
 				Bala_J1.x=1820;
 				Bala_J1.y=400;
-				this.physics.p2.enable(Bala_J1,true);
+				this.physics.p2.enable(Bala_J1/*,true*/);
 				Bala_J1.body.setCircle(35);
 				Bala_J1.body.kinematic = true;
 				Bala_J1.body.mass=peso_balas;
@@ -1920,7 +1920,7 @@ Game.Battle_Online.prototype ={
 								construcAux.coste=0;
 								construcAux.estado=1;
 								construcAux.forma=contruccion_enemigo[i].forma;
-								construcAux.tipo=contruccion_enemigo[i].tipo;
+								construcAux.tipo=contruccion_enemigo[i].tipo_material;
 								this.construcJ2[i]=construcAux;
 								this.construcJ2[i].body.kinematic=true;
 								this.contConstJ2=i;
@@ -2150,7 +2150,7 @@ Game.Battle_Online.prototype ={
 							Bala_J1=this.add.sprite(0,0, 'balaAcido');
 						break;
 					}
-					this.physics.p2.enable(Bala_J1,true);
+					this.physics.p2.enable(Bala_J1/*,true*/);
 					Bala_J1.body.collideWorldBounds = true;
 					Bala_J1.body.velocity.x=vel_X_J1;
 					Bala_J1.body.velocity.y=vel_Y_J1;
@@ -2189,7 +2189,7 @@ Game.Battle_Online.prototype ={
 							Bala_J2=this.add.sprite(0,0, 'balaAcido');
 						break;
 					}
-					this.physics.p2.enable(Bala_J2,true);
+					this.physics.p2.enable(Bala_J2/*,true*/);
 					Bala_J2.body.collideWorldBounds = true;
 					Bala_J2.body.velocity.x=vel_X_J2;
 					Bala_J2.body.velocity.y=vel_Y_J2;
@@ -2236,7 +2236,7 @@ Game.Battle_Online.prototype ={
 							Bala_J2=this.add.sprite(0,0, 'balaAcido');
 						break;
 					}
-					this.physics.p2.enable(Bala_J2,true);
+					this.physics.p2.enable(Bala_J2/*,true*/);
 					Bala_J2.body.collideWorldBounds = true;
 					Bala_J2.body.velocity.x=vel_X_J2;
 					Bala_J2.body.velocity.y=vel_Y_J2;
@@ -2275,7 +2275,7 @@ Game.Battle_Online.prototype ={
 							Bala_J1=this.add.sprite(0,0, 'balaAcido');
 						break;
 					}
-					this.physics.p2.enable(Bala_J1,true);
+					this.physics.p2.enable(Bala_J1/*,true*/);
 					Bala_J1.body.collideWorldBounds = true;
 					Bala_J1.body.velocity.x=vel_X_J1;
 					Bala_J1.body.velocity.y=vel_Y_J1;
@@ -2288,6 +2288,7 @@ Game.Battle_Online.prototype ={
 						this.jugadoresJ2[i].body.createBodyCallback(Bala_J1, this.colision, this);
 					}
 					for(var i=0;i<this.contConstJ2;i++){
+						alert(this.construcJ2[i].vida);
 						this.construcJ2[i].body.createBodyCallback(Bala_J1, this.colision, this);
 					}
 					this.CannonVaquero.bringToTop();
@@ -2626,7 +2627,6 @@ Game.Battle_Online.prototype ={
 	}
 },
 	colision2:function(juga_constr){
-		alert(0);
 		//BalaJ2
 		if(isNaN(Number(Bala_J2.body.velocity.y))){
 			Val3=0;
@@ -2654,10 +2654,8 @@ Game.Battle_Online.prototype ={
 				}
 				//Cambiar sprite del material a sprite roto cuando la vida sea menor que 10
 					if((juga_constr.sprite.vida >=1)){
-						alert(1)
 						switch (juga_constr.sprite.tipo){
 							case ("madera"):
-								alert();
 								if(juga_constr.sprite.vida<=vida_madera/2){
 									switch(juga_constr.sprite.forma){
 										case "tri":
@@ -2676,7 +2674,6 @@ Game.Battle_Online.prototype ={
 								}							
 							break;
 							case ("piedra"):
-								alert();
 								if(juga_constr.sprite.vida<=vida_piedra/2){
 									switch(juga_constr.sprite.forma){
 										case "tri":
@@ -2695,7 +2692,6 @@ Game.Battle_Online.prototype ={
 								}		
 							break;
 							case ("metal"):
-								alert();
 								if(juga_constr.sprite.vida<=vida_metal/2){
 									switch(juga_constr.sprite.forma){
 										case "tri":
@@ -2787,7 +2783,6 @@ Game.Battle_Online.prototype ={
 				juga_constr.sprite.body.angularVelocity=0;
 			}
 			if(Bala_J2.tipo=="agua"){
-				//alert();
 				switch (juga_constr.sprite.tipo){
 					case ("metal"):
 						juga_constr.sprite.vida=1;
@@ -2825,10 +2820,8 @@ Game.Battle_Online.prototype ={
 		}
 	},
 	
-	colision:function(juga_constr){
-		//alert();
+	colision:function(juga_constr){	
 		if(disparos==0){
-			//alert(0);
 			//BalaJ1
 			if(isNaN(Number(Bala_J1.body.velocity.y))){
 				Val1=0;
@@ -2854,14 +2847,11 @@ Game.Battle_Online.prototype ={
 							juga_constr.sprite.vida=juga_constr.sprite.vida-20;
 							break;
 					}
-					
 					//Cambiar sprite del material a sprite roto cuando la vida sea menor que 10
-					alert(juga_constr.tipo)
 					if((juga_constr.sprite.vida >=1)){
 						
 						switch (juga_constr.sprite.tipo){
 							case ("madera"):
-							    alert();
 								if(juga_constr.sprite.vida<=vida_madera/2){
 									switch(juga_constr.sprite.forma){
 										case "tri":
@@ -2880,7 +2870,6 @@ Game.Battle_Online.prototype ={
 								}							
 							break;
 							case ("piedra"):
-								alert();
 								if(juga_constr.sprite.vida<=vida_piedra/2){
 									switch(juga_constr.sprite.forma){
 										case "tri":
@@ -2899,7 +2888,6 @@ Game.Battle_Online.prototype ={
 								}		
 							break;
 							case ("metal"):
-								alert();
 								if(juga_constr.sprite.vida<=vida_metal/2){
 									switch(juga_constr.sprite.forma){
 										case "tri":
@@ -2991,7 +2979,6 @@ Game.Battle_Online.prototype ={
 					juga_constr.sprite.body.angularVelocity=0;
 				}
 				if(Bala_J1.tipo=="agua"){
-					//alert();
 					switch (juga_constr.sprite.tipo){
 						case ("metal"):
 							juga_constr.sprite.vida=1;
@@ -3099,8 +3086,9 @@ Game.Battle_Online.prototype ={
 		/*
 		this.game.debug.text(turno,500, 300,'white');*/
 
-		
-		this.game.debug.text(this.construcAux,600, 500,'white');
+		if(estado=="BATALLA"){
+			this.game.debug.text(this.construcJ2.length,600, 500,'white');
+		}
 		
 	},
 	
