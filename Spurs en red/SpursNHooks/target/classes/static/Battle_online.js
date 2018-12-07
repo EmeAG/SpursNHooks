@@ -342,10 +342,10 @@ Game.Battle_Online.prototype ={
 			}
 		}
 		//Boton vuelta al Menu
-		this.button_menu = this.add.button(this.world.centerX, 200, 'botonTipo', this.vuelta_menu, this, 2, 1, 0);
+		this.button_menu = this.add.button(this.world.centerX, 200, 'botonSiguiente', this.vuelta_menu, this, 2, 1, 0);
 		this.button_menu.visible=false;
-		this.textMenu=this.game.add.text(0, 0, "MENU", style_compra);
-		this.textMenu.visible=false;
+		//this.textMenu=this.game.add.text(0, 0, "MENU", style_compra);
+		//this.textMenu.visible=false;
 
 		//Boton Tipos de Objetos
 		this.button_Rect_Vert = this.add.button(this.world.width/3+100, 40, 'boton_Tipo', this.create_tipo_rectV, this, 2, 1, 0);
@@ -2610,11 +2610,12 @@ Game.Battle_Online.prototype ={
 					this.button_menu.anchor.setTo(0.5,0.5);
 					this.button_menu.x=this.cartelFin.x + this.cache.getImage("CartelEspera").width/2 ;
 					this.button_menu.y=this.cartelFin.y+this.cache.getImage("CartelEspera").height-150;
+					/*
 					this.textMenu.visible=true;
 					this.textMenu.bringToTop();
 					this.textMenu.anchor.setTo(0.5,0.5);
 					this.textMenu.x=this.button_menu.x;
-					this.textMenu.y=this.button_menu.y;
+					this.textMenu.y=this.button_menu.y; */
 				//}
 				if(this.delayAux>=600){
 					this.musica1.destroy();
