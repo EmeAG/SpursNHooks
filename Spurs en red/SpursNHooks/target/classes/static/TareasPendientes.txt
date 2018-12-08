@@ -4,9 +4,9 @@
 - imagen roto en online <---DONE
 - quemado/acido/agua online en los dos jugadores
 - pulpo/pez + colision
-- sonido disparo
-- sonido destruccion material (uno diferente para cada material)
-- sonido destruccion personaje
+- sonido disparo <---DONE
+- sonido destruccion material (uno diferente para cada material) <---DONE
+- sonido destruccion personaje <---DONE
 - Cartel de Victoria en Offline <---DONE
 
  //Arte
