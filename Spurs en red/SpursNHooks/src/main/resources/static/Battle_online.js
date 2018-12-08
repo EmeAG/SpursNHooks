@@ -73,6 +73,8 @@ var juego_terminado=false;
 var angulo_rotacion;
 var musica;
 
+var DisparoSound; 
+
 var array=new Array();
 
 //Datos del Jugador
@@ -197,12 +199,15 @@ Game.Battle_Online.prototype ={
 		this.musica1.play();
 		
 		//sonido de golpe a personaje
-		this.golpe = this.game.add.audio('PersonaSound');
+		this.golpe = this.game.add.audio('PersonaSound',0.3);
 		
 		//sonido de golpe de materiales
 		this.MaderaGolpe = this.game.add.audio('MaderaSound');
 		this.PiedraGolpe = this.game.add.audio('PiedraSound');
 		this.MetalGolpe = this.game.add.audio('MetalSound');
+		
+		//Sonido disparo
+		DisparoSound = this.game.add.audio('DisparoSound',0.3);
 
 		dineroJugadores=300;
 		dineroJ1=dineroJugadores;
@@ -590,6 +595,7 @@ Game.Battle_Online.prototype ={
 			Bala_J1.body.velocity.y=Yvector;
 			jugadorPropio.BalaVelX=Xvector;
 			jugadorPropio.BalaVelY=Yvector;
+			DisparoSound.play();
 			
 			if(num_balas_agu_J1==0){
 				button_BalaAgua.tint=0.4 * 0xffffff;
