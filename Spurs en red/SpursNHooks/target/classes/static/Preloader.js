@@ -11,6 +11,7 @@ Game.Preloader.prototype={
 		this.load.audio('MaderaSound','assets/Sounds/MaderaHit.mp3');
 		this.load.audio('PiedraSound','assets/Sounds/PiedraHit.mp3');
 		this.load.audio('MetalSound','assets/Sounds/MetalHit.mp3');
+		this.load.audio('DisparoSound','assets/Sounds/CanonShot.mp3');
 
 		//Menu Images
 		this.load.image("fondoMenu", 'assets/Backgrounds/fondoMenu.png');

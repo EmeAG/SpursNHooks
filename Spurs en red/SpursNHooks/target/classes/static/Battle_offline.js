@@ -69,6 +69,8 @@ var juego_terminado=false;
 var angulo_rotacion;
 var musica;
 
+var DisparoSound;  
+
 var array=new Array();
 Game.Battle_Offline.prototype ={
 	create:function(){
@@ -76,12 +78,15 @@ Game.Battle_Offline.prototype ={
 		this.musica1.play();
 		
 		//sonido de golpe a personaje
-		this.golpe = this.game.add.audio('PersonaSound');
+		this.golpe = this.game.add.audio('PersonaSound',0.3);
 		
 		//sonido de golpe de materiales
 		this.MaderaGolpe = this.game.add.audio('MaderaSound');
 		this.PiedraGolpe = this.game.add.audio('PiedraSound');
 		this.MetalGolpe = this.game.add.audio('MetalSound');
+		
+		//Sonido disparo
+		DisparoSound = this.game.add.audio('DisparoSound',0.3);
 		
 		dineroJugadores=300;
 		dineroJ1=dineroJugadores;
@@ -600,6 +605,7 @@ Game.Battle_Offline.prototype ={
 		balaDispara.body.dynamic = true;
 		balaDispara.body.velocity.x=Xvector;
 		balaDispara.body.velocity.y=Yvector;
+		DisparoSound.play();
 		}
 	},
 	
