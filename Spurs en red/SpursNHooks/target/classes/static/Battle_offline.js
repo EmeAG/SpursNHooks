@@ -74,6 +74,9 @@ Game.Battle_Offline.prototype ={
 	create:function(){
 		this.musica1=this.game.add.audio("batallaMusic",0.09,true);
 		this.musica1.play();
+		
+		//sonido de golpe a personaje
+		this.golpe = this.game.add.audio('PersonaSound', 0.5);
 
 		dineroJugadores=300;
 		dineroJ1=dineroJugadores;
@@ -2199,7 +2202,9 @@ Game.Battle_Offline.prototype ={
 							juga_constr.sprite.vida=juga_constr.sprite.vida-20;
 							break;
 					}
-					
+					if(juga_constr.sprite.tipo == "personaje"){
+						this.golpe.play();
+					}
 					//Cambiar sprite del material a sprite roto cuando la vida sea menor que 10
 					if((juga_constr.sprite.vida <= 10) && (juga_constr.sprite.vida >=1)){
 						switch (juga_constr.sprite.tipo){
@@ -2284,6 +2289,7 @@ Game.Battle_Offline.prototype ={
 						break;
 						case ("personaje"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.golpe.play();
 						break;
 					}
 					balaDispara.body.x=2000;
@@ -2319,6 +2325,7 @@ Game.Battle_Offline.prototype ={
 						break;
 						case ("personaje"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.golpe.play();
 						break;
 					}
 					balaDispara.body.x=2000;
@@ -2355,6 +2362,7 @@ Game.Battle_Offline.prototype ={
 						break;
 						case ("personaje"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.golpe.play();
 						break;
 					}
 					balaDispara.body.x=2000;

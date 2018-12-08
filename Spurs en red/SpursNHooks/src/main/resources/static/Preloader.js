@@ -7,6 +7,7 @@ Game.Preloader.prototype={
 		//Musica
 		this.load.audio('menuMusic','assets/Sounds/MusicaInicioJuego_Menu.mp3');
 		this.load.audio('batallaMusic','assets/Sounds/MusicaGameplay.mp3');
+		this.load.audio('PersonaSound','assets/Sounds/PersonaHit.mp3');
 
 		//Menu Images
 		this.load.image("fondoMenu", 'assets/Backgrounds/fondoMenu.png');
