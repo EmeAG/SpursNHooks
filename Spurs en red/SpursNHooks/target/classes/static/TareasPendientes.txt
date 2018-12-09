@@ -1,7 +1,7 @@
 //Programacion
 
 - WEBSOCKET
-- imagen roto en online
+- imagen roto en online <---DONE
 - quemado/acido/agua online en los dos jugadores
 - pulpo/pez + colision
 - sonido disparo
