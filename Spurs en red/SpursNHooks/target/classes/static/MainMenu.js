@@ -10,7 +10,7 @@ Game.MainMenu.prototype ={
 		this.game.physics.p2.gravity.y = 0;
 		this.musica=this.game.add.audio("menuMusic",0.09,true);
 		this.musica.play();
-        var style = {	font: "60px Ultra",
+        var style = {	font: "35px Ultra",
 						fill: "Black",
 						boundsAlignH: "center",
 						boundsAlignV: "middle",

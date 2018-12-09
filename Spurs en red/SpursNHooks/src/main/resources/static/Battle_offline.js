@@ -69,12 +69,25 @@ var juego_terminado=false;
 var angulo_rotacion;
 var musica;
 
+var DisparoSound;  
+
 var array=new Array();
 Game.Battle_Offline.prototype ={
 	create:function(){
 		this.musica1=this.game.add.audio("batallaMusic",0.09,true);
 		this.musica1.play();
-
+		
+		//sonido de golpe a personaje
+		this.golpe = this.game.add.audio('PersonaSound',0.3);
+		
+		//sonido de golpe de materiales
+		this.MaderaGolpe = this.game.add.audio('MaderaSound');
+		this.PiedraGolpe = this.game.add.audio('PiedraSound');
+		this.MetalGolpe = this.game.add.audio('MetalSound');
+		
+		//Sonido disparo
+		DisparoSound = this.game.add.audio('DisparoSound',0.3);
+		
 		dineroJugadores=300;
 		dineroJ1=dineroJugadores;
 		dineroJ2=-1;
@@ -592,6 +605,7 @@ Game.Battle_Offline.prototype ={
 		balaDispara.body.dynamic = true;
 		balaDispara.body.velocity.x=Xvector;
 		balaDispara.body.velocity.y=Yvector;
+		DisparoSound.play();
 		}
 	},
 	
@@ -2200,11 +2214,25 @@ Game.Battle_Offline.prototype ={
 							break;
 					}
 					
+					//Sonidos
+					switch (juga_constr.sprite.tipo){
+						case ("madera"):
+							this.MaderaGolpe.play();
+						break;
+						case ("piedra"):
+							this.PiedraGolpe.play();
+						break;
+						case ("metal"):
+							this.MetalGolpe.play();
+						break;
+						case ("personaje"):
+							this.golpe.play();
+						break;
+					}
 					//Cambiar sprite del material a sprite roto cuando la vida sea menor que 10
 					if((juga_constr.sprite.vida <= 10) && (juga_constr.sprite.vida >=1)){
 						switch (juga_constr.sprite.tipo){
 							case ("madera"):
-								
 								switch(juga_constr.sprite.forma){
 									case "tri":
 										juga_constr.sprite.loadTexture('Bloq_mad_trian_roto');
@@ -2261,6 +2289,7 @@ Game.Battle_Offline.prototype ={
 					switch (juga_constr.sprite.tipo){
 						case ("madera"):
 							juga_constr.sprite.vida=1;
+							this.MaderaGolpe.play();
 							switch(juga_constr.sprite.forma){
 								case "tri":
 									juga_constr.sprite.loadTexture('Bloq_mad_trian_quem');
@@ -2278,12 +2307,15 @@ Game.Battle_Offline.prototype ={
 						break;
 						case ("piedra"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.PiedraGolpe.play();
 						break;
 						case ("metal"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.MetalGolpe.play();
 						break;
 						case ("personaje"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.golpe.play();
 						break;
 					}
 					balaDispara.body.x=2000;
@@ -2296,6 +2328,7 @@ Game.Battle_Offline.prototype ={
 					switch (juga_constr.sprite.tipo){
 						case ("piedra"):
 							juga_constr.sprite.vida=1;
+							this.PiedraGolpe.play();
 							switch(juga_constr.sprite.forma){
 								case "tri":
 									juga_constr.sprite.loadTexture('Bloq_pied_trian_aci');
@@ -2313,12 +2346,15 @@ Game.Battle_Offline.prototype ={
 							break;
 						case ("madera"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.MaderaGolpe.play();
 						break;
 						case ("metal"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.MetalGolpe.play();
 						break;
 						case ("personaje"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.golpe.play();
 						break;
 					}
 					balaDispara.body.x=2000;
@@ -2332,6 +2368,7 @@ Game.Battle_Offline.prototype ={
 					switch (juga_constr.sprite.tipo){
 						case ("metal"):
 							juga_constr.sprite.vida=1;
+							this.MetalGolpe.play();
 							switch(juga_constr.sprite.forma){
 								case "tri":
 									juga_constr.sprite.loadTexture('Bloq_met_trian_oxi');
@@ -2349,12 +2386,15 @@ Game.Battle_Offline.prototype ={
 							break;
 						case ("madera"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.MaderaGolpe.play();
 						break;
 						case ("piedra"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.PiedraGolpe.play();
 						break;
 						case ("personaje"):
 							juga_constr.sprite.vida=juga_constr.sprite.vida-1;
+							this.golpe.play();
 						break;
 					}
 					balaDispara.body.x=2000;

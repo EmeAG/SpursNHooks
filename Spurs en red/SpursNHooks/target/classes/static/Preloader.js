@@ -7,6 +7,11 @@ Game.Preloader.prototype={
 		//Musica
 		this.load.audio('menuMusic','assets/Sounds/MusicaInicioJuego_Menu.mp3');
 		this.load.audio('batallaMusic','assets/Sounds/MusicaGameplay.mp3');
+		this.load.audio('PersonaSound','assets/Sounds/PersonaHit.mp3');
+		this.load.audio('MaderaSound','assets/Sounds/MaderaHit.mp3');
+		this.load.audio('PiedraSound','assets/Sounds/PiedraHit.mp3');
+		this.load.audio('MetalSound','assets/Sounds/MetalHit.mp3');
+		this.load.audio('DisparoSound','assets/Sounds/CanonShot.mp3');
 
 		//Menu Images
 		this.load.image("fondoMenu", 'assets/Backgrounds/fondoMenu.png');
