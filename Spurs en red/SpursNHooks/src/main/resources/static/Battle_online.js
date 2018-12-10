@@ -195,6 +195,67 @@ Game.Battle_Online.prototype ={
 
 
 	create:function(){
+		
+		/*Reiniciar todo*/
+		catchFlag = false;
+		launchVelocityPropia = 0;
+		launchVelocityRival = 0;
+		auxDisparos=0;
+		turno=1;
+		disparos=1;
+		fin_tiempo=1;
+		num_balas_fue_J1=0;
+		num_balas_fue_J2=0;
+		num_balas_agu_J1=0;
+		num_balas_agu_J2=0;
+		num_balas_aci_J1=0;
+		num_balas_aci_J2=0;
+		cargando_batalla=0;
+
+		puntuacion1=0;
+		puntuacion2=0;
+
+		juego_terminado=false;
+
+		//Datos pasar objeto
+		objeto.duenio=undefined;
+		objeto.tipo_material=undefined;
+		objeto.forma=undefined;
+		objeto.posx=undefined;
+		objeto.posy=undefined;
+			
+		personaje.duenio=undefined;
+		personaje.posx=undefined;
+		personaje.posy=undefined;
+
+		crear_objetos=0;
+		crear_personajes=0;
+		cont=0;
+		Crearpersonajes=0;
+
+		//Datos propios
+		jugadorPropio.id=undefined;
+		jugadorPropio.lado=undefined;
+		jugadorPropio.Lista_Construc=undefined;
+		jugadorPropio.Lista_Personajes=undefined;
+		jugadorPropio.balaT="comun";
+		jugadorPropio.anguloCanon=undefined;
+		jugadorPropio.BalaVelX=undefined;
+		jugadorPropio.BalaVelY=undefined;
+		jugadorPropio.numeroDisparos=0;
+
+		//Datos rival
+		jugadorRival.id=undefined;
+		jugadorRival.lado=undefined;
+		jugadorRival.Lista_Construc=undefined;
+		jugadorRival.Lista_Personajes=undefined;
+		jugadorRival.balaT="comun";
+		jugadorRival.anguloCanon=undefined;
+		jugadorRival.BalaVelX=undefined;
+		jugadorRival.BalaVelY=undefined;
+		jugadorRival.numeroDisparos=0;
+		/*Reiniciar todo*/	
+		
 		this.musica1=this.game.add.audio("batallaMusic",0.09,true);
 		this.musica1.play();
 		
