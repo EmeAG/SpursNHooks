@@ -598,7 +598,6 @@ Game.Battle_Online.prototype ={
 			}
 
 		jugadorPropio.balaT=Bala_J1.tipo;
-
 		Bala_J1.visible=true;
 	},
 
@@ -2552,6 +2551,7 @@ Game.Battle_Online.prototype ={
 					Bala_J1.body.y=400;
 					Bala_J1.visible = false;
 					Bala_J1.tipo="comun";
+					jugadorPropio.balaT="comun";
 					Bala_J1.loadTexture('balaComun');
 					Bala_J1.visible = true;
 				}
@@ -2595,7 +2595,6 @@ Game.Battle_Online.prototype ={
 					Bala_J2.body.y=420;
 					Bala_J2.visible = false;
 					Bala_J2.tipo="comun";
-					jugadorPropio.balaT="comun";
 					Bala_J2.loadTexture('balaComun');
 					Bala_J2.visible = true;
 				}
@@ -3215,7 +3214,7 @@ Game.Battle_Online.prototype ={
 		this.game.debug.text(turno,500, 300,'white');*/
 
 		if(estado=="BATALLA"){
-			this.game.debug.text(Bala_J2.tipo,600, 500,'white');
+			this.game.debug.text(jugadorPropio.balaT,600, 500,'white');
 		}
 		
 	},
