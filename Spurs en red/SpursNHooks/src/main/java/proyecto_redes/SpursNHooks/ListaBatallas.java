@@ -59,4 +59,5 @@ public class ListaBatallas {
 			Jugadores_espera.get().remove(this.Lista_Partidas.get(this.pos_partidaID(ID_batalla)).getJugador2());
 		}
 	}
+	
 }

@@ -36,6 +36,9 @@ connection.onmessage = function (message) {
 
 Game.Esperar_jugador.prototype ={
 	create:function(){
+		idjugador1=undefined;
+		idjugador2=undefined;
+		idBatalla=undefined;
 		this.game.physics.p2.gravity.y = 0;
 		this.musica=this.game.add.audio("menuMusic",0.09,true);
 		this.musica.play();

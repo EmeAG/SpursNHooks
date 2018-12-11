@@ -49,7 +49,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstrucion=10;//contador de tiempo constr
+var auxTiempoConstrucion=0;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -3212,6 +3212,7 @@ Game.Battle_Online.prototype ={
 		
 		/*
 		this.game.debug.text(turno,500, 300,'white');*/
+		this.game.debug.text(id_batalla ,300,100,"white");
 
 		if(estado=="BATALLA"){
 			this.game.debug.text(jugadorPropio.balaT,600, 500,'white');

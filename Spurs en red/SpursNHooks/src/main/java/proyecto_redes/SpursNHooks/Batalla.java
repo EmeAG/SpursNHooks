@@ -16,6 +16,13 @@ public class Batalla {
 		this.id_batalla=0;
 		this.jugadoresConectados=0;
 	}
+	
+	public void deleteBatalla() {
+		this.jugador1=null;
+		this.jugador2=null;
+		this.id_batalla=0;
+		this.jugadoresConectados=0;
+	}
 
 	public int getId_batalla() {
 		return id_batalla;

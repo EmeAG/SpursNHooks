@@ -106,6 +106,10 @@ public class WebsocketEchoHandler extends TextWebSocketHandler{
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setNumeroDisparos(node.get("jugadorPropio").get("numeroDisparos").asInt());
 					jugadores_conectados.get().get(jugadores_conectados.PosicionJugadorID(node.get("jugadorPropio").get("id").asText())).setBalaT(node.get("jugadorPropio").get("balaT").asText());
 				break;
+				case "eliminar_batalla":
+					partidas.getLista_Partidas().get(partidas.pos_partidaID(node.get("id_batalla").asInt())).deleteBatalla();
+					System.out.println(node.get("id_batalla").asInt());
+				break;
 			}
 		}
 	}
