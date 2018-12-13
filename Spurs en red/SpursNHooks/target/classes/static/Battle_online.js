@@ -49,7 +49,7 @@ var num_balas_aci_J1=0;
 var num_balas_aci_J2=0;
 var cargando_batalla=0;
 
-var auxTiempoConstrucion=0;//contador de tiempo constr
+var auxTiempoConstrucion=20;//contador de tiempo constr
 var auxTiempoBatalla=15;//contador de tiempo batalla
 //Pesos
 var peso_madera=20;
@@ -491,7 +491,7 @@ Game.Battle_Online.prototype ={
 		this.precioBFue=this.game.add.text(this.button_bala_fuego.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_fuego.y-this.cache.getImage("BotonBala_B").height/3,"15$", style_compra);
 		this.precioBFue.anchor.setTo(0.5,0.5);
 		this.precioBFue.visible=false;
-		this.button_bala_agua=this.add.button(1350+20+this.cache.getImage('BotonBala_B').width,200,'BotonBala_B',this.compraBalaAgua,this,2,1,0);
+		this.button_bala_agua=this.add.button(1350+20+this.cache.getImage('BotonBala_B').width*2,200,'BotonBala_B',this.compraBalaAgua,this,2,1,0);
 		this.button_bala_agua.anchor.setTo(0.5,0.5);
 		this.button_bala_agua.visible=false;
 		this.balaAg=this.game.add.sprite(this.button_bala_agua.x-20,this.button_bala_agua.y-10,"balaAgua");
@@ -500,10 +500,10 @@ Game.Battle_Online.prototype ={
 		this.textBAgu=this.add.text(this.button_bala_agua.x,this.button_bala_agua.y+50,num_balas_agu_J1, style_compra);
 		this.textBAgu.anchor.setTo(0.5,0.5);
 		this.textBAgu.visible=false;
-		this.precioBAgu=this.add.text(this.button_bala_agua.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_agua.y-this.cache.getImage("BotonBala_B").height/3,"30$", style_compra);
+		this.precioBAgu=this.add.text(this.button_bala_agua.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_agua.y-this.cache.getImage("BotonBala_B").height/3,"50$", style_compra);
 		this.precioBAgu.anchor.setTo(0.5,0.5);
 		this.precioBAgu.visible=false;
-		this.button_bala_acido=this.add.button(1350+(20+this.cache.getImage('BotonBala_B').width)*2,200,'BotonBala_B',this.compraBalaAcido,this,2,1,0);
+		this.button_bala_acido=this.add.button(1350+(20+this.cache.getImage('BotonBala_B').width),200,'BotonBala_B',this.compraBalaAcido,this,2,1,0);
 		this.button_bala_acido.anchor.setTo(0.5,0.5);
 		this.button_bala_acido.visible=false;
 		this.balaAc=this.game.add.sprite(this.button_bala_acido.x-20,this.button_bala_acido.y-10,"balaAcido");
@@ -512,7 +512,7 @@ Game.Battle_Online.prototype ={
 		this.textBAci=this.add.text(this.button_bala_acido.x,this.button_bala_acido.y+50,num_balas_aci_J1, style_compra);
 		this.textBAci.anchor.setTo(0.5,0.5);
 		this.textBAci.visible=false;
-		this.precioBAci=this.add.text(this.button_bala_acido.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_acido.y-this.cache.getImage("BotonBala_B").height/3,"50$", style_compra);
+		this.precioBAci=this.add.text(this.button_bala_acido.x+this.cache.getImage("BotonBala_B").width/3-5,this.button_bala_acido.y-this.cache.getImage("BotonBala_B").height/3,"30$", style_compra);
 		this.precioBAci.anchor.setTo(0.5,0.5);
 		this.precioBAci.visible=false;
 
