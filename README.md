@@ -4,7 +4,7 @@
 <p>
 -Miguel Ángel Arcones, Email: ma.arcones@alumnos.urjc.es, Github: <b>M-Arcones</b>
 
--Manuel Aguado Salguero, Email: m.aguado.2016@alumnos.urjc.es, GitHub: <b>EmeAG</b>
+-Manuel Aguado, Email: m.aguado.2016@alumnos.urjc.es, GitHub: <b>EmeAG</b>
 
 -Daniel Muñoz Serrano, Email: d.munozs.2016@alumnos.urjc.es, GitHub: <b>Dani020998</b>
 </p>
